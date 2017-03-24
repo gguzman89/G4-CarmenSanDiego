@@ -17,7 +17,7 @@ class Detective
 	
 	def tieneUnaOrdenDeArresto ()
 	{
-		ordenDeArresto.hayOrdenDeArresto
+		ordenDeArresto==""
 	}
 	
 	def void ordenarArresto (Villano villano)
