@@ -4,7 +4,3 @@ bin
 /xtend-gen/
 /src/main/generated-sources
 /src/test/generated-sources
-.project
-.classpath
-.settings
-/settings/
