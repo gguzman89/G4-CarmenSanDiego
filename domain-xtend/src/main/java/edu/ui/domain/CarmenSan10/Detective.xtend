@@ -22,7 +22,7 @@ class Detective
 	
 	def void ordenarArresto (Villano villano)
 	{
-		ordenDeArresto.villanoAArrestar (villano)
+		ordenDeArresto = villano.nombre
 	}
 	
 	def ubicacionActual ()
