@@ -8,5 +8,6 @@ bin
 .classpath
 /.classpath
 .settings
+/.settings/
 /.settings
 /settings/
