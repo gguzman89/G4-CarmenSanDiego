@@ -11,7 +11,7 @@ class Pais {
 	List<String> caracteristicaPais
 	List<LugarInteres> lugares
 	List<Pais> paisesConexionAerea
-	String politicaPais // todos los paises tiene politica?
+	//String politicaPais // move LugaresInteres
 	
 	new (){}
 	

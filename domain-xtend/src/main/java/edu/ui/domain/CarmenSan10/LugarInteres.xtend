@@ -1,9 +1,15 @@
 package edu.ui.domain.CarmenSan10
 
-class LugarInteres {
+import java.util.ArrayList
+import java.util.List
+
+abstract class LugarInteres {
 	
 	Ocupante tipo
-	// como modelar la politica del lugar
+	List<String> politicaDelLugar
 	
-	new() {}
+	new(Ocupante cual) {
+		tipo = cual
+		politicaDelLugar = new ArrayList<String> ()
+	}
 }
