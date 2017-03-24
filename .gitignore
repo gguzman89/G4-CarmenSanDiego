@@ -1,9 +1,5 @@
 /target/
 bin
-.project
-.classpath
-.settings
-/settings/
 /bin/
 /xtend-gen/
 /src/main/generated-sources
