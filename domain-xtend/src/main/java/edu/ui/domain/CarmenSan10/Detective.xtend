@@ -5,14 +5,14 @@ import java.util.List
 class Detective 
 {
 	private var List<Pais> recorrido;
-	private var OrdenDeArresto ordenDeArresto;
+	private var String ordenDeArresto;
 	
 	new () {}
 	
-	new (List<Pais> movimientos, OrdenDeArresto orden)
+	new (List<Pais> movimientos, String nombreDelVillano)
 	{
 		recorrido = movimientos
-		ordenDeArresto = orden
+		ordenDeArresto = nombreDelVillano
 	}
 	
 	def tieneUnaOrdenDeArresto ()
