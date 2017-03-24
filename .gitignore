@@ -6,5 +6,8 @@ bin
 /src/test/generated-sources
 .project
 .classpath
+/.classpath
 .settings
+/.settings/
+/.settings
 /settings/

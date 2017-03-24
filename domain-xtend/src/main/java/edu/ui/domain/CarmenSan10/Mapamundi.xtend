@@ -13,12 +13,15 @@ class Mapamundi {
 		paises = new ArrayList<Pais>()
 	}
 	
+//	new() {
+//	}
+	
 	def buscarPais(Pais paisABuscar) {
 		
 		/*
 		 * deberia encontrar un unico pais
 		 * como diferencias un pais de otros?
-		 * los paises deberian ser univocos
+		 * solo por el nombre
 		 */
 		var encontrados = new ArrayList<Pais>()
 		
