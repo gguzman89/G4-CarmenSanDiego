@@ -8,12 +8,24 @@ import org.junit.Assert
 
 class TestMapamundiXtend {
 	
-	var Pais azul
-	var Mapamundi teg
+	Pais azul
+	Pais rojo
+	
+	Mapamundi teg
+	
 	
 	@Before
 	def void setUp() {
+		
+		/*
+		 * 2 maneras de crear
+		 * diferencias?
+		 */
 		azul = new Pais("Argentina")
+		
+		rojo = new Pais => [
+			nombrePais = "Chile"
+		]
 		
 		teg = new Mapamundi()
 		
@@ -24,7 +36,10 @@ class TestMapamundiXtend {
 	def void testBuscarPaisArgentina() {
 
 		teg.agregarPais(azul)
+		teg.agregarPais(rojo)
 		
 		Assert.assertEquals(teg.buscarPais(azul).get(0).nombrePais,"Argentina")
+		Assert.assertEquals(teg.buscarPais(rojo).get(0).nombrePais,"Chile")
+		Assert.assertFalse(teg.paises.empty)
 	}
 }
