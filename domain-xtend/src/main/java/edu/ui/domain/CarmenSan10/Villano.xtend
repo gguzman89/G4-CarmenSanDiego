@@ -6,10 +6,40 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Villano extends Ocupante {
 	
-	String nombre
+	//String nombre// ya lo hereda de ocupante
 	String sexo
 	List<String> seniasParticulares
 	List<String> hobbies
+	
+	def void setSexo(String sex){
+		sexo = sex
+	}
+	
+	def String getSexo(){
+		return sexo
+	}
+	
+	def void setSeniasParticulares(List<String> senias){
+		seniasParticulares = senias
+	}
+	
+	def List<String> getSeniasParticulares (){
+		return seniasParticulares
+	}
+	
+	def void setOtraSeniaMas (String senia){
+		seniasParticulares.add(senia)
+	}
+	
+	override queSabesDe(Villano unVillano) {
+		//metodo provisorio
+		if (unVillano.getNombre()== this.getNombre()){
+			return "pum pum pum, rayos! falle!!"
+		}
+		else{
+			return "?"
+		}
+	}
 	
 	/*
 	 * si es su destino final. quien?
