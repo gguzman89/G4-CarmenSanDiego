@@ -7,6 +7,7 @@ abstract class LugarInteres {
 	
 	Ocupante tipo
 	List<String> politicaDelLugar
+	// deberia tener algun nombre?
 	
 	new (){}
 	
