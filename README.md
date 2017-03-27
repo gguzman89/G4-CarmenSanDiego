@@ -1,6 +1,6 @@
 # G4-CarmenSanDiego
 
-(add image Carmen San Diego)
+![alt text](http://vignette2.wikia.nocookie.net/poohadventures/images/a/a9/Carmen_Sandiego-4.png/revision/latest?cb=20121004113037 "Logo CarmenSanDiego")
 
 Proyecto que contiene el dominio del módulo de un juego de poli-ladron, reutilizado como componente por otras aplicaciones de UI.
 
@@ -8,34 +8,37 @@ Proyecto que contiene el dominio del módulo de un juego de poli-ladron, reutili
 
 ## Enunciado
 
-Principalmente están los Villanos, que son quienes cometen los delitos. 
+Principalmente están los **Villanos**, que son quienes cometen los delitos.
 Después de trabajar durante años en Acme se logró armar una gran base de antecedentes de estos criminales.
 Por cada Villano se conoce:
-nombre
-sexo
-señas particularidades
-hobbies
-Por ejemplo:
-    Nombre: Carmen Sandiego
-    Sexo: Femenino
-    Señas particulares: Pelo rojo, maneja un convertible, posee un collar de rubies, su comida favorita son los tacos mexicanos
-    Hobbies: Juega Tenis
-A su vez se cuenta con un mapamundi que tiene la información importante de cada país:
-Nombre del país
-Características del país
-Lugares de interés por los criminales
-Países con los que tiene conexiones aéreas
+- nombre
+- sexo
+- señas particularidades
+- hobbies
 
-Los lugares de interés son bien conocidos por todos, en cada país hay 3 lugares que nos aseguran que si el villano estuvo en el país visitó todos.
+Por ejemplo:
+* Nombre: Carmen Sandiego
+* Sexo: Femenino
+* Señas particulares: Pelo rojo, maneja un convertible, posee un collar de rubies, su comida favorita son los tacos mexicanos
+* Hobbies: Juega Tenis
+
+A su vez se cuenta con un mapamundi que tiene la información importante de cada **país**:
++ Nombre del país
++ Características del país
++ Lugares de interés por los criminales
++ Países con los que tiene conexiones aéreas
+
+Los **lugares de interés** son bien conocidos por todos, en cada país hay 3 lugares que nos aseguran que si el villano estuvo en el país visitó todos.
 Despues de muchas inverstigaciones se determinó que hay 4 tipos de lugares que atraen a los malechores:
-Embajada: cuando tiene información del malechor da 2 pistas relacionadas con el destino del villano
-Banco: cuando tiene información del malechor da una pista relacionada con el país de destino y otra con las señas particulares.
-Biblioteca: cuando tiene información del malechor da una pista relacionada con el país de destino y otra con las señas particulares. Además el 50% de las veces da una pista más sobre los hobbies
-Club: cuando tiene información del malechor da dos pistas sobre las señas particulares y el 70% de las veces agrega información de sus hobbies (adicional a las dos señas particulares).
++ Embajada: cuando tiene información del malechor da 2 pistas relacionadas con el destino del villano
++ Banco: cuando tiene información del malechor da una pista relacionada con el país de destino y otra con las señas particulares.
++ Biblioteca: cuando tiene información del malechor da una pista relacionada con el país de destino y otra con las señas particulares. Además el 50% de las veces da una pista más sobre los hobbies
++ Club: cuando tiene información del malechor da dos pistas sobre las señas particulares y el 70% de las veces agrega información de sus hobbies (adicional a las dos señas particulares).
+
 En lugar hay un ocupante, que pude ser el Villano (si es su destino final), un informante (si el villano está en el país, nos da la información según la política del lugar) o un cuidador (si el villano no se encuentra en el país).
 Los villanos si están en el país pero no en el lugar al que visitamos intentan matarnos y fallan.
 Los cuidadores nos informan que nos hemos equivocado de país y mejor volvemos por donde vinimos.
-El objetivo del juego siempre es resolver un caso. El caso tiene un responsable (villano que intentaremos capturar), un plan de escape (que es una lista de países conectados), un reporte del acto criminal, el objeto del robo, el país donde ocurrió el robo.
+El objetivo del juego siempre es resolver un **caso**. El caso tiene un responsable (villano que intentaremos capturar), un plan de escape (que es una lista de países conectados), un reporte del acto criminal, el objeto del robo, el país donde ocurrió el robo.
 
 El juego consiste en interpretar al detective que viaja por el mundo atrapando a los malechores.
 
