@@ -9,17 +9,16 @@ class Mapamundi {
 	
 	List<Pais> paises
 	
-	new() {
-		paises = new ArrayList<Pais>()
-	}
+	new() {}
 	
-//	new() {
+//	new() {	Diferencia nro° 1
+//		paises = new ArrayList<Pais> ()
 //	}
+	
 	
 	def buscarPais(Pais paisABuscar) {
 		
 		/*
-		 * deberia encontrar un unico pais
 		 * como diferencias un pais de otros?
 		 * solo por el nombre
 		 */

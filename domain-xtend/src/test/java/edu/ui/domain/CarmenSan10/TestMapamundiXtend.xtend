@@ -5,6 +5,7 @@ package edu.ui.domain.CarmenSan10
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert
+import java.util.ArrayList
 
 class TestMapamundiXtend {
 	
@@ -20,6 +21,10 @@ class TestMapamundiXtend {
 		/*
 		 * 2 maneras de crear
 		 * diferencias?
+		 * new() {
+			paises = new ArrayList<Pais> ()
+		   }
+		 * puedo instanciar a mi manera el objeto, 
 		 */
 		azul = new Pais("Argentina")
 		
@@ -27,7 +32,9 @@ class TestMapamundiXtend {
 			nombrePais = "Chile"
 		]
 		
-		teg = new Mapamundi()
+		teg = new Mapamundi => [
+			paises = new ArrayList<Pais>()
+		]
 		
 		
 	}
