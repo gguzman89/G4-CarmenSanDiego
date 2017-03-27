@@ -15,6 +15,10 @@ class Informante extends Ocupante {
 		}
 	}
 	
+	override politicaDelLugarSegun(LugarInteres unLugar) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 	/*
 	 * si el villano está en el país, nos da la información según la política del lugar. como?
 	 */

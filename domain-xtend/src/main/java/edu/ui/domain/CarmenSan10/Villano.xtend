@@ -41,6 +41,10 @@ class Villano extends Ocupante {
 		}
 	}
 	
+	override politicaDelLugarSegun(LugarInteres unLugar) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 	/*
 	 * si es su destino final. quien?
 	 * Los villanos si están en el país pero no en el lugar al que visitamos intentan matarnos y fallan.

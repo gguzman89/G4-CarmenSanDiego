@@ -13,6 +13,14 @@ class Cuidador extends Ocupante {
 		}
 	}
 	
+	override politicaDelLugarSegun(LugarInteres unLugar) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		/*
+		 * algo asi como que si soy Ocupante y no interesa el lugar solo deberia decir lo siguiente:
+		 * "Los cuidadores nos informan que nos hemos equivocado de país y mejor volvemos por donde vinimos"
+		 */
+	}
+	
 	/*
 	 * si el villano no se encuentra en el país
 	 * Los cuidadores nos informan que nos hemos equivocado de país y mejor volvemos por donde vinimos.
