@@ -17,16 +17,6 @@ class ACME
 		resolvedorDeCasos = resolvedor
 	}
 	
-	def obtenerTodosLosVillanos ()
-	{
-		expedientes
-	}
-	
-	def obtenerAlResolvedorDeCasos()
-	{
-		resolvedorDeCasos
-	}
-	
 	def void agregarUnVillano (Villano v)
 	{
 		expedientes.add(v)

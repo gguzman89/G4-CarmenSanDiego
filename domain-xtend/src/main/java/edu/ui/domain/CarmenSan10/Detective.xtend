@@ -19,12 +19,26 @@ class Detective
 	
 	def tieneUnaOrdenDeArresto ()
 	{
-		ordenDeArresto==""
+		ordenDeArresto!=""
 	}
 	
 	def void ordenarArresto (Villano villano)
 	{
 		ordenDeArresto = villano.nombre
+	}
+	
+	def void viajarSiPuedeA (Pais paisAViajar)
+	{
+		if (puedeViajarA(paisAViajar))
+			viajarA (paisAViajar)
+		else 
+			throw new UserException ("No existe una conexion aerea")
+	}
+	
+	private def puedeViajarA(Pais paisAViajar) 
+	{
+		ubicacionActual.tieneConexionAereaCon(paisAViajar)
+		// Pedir el mensaje "tieneConexionAereaCon" a Pais
 	}
 	
 	def void viajarA (Pais paisAViajar)
