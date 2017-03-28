@@ -40,5 +40,9 @@ class Pais {
 		paisesConexionAerea.get(paisesConexionAerea.indexOf(conexionAerea))
 	}
 	
+	def tieneConexionAereaCon(Pais pais) {
+		paisesConexionAerea.exists[p | p.nombrePais == pais.nombrePais]
+	}
+	
 	
 }

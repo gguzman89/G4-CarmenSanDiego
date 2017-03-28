@@ -38,7 +38,6 @@ class Detective
 	private def puedeViajarA(Pais paisAViajar) 
 	{
 		ubicacionActual.tieneConexionAereaCon(paisAViajar)
-		// Pedir el mensaje "tieneConexionAereaCon" a Pais
 	}
 	
 	def void viajarA (Pais paisAViajar)

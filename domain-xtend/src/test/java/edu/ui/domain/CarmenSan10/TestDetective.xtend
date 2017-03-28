@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert
 import static org.mockito.Mockito.*
+import org.uqbar.commons.model.UserException
 
 class TestDetective 
 {
@@ -105,8 +106,7 @@ class TestDetective
 		
 		when(italiaMock.nombrePais).thenReturn("Italia")
 		when(alemaniaMock.nombrePais).thenReturn("Alemania")
-		//when(alemaniaMock.tieneConexionAereaCon(italiaMock)).then(true)
-		// DESCOMENTAR CUANDO ESTE IMPLEMENTADO EL "tieneConexionAereaCon"
+		when(alemaniaMock.tieneConexionAereaCon(italiaMock)).thenReturn(true)
 		
 		detective.viajarA(alemaniaMock)
 		detective.viajarSiPuedeA(italiaMock)
@@ -117,9 +117,9 @@ class TestDetective
 	/**
 	 * Dado un detective en Alemania sin conexiones aereas a Italia...
 	 * intenta viajar a Italia...
-	 * Devuelve false
+	 * Devuelve un Excepcion
 	 */
-	@Test
+	@Test (expected=UserException)
 	def testViajarSiPuedaAUnCasoNegativo ()
 	{
 		var detective = new Detective ()
@@ -128,13 +128,10 @@ class TestDetective
 		
 		when(italiaMock.nombrePais).thenReturn("Italia")
 		when(alemaniaMock.nombrePais).thenReturn("Alemania")
-		//when(alemaniaMock.tieneConexionAereaCon(italiaMock)).then(true)
-		// DESCOMENTAR CUANDO ESTE IMPLEMENTADO EL "tieneConexionAereaCon"
+		when(alemaniaMock.tieneConexionAereaCon(italiaMock)).thenReturn(false)
 		
 		detective.viajarA(alemaniaMock)
 		detective.viajarSiPuedeA(italiaMock)
-		
-		Assert.assertNotEquals(detective.ubicacionActual.nombrePais,"Italia")
 	}
 	
 }
