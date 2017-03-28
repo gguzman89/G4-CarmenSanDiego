@@ -14,10 +14,18 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 	
+	<!--
 	<parent>
 		<groupId>org.uqbar-project</groupId>
 		<artifactId>uqbar-xtend-parent</artifactId>
 		<version>2.9.1</version>
+	</parent>
+	CAMBIE EL PARENT POR UNO MÁS ACTUAL
+	-->
+	<parent>
+		<groupId>org.uqbar-project</groupId>
+		<artifactId>arena-xtend-parent</artifactId>
+		<version>3.6.2</version>
 	</parent>
 
   <dependencies>
@@ -27,11 +35,13 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    
     <dependency>
   <groupId>org.mockito</groupId>
   <artifactId>mockito-android</artifactId>
   <version>2.7.19</version>
   <type>pom</type>
 </dependency>
+
   </dependencies>
 </project>
