@@ -16,7 +16,9 @@ class Informante extends Ocupante {
 	}
 	
 	override politicaDelLugarSegun(LugarInteres unLugar) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		//ondeToi = unLugar
+		
+		return "Vi a alguien como describe " + unLugar.getPoliticaDelLugar()
 	}
 	
 	/*
