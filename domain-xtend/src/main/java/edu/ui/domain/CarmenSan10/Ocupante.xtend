@@ -1,5 +1,8 @@
 package edu.ui.domain.CarmenSan10
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 abstract class Ocupante {
 
 	String nombre
@@ -29,7 +32,7 @@ abstract class Ocupante {
 	
 	def abstract String queSabesDe(Villano unVillano)
 	
-	def abstract void politicaDelLugarSegun(LugarInteres unLugar)
+	def abstract String politicaDelLugarSegun(LugarInteres unLugar)
 	// deberias setear el lugar y agregar informacion segun el tipo de ocupante
 	
 }

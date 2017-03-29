@@ -3,9 +3,6 @@ package edu.ui.domain.CarmenSan10
 
 class Club extends LugarInteres {
 	
-	new(Ocupante cual) {
-		super(cual)
-	}
 	
 	/*
 	 * cuando tiene información del malechor da dos pistas sobre las señas particulares y 
