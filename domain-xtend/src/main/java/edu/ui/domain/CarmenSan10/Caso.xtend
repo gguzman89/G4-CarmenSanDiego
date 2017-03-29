@@ -2,7 +2,7 @@ package edu.ui.domain.CarmenSan10
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.UserException
+import edu.ui.domain.Exceptions.ElPaisYaEstaIncluidoException
 
 @Accessors
 class Caso 
@@ -50,7 +50,7 @@ class Caso
 		if (! estaIncluidoEnElPlanDeEscape(paisDeEscape))
 			planDeEscape.add (paisDeEscape)
 		else 
-			throw new UserException ("El pais ya está incluido en el plan de escape")
+			throw new ElPaisYaEstaIncluidoException ("El pais ya está incluido en el plan de escape")
 	}
 	
 	/**

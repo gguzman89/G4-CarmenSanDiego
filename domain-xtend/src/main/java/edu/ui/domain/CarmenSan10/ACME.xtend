@@ -2,7 +2,7 @@ package edu.ui.domain.CarmenSan10
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.UserException
+import edu.ui.domain.Exceptions.ElVillanoYaEstaCargadoException
 
 @Accessors
 class ACME 
@@ -32,7 +32,7 @@ class ACME
 		if (! elVillanoYaExiste(villanoAAgregar))
 			agregarVillano (villanoAAgregar)
 		else
-			throw new UserException ("El villano ya existe en la base de datos de ACME")
+			throw new ElVillanoYaEstaCargadoException ("El villano ya existe en la base de datos de ACME")
 			
 	}
 	
@@ -43,6 +43,7 @@ class ACME
 	def elVillanoYaExiste (Villano villano) 
 	{
 		expedientes.exists[v | v.nombre == villano.nombre]
+		// expedientes.exists[| it.nombre == villano.nombre]
 	}
 	
 	/**

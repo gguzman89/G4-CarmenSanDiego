@@ -3,9 +3,15 @@ package edu.ui.domain.CarmenSan10
 import java.util.List
 import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.UserException
+import edu.ui.domain.Exceptions.NoExisteUnaConexionAereaException
+import edu.ui.domain.Exceptions.NoHayPasosPorDondeRegresarException
 
 @Accessors
+// Con el @Data no solo crea los geters y seter.
+// sino tambien un new con todas las variables internas para cargar por parametros.
+
+
+
 class Detective 
 {
 	private var List<Pais> recorrido;
@@ -47,7 +53,7 @@ class Detective
 		if (puedeViajarA(paisAViajar))
 			viajarA (paisAViajar)
 		else 
-			throw new UserException ("No existe una conexion aerea")
+			throw new NoExisteUnaConexionAereaException ("No existe una conexion aerea")
 	}
 	
 	/**
@@ -102,7 +108,7 @@ class Detective
 		if (puedeRegresarAlPaisAnterior)
 			regresarAlPaisAnterior
 		else
-			throw new UserException ("No hay pasos por donde regresar")
+			throw new NoHayPasosPorDondeRegresarException ("No hay pasos por donde regresar")
 	}
 	
 	/**

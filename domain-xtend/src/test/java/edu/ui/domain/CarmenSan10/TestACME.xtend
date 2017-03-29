@@ -64,10 +64,10 @@ class TestACME
 	def void testAgregarVillanoSiPuedeEnCasoNegativo ()
 	{	
 		var Villano villanoMock1 = mock(Villano)
-		var Villano villanoMock2 = mock(Villano)
-		
 		var List<Villano> expediente = new ArrayList();
 		expediente.add(villanoMock1)
+		
+		var Villano villanoMock2 = mock(Villano)
 		
 		var acme = new ACME(expediente, new Detective())
 		

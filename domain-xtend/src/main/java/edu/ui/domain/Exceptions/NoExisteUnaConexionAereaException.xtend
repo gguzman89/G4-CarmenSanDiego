@@ -1,0 +1,11 @@
+package edu.ui.domain.Exceptions
+
+import org.omg.CORBA.UserException
+
+class NoExisteUnaConexionAereaException extends UserException
+{
+	new(String mensajeDeError) 
+	{
+		super (mensajeDeError)
+	}
+}
