@@ -2,8 +2,8 @@
 bin
 /bin/
 /xtend-gen/
-/src/main/generated-sources
-/src/test/generated-sources
+src/main/generated-sources
+src/test/generated-sources
 .project
 .classpath
 /.classpath
