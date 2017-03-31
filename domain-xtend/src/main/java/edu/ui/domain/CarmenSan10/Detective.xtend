@@ -80,7 +80,7 @@ class Detective
 	 */
 	def recorrer (LugarInteres unLugar)
 	{
-		unLugar.getPoliticaDelLugar() 
+		unLugar.preguntarAlOcupante() 
 		// Esta bien que devuelva la politica del lugar? o tengo que mostrar otra cosa?
 	}
 	
