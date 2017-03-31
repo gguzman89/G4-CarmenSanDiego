@@ -1,6 +1,5 @@
 package edu.ui.domain.CarmenSan10
 
-//import java.util.Random
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.Random
 

@@ -2,7 +2,7 @@ package edu.ui.domain.CarmenSan10
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import java.util.ArrayList
+//import java.util.ArrayList
 import edu.ui.domain.Exceptions.ElPaisYaFueAgregado
 
 @Accessors
@@ -10,12 +10,7 @@ class Mapamundi {
 	
 	List<Pais> paises
 	
-	new() {}
-	
-//	new() {	Diferencia nro° 1
-//		paises = new ArrayList<Pais> ()
-//	}
-	
+	new() {}	
 	
 	def buscarPais(String nombreDelPaisABuscar) {
 		
