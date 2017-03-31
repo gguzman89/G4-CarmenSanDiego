@@ -2,8 +2,9 @@ package edu.ui.domain.CarmenSan10
 
 import org.eclipse.xtend.lib.annotations.Accessors
 
+//Clase abstracta que inplementa al IOcupante
 @Accessors
-abstract class Ocupante {
+abstract class Ocupante implements IOcupante {
 
 	String nombre
 	LugarInteres ondeToi
@@ -11,28 +12,9 @@ abstract class Ocupante {
 	// podes resolver los getters y setters con @Accesors
 	// check LugarInteres
 
-	new() {
+	new() {}
+	
+
+	override String responderAlDetective()
+	
 	}
-	
-	def void setNombre (String name){
-		nombre = name
-	}
-	
-	def String getNombre (){
-		return nombre
-	}
-	
-	def void setLugar (LugarInteres lugar){
-		ondeToi = lugar
-	}
-	
-	def LugarInteres getLugar(){
-		return ondeToi
-	}
-	
-	def abstract String queSabesDe(Villano unVillano)
-	
-	def abstract String politicaDelLugarSegun(LugarInteres unLugar)
-	// deberias setear el lugar y agregar informacion segun el tipo de ocupante
-	
-}
