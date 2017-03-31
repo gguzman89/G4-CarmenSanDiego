@@ -3,6 +3,8 @@ package edu.ui.domain.CarmenSan10
 
 class Embajada extends LugarInteres {
 	
+	override adicional() {}
+	
 	/*
 	 * cuando tiene información del malechor???
 	 * (y ademas esta el CUIDADOR)
@@ -15,9 +17,5 @@ class Embajada extends LugarInteres {
 	 	
 	 	//hoyEsta.politicaDelLugarSegun(this)
 	 //}
-	/*
-	def Ocupante quienEsta() {
-		tipo
-	}
-	 */
+	 
 }

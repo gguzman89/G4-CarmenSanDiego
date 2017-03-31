@@ -15,6 +15,16 @@ class Biblioteca extends LugarInteres {
 		rnd
 	}
 	
+	def pistaAdicional() {
+		
+		pistaSobreHobbies >= 50
+	}
+	
+	override adicional() {
+		if(pistaAdicional)
+		infoAdicional
+	}
+	
 	/*
 	 * cuando tiene información del malechor da una pista relacionada con el país de destino y otra con las señas particulares. 
 	 * Además el 50% de las veces da una pista más sobre los hobbies.
@@ -31,4 +41,6 @@ class Biblioteca extends LugarInteres {
 			rnd
 		}
 	}
+	
+	
 }
