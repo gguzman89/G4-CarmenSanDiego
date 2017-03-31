@@ -2,7 +2,7 @@ package edu.ui.domain.Exceptions
 
 import org.omg.CORBA.UserException
 
-class ElPaisYaFueAgregado extends UserException
+class ElPaisYaFueAgregadoException extends UserException
 {
 	new (String mensajeDeError)
 	{

@@ -2,8 +2,7 @@ package edu.ui.domain.CarmenSan10
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import java.util.ArrayList
-import edu.ui.domain.Exceptions.ElPaisYaFueAgregado
+import edu.ui.domain.Exceptions.ElPaisYaFueAgregadoException
 
 @Accessors
 class Mapamundi {
@@ -44,7 +43,7 @@ class Mapamundi {
 			agregarPais (paisAgregar)
 		else
 			// ¿Por qué ocurrio una excepción? Porque...
-			throw new ElPaisYaFueAgregado("No se puede agregar el mismo pais dos veces")
+			throw new ElPaisYaFueAgregadoException("No se puede agregar el mismo pais dos veces")
 	}
 	
 	private def elPaisYaEstaAgregado(Pais paisAgregar) {

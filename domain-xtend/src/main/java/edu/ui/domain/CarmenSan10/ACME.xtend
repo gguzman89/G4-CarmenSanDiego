@@ -3,10 +3,12 @@ package edu.ui.domain.CarmenSan10
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.Exceptions.ElVillanoYaEstaCargadoException
+import java.util.ArrayList
 
 @Accessors
 class ACME 
 {
+	// Es necesario poner Private usando el Accessors?
 	private var List<Villano> expedientes;
 	private var Detective resolvedorDeCasos;
 	
@@ -23,6 +25,13 @@ class ACME
 		resolvedorDeCasos = resolvedor
 	}
 	
+	/*
+	new(Detective resolvedor) { Preungtaar
+		expedientes = new ArrayList<Villano>()
+		resolvedorDeCasos = resolvedor
+	}
+	 */
+	 
 	/**
 	 * @Propósito Agrega un Villano a la base de datos de ACME solo si no fue cargado anteriormente.
 	 * @param VillanoAAgregar Es el Villano que se intenta agrega a la base de datos de ACME.
@@ -32,6 +41,7 @@ class ACME
 		if (! elVillanoYaExiste(villanoAAgregar))
 			agregarVillano (villanoAAgregar)
 		else
+			// Preguntar como mostrar en pantalla el String del error.
 			throw new ElVillanoYaEstaCargadoException ("El villano ya existe en la base de datos de ACME")
 			
 	}
@@ -43,6 +53,7 @@ class ACME
 	def elVillanoYaExiste (Villano villano) 
 	{
 		expedientes.exists[v | v.nombre == villano.nombre]
+		// Que es lo mismo que escribir...
 		// expedientes.exists[| it.nombre == villano.nombre]
 	}
 	

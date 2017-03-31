@@ -1,7 +1,5 @@
 package edu.ui.domain.CarmenSan10
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert
@@ -10,6 +8,21 @@ import org.omg.CORBA.UserException
 
 class TestDetective 
 {
+	Detective detective
+	Villano villanoMock
+	Pais italiaMock
+	Pais alemaniaMock
+	
+	@Before
+	def void setUp() {
+		detective = new Detective ()
+		villanoMock = mock(Villano)
+		italiaMock = mock(Pais)
+		alemaniaMock = mock(Pais)
+		when(italiaMock.nombrePais).thenReturn("Italia")
+		when(alemaniaMock.nombrePais).thenReturn("Alemania")
+	}
+	
 	/**
 	 * Dado un detective con una orden de arresto vigente...
 	 * pregunta si hay una orden de arresto vigente y... 
@@ -18,8 +31,6 @@ class TestDetective
 	@Test
 	def void testTieneOrdenDeArrestoCasoPositivo ()
 	{
-		var detective = new Detective ()
-		var Villano villanoMock = mock(Villano)
 		when(villanoMock.nombre).thenReturn("Carmen Sandiego")
 		
 		detective.ordenarArresto(villanoMock)
@@ -35,8 +46,6 @@ class TestDetective
 	@Test
 	def void testTieneOrdenDeArrestoCasoNegativo ()
 	{
-		var detective = new Detective ()
-		var Villano villanoMock = mock(Villano)
 		when(villanoMock.nombre).thenReturn("Carmen Sandiego")
 		
 		Assert.assertFalse(detective.tieneUnaOrdenDeArresto)
@@ -50,8 +59,6 @@ class TestDetective
 	@Test
 	def void testOrdenarArrestoCasoPositivo ()
 	{
-		var detective = new Detective ()
-		var Villano villanoMock = mock(Villano)
 		when(villanoMock.nombre).thenReturn("Carmen Sandiego")
 		
 		detective.ordenarArresto(villanoMock)
@@ -67,8 +74,6 @@ class TestDetective
 	@Test
 	def void testOrdenarArrestoCasoNegativo ()
 	{
-		var detective = new Detective ()
-		var Villano villanoMock = mock(Villano)
 		when(villanoMock.nombre).thenReturn("Ivan Noseque")
 		
 		detective.ordenarArresto(villanoMock)
@@ -83,13 +88,6 @@ class TestDetective
 	@Test
 	def void testViajarA ()
 	{
-		var detective = new Detective ()
-		var Pais italiaMock = mock(Pais)
-		var Pais alemaniaMock = mock(Pais)
-		
-		when(italiaMock.nombrePais).thenReturn("Italia")
-		when(alemaniaMock.nombrePais).thenReturn("Alemania")
-		
 		detective.viajarA(italiaMock)
 		
 		Assert.assertEquals(detective.ubicacionActual.nombrePais,"Italia")
@@ -108,12 +106,6 @@ class TestDetective
 	@Test
 	def void testViajarSiPuedeAUnCasoPositivo ()
 	{
-		var detective = new Detective ()
-		var Pais italiaMock = mock(Pais)
-		var Pais alemaniaMock = mock(Pais)
-		
-		when(italiaMock.nombrePais).thenReturn("Italia")
-		when(alemaniaMock.nombrePais).thenReturn("Alemania")
 		when(alemaniaMock.tieneConexionAereaCon(italiaMock)).thenReturn(true)
 		
 		detective.viajarA(alemaniaMock)
@@ -130,12 +122,6 @@ class TestDetective
 	@Test (expected=UserException)
 	def void testViajarSiPuedaAUnCasoNegativo ()
 	{
-		var detective = new Detective ()
-		var Pais italiaMock = mock(Pais)
-		var Pais alemaniaMock = mock(Pais)
-		
-		when(italiaMock.nombrePais).thenReturn("Italia")
-		when(alemaniaMock.nombrePais).thenReturn("Alemania")
 		when(alemaniaMock.tieneConexionAereaCon(italiaMock)).thenReturn(false)
 		
 		detective.viajarA(alemaniaMock)
@@ -150,13 +136,6 @@ class TestDetective
 	@Test
 	def void regresarAlPaisAnterior ()
 	{
-		var detective = new Detective ()
-		var Pais italiaMock = mock(Pais)
-		var Pais alemaniaMock = mock(Pais)
-		
-		when(italiaMock.nombrePais).thenReturn("Italia")
-		when(alemaniaMock.nombrePais).thenReturn("Alemania")
-		
 		detective.viajarA(italiaMock)
 		detective.viajarA(alemaniaMock)
 		detective.regresarAlPaisAnterior
@@ -171,14 +150,7 @@ class TestDetective
 	 */
 	@Test
 	def void regresarAlPaisAnteriorSiPuedeAUnCasoPositivo ()
-	{
-		var detective = new Detective ()
-		var Pais italiaMock = mock(Pais)
-		var Pais alemaniaMock = mock(Pais)
-		
-		when(italiaMock.nombrePais).thenReturn("Italia")
-		when(alemaniaMock.nombrePais).thenReturn("Alemania")
-		
+	{	
 		detective.viajarA(italiaMock)
 		detective.viajarA(alemaniaMock)
 		detective.regresarAlPaisAnteriorSiPuede
@@ -194,9 +166,6 @@ class TestDetective
 	@Test (expected=UserException)
 	def void regresarAlPaisAnteriorSiPuedeAUnCasoNegativo ()
 	{
-		var detective = new Detective ()
-		var Pais italiaMock = mock(Pais)
-		
 		when(italiaMock.nombrePais).thenReturn("Italia")
 		
 		detective.viajarA(italiaMock)
@@ -211,13 +180,7 @@ class TestDetective
 	@Test
 	def void testCantidadDePaisesRecorridos ()
 	{
-		var detective = new Detective ()
-		var Pais italiaMock = mock(Pais)
-		var Pais alemaniaMock = mock(Pais)
 		var Pais austriaMock = mock(Pais)
-		
-		when(italiaMock.nombrePais).thenReturn("Italia")
-		when(alemaniaMock.nombrePais).thenReturn("Alemania")
 		when(austriaMock.nombrePais).thenReturn("Austria")
 		
 		detective.viajarA(alemaniaMock)
