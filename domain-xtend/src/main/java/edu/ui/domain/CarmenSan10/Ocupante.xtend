@@ -15,6 +15,10 @@ abstract class Ocupante implements IOcupante {
 	new() {}
 	
 
-	override String responderAlDetective()
+	override String responderAlDetective() {
+		
+		return "Lo siento creo que se ha equivocado de cuidad, no hay nadie con esas caracteristicas"
+	}
+	
 	
 	}

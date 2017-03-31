@@ -4,7 +4,7 @@ package edu.ui.domain.CarmenSan10
 class Cuidador extends Ocupante {
 	
 	override responderAlDetective() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		return "Lo siento creo que se ha equivocado de cuidad, no hay nadie con esas caracteristicas"
 	}
 	
 	

@@ -21,7 +21,8 @@ abstract class LugarInteres {
 	 	// las pistas/informacion ya vienen cargadas solo creo que hay q saber el tipo de ocupante
 	 	// como y donde contemplar las pistas???
 	 	
-	 	tipo.politicaDelLugarSegun(this)
+	 	//tipo.politicaDelLugarSegun(this)
+	 	tipo.responderAlDetective
 	 }
 	
 	def Ocupante quienEsta() {
