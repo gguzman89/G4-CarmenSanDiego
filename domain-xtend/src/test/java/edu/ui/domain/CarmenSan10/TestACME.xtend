@@ -1,7 +1,5 @@
 package edu.ui.domain.CarmenSan10
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert
@@ -12,6 +10,17 @@ import org.omg.CORBA.UserException
 
 class TestACME 
 {
+	Villano villanoMock
+	Villano villanoMock1
+	Villano villanoMock2
+	
+	@Before
+	def void setUp() {
+		villanoMock = mock(Villano)
+		villanoMock1 = mock(Villano)
+		villanoMock2 = mock(Villano)
+	}
+	
 	/**
 	 * Dado ACME sin villanos registrados, agrega a "Carmen Sandiego" y...
 	 * verifica si "Carmen Sandiego" ya esta registrado...
@@ -21,8 +30,6 @@ class TestACME
 	def void testAgregarVillano ()
 	{	
 		var acme = new ACME(new ArrayList(), new Detective())
-		
-		var Villano villanoMock = mock(Villano)
 		
 		when(villanoMock.nombre).thenReturn("Carmen Sandiego")
 		
@@ -39,9 +46,6 @@ class TestACME
 	@Test
 	def void testAgregarVillanoSiPuedeEnCasoPositivo ()
 	{	
-		var Villano villanoMock1 = mock(Villano)
-		var Villano villanoMock2 = mock(Villano)
-		
 		var List<Villano> expediente = new ArrayList();
 		expediente.add(villanoMock1)
 		
@@ -63,11 +67,8 @@ class TestACME
 	@Test (expected = UserException)
 	def void testAgregarVillanoSiPuedeEnCasoNegativo ()
 	{	
-		var Villano villanoMock1 = mock(Villano)
 		var List<Villano> expediente = new ArrayList();
 		expediente.add(villanoMock1)
-		
-		var Villano villanoMock2 = mock(Villano)
 		
 		var acme = new ACME(expediente, new Detective())
 		
