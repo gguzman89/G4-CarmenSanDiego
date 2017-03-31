@@ -9,7 +9,7 @@ abstract class LugarInteres {
 	
 	new (){}
 	
-	new(Ocupante cual, String politica) {
+	new(Ocupante cual) {
 		tipo = cual
 	}
 	

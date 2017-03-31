@@ -14,4 +14,6 @@ class Villano {
 	 * si es su destino final. quien?
 	 * Los villanos si están en el país pero no en el lugar al que visitamos intentan matarnos y fallan.
 	 */
+	 
+	 // Si el villanos es un ocupante ¿Qué información nos da?
 }

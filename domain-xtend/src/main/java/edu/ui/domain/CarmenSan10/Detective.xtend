@@ -17,6 +17,7 @@ class Detective
 	private var List<Pais> recorrido;
 	private var String ordenDeArresto;
 	private var Caso casoAResolver;
+	// List<Pais> recorridoFallido
 	
 	/**
 	 * @Propósito: Crea un Detective.
@@ -62,6 +63,7 @@ class Detective
 	 */
 	private def puedeViajarA (Pais paisAViajar) 
 	{
+		// no mandar el objeto, sino solo el nombre del pais
 		ubicacionActual.tieneConexionAereaCon(paisAViajar)
 	}
 	
@@ -97,7 +99,10 @@ class Detective
 	 */
 	def regresarAlPaisAnterior()
 	{
+		// NO CUMPLE CON LO PEDIDO!!!
+		// A B C => A B C B
 		viajarA (recorrido.get(recorrido.size-2))
+		
 	}
 	
 	/**
