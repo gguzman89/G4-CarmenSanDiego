@@ -6,7 +6,7 @@ import static org.mockito.Mockito.*
 import java.util.ArrayList
 import junit.framework.Assert
 import java.util.List
-import org.uqbar.commons.model.UserException
+import org.omg.CORBA.UserException
 
 class TestCaso 
 {

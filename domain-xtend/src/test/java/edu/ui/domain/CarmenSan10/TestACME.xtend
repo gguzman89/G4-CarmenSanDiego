@@ -6,9 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert
 import static org.mockito.Mockito.*
-import org.uqbar.commons.model.UserException
 import java.util.ArrayList
 import java.util.List
+import org.omg.CORBA.UserException
 
 class TestACME 
 {
