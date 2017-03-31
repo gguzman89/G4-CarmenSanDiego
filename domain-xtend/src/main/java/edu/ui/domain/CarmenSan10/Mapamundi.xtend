@@ -9,12 +9,7 @@ class Mapamundi {
 	
 	List<Pais> paises
 	
-	new() {}
-	
-//	new() {	Diferencia nro° 1
-//		paises = new ArrayList<Pais> ()
-//	}
-	
+	new() {}	
 	
 	def buscarPais(String nombreDelPaisABuscar) {
 		
