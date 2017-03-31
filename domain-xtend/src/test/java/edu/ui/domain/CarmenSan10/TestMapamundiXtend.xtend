@@ -6,11 +6,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert
 import java.util.ArrayList
+import static org.mockito.Mockito.*
+import org.omg.CORBA.UserException
 
 class TestMapamundiXtend {
-	
-	Pais azul
-	Pais rojo
+
+	Pais azulMock
+	Pais rojoMock
 	
 	Mapamundi teg
 	
@@ -26,11 +28,12 @@ class TestMapamundiXtend {
 		   }
 		 * puedo instanciar a mi manera el objeto, 
 		 */
-		azul = new Pais("Argentina")
+		 
+		azulMock = mock(Pais)
+		rojoMock = mock(Pais)
 		
-		rojo = new Pais => [
-			nombrePais = "Chile"
-		]
+		when(azulMock.nombrePais).thenReturn("Argentina")
+		when(rojoMock.nombrePais).thenReturn("Chile")
 		
 		teg = new Mapamundi => [
 			paises = new ArrayList<Pais>()
@@ -42,11 +45,32 @@ class TestMapamundiXtend {
 	@Test
 	def void testBuscarPaisArgentina() {
 
-		teg.agregarPais(azul)
-		teg.agregarPais(rojo)
+		teg.agregarPais(azulMock)
+		teg.agregarPais(rojoMock)
 		
-		Assert.assertEquals(teg.buscarPais(azul).get(0).nombrePais,"Argentina")
-		Assert.assertEquals(teg.buscarPais(rojo).get(0).nombrePais,"Chile")
-		Assert.assertFalse(teg.paises.empty)
+		Assert.assertTrue(teg.buscarPais("Argentina").contains(azulMock))
+		// (PREGUNTAR) Otra manera de hacerlo...
+		//Assert.assertEquals(teg.buscarPais("Argentina"), azulMock)
 	}
+	
+	@Test
+	def void testBuscarPaisChileSinChile() {
+		
+		teg.agregarPais(azulMock)
+		
+		Assert.assertFalse(teg.buscarPais("Chile").contains(rojoMock))
+		
+		// (PREGUNTAR) OTRA MANERA DE HACERLO....
+		//Assert.assertEquals(teg.buscarPais("Chile"), null)
+	}
+	
+	@Test (expected = UserException)
+	def void testAgregarPaisSiPuedeArgentina() {
+		
+		teg.agregarPais(azulMock)
+		teg.agregarPais(rojoMock)
+		
+		teg.agregarPaisSiPuede(azulMock)
+	}
+	
 }
