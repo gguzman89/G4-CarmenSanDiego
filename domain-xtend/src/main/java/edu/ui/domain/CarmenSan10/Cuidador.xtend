@@ -3,9 +3,10 @@ package edu.ui.domain.CarmenSan10
 
 class Cuidador extends Ocupante {
 	
-	override responderAlDetective() {
-		return "Lo siento creo que se ha equivocado de cuidad, no hay nadie con esas caracteristicas"
+	override responderAlDetective(LugarInteres ondeToi) {
+		"Lo siento creo que se ha equivocado de cuidad, no hay nadie con esas caracteristicas"
 	}
+	
 	
 	
 	/*

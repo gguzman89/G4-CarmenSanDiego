@@ -3,10 +3,10 @@ package edu.ui.domain.CarmenSan10
 
 class Informante extends Ocupante {
 	
-	override responderAlDetective() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	override responderAlDetective(LugarInteres ondeToi) {
+		
+		politicaDelLugar + ondeToi.adicional()
 	}
 	
-	//LugarInteres politicaPais  //
 	
 }

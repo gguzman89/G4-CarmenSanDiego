@@ -6,19 +6,16 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 abstract class Ocupante implements IOcupante {
 
-	String nombre
-	LugarInteres ondeToi
+	//LugarInteres ondeToi
+	String politicaDelLugar
 	// Es un STRATEGY
-	// podes resolver los getters y setters con @Accesors
-	// check LugarInteres
 
 	new() {}
 	
 
-	override String responderAlDetective() {
-		
-		return "Lo siento creo que se ha equivocado de cuidad, no hay nadie con esas caracteristicas"
-	}
+	override responderAlDetective(LugarInteres ondeToi)	
+	
+	//def abstract String adicional()
 	
 	
 	}
