@@ -2,34 +2,27 @@ package edu.ui.domain.CarmenSan10
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import java.util.ArrayList
+import edu.ui.domain.Exceptions.ElPaisYaFueAgregadoException
 
 @Accessors
 class Mapamundi {
 	
 	List<Pais> paises
 	
-	new() {}
+	new() {}	
 	
-//	new() {	Diferencia nro° 1
-//		paises = new ArrayList<Pais> ()
-//	}
-	
-	
-	def buscarPais(Pais paisABuscar) {
+	def buscarPais(String nombreDelPaisABuscar) {
 		
 		/*
 		 * como diferencias un pais de otros?
 		 * solo por el nombre
 		 */
-		var encontrados = new ArrayList<Pais>()
+		paises.filter[pais | pais.nombrePais == nombreDelPaisABuscar].toList
+		// (PREGUNTAR) Otra manera de hacerlo...
+		//paises.findFirst[pais | pais.nombrePais == nombreDelPaisABuscar]
 		
-		for (Pais p : paises) {
-			if(p.nombrePais == paisABuscar.nombrePais)
-				encontrados.add(p)
-		}
-		return encontrados
 	}
+	
 	
 	def borrarPais(Pais paisABorrar) {
 		paises.remove(paisABorrar)
@@ -38,4 +31,18 @@ class Mapamundi {
 	def agregarPais(Pais paisAgregar) {
 		paises.add(paisAgregar)
 	}
+	
+	def agregarPaisSiPuede(Pais paisAgregar)
+	{
+		if (! elPaisYaEstaAgregado(paisAgregar))
+			agregarPais (paisAgregar)
+		else
+			// ¿Por qué ocurrio una excepción? Porque...
+			throw new ElPaisYaFueAgregadoException("No se puede agregar el mismo pais dos veces")
+	}
+	
+	private def elPaisYaEstaAgregado(Pais paisAgregar) {
+		paises.exists[pais | pais.nombrePais == paisAgregar.nombrePais]
+	}
+	
 }

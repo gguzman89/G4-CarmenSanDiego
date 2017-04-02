@@ -1,6 +1,5 @@
 package edu.ui.domain.CarmenSan10
 
-//import java.util.Random
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.Random
 
@@ -13,6 +12,16 @@ class Biblioteca extends LugarInteres {
 		var Random soloTalves = new Random
 		var int rnd = soloTalves.nextInt(75)
 		rnd
+	}
+	
+	def pistaAdicional() {
+		
+		pistaSobreHobbies >= 50
+	}
+	
+	override adicional() {
+		if(pistaAdicional)
+		infoAdicional
 	}
 	
 	/*
@@ -31,4 +40,6 @@ class Biblioteca extends LugarInteres {
 			rnd
 		}
 	}
+	
+	
 }
