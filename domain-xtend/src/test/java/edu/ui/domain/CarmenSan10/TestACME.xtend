@@ -10,13 +10,12 @@ import org.omg.CORBA.UserException
 
 class TestACME 
 {
-	Villano villanoMock
 	Villano villanoMock1
 	Villano villanoMock2
 	
 	@Before
-	def void setUp() {
-		villanoMock = mock(Villano)
+	def void setUp() 
+	{
 		villanoMock1 = mock(Villano)
 		villanoMock2 = mock(Villano)
 	}
@@ -31,16 +30,16 @@ class TestACME
 	{	
 		var acme = new ACME(new ArrayList(), new Detective())
 		
-		when(villanoMock.nombre).thenReturn("Carmen Sandiego")
+		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
+		when(villanoMock1.tieneElMismoNombreQue("Carmen Sandiego")).thenReturn(true)
+		acme.agregarVillano(villanoMock1)
 		
-		acme.agregarVillano(villanoMock)
-		
-		Assert.assertTrue(acme.elVillanoYaExiste(villanoMock))
+		Assert.assertTrue(acme.elVillanoYaExiste(villanoMock1.nombre))
 	}
 	
 	/**
-	 * Dado ACME con un villano "Carmen Sandiego" registrado, intenta agregar a "Ivan Noseque" y...
-	 * verifica que "Ivan Noseque" fue agregado,
+	 * Dado ACME con un villano "Carmen Sandiego" registrado, intenta agregar a "Ivan Igorovich" y...
+	 * verifica que "Ivan Igorovich" fue agregado,
 	 * y devuelve True.
 	 */
 	@Test
@@ -52,11 +51,12 @@ class TestACME
 		var acme = new ACME(expediente, new Detective())
 		
 		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
-		when(villanoMock1.nombre).thenReturn("Ivan Noseque")
+		when(villanoMock2.nombre).thenReturn("Ivan Igorovich")
+		when(villanoMock2.tieneElMismoNombreQue("Ivan Igorovich")).thenReturn(true)
 		
 		acme.agregarVillanoSiPuede(villanoMock2)
 		
-		Assert.assertTrue(acme.elVillanoYaExiste(villanoMock2))
+		Assert.assertTrue(acme.elVillanoYaExiste(villanoMock2.nombre))
 	}
 	
 	/**
@@ -74,7 +74,45 @@ class TestACME
 		
 		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
 		when(villanoMock2.nombre).thenReturn("Carmen Sandiego")
+		when(villanoMock1.tieneElMismoNombreQue("Carmen Sandiego")).thenReturn(true)
 		
 		acme.agregarVillanoSiPuede(villanoMock2)
+	}
+	
+	/**
+	 * Dado ACME con un villano "Carmen Sandiego" registrado, busca a "Carmen Sandiego"...
+	 * y pregunta si lo encontró...
+	 * entonces, devuelve True
+	 */
+	@Test
+	def void testBuscarVillanoCasoPositivo ()
+	{	
+		var List<Villano> expediente = new ArrayList();
+		expediente.add(villanoMock1)
+		
+		var acme = new ACME(expediente, new Detective())
+		
+		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
+		when(villanoMock1.tieneElMismoNombreQue("Carmen Sandiego")).thenReturn(true)
+		
+		Assert.assertTrue(acme.buscarVillano(villanoMock1.nombre).contains(villanoMock1))
+	}
+	
+	/**
+	 * Dado ACME con un villano "Carmen Sandiego" registrado, busca a "Ivan Igorovich"...
+	 * y pregunta si no encontró a "Ivan Igorovich"...
+	 * entonces, devuelve True
+	 */
+	@Test
+	def void testBuscarVillanoCasoNegativo ()
+	{	
+		var List<Villano> expediente = new ArrayList();
+		expediente.add(villanoMock1)
+		
+		var acme = new ACME(expediente, new Detective())
+		
+		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
+		
+		Assert.assertTrue(acme.buscarVillano(villanoMock2.nombre).empty)
 	}
 }

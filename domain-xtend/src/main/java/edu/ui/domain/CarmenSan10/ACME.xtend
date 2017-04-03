@@ -3,7 +3,6 @@ package edu.ui.domain.CarmenSan10
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.Exceptions.ElVillanoYaEstaCargadoException
-import java.util.ArrayList
 
 @Accessors
 class ACME 
@@ -38,7 +37,7 @@ class ACME
 	 */
 	def void agregarVillanoSiPuede (Villano villanoAAgregar)
 	{
-		if (! elVillanoYaExiste(villanoAAgregar))
+		if (! elVillanoYaExiste(villanoAAgregar.nombre))
 			agregarVillano (villanoAAgregar)
 		else
 			// Preguntar como mostrar en pantalla el String del error.
@@ -48,11 +47,11 @@ class ACME
 	
 	/**
 	 * @Propósito Pregunta si el villano existe en la base de datos de ACME.
-	 * @param villano Es el Villano por el que se hace la verificacion.
+	 * @param unNombre Es el nombre del Villano por el que se hace la verificacion.
 	 */
-	def elVillanoYaExiste (Villano villano) 
+	def elVillanoYaExiste (String unNombre) 
 	{
-		expedientes.exists[v | v.nombre == villano.nombre]
+		expedientes.exists[v | v.tieneElMismoNombreQue (unNombre)]
 		// Que es lo mismo que escribir...
 		// expedientes.exists[| it.nombre == villano.nombre]
 	}
@@ -64,6 +63,15 @@ class ACME
 	def void agregarVillano (Villano villanoAAgregar)
 	{
 		expedientes.add(villanoAAgregar)
+	}
+	
+	/**
+	 * @Propósito Busca un villano a la base de datos de ACME.
+	 * @param unNombre Es el nombre del Villano que se quiere buscar en la base de datos de ACME.
+	 */
+	def buscarVillano (String unNombre)
+	{
+		expedientes.filter[v | v.tieneElMismoNombreQue(unNombre)].toList
 	}
 	
 }
