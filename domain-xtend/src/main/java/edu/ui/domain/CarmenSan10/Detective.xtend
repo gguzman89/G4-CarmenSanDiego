@@ -17,7 +17,6 @@ class Detective
 	private var List<Pais> recorrido;
 	private var String ordenDeArresto;
 	private var Caso casoAResolver;
-	// List<Pais> recorridoFallido
 	
 	/**
 	 * @Propósito: Crea un Detective.
@@ -99,8 +98,6 @@ class Detective
 	 */
 	def regresarAlPaisAnterior()
 	{
-		// NO CUMPLE CON LO PEDIDO!!!
-		// A B C => A B C B
 		viajarA (recorrido.get(recorrido.size-2))
 		
 	}

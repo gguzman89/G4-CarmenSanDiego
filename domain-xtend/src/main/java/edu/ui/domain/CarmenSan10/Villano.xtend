@@ -10,6 +10,12 @@ class Villano {
 	String sexo
 	List<String> seniasParticulares
 	List<String> hobbies
+	
+	def tieneElMismoNombreQue(String unNombre) 
+	{
+		nombre == unNombre
+	}
+	
 	/*
 	 * si es su destino final. quien?
 	 * Los villanos si están en el país pero no en el lugar al que visitamos intentan matarnos y fallan.
