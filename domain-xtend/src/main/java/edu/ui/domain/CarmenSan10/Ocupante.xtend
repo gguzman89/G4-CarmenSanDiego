@@ -23,4 +23,4 @@ abstract class Ocupante implements IOcupante {
 	}
 			
 	
-	}
+}
