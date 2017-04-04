@@ -10,7 +10,7 @@ abstract class LugarInteres {
 	Pais perteneceA
 
 	String politicaDelLugar
-	//segun el lugar sabre una pista
+	//segun el lugar sabe una pista
 	
 	Ocupante tipo
 	
@@ -37,7 +37,6 @@ abstract class LugarInteres {
 	 	 * Saludos:  yo (Alan) 
 	 	 */
 		}
-	}
 	
 	def abstract String adicional()
 

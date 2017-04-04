@@ -3,6 +3,7 @@ package edu.ui.domain.CarmenSan10
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import java.util.ArrayList
+import edu.ui.domain.Exceptions.YaEstaAgregadaEsaConexion
 
 @Accessors
 class Pais {
@@ -20,8 +21,7 @@ class Pais {
 		lugares = new ArrayList<LugarInteres>()
 		paisesConexionAerea = new ArrayList<Pais>()
 	}
-//	
-//	
+
 //	def visitarLugar(LugarInteres unLugar) {
 //		if (lugares.contains(unLugar)) {
 //			// los lugares deben ser exactamente 3 
@@ -32,21 +32,26 @@ class Pais {
 //		}
 //	}
 	
-//	def viajarA(Pais conexionAerea) {
-		// creo que no es necesario, quien sabe viajar?
-		// el Caso o el Detective saben viajarA()
-		// aqui solo sabe sus paises con conexion aerea
-		// mucho peso cargarle los paises? o solo los nombres?
-//		paisesConexionAerea.get(paisesConexionAerea.indexOf(conexionAerea))
-//	}
-	
-	// Agregar un pais a sus conexiones aereas
-	// Borrar un pais de sus conexiones aereas
 	// y todo lo que se pueda jugar con una lista
 	
 	def tieneConexionAereaCon(Pais pais) {
 		paisesConexionAerea.exists[p | p.nombrePais == pais.nombrePais]
 	}
 	
+	def agregarConexionesAerea(Pais unPais) {
+			paisesConexionAerea.add(unPais)
+	}
+	
+	def agregarConexionSiPuede(Pais unPais) {
+		if (! paisesConexionAerea.contains(unPais)) { // Returns true if this list contains the specified element.
+			agregarConexionesAerea
+		} else {
+			throw new YaEstaAgregadaEsaConexion("Tenes un conexion/pais ya definida")
+		}
+	}
+	
+	def borrarConexionAerea(Pais unPais) {
+		paisesConexionAerea.remove(unPais)
+	}
 	
 }

@@ -35,7 +35,7 @@ class Mapamundi {
 	def agregarPaisSiPuede(Pais paisAgregar)
 	{
 		if (! elPaisYaEstaAgregado(paisAgregar))
-			agregarPais (paisAgregar)
+			agregarPais(paisAgregar)
 		else
 			// ¿Por qué ocurrio una excepción? Porque...
 			throw new ElPaisYaFueAgregadoException("No se puede agregar el mismo pais dos veces")
