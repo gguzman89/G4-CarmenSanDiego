@@ -4,7 +4,7 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
-class Villano {
+class Villano extends Ocupante {
 	
 	String nombre
 	String sexo
@@ -14,6 +14,11 @@ class Villano {
 	def tieneElMismoNombreQue(String unNombre) 
 	{
 		nombre == unNombre
+	}
+	
+	override responderAlDetective(LugarInteres unLugar) 
+	{
+		unLugar.adicional
 	}
 	
 	/*
