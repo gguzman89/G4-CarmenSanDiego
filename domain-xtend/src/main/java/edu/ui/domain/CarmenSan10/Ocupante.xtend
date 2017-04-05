@@ -4,7 +4,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 //Clase abstracta que implementa al IOcupante
 @Accessors
-abstract class Ocupante implements IOcupante {
+abstract class Ocupante {
 
 	String profesion
 	// en el juego aparece como Guardia de Seguridad, Guia Turistica, Embajador... 
@@ -21,6 +21,7 @@ abstract class Ocupante implements IOcupante {
 		//devuelve la pista de acuerdo a la politica del lugar: Biblioteca, Club....
 		return ondeToi.getPoliticaDelLugar()
 	}
-			
+	
+	def abstract String responderAlDetective(LugarInteres unLugar)
 	
 }

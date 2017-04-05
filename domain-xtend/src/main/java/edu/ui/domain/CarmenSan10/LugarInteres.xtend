@@ -25,17 +25,7 @@ abstract class LugarInteres {
 	}
 
 	def preguntarAlOcupante() {
-		tipo.responderAlDetective(this)
-		/*no  creo que dependa del ocupante esto. Pongamos un ejemplo a ver si podemos aclararlo 
-	 	 * creamos un ocupante, lo asignamos a un banco. Si el villano no esta en el pais, el ocu-
-	 	 * pante solo dira que regresemos, sino nos dara una pista de que moneda estuvo intercambian-
-	 	 * do. En este caso el ocupante solo sabe la pista de acuerdo al lugar donde este asignado,
-	 	 * por lo que la mondeda que intercambio el villano lo sabe el Banco, no el ocupante; sino 
-	 	 * el ocupante deberia saber de todo por si lo intercambiamos de lugar, nose por ejemplo lo
-	 	 * ponemos en la Biblioteca. En sintesis, para mi el ocupante sabe dar o no la pista y cuando
-	 	 * busca la pista debe preguntarla al lugar
-	 	 * Saludos:  yo (Alan) 
-	 	 */
+		tipo.responderAlDetective(this)// + adicional() AQUÍ NO VA
 		}
 	
 	def abstract String adicional()
