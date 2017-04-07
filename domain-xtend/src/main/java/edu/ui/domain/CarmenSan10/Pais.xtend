@@ -21,18 +21,8 @@ class Pais {
 		lugares = new ArrayList<LugarInteres>()
 		paisesConexionAerea = new ArrayList<Pais>()
 	}
-
-//	def visitarLugar(LugarInteres unLugar) {
-//		if (lugares.contains(unLugar)) {
-//			// los lugares deben ser exactamente 3 
-//			// y no pueden estar repetidos
-//			lugares.get(lugares.indexOf(unLugar))
-//		} else {
-//			// exeption objeto no creado
-//		}
-//	}
 	
-	// y todo lo que se pueda jugar con una lista
+	// y todo lo que se pueda jugar con una lista por cada lista
 	
 	def tieneConexionAereaCon(Pais pais) {
 		paisesConexionAerea.exists[p | p.nombrePais == pais.nombrePais]
