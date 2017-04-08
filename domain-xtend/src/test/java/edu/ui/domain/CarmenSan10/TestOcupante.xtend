@@ -5,19 +5,15 @@ import org.junit.Test
 import static org.mockito.Mockito.*
 import junit.framework.Assert
 
-class TestInformante {
-	/**
-	 * Dado un Informante, lo asigna a un  Pais,
-	 * verifica si el mismo ya esta registrado...
-	 * y devuelve True.
-	 */
+class TestOcupante {
+
+
 	@Test
 	def void testAgregarOcupante ()
 	{	
 		var lugarAsignado = new Banco ()
 		var Informante informanteMock = mock(Informante)
 		when(informanteMock.profesion).thenReturn("Cajero")
-		//var lugarAsignado = new Banco(informanteMock, "comproDolares")//no toma la herencia de constructores??
 		lugarAsignado.setTipo(informanteMock)
 		
 		Assert.assertTrue(
@@ -32,7 +28,7 @@ class TestInformante {
 		lugarAsignado.setTipo(informanteMock)
 		lugarAsignado.setPoliticaDelLugar("solo se que intercambio su dinero a dolares")
 		Assert.assertTrue(
-			lugarAsignado.getPoliticaDelLugar ==(informanteMock.responderAlDetective())
+			lugarAsignado.getPoliticaDelLugar ==(informanteMock.responderAlDetective(lugarAsignado))
 		)
 	}
 	
@@ -43,7 +39,7 @@ class TestInformante {
 		lugarAsignado.setTipo(cuidadorMock)
 		lugarAsignado.setPoliticaDelLugar("solo se que intercambio su dinero a dolares")
 		Assert.assertFalse(
-			lugarAsignado.getPoliticaDelLugar ==(cuidadorMock.responderAlDetective())
+			lugarAsignado.getPoliticaDelLugar ==(cuidadorMock.responderAlDetective(lugarAsignado))
 		)
 	}
 	

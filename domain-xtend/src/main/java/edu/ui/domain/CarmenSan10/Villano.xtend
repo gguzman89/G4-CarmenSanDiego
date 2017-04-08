@@ -21,6 +21,9 @@ class Villano extends Ocupante {
 		unLugar.politicaDelLugar
 	}
 	
+	//el villano no deberia responder "cuidado detective estuvo a punto de caer en una trampa" ??
+	
+	
 	/*
 	 * Los villanos si están en el país pero no en el lugar al que visitamos intentan matarnos y fallan.
 	 * En ese caso encontramos en cada uno de los LugarInteres un villano, el mismo
