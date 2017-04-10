@@ -3,11 +3,14 @@ package edu.ui.domain.CarmenSan10
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.Exceptions.ElPaisYaFueAgregadoException
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@Observable
 class Mapamundi {
 	
 	List<Pais> paises
+	//Pais paisSeleccionado
 	
 	new() {}	
 	
