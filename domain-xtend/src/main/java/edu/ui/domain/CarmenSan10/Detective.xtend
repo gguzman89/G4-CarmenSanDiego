@@ -16,7 +16,6 @@ class Detective
 {
 	private var List<Pais> recorrido;
 	private var String ordenDeArresto;
-	private var Caso casoAResolver;
 	
 	/**
 	 * @Propósito: Crea un Detective.
