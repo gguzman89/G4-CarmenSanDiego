@@ -1,4 +1,4 @@
-package edu.ui.view_xtend_arena;
+package edu.ui.view.CarmenSan10;
 
 import edu.ui.domain.CarmenSan10.Caso;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;

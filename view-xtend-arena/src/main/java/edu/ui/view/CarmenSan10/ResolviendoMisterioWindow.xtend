@@ -1,17 +1,17 @@
-package edu.ui.view_xtend_arena
+package edu.ui.view.CarmenSan10
 
 import edu.ui.domain.CarmenSan10.Detective
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.VerticalLayout
+import edu.ui.view.runnable.CarmenApplication
 
 class ResolviendoMisterioWindow extends SimpleWindow<Detective>
 {
-	new(CarmenSandiegoApplication parent, Detective model) 
+	new(CarmenApplication parent, Detective model) 
 	{
 		super(parent, model)
 		title = "Resolviendo:" // + model.tituloDelCaso

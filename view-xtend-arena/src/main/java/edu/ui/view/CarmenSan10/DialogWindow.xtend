@@ -1,4 +1,4 @@
-package edu.ui.view_xtend_arena
+package edu.ui.view.CarmenSan10
 
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.widgets.Panel

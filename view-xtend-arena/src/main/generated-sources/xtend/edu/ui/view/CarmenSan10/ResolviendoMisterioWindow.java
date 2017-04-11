@@ -1,7 +1,7 @@
-package edu.ui.view_xtend_arena;
+package edu.ui.view.CarmenSan10;
 
 import edu.ui.domain.CarmenSan10.Detective;
-import edu.ui.view_xtend_arena.CarmenSandiegoApplication;
+import edu.ui.view.runnable.CarmenApplication;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.ColumnLayout;
@@ -13,7 +13,7 @@ import org.uqbar.arena.windows.SimpleWindow;
 
 @SuppressWarnings("all")
 public class ResolviendoMisterioWindow extends SimpleWindow<Detective> {
-  public ResolviendoMisterioWindow(final CarmenSandiegoApplication parent, final Detective model) {
+  public ResolviendoMisterioWindow(final CarmenApplication parent, final Detective model) {
     super(parent, model);
     this.setTitle("Resolviendo:");
   }
