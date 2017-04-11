@@ -22,25 +22,6 @@ class MapamundiWindow extends SimpleWindow<Mapamundi>{
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
-//		val horizontal = new Panel(mainPanel) => [
-//			layout = new HorizontalLayout
-//			title = "Mapamundi"
-//		
-//		
-//		new List(it) => [
-//			items <=> "paises"
-//				//title = "Paises"
-//				//value <=> "paisSeleccionado" // donde esta el paisSeleccionado?
-//		
-//		]
-//		]
-//		val ladoDerecho = new Panel(horizontal) => [
-//			new Label(mainPanel) => [
-//				text = "Nombre"
-//				//value <=> "pais.nombre"
-//			]
-//		]
-
 		val general = new Panel(mainPanel) => [
 	
 			layout = new HorizontalLayout
