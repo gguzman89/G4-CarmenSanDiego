@@ -1,6 +1,5 @@
 package edu.ui.view.CarmenSan10
 
-import org.uqbar.arena.windows.SimpleWindow
 import edu.ui.domain.CarmenSan10.Pais
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
@@ -12,20 +11,23 @@ import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.Button
-import net.bytebuddy.implementation.FixedValue.AssignerConfigurable
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.aop.windows.TransactionalDialog
 
-class EditarPaisWindows extends SimpleWindow<Pais>{
+class EditarPaisWindows extends TransactionalDialog<Pais>{
 	
 	new(WindowOwner parent, Pais model) {
 		super(parent, model)
+		title = defaultTitle
 	}
 	
-	override protected addActions(Panel actionsPanel) {
+	def defaultTitle() {
+		"Mapamundi-Editar Pais"		
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
 		val general = new Panel(mainPanel) => [
-			title = "Mapamundi-Editar Pais"
+			//title = "Mapamundi-Editar Pais"
 			
 			val editCol = new Panel(it) => [
 				layout = new ColumnLayout(2)
@@ -99,7 +101,11 @@ class EditarPaisWindows extends SimpleWindow<Pais>{
 				]
 			]
 			
-			new Button(it) => [
+			val editHor = new Panel(it) => [
+				layout = new HorizontalLayout
+			]
+			
+			new Button(editHor) => [
 				caption = "Aceptar"
 				
 				//onClick([| this.editarLugares])
