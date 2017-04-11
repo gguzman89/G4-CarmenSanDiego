@@ -3,13 +3,16 @@ package edu.ui.domain.CarmenSan10
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.Exceptions.ElVillanoYaEstaCargadoException
+import org.uqbar.commons.utils.Observable
 
+@Observable
 @Accessors
 class ACME 
 {
 	// Es necesario poner Private usando el Accessors?
 	private var List<Villano> expedientes;
 	private var Detective resolvedorDeCasos;
+	private var Caso caso;
 	
 	new() {}
 	

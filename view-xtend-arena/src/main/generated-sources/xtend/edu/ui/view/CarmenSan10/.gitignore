@@ -1,6 +1,11 @@
 /.MapamundiWindow.java._trace
 /.MapamundiWindow.xtendbin
 /MapamundiWindow.java
+<<<<<<< HEAD
+/.InicioDelJuego.java._trace
+/.InicioDelJuegoWindow.java._trace
+=======
 /.MenuDeAccionesWindow.java._trace
 /.MenuDeAccionesWindow.xtendbin
 /MenuDeAccionesWindow.java
+>>>>>>> 4fac3ae0d5b026648c6b60478716b0a3712c36f5

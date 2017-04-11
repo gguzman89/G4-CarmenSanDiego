@@ -1,5 +1,6 @@
 /target/
 bin
+.xtendbin
 /bin/
 /xtend-gen/
 src/main/generated-sources

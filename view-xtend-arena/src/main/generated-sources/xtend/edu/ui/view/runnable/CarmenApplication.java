@@ -17,7 +17,6 @@ public class CarmenApplication extends Application {
    * tanto en el createMainWindow como en main y denle run en .star
    */
   public static void main(final String[] args) {
-    CarmenApplication _carmenApplication = new CarmenApplication();
-    _carmenApplication.start();
+    new CarmenApplication().start();
   }
 }
