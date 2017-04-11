@@ -3,6 +3,9 @@ package edu.ui.view.runnable
 import org.uqbar.arena.Application
 import edu.ui.view.CarmenSan10.MapamundiWindow
 import edu.ui.domain.CarmenSan10.Mapamundi
+import edu.ui.view.CarmenSan10.EditarPaisWindows
+import edu.ui.domain.CarmenSan10.Pais
+
 //import edu.ui.domain.CarmenSan10.Detective
 //import edu.ui.view.CarmenSan10.MenuDeAccionesWindow
 //import org.uqbar.arena.windows.Window
@@ -10,8 +13,9 @@ import edu.ui.domain.CarmenSan10.Mapamundi
 class CarmenApplication extends Application{
 	
 	override createMainWindow() {
-		new MapamundiWindow(this, new Mapamundi)
+		//new MapamundiWindow(this, new Mapamundi)
 		//new MenuDeAccionesWindow(this)
+		new EditarPaisWindows(this, new Pais)
 	}
 	
  
