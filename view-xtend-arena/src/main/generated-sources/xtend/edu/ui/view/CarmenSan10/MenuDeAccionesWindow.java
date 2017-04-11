@@ -1,6 +1,7 @@
 package edu.ui.view.CarmenSan10;
 
 import edu.ui.domain.CarmenSan10.Detective;
+import edu.ui.view.CarmenSan10.DialogWindow;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.layout.HorizontalLayout;
@@ -9,6 +10,7 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
+import org.uqbar.lacar.ui.model.Action;
 
 @SuppressWarnings("all")
 public class MenuDeAccionesWindow extends SimpleWindow<Detective> {
@@ -22,6 +24,8 @@ public class MenuDeAccionesWindow extends SimpleWindow<Detective> {
   
   public void createMainTemplate(final Panel mainPanel) {
     this.setTitle("¿Donde esta Carmen Sandiego?");
+    this.setTaskDescription("");
+    super.createMainTemplate(mainPanel);
   }
   
   protected void createFormPanel(final Panel mainPanel) {
@@ -47,6 +51,12 @@ public class MenuDeAccionesWindow extends SimpleWindow<Detective> {
     final Procedure1<Button> _function = new Procedure1<Button>() {
       public void apply(final Button it) {
         it.setCaption("Resolver Misterio");
+        final Action _function = new Action() {
+          public void execute() {
+            MenuDeAccionesWindow.this.iniciarJuego();
+          }
+        };
+        it.onClick(_function);
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button, _function);
@@ -64,5 +74,10 @@ public class MenuDeAccionesWindow extends SimpleWindow<Detective> {
       }
     };
     ObjectExtensions.<Button>operator_doubleArrow(_button_2, _function_2);
+  }
+  
+  public void iniciarJuego() {
+    Detective _modelObject = this.getModelObject();
+    new DialogWindow(this, _modelObject).open();
   }
 }

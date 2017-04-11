@@ -17,10 +17,12 @@ class MenuDeAccionesWindow extends SimpleWindow<Detective> {
 	 new (WindowOwner parent){
 	 	super (parent, new Detective)
 	 }
-	
 		
 		override def createMainTemplate (Panel mainPanel){
 			title = "¿Donde esta Carmen Sandiego?"
+			taskDescription = ""
+			
+			super.createMainTemplate(mainPanel)
 		}
 		
 		override protected createFormPanel(Panel mainPanel) {
@@ -38,7 +40,7 @@ class MenuDeAccionesWindow extends SimpleWindow<Detective> {
 		override protected addActions(Panel actionsPanel) {
 			new Button (actionsPanel)=>[
 				caption = "Resolver Misterio"
-				//onClick ([|this.....]) // con que comportamiento del detective bindeamos este boton??
+				onClick ([|iniciarJuego]) // con que comportamiento del detective bindeamos este boton??
 			]
 			new Button (actionsPanel)=>[
 				caption = "Mapamundi"
@@ -49,5 +51,12 @@ class MenuDeAccionesWindow extends SimpleWindow<Detective> {
 				//onClick ([|this.getExpediente]) // con que comportamiento del detective bindeamos este boton??
 			]
 		}
+	
+	def iniciarJuego() 
+	{
+		// Abri una ventana de dialog como ejemplo de como abrir una ventana
+		// modelObject devuelve el objeto con elq ue estamos modelando la vista.
+		new DialogWindow(this, modelObject).open
+	}
 		
 }
