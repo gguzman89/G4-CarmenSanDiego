@@ -12,6 +12,7 @@ import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.Button
+import net.bytebuddy.implementation.FixedValue.AssignerConfigurable
 
 class EditarPaisWindows extends SimpleWindow<Pais>{
 	
@@ -54,6 +55,54 @@ class EditarPaisWindows extends SimpleWindow<Pais>{
 					title = "Caracteristicas"
 					//bindContentsToProperty("pais.caracteristicas")
 				]
+			]
+			
+			val editCol2 = new Panel(it) => [
+				layout = new ColumnLayout(2)
+			]
+			
+			new Label(editCol2) => [
+				text = "Conexiones"
+			]
+			
+			new Button(editCol2) => [
+				caption = "Editar Conexiones"
+				//onClick([| this.editarConexiones])
+			]
+			
+			val table2 = new Table<Pais>(it, typeof(Pais)) => [
+				//title = "Caracteristicas"
+				new Column<Pais>(it) => [
+					title = "Conexiones"
+					//bindContentsToProperty("pais.conexiones")
+				]
+			]
+			
+			val editCol3 = new Panel(it) => [
+				layout = new ColumnLayout(2)
+			]
+			
+			new Label(editCol3) => [
+				text = "Lugar de interes"
+			]
+			
+			new Button(editCol3) => [
+				caption = "Editar Lugares"
+				//onClick([| this.editarLugares])
+			]
+			
+			val table3 = new Table<Pais>(it, typeof(Pais)) => [
+				//title = "Caracteristicas"
+				new Column<Pais>(it) => [
+					title = "Lugare de Interes"
+					//bindContentsToProperty("pais.lugares")
+				]
+			]
+			
+			new Button(it) => [
+				caption = "Aceptar"
+				
+				//onClick([| this.editarLugares])
 			]
 		]
 	}
