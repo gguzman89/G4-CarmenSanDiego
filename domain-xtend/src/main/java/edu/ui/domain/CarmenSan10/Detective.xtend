@@ -5,12 +5,12 @@ import java.util.ArrayList
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.Exceptions.NoExisteUnaConexionAereaException
 import edu.ui.domain.Exceptions.NoHayPasosPorDondeRegresarException
+import org.uqbar.commons.utils.Observable
 
+@Observable
 @Accessors
 // Con el @Data no solo crea los geters y seter.
 // sino tambien un new con todas las variables internas para cargar por parametros.
-
-
 
 class Detective 
 {
