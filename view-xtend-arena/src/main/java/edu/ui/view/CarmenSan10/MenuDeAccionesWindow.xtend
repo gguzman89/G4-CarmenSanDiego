@@ -20,8 +20,9 @@ class MenuDeAccionesWindow extends SimpleWindow<Detective> {
 		
 		override def createMainTemplate (Panel mainPanel){
 			title = "¿Donde esta Carmen Sandiego?"
+			// Es importante colocar las siguientes 2 lineas, porque es la superclase la que los ejecuta:
+			// Probar qué pasa comentandolas.
 			taskDescription = ""
-			
 			super.createMainTemplate(mainPanel)
 		}
 		
@@ -50,12 +51,13 @@ class MenuDeAccionesWindow extends SimpleWindow<Detective> {
 				caption = "Expedientes"
 				//onClick ([|this.getExpediente]) // con que comportamiento del detective bindeamos este boton??
 			]
+			
 		}
 	
 	def iniciarJuego() 
 	{
 		// Abri una ventana de dialog como ejemplo de como abrir una ventana
-		// modelObject devuelve el objeto con elq ue estamos modelando la vista.
+		// modelObject devuelve el objeto con el que estamos modelando la vista.
 		new DialogWindow(this, modelObject).open
 	}
 		

@@ -6,33 +6,36 @@ import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
+import edu.ui.domain.CarmenSan10.Detective
+import edu.ui.domain.CarmenSan10.ACME
 
 class InicioDelJuegoWindow extends SimpleWindow<Caso> 
 {
 	new(WindowOwner parent, Caso model) 
 	{
 		super(parent, model)
-		title = model.objetoDelRobo
+		title = "Robo del Faraón"
+		// title = model.objetoDelRobo
 	}
 	
 	override createFormPanel(Panel mainPanel) 
 	{
 		val labelPanel = new Panel(mainPanel)
 		new Label(labelPanel).text = "Detective, tenemos un caso para usted!"
-		//new Label(labelPanel).text = modelObject.reporteDelActoCriminal
+		//new Label(labelPanel).text = modelObject.caso.reporteDelActoCriminal
 	}
 	
 	override addActions(Panel actionsPanel) 
 	{
 		new Button(actionsPanel) => [
 			caption = "Aceptar el caso"
-			//onClick [ | resolverMisterio ]
+			onClick [ | resolverMisterio ]
 			]
 	}
 	
 	def resolverMisterio() 
 	{
-		//val caso = this.modelObject
-		//new DialogWindow(this, new ResolviendoWindow).open
+		//val caso = modelObject.caso
+		new DialogWindow(this, new Detective).open
 	}
 }

@@ -15,7 +15,7 @@ class Caso
 	private var String objetoDelRobo;
 	private var Pais paisDelRobo;
 	
-	//new () {}
+	new () {}
 	
 	/**
 	 * @Propósito Crea un Caso nuevo con unCriminal, unPlanDeEscape, un reporte, el objetoRobado y un Pais.
