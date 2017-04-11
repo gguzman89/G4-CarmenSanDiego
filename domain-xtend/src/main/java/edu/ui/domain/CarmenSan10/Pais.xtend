@@ -4,8 +4,10 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import java.util.ArrayList
 import edu.ui.domain.Exceptions.YaEstaAgregadaEsaConexion
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@Observable
 class Pais {
 	
 	String nombrePais
