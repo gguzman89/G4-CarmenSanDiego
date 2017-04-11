@@ -1,6 +1,5 @@
 package edu.ui.view.CarmenSan10
 
-import org.uqbar.arena.windows.SimpleWindow
 import edu.ui.domain.CarmenSan10.Pais
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
