@@ -1,6 +1,6 @@
 package edu.ui.view.CarmenSan10;
 
-import edu.ui.domain.CarmenSan10.ACME;
+import edu.ui.domain.CarmenSan10.Detective;
 import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.uqbar.arena.widgets.Button;
@@ -11,8 +11,8 @@ import org.uqbar.arena.windows.WindowOwner;
 import org.uqbar.lacar.ui.model.Action;
 
 @SuppressWarnings("all")
-public class DialogWindow extends Dialog<ACME> {
-  public DialogWindow(final WindowOwner owner, final ACME model) {
+public class DialogWindow extends Dialog<Detective> {
+  public DialogWindow(final WindowOwner owner, final Detective model) {
     super(owner, model);
     this.setTitle("Titulo de la ventana Dialog");
     this.setTaskDescription("");
