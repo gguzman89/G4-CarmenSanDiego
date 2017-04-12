@@ -78,6 +78,7 @@ public class MenuDeAccionesWindow extends SimpleWindow<Detective> {
   
   public void iniciarJuego() {
     Detective _modelObject = this.getModelObject();
-    new DialogWindow(this, _modelObject).open();
+    DialogWindow _dialogWindow = new DialogWindow(this, _modelObject);
+    _dialogWindow.open();
   }
 }
