@@ -2,6 +2,7 @@ package edu.ui.domain.CarmenSan10
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
+import java.util.ArrayList
 
 @Accessors
 class Villano extends Ocupante {
@@ -10,6 +11,16 @@ class Villano extends Ocupante {
 	String sexo
 	List<String> seniasParticulares
 	List<String> hobbies
+	
+	new () {}
+	
+	new(String unNombre, String unSexo, ArrayList<String> variasSenias, ArrayList<String> variosHobbies) 
+	{
+		nombre = unNombre
+		sexo = unSexo
+		seniasParticulares = variasSenias
+		hobbies = variosHobbies
+	}
 	
 	def tieneElMismoNombreQue(String unNombre) 
 	{
