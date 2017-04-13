@@ -57,22 +57,7 @@ class ResolviendoMisterioWindow extends SimpleWindow<Detective>
 	
 	def tablaDePaises(Panel panelPrincipal) 
 	{
-		val table = new Table<Pais>(panelPrincipal, typeof(Pais)) => 
-		[
-			// Bindeamos el contenido de la tabla
-			items <=> "usuarios"
-			width = 300 // Le definimos el alto y ancho, esto es opcional
-			height = 500
-			// A continuacion describimos cada fila definiendo las celdas de cada fila
-			// it es la grilla de resultados 
-			new Column<Pais>(it) => [
-				title = "País" // Nombre de la columna
-				fixedSize = 150 // Tamaño que va a tener
-				bindContentsToProperty("fechaDeRegistro").transformer = [fechaDeRegistro |
-					new SimpleDateFormat("dd/MM/YYYY HH:mm").format(fechaDeRegistro)
-				]
-			// La propiedad que mostramos del objeto que está atrás de la fila
-		]
+		// Add componente propio de Lista/Tabla
 	}
 	
 	def recorridoCriminal(Panel panelPrincipal) 
