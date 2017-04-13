@@ -9,4 +9,16 @@ class MapamundiAppModel {
 	def String getNombreVillano() {
 	}
 	
+	def String getNombrePais() {
+	}
+	
+	def void getViajar() {
+	}
+	
+	def String getNombreLugar() {
+	}
+	
+	def void validacionContinuar() {
+	}
+	
 }
