@@ -8,6 +8,8 @@ import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.VerticalLayout
 import edu.ui.view.runnable.CarmenApplication
+import edu.ui.domain.CarmenSan10.Pais
+import org.uqbar.arena.widgets.tables.Table
 
 class ResolviendoMisterioWindow extends SimpleWindow<Detective>
 {
@@ -37,9 +39,47 @@ class ResolviendoMisterioWindow extends SimpleWindow<Detective>
 		boton(panelDeAcciones, "Embajada")
 		
 		val panelHistorico = new Panel(mainPanel)
-		panelHistorico.layout = new VerticalLayout
+		panelHistorico.layout = new ColumnLayout(1)
 		
 		new Label(panelHistorico).text = "Recorrido criminal:"
+		
+		recorridoCriminal(panelHistorico)
+		destinosFallidos(panelHistorico)
+	}
+	
+	def void destinosFallidos(Panel panelPrincipal) 
+	{
+		val panelDestinosFallidos = new Panel (panelPrincipal)
+		panelDestinosFallidos.layout = new VerticalLayout
+		new Label(panelDestinosFallidos).text = "Destinos fallidos:"
+		tablaDePaises(panelDestinosFallidos)
+	}
+	
+	def tablaDePaises(Panel panelPrincipal) 
+	{
+		val table = new Table<Pais>(panelPrincipal, typeof(Pais)) => 
+		[
+			// Bindeamos el contenido de la tabla
+			items <=> "usuarios"
+			width = 300 // Le definimos el alto y ancho, esto es opcional
+			height = 500
+			// A continuacion describimos cada fila definiendo las celdas de cada fila
+			// it es la grilla de resultados 
+			new Column<Pais>(it) => [
+				title = "País" // Nombre de la columna
+				fixedSize = 150 // Tamaño que va a tener
+				bindContentsToProperty("fechaDeRegistro").transformer = [fechaDeRegistro |
+					new SimpleDateFormat("dd/MM/YYYY HH:mm").format(fechaDeRegistro)
+				]
+			// La propiedad que mostramos del objeto que está atrás de la fila
+		]
+	}
+	
+	def recorridoCriminal(Panel panelPrincipal) 
+	{
+		val panelRecorrido = new Panel (panelPrincipal)
+		panelRecorrido.layout = new VerticalLayout
+		new Label(panelRecorrido).text = "Argentina" + "<-" + "Peru" + "<-" + "Italia" + "<-" + "Egipto"
 	}
 	
 	def estadoDeLaOrdenDeArresto(Panel panel) 

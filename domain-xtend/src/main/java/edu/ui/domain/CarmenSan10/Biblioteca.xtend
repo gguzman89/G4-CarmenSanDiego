@@ -10,13 +10,13 @@ class Biblioteca extends LugarInteres {
 	
 	def pistaSobreHobbies() {
 		var Random soloTalves = new Random
-		var int rnd = soloTalves.nextInt(75)
+		var int rnd = soloTalves.nextInt(99)
 		rnd
 	}
 	
 	def pistaAdicional() {
 		
-		pistaSobreHobbies >= 50
+		pistaSobreHobbies >= 49
 	}
 	
 	override adicional() {
@@ -36,7 +36,8 @@ class Biblioteca extends LugarInteres {
 		  
 		  def static pistaSobreHobbies() {
 			var Random soloTalves = new Random
-			var int rnd = soloTalves.nextInt(75)
+			var int rnd = soloTalves.nextInt(1)
+			soloTalves.nextBoolean
 			rnd
 		}
 	}
