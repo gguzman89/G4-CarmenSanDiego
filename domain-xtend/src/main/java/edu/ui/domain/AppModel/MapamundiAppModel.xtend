@@ -21,4 +21,7 @@ class MapamundiAppModel {
 	def void validacionContinuar() {
 	}
 	
+	def String getObjetoRobado() {
+	}
+	
 }
