@@ -10,10 +10,11 @@ import org.uqbar.arena.layout.VerticalLayout
 import edu.ui.view.runnable.CarmenApplication
 import edu.ui.domain.CarmenSan10.Pais
 import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.arena.windows.WindowOwner
 
 class ResolviendoMisterioWindow extends SimpleWindow<Detective>
 {
-	new(CarmenApplication parent, Detective model) 
+	new(WindowOwner parent, Detective model) 
 	{
 		super(parent, model)
 		title = "Resolviendo:" // + model.tituloDelCaso
