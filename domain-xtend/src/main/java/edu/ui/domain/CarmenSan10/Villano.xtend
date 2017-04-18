@@ -14,7 +14,7 @@ class Villano extends Ocupante {
 	List<String> seniasParticulares
 	List<String> hobbies
 	
-	//new () {}
+	new () {}
 	
 	/** PROPÓSITO: Crea un Villano con un nombre, sexo, señas particulares y hobbies. 
 	 * 

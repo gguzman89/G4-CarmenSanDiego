@@ -7,15 +7,18 @@ import static org.mockito.Mockito.*
 import java.util.ArrayList
 import java.util.List
 import org.omg.CORBA.UserException
+import edu.ui.domain.Exceptions.ElVillanoYaEstaCargadoException
 
 class TestACME 
 {
 	Villano villanoMock1
 	Villano villanoMock2
+	Expediente expedienteMock
 	
 	@Before
 	def void setUp() 
 	{
+		expedienteMock = mock(Expediente)
 		villanoMock1 = mock(Villano)
 		villanoMock2 = mock(Villano)
 	}
@@ -28,11 +31,12 @@ class TestACME
 	@Test
 	def void testAgregarVillano ()
 	{	
-		var acme = new ACME(new ArrayList(), new Detective())
-		
-		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
-		when(villanoMock1.tieneElMismoNombreQue("Carmen Sandiego")).thenReturn(true)
+		var acme = new ACME(expedienteMock, new Detective())
 		acme.agregarVillano(villanoMock1)
+		
+		when(expedienteMock.elVillanoYaExiste(villanoMock1.nombre)).thenReturn(true)
+		
+		verify(expedienteMock).agregarVillano(villanoMock1)
 		
 		Assert.assertTrue(acme.elVillanoYaExiste(villanoMock1.nombre))
 	}
@@ -45,16 +49,16 @@ class TestACME
 	@Test
 	def void testAgregarVillanoSiPuedeEnCasoPositivo ()
 	{	
-		var List<Villano> expediente = new ArrayList();
-		expediente.add(villanoMock1)
-		
-		var acme = new ACME(expediente, new Detective())
+		var acme = new ACME(expedienteMock, new Detective())
 		
 		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
 		when(villanoMock2.nombre).thenReturn("Ivan Igorovich")
 		when(villanoMock2.tieneElMismoNombreQue("Ivan Igorovich")).thenReturn(true)
+		when(expedienteMock.elVillanoYaExiste(villanoMock2.nombre)).thenReturn(true)
 		
 		acme.agregarVillanoSiPuede(villanoMock2)
+		
+		verify(expedienteMock).agregarVillanoSiPuede(villanoMock2)
 		
 		Assert.assertTrue(acme.elVillanoYaExiste(villanoMock2.nombre))
 	}
@@ -64,19 +68,23 @@ class TestACME
 	 * verifica que "Carmen Sandiego" ya fue agregado anteriormente,
 	 * así que devuelve un Exception.
 	 */
-	@Test (expected = UserException)
+	@Test (expected = ElVillanoYaEstaCargadoException)
 	def void testAgregarVillanoSiPuedeEnCasoNegativo ()
 	{	
-		var List<Villano> expediente = new ArrayList();
-		expediente.add(villanoMock1)
+		var acme = new ACME(expedienteMock, new Detective())
 		
-		var acme = new ACME(expediente, new Detective())
+		acme.agregarVillano(villanoMock1)
+		verify(expedienteMock).agregarVillano(villanoMock1)
 		
 		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
 		when(villanoMock2.nombre).thenReturn("Carmen Sandiego")
-		when(villanoMock1.tieneElMismoNombreQue("Carmen Sandiego")).thenReturn(true)
+		when(villanoMock1.tieneElMismoNombreQue(villanoMock1.nombre)).thenReturn(true)
+		when(expedienteMock.elVillanoYaExiste("Carmen Sandiego")).thenReturn(true)
 		
 		acme.agregarVillanoSiPuede(villanoMock2)
+		
+		//verify(expedienteMock).agregarVillanoSiPuede(villanoMock2)
+		
 	}
 	
 	/**
@@ -87,15 +95,16 @@ class TestACME
 	@Test
 	def void testBuscarVillanoCasoPositivo ()
 	{	
-		var List<Villano> expediente = new ArrayList();
-		expediente.add(villanoMock1)
-		
-		var acme = new ACME(expediente, new Detective())
+		expedienteMock.agregarVillano(villanoMock1)
+		verify(expedienteMock).agregarVillano(villanoMock1)
+		var acme = new ACME(expedienteMock, new Detective())
 		
 		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
-		when(villanoMock1.tieneElMismoNombreQue("Carmen Sandiego")).thenReturn(true)
+		when(villanoMock1.tieneElMismoNombreQue(villanoMock1.nombre)).thenReturn(true)
 		
 		Assert.assertTrue(acme.buscarVillano(villanoMock1.nombre).contains(villanoMock1))
+		verify(expedienteMock).buscarVillano(villanoMock1.nombre)
+		
 	}
 	
 	/**
@@ -106,13 +115,15 @@ class TestACME
 	@Test
 	def void testBuscarVillanoCasoNegativo ()
 	{	
-		var List<Villano> expediente = new ArrayList();
-		expediente.add(villanoMock1)
-		
-		var acme = new ACME(expediente, new Detective())
+		expedienteMock.agregarVillano(villanoMock1)
+		verify(expedienteMock).agregarVillano(villanoMock1)
+		var acme = new ACME(expedienteMock, new Detective())
 		
 		when(villanoMock1.nombre).thenReturn("Carmen Sandiego")
+		when(villanoMock2.nombre).thenReturn("Ivan Igorovich")
+		when(villanoMock1.tieneElMismoNombreQue(villanoMock2.nombre)).thenReturn(false)
 		
 		Assert.assertTrue(acme.buscarVillano(villanoMock2.nombre).empty)
+		verify(expedienteMock).buscarVillano(villanoMock2.nombre)
 	}
 }

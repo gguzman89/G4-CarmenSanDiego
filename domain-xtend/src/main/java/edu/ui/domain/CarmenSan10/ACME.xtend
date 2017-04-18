@@ -10,7 +10,7 @@ import org.uqbar.commons.utils.Observable
 class ACME 
 {
 	// Es necesario poner Private usando el Accessors?
-	private var List<Villano> expedientes;
+	private var Expediente villanos;
 	private var Detective resolvedorDeCasos;
 	private var Caso caso;
 	
@@ -18,17 +18,17 @@ class ACME
 	
 	/**
 	 * @Propósito Crea a ACME con villlanos y un resolvedor de casos.
-	 * @param villanos Son todos los villanos registrados en ACME.
+	 * @param expediente Son todos los villanos registrados en ACME.
 	 * @param resolvedor Es el Detective encargado de perseguir a los villanos.
 	 */
-	new (List<Villano> villanos, Detective resolvedor) 
+	new (Expediente expediente, Detective resolvedor) 
 	{
-		expedientes = villanos
+		villanos = expediente
 		resolvedorDeCasos = resolvedor
 	}
 	
 	/*
-	new(Detective resolvedor) { Preungtaar
+	new(Detective resolvedor) { Preguntaar
 		expedientes = new ArrayList<Villano>()
 		resolvedorDeCasos = resolvedor
 	}
@@ -40,12 +40,7 @@ class ACME
 	 */
 	def void agregarVillanoSiPuede (Villano villanoAAgregar)
 	{
-		if (! elVillanoYaExiste(villanoAAgregar.nombre))
-			agregarVillano (villanoAAgregar)
-		else
-			// Preguntar como mostrar en pantalla el String del error.
-			throw new ElVillanoYaEstaCargadoException ("El villano ya existe en la base de datos de ACME")
-			
+		villanos.agregarVillanoSiPuede(villanoAAgregar)
 	}
 	
 	/**
@@ -54,9 +49,7 @@ class ACME
 	 */
 	def elVillanoYaExiste (String unNombre) 
 	{
-		expedientes.exists[v | v.tieneElMismoNombreQue (unNombre)]
-		// Que es lo mismo que escribir...
-		// expedientes.exists[| it.nombre == villano.nombre]
+		villanos.elVillanoYaExiste(unNombre)
 	}
 	
 	/**
@@ -65,7 +58,7 @@ class ACME
 	 */
 	def void agregarVillano (Villano villanoAAgregar)
 	{
-		expedientes.add(villanoAAgregar)
+		villanos.agregarVillano(villanoAAgregar)
 	}
 	
 	/**
@@ -74,7 +67,7 @@ class ACME
 	 */
 	def buscarVillano (String unNombre)
 	{
-		expedientes.filter[v | v.tieneElMismoNombreQue(unNombre)].toList
+		villanos.buscarVillano(unNombre)
 	}
 	
 }
