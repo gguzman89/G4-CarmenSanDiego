@@ -4,11 +4,12 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import java.util.ArrayList
 import edu.ui.domain.Exceptions.YaEstaAgregadaEsaConexion
-import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.utils.TransactionalAndObservable
+import org.uqbar.commons.model.Entity
 
 @Accessors
-@Observable
-class Pais {
+@TransactionalAndObservable
+class Pais extends Entity{
 	
 	String nombrePais
 	List<String> caracteristicaPais
