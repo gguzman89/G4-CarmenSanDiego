@@ -42,6 +42,7 @@ class InicioDelJuegoWindow extends SimpleWindow<Caso>
 	def resolverMisterio() 
 	{
 		//val caso = modelObject.caso
-		new DialogWindow(this, new Detective).open
+		//new DialogWindow(this, new Detective).open
+		new ResolviendoMisterioWindow(this, new Detective).open
 	}
 }

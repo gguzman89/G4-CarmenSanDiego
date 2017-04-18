@@ -8,6 +8,8 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
 import edu.ui.view.runnable.CarmenApplication
 import org.uqbar.arena.layout.HorizontalLayout
+import edu.ui.domain.CarmenSan10.Mapamundi
+import edu.ui.domain.CarmenSan10.Caso
 
 class MenuDeAccionesWindow extends SimpleWindow<Detective> {
 	/*
@@ -45,16 +47,26 @@ class MenuDeAccionesWindow extends SimpleWindow<Detective> {
 			]
 			new Button (actionsPanel)=>[
 				caption = "Mapamundi"
-				//onClick ([|this.getMapa]) // con que comportamiento del detective bindeamos este boton??
+				onClick ([|mapamundi]) // con que comportamiento del detective bindeamos este boton??
 			]
 			new Button (actionsPanel)=>[
 				caption = "Expedientes"
-				//onClick ([|this.getExpediente]) // con que comportamiento del detective bindeamos este boton??
+				onClick ([|expediente]) // con que comportamiento del detective bindeamos este boton??
 			]
 			
 		}
 	
 	def iniciarJuego() 
+	{
+		new InicioDelJuegoWindow(this, new Caso).open
+	}
+	
+	def mapamundi() 
+	{
+		new MapamundiWindow(this, new Mapamundi).open
+	}
+	
+	def expediente() 
 	{
 		// Abri una ventana de dialog como ejemplo de como abrir una ventana
 		// modelObject devuelve el objeto con el que estamos modelando la vista.
