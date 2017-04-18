@@ -46,4 +46,37 @@ class Pais {
 		paisesConexionAerea.remove(unPais)
 	}
 	
+	def esElFinalDelRecorrido(List<Pais> recorrido)
+	{
+		var Pais paisDestino = recorrido.get(recorrido.size - 1)
+		this.esIgualA(paisDestino.nombrePais)
+	}
+	
+	def esIgualA(String nombreAComparar) 
+	{
+		nombrePais == nombreAComparar
+	}
+	
+	def estaDentroDelRecorrido(List<Pais> recorrido)
+	{
+		recorrido.exists[pais| pais.esIgualA(nombrePais)]
+	}
+	
+	def estaFueraDelRecorrido (List<Pais> recorrido)
+	{
+		! estaDentroDelRecorrido(recorrido)
+	}
+	
+	def perteneceAlRecorrido(List<Pais> recorrido)
+	{
+		var recorridoSinUltimoPais = recorrido.filter[pais| pais.noEsElUltimoDelRecorrido(recorrido)].toList
+		estaDentroDelRecorrido(recorridoSinUltimoPais)
+	}
+	
+	def noEsElUltimoDelRecorrido(List<Pais> recorrido) 
+	{
+		! esElFinalDelRecorrido(recorrido)
+	}
+	
+	
 }

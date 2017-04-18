@@ -12,7 +12,6 @@ class CarmenApplication extends Application{
 	override createMainWindow() {
 		new MenuDeAccionesWindow(this)
 	}
-	
  
 	
 /*	override protected Window<?> createMainWindow() {

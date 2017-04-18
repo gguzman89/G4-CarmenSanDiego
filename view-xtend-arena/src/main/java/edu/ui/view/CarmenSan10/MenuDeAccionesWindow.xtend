@@ -1,23 +1,26 @@
 package edu.ui.view.CarmenSan10
 
 import org.uqbar.arena.windows.SimpleWindow
-import edu.ui.domain.CarmenSan10.Detective
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
-import edu.ui.view.runnable.CarmenApplication
 import org.uqbar.arena.layout.HorizontalLayout
 import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.CarmenSan10.Caso
+import edu.ui.domain.AppModel.CarmenSandiegoAppModel
+import edu.ui.domain.CarmenSan10.ACME
+import edu.ui.domain.CarmenSan10.Pais
+import java.util.ArrayList
+import edu.ui.domain.CarmenSan10.LugarInteres
 
-class MenuDeAccionesWindow extends SimpleWindow<Detective> {
+class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 	/*
 	 * esta es la primer ventana que me aparece cuando inicio el juego,
 	 * la hice extender de detective, ya que son comportamientos basicos de un detective
 	 */
 	 new (WindowOwner parent){
-	 	super (parent, new Detective)
+	 	super (parent, new CarmenSandiegoAppModel(new Mapamundi, new ACME()))
 	 }
 		
 		override def createMainTemplate (Panel mainPanel){
@@ -33,11 +36,10 @@ class MenuDeAccionesWindow extends SimpleWindow<Detective> {
 				layout = new HorizontalLayout
 			]
 			new Label (panelDelFormulario)=>[
-				text = "¿Que haremos ahora Detective?"
+				text = "¿Qué haremos ahora Detective?"
 				//foreground = Color.BLUE // veremos mas adelante cuando afinemos detalles
 			]
 		}
-		
 		
 		
 		override protected addActions(Panel actionsPanel) {
@@ -58,19 +60,21 @@ class MenuDeAccionesWindow extends SimpleWindow<Detective> {
 	
 	def iniciarJuego() 
 	{
-		new InicioDelJuegoWindow(this, new Caso).open
+		var caso = modelObject.caso
+		new InicioDelJuegoWindow(this, caso).open
 	}
 	
 	def mapamundi() 
 	{
-		new MapamundiWindow(this, new Mapamundi).open
+		new MapamundiWindow(this, modelObject.mapamundi).open
 	}
 	
 	def expediente() 
 	{
 		// Abri una ventana de dialog como ejemplo de como abrir una ventana
 		// modelObject devuelve el objeto con el que estamos modelando la vista.
-		new DialogWindow(this, modelObject).open
+		new ExpedienteMenuDeAccionesView(this).open
 	}
+	
 		
 }

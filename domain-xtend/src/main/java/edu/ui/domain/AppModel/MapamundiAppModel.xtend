@@ -1,7 +1,16 @@
 package edu.ui.domain.AppModel
 
+import edu.ui.domain.CarmenSan10.Pais
+
 class MapamundiAppModel {
 	
+	Mapamundi mapa
+	Pais paisSeleccionado
+	
+	def caracteristicasPaisSeleccionado () 
+	{
+		paisSeleccionado.caracteristicaPais
+	}
 	def String getNombreCaso() {
 		
 	}

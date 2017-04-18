@@ -14,6 +14,7 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
+import edu.ui.domain.CarmenSan10.Pais
 
 class MapamundiWindow extends SimpleWindow<Mapamundi>{
 	
@@ -22,10 +23,11 @@ class MapamundiWindow extends SimpleWindow<Mapamundi>{
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
+		title = "Mapamundi"
 		val general = new Panel(mainPanel) => [
 	
 			layout = new HorizontalLayout
-			title = "Mapamundi"
+			
 	
 			val ladoIzq = new Panel(it) => [
 				
@@ -40,10 +42,12 @@ class MapamundiWindow extends SimpleWindow<Mapamundi>{
 		
 				new Button(it) => [
 					caption = "Editar"
+					onClick ([|editarPais])
 				]
 			
 				new Button(it) => [
 					caption = "Nuevo"
+					onClick ([|agregarNuevoPais])
 				]
 			]
 			
@@ -62,7 +66,6 @@ class MapamundiWindow extends SimpleWindow<Mapamundi>{
 				 */
 				
 				val table = new Table<Mapamundi>(it, typeof(Mapamundi)) => [
-					title = "Caracteticas"
 					new Column<Mapamundi>(it) => [
 						title = "CarateristicasPPP"
 						background = Color.GRAY
@@ -94,6 +97,16 @@ class MapamundiWindow extends SimpleWindow<Mapamundi>{
 		
 		]
 		
+	}
+	
+	def agregarNuevoPais() 
+	{
+		new NuevoPaisWindow(this).open
+	}
+	
+	def editarPais() 
+	{
+		new EditarPaisWindows(this, new Pais).open
 	}
 	
 	override protected addActions(Panel actionsPanel) {
