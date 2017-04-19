@@ -3,31 +3,33 @@ package edu.ui.domain.AppModel
 import edu.ui.domain.CarmenSan10.Pais
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-import edu.ui.domain.CarmenSan10.Mapamundi
 import org.uqbar.commons.utils.ApplicationContext
 import edu.ui.domain.Repo.RepoMapamundi
+import java.io.Serializable
 import java.util.List
 
 @Accessors
 @Observable
-class MapamundiAppModel {
+class MapamundiAppModel implements Serializable{
 	
 	//Mapamundi mapa
 	Pais itemSeleccionado
-	RepoMapamundi paisesAMostrar
 	
-	new()
-	{}
+	new() {}
 	
-	def RepoMapamundi getPaisesAMostrar() 
+	def RepoMapamundi getPaisesRepo() 
 	{
 		ApplicationContext.instance.getSingleton(typeof(Pais))
 	}
 	
-	def setPaisesAMostrar(RepoMapamundi paises)
-	{
-		
+	
+	def List<Pais> getTodosLosPaises(){
+		paisesRepo.objects
 	}
+	
+	def void setTodosLosPaises(List<Pais> paises){
+		
+	} 
 //	
 //	def paises()
 //	{

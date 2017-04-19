@@ -34,7 +34,7 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 			var table = new Table<Pais>(it, typeof(Pais)) => [
 			height = 200
 			width = 450 
-			bindItemsToProperty("paisesAMostrar")
+			bindItemsToProperty("todosLosPaises")
 			bindValueToProperty("itemSeleccionado")
 		]
 			
