@@ -29,13 +29,20 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 	
 			layout = new HorizontalLayout
 			
-	
 			val ladoIzq = new Panel(it) => [
 				
-				new List(it) => [
-					items <=> "paises"
-					//value <=> "paisSeleccionado"
-				]
+			var table = new Table<Pais>(it, typeof(Pais)) => [
+			height = 200
+			width = 450 
+			bindItemsToProperty("paisesAMostrar")
+			bindValueToProperty("itemSeleccionado")
+		]
+			
+		new Column<Pais>(table) => [
+			title = "Paises"
+			fixedSize = 150
+			bindContentsToProperty("nombrePais")
+		]
 				
 				new Button(it) => [
 					caption = "Eliminar"

@@ -12,14 +12,28 @@ import java.util.List
 @Observable
 class MapamundiAppModel {
 	
-	Mapamundi mapa
+	//Mapamundi mapa
 	Pais itemSeleccionado
-	List<Pais> aMostrar
+	RepoMapamundi paisesAMostrar
 	
-	def RepoMapamundi getRepoMapamundi() {
+	new()
+	{}
+	
+	def RepoMapamundi getPaisesAMostrar() 
+	{
 		ApplicationContext.instance.getSingleton(typeof(Pais))
 	}
 	
+	def setPaisesAMostrar(RepoMapamundi paises)
+	{
+		
+	}
+//	
+//	def paises()
+//	{
+//		mapa.paises
+//	}
+//	
 	def void search() {
 		//aMostrar = repoMapamundi.search(itemSeleccionado.nombrePais)
 	}

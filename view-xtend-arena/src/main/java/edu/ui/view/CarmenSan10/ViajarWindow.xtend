@@ -13,6 +13,7 @@ import edu.ui.domain.AppModel.ResolverMisterioAppModel
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.tables.Column
 import edu.ui.domain.CarmenSan10.Pais
+import org.uqbar.arena.bindings.NotNullObservable
 
 class ViajarWindow extends SimpleWindow<ResolverMisterioAppModel>{
 	
