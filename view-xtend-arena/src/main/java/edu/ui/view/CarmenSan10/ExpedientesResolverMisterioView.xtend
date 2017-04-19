@@ -10,11 +10,13 @@ import org.uqbar.arena.widgets.tables.Column
 import edu.ui.domain.CarmenSan10.Villano
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.Label
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import edu.ui.domain.AppModel.ExpedienteAppModel
 
-class ExpedientesResolverMisterioView extends SimpleWindow<Expediente> {
+class ExpedientesResolverMisterioView extends SimpleWindow<ExpedienteAppModel> {
 	
 	new (WindowOwner parent){
-		super(parent,new Expediente)
+		super(parent,new ExpedienteAppModel)
 	}
 	
 	override protected addActions(Panel actionsPanel) {

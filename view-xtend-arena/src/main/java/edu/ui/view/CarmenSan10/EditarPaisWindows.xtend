@@ -107,10 +107,15 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 			
 			new Button(editHor) => [
 				caption = "Aceptar"
-				
-				//onClick([| this.editarLugares])
+				onClick([| this.realizarCambios])
 			]
 		]
+	}
+	
+	def realizarCambios() 
+	{
+		// Guardar cambios del pais seleccionado
+		this.close()
 	}
 	
 }

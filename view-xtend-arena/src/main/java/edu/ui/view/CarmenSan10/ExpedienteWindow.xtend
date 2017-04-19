@@ -2,45 +2,113 @@ package edu.ui.view.CarmenSan10
 
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Container
+import org.uqbar.arena.widgets.List
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
-class ExpedienteWindow extends SimpleWindow<T>
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.tables.Column
+import org.uqbar.arena.widgets.tables.Table
+import edu.ui.domain.CarmenSan10.Villano
+import edu.ui.domain.CarmenSan10.Expediente
+
+class ExpedienteWindow extends SimpleWindow<Expediente>
 {
-	new(WindowOwner parent, T model) 
+	new(WindowOwner parent, Expediente model) 
 	{
 		super(parent, model)
+		
 	}
 	
 	override protected createFormPanel(Panel mainPanel) 
 	{
-		tituloDeLaVentana
+		title = tituloDeLaVentana
 		val general = new Panel(mainPanel) => [
 			layout = new HorizontalLayout
 			
-			listadoDeLosItems(general, "paises")
-			botonesDeAccion(general)
+			val ladoIzquierdo = new Panel(it) => [
+			listadoDeLosItems(it, "villanos")
+			botonesDeAccion(it)
+			]
+			
+			val ladoDerecho = new Panel(it) => [
+				datosDelItemSeleccionado(it)
+				// fijarse si se puede reutilizar la tablas porque parece que no se puede
+				listadoDeSeniasParticulares(it)
+				listadoDeHobbies(it)
+			]
 		]
 		
-		val ladoDer = new Panel(it) => [
-				new Label(it) => [
-					text = "Nombre:" // + value
-					//value <=> "paisSeleccionado"
-				]
 	}
-	
-	def botonesDeAccion(Panel general) 
+
+	def listadoDeHobbies (Panel panel) 
 	{
-		val botones = new Panel(it) => [
-		botonEliminar(it)
-		botonEditar(it)
-		botonNuevo(it)
+		new Label(panel).text = "Hobbies:"
+		/**
+		 * Es obligatorio definir(Table)
+		 * 	- la propiedad items contra una colección de elementos de tipo R
+		 *  - al menos una columna
+		 */
+		 
+		val table = new Table<Villano>(panel, typeof(Villano)) => [
+		new Column<Villano>(it) => [
+			title = "Hobbie"
+			//background = Color.GRAY
+			fixedSize = 200
+			//bindContentsToProperty("pais.Caracteristicas")
+			]
 		]
 	}
 	
-	protected def Button botonNuevo() {
-		new Button(it) => [
+	def listadoDeSeniasParticulares (Panel panel) 
+	{
+		new Label(panel).text = "Señas Particulares:"
+		/**
+		 * Es obligatorio definir(Table)
+		 * 	- la propiedad items contra una colección de elementos de tipo R
+		 *  - al menos una columna
+		 */
+		 
+		// para poder extraer este componente y generalizarlo se podria hacer un var del tipo 
+		// con el que estamos tratando, como pidiendo el tipo de uno de los elementos de la lista
+		// que se quiere
+		val table = new Table<Villano>(panel, typeof(Villano)) => [
+		new Column<Villano>(it) => [
+			title = "Seña"
+			//background = Color.GRAY
+			fixedSize = 200
+			//bindContentsToProperty("pais.Caracteristicas")
+			]
+		]
+	}
+	
+	def void datosDelItemSeleccionado(Panel cont) 
+	{
+		new Label(cont) => [
+			text = "Nombre:" // + value
+			//value <=> "paisSeleccionado"
+		]
+		
+		new Label(cont) => [
+			text = "Sexo:" // + value
+			//value <=> "itemSeleccionado"
+		]
+	}
+	
+	def botonesDeAccion(Container cont) 
+	{
+		val botones = new Panel(cont) => [
+		botonEliminar(cont)
+		botonEditar(cont)
+		botonNuevo(cont)
+		]
+	}
+	
+	protected def Button botonNuevo(Container cont) {
+		new Button(cont) => [
 			caption = "Nuevo"
 			onClick ([|abrirVentanaCrearNuevo()])
 		]
@@ -48,6 +116,15 @@ class ExpedienteWindow extends SimpleWindow<T>
 	
 	def abrirVentanaCrearNuevo() 
 	{
+		
+	}
+	
+	protected def Button botonEditar(Container cont) 
+	{
+		new Button(cont) => [
+			caption = "Editar"
+			onClick ([|abrirVentanaDeEdicion])
+		]
 	}
 	
 	protected def Object abrirVentanaDeEdicion() 
@@ -55,25 +132,18 @@ class ExpedienteWindow extends SimpleWindow<T>
 		
 	}
 	
-	protected def Button botonEditar() {
-		new Button(it) => [
-			caption = "Editar"
-			onClick ([|abrirVentanaDeEdicion])
-		]
-	}
-	
-	protected def Button botonEliminar() {
-		new Button(it) => [
+	protected def Button botonEliminar(Container cont) 
+	{
+		new Button(cont) => [
 					caption = "Eliminar"
 				]
 	}
 	
-	def void listadoDeLosItems(Panel panel, String items) 
+	def void listadoDeLosItems(Container cont, String elementos) 
 	{
 		// acá se tine que implementar la lista de la izquierda
-		val listado = new Panel(it) => [
-		new List(it) => [
-					items <=> items
+		new List(cont) => [
+					items <=> elementos
 					//value <=> "paisSeleccionado"
 				]
 	}
@@ -85,6 +155,5 @@ class ExpedienteWindow extends SimpleWindow<T>
 	
 	override protected addActions(Panel actionsPanel) 
 	{
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 }
