@@ -6,6 +6,7 @@ import java.util.ArrayList
 import edu.ui.domain.Exceptions.YaEstaAgregadaEsaConexion
 import org.uqbar.commons.utils.TransactionalAndObservable
 import org.uqbar.commons.model.Entity
+import org.uqbar.commons.model.UserException
 
 @Accessors
 @TransactionalAndObservable
@@ -77,6 +78,21 @@ class Pais extends Entity{
 	def noEsElUltimoDelRecorrido(List<Pais> recorrido) 
 	{
 		! esElFinalDelRecorrido(recorrido)
+	}
+	
+	def validar() {
+		if(nombrePais == null) {
+			throw new UserException("El nombre no puede quedar vacion")
+		}
+		
+		if(caracteristicaPais.isEmpty) {
+			throw new UserException("Al menos debe tener 1 caracteristica")
+		}
+		
+		if(lugares.size == 3) {
+			throw new UserException("Te faltan agregar mas Lugar para visitar")
+		}
+		
 	}
 	
 	

@@ -6,6 +6,7 @@ import org.uqbar.commons.utils.Observable
 import org.apache.commons.collections15.Predicate
 import edu.ui.domain.CarmenSan10.LugarInteres
 import java.util.List
+import org.uqbar.commons.model.UserException
 
 @Observable
 class RepoMapamundi extends CollectionBasedRepo<Pais>{
@@ -22,6 +23,34 @@ class RepoMapamundi extends CollectionBasedRepo<Pais>{
 	 		paisesConexionAerea = pConection
 	 	])
 	 }
+	 
+	override protected validateCreate(Pais pais) {
+		pais.validar()
+		validarPaisesDuplicados(pais)
+	}
+	
+	def validarPaisesDuplicados(Pais pais) {
+		val nombre = pais.nombrePais
+		
+		if(!search(nombre).isEmpty)
+			throw new UserException("Ya existe un pais con el nombre: " + nombre )
+	}
+	
+	def search(String nombre) {
+		allInstances.filter[pais| this.match(nombre, pais.nombrePais)].toList
+	}
+	
+	def match(Object nombre, Object pNombre) {
+		if (nombre == null) {
+			return true
+		}
+		if (pNombre == null) {
+			return false
+		}
+		pNombre.toString.toLowerCase.contains(nombre.toString.toLowerCase)
+	}
+		
+		
 	
 	override def getEntityType() {
 		typeof(Pais)
