@@ -10,11 +10,11 @@ import edu.ui.domain.CarmenSan10.Embajada
 class CarmenBootstrap extends CollectionBasedBootstrap{
 	
 	new() {
-		ApplicationContext.instance.configureSingleton(typeof(Mapamundi), new RepoMapamundi)
+		ApplicationContext.instance.configureSingleton(typeof(Pais), new RepoMapamundi)
 	}
 	
 	override run() {
-		val repoMapamundi = ApplicationContext.instance.getSingleton(typeof(Mapamundi)) as RepoMapamundi
+		val repoMapamundi = ApplicationContext.instance.getSingleton(typeof(Pais)) as RepoMapamundi
 		
 		val lugarI = new Embajada
 		val cArgentina = new Pais("Venezuela")

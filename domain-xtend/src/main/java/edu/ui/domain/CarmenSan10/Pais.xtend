@@ -10,7 +10,7 @@ import org.uqbar.commons.model.UserException
 
 @Accessors
 @TransactionalAndObservable
-class Pais extends Entity{
+class Pais extends Entity implements Cloneable {
 	
 	String nombrePais
 	List<String> caracteristicaPais
