@@ -73,9 +73,12 @@ class ResolviendoMisterioWindow extends SimpleWindow<ResolverMisterioAppModel>
 				new Button(it) => [
 					caption = "Embajada" //modelObject.nombreDel3erLugarInteres
 					onClick ([|abrir3erLugarDeInteres])
-				]
-				
+				]		
 		]
+		
+		new Label(generalPanel).text = "Recorrido criminal:"
+		new Label(generalPanel).text = modelObject.recorridoCriminal
+		
 	}
 	
 	def abrir3erLugarDeInteres() 

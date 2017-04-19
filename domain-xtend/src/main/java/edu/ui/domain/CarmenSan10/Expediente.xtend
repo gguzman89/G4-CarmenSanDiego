@@ -61,4 +61,10 @@ class Expediente
 	{
 		villanos.filter[v | v.tieneElMismoNombreQue(unNombre)].toList
 	}
+	
+	def nombreDeLosVillanos() 
+	{
+		villanos.map[v | v.nombre].toList
+	}
+	
 }

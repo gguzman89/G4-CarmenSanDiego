@@ -17,12 +17,13 @@ class InicioDelJuegoWindow extends SimpleWindow<Caso>
 	new(WindowOwner parent, Caso model) 
 	{
 		super(parent, model)
-		title = "Robo del Faraón"
-		// title = model.objetoDelRobo
+		
 	}
 	
 	override createFormPanel(Panel mainPanel) 
 	{
+		title = "Robo del Faraón"
+		// title = model.objetoDelRobo
 		val panelDelCaso = new Panel(mainPanel)
 		panelDelCaso.layout = new VerticalLayout()
 		new Label(panelDelCaso).text = "Detective, tenemos un caso para usted!"
@@ -44,6 +45,6 @@ class InicioDelJuegoWindow extends SimpleWindow<Caso>
 	{
 		//val caso = modelObject.caso
 		//new DialogWindow(this, new Detective).open
-		new ResolviendoMisterioWindow(this, new ResolverMisterioAppModel).open
+		new ResolviendoMisterioWindow(this, new ResolverMisterioAppModel()).open
 	}
 }

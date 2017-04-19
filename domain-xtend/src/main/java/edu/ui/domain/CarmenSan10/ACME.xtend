@@ -90,4 +90,9 @@ class ACME
 		resolvedorDeCasos.viajarA(pais)
 	}
 	
+	def nombreDeLosVillanos() 
+	{
+		villanos.nombreDeLosVillanos()
+	}
+	
 }

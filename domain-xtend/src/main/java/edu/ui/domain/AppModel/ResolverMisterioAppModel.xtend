@@ -74,4 +74,9 @@ class ResolverMisterioAppModel
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
+	def recorridoCriminal()
+	{
+		var nombrePaises = acme.nombreDeLosVillanos
+	}
+	
 }

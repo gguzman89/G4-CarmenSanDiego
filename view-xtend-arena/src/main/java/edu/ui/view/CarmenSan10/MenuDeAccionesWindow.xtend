@@ -10,9 +10,6 @@ import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.CarmenSan10.Caso
 import edu.ui.domain.AppModel.CarmenSandiegoAppModel
 import edu.ui.domain.CarmenSan10.ACME
-import edu.ui.domain.CarmenSan10.Pais
-import java.util.ArrayList
-import edu.ui.domain.CarmenSan10.LugarInteres
 
 class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 	/*
@@ -65,7 +62,7 @@ class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 	
 	def mapamundi() 
 	{
-		new MapamundiWindow(this, modelObject.mapamundi).open
+		new MapamundiWindow(this).open
 	}
 	
 	def expediente() 
