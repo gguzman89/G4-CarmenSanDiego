@@ -1,51 +1,112 @@
 package edu.ui.view.CarmenSan10
 
+import edu.ui.domain.AppModel.ResolverMisterioAppModel
 import edu.ui.domain.CarmenSan10.Detective
-import org.uqbar.arena.windows.SimpleWindow
-import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.Label
-import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.layout.VerticalLayout
-import edu.ui.view.runnable.CarmenApplication
+import edu.ui.domain.CarmenSan10.LugarInteres
 import edu.ui.domain.CarmenSan10.Pais
+import edu.ui.view.runnable.CarmenApplication
+import org.uqbar.arena.layout.ColumnLayout
+import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.layout.VerticalLayout
+import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
+import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 
-class ResolviendoMisterioWindow extends SimpleWindow<Detective>
+class ResolviendoMisterioWindow extends SimpleWindow<ResolverMisterioAppModel>
 {
-	new(WindowOwner parent, Detective model) 
+	new(WindowOwner parent, ResolverMisterioAppModel model) 
 	{
 		super(parent, model)
-		title = "Resolviendo:" // + model.tituloDelCaso
 	}
 	
 	override createFormPanel(Panel mainPanel) 
 	{
-		val panelDeAcciones = new Panel(mainPanel)
-		panelDeAcciones.layout = new ColumnLayout(2)
+		title = "Resolviendo:" // + model.tituloDelCaso
+		val generalPanel = new Panel(mainPanel) => [ 
+			layout = new HorizontalLayout
+			
+			val left = new Panel(it) => [
+				
+				new Label(it).text = "Estás en:" // + modelObject.nombrePaisActual
+				
+				new Button(it) => [
+					caption = "Orden De Arresto"
+					onClick ([|abrirOrdenDeArresto])
+				]
+				
+				new Label(it) => [
+					fontSize = 8
+					// text = modelObject.estadoDeLaOrdenDeArresto()
+					text = "Orden ya emitida: Carmen Sandiego"
+				]
+				
+				new Button(it) => [
+					caption = "Viajar"
+					onClick ([|abrirViajarAPais])
+					// Al viajar debe deshabilitarse los botones en caso de poder viajar o no.
+				]
+			
+				new Button(it) => [
+					caption = "Expedientes"
+					onClick ([|verExpedientes])
+				]
+			]
+			
+			val right = new Panel(it) => [
+				
+				new Label(it).text = "Lugares:"
+				
+				new Button(it) => [
+					caption = "Biblioteca" //modelObject.nombreDel1erLugarInteres
+					onClick ([|abrir1erLugarDeInteres])
+				]
+				
+				new Button(it) => [
+					caption = "Club" //modelObject.nombreDel2erLugarInteres
+					onClick ([|abrir2erLugarDeInteres])
+				]
+				
+				]
+				new Button(it) => [
+					caption = "Embajada" //modelObject.nombreDel3erLugarInteres
+					onClick ([|abrir3erLugarDeInteres])
+				]
+				
+		]
+	}
+	
+	def abrir3erLugarDeInteres() 
+	{
+		new LugaresWindow(this, modelObject.el3erLugarDeInteres).open
+	}
+	
+	def abrir2erLugarDeInteres() 
+	{
+		new LugaresWindow(this, modelObject.el2erLugarDeInteres).open
+	}
+	
+	protected def void abrir1erLugarDeInteres() 
+	{
 		
-		new Label(panelDeAcciones).text = "Estás en:"
-		new Label(panelDeAcciones).text = "Lugares"
-		
-		val panelOrdenDeArresto = new Panel(panelDeAcciones)
-		panelOrdenDeArresto.layout= new ColumnLayout(1)
-		boton (panelOrdenDeArresto, "Orden de arresto")
-		estadoDeLaOrdenDeArresto(panelOrdenDeArresto)
-		
-		boton (panelDeAcciones, "Biblioteca")
-		boton(panelDeAcciones, "Viajar")
-		boton(panelDeAcciones, "Club")
-		boton (panelDeAcciones, "Expedientes")
-		boton(panelDeAcciones, "Embajada")
-		
-		val panelHistorico = new Panel(mainPanel)
-		panelHistorico.layout = new ColumnLayout(1)
-		
-		new Label(panelHistorico).text = "Recorrido criminal:"
-		
-		recorridoCriminal(panelHistorico)
-		destinosFallidos(panelHistorico)
+		new LugaresWindow(this, modelObject.el1erLugarDeInteres).open
+	}
+	
+	def verExpedientes() 
+	{
+		// Abrir el expediente que es solo de visualizacion.
+	}
+	
+	def abrirViajarAPais() 
+	{
+		new ViajarWindow(this, modelObject).open
+	}
+	
+	def abrirOrdenDeArresto() 
+	{
+		new OrdenArrestoWindow(this, modelObject).open
 	}
 	
 	def void destinosFallidos(Panel panelPrincipal) 
@@ -73,13 +134,6 @@ class ResolviendoMisterioWindow extends SimpleWindow<Detective>
 		new Label(panel).text = "Orden ya emitida: Carmen Sandiego"
 	}
 	
-	def boton (Panel panel, String nombreDelBoton) 
-	{
-		new Button(panel) => [
-			caption = nombreDelBoton
-			//onClick [ | botonDeDialog ]
-			]
-	}
 	
 	override addActions(Panel actionsPanel) 
 	{

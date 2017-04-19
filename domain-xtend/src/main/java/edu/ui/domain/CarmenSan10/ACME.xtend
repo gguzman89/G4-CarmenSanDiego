@@ -70,4 +70,24 @@ class ACME
 		villanos.buscarVillano(unNombre)
 	}
 	
+	def nombreDelCaso() 
+	{
+		caso.objetoDelRobo
+	}
+	
+	def detectiveEnviarOrdenDeArresto() 
+	{
+		resolvedorDeCasos.ordenDeArresto
+	}
+	
+	def detectiveRegresarAlPaisAnterior() 
+	{
+		resolvedorDeCasos.regresarAlPaisAnterior
+	}
+	
+	def detectiveViajaA(Pais pais) 
+	{
+		resolvedorDeCasos.viajarA(pais)
+	}
+	
 }

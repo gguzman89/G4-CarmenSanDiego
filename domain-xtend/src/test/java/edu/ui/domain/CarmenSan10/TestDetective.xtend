@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.Assert
 import static org.mockito.Mockito.*
 import org.omg.CORBA.UserException
+import java.util.ArrayList
 
 class TestDetective 
 {
@@ -190,4 +191,71 @@ class TestDetective
 		Assert.assertEquals(detective.cantidadDePaisesRecorridos,3)
 	}
 	
+	/**
+	 * El detective viaja a Alemania, Italia y Austria...
+	 * Cuando el villano recorre Alemanai e Italia.
+	 * Pregunto si Austria está dentro de los paises erroneos que recorrió el detective...
+	 * devuelve True.
+	 */
+	@Test
+	def void destinosFallidosEnCasoDeTenerlo()
+	{
+		var Pais austriaMock = mock(Pais)
+		when(austriaMock.nombrePais).thenReturn("Austria")
+		
+		detective.viajarA(alemaniaMock)
+		detective.viajarA(italiaMock)
+		detective.viajarA(austriaMock)
+
+		var recorridoVillano = new ArrayList<Pais>()
+		recorridoVillano.add(alemaniaMock)
+		recorridoVillano.add(italiaMock)
+		
+		when(austriaMock.estaFueraDelRecorrido(recorridoVillano)).thenReturn(true)
+		when(alemaniaMock.estaFueraDelRecorrido(recorridoVillano)).thenReturn(false)
+		when(italiaMock.estaFueraDelRecorrido(recorridoVillano)).thenReturn(false)
+		
+		Assert.assertTrue(detective.destinosFallidos(recorridoVillano).contains(austriaMock))
+		
+		verify(austriaMock).estaFueraDelRecorrido(recorridoVillano)
+		verify(alemaniaMock).estaFueraDelRecorrido(recorridoVillano)
+		verify(italiaMock).estaFueraDelRecorrido(recorridoVillano)
+	}
+	
+	/**
+	 * El detective viaja a Alemania, Italia...
+	 * Cuando el villano recorre Alemanai e Italia.
+	 * Pregunto si los paises erroneos que recorrió el detective está vacio...
+	 * devuelve True.
+	 */
+	@Test
+	def void destinosFallidosEnCasoDeNoTenerlo()
+	{
+		detective.viajarA(alemaniaMock)
+		detective.viajarA(italiaMock)
+
+		var recorridoVillano = new ArrayList<Pais>()
+		recorridoVillano.add(alemaniaMock)
+		recorridoVillano.add(italiaMock)
+		
+		when(alemaniaMock.estaFueraDelRecorrido(recorridoVillano)).thenReturn(false)
+		when(italiaMock.estaFueraDelRecorrido(recorridoVillano)).thenReturn(false)
+		
+		Assert.assertTrue(detective.destinosFallidos(recorridoVillano).empty)
+		
+		verify(alemaniaMock).estaFueraDelRecorrido(recorridoVillano)
+		verify(italiaMock).estaFueraDelRecorrido(recorridoVillano)
+	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	def void ubicacionActual()
+	{
+		detective.viajarA(alemaniaMock)
+		detective.viajarA(italiaMock)
+		
+		Assert.assertTrue(detective.ubicacionActual.equals(italiaMock))
+	}
 }

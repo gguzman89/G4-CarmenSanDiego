@@ -9,45 +9,69 @@ import org.uqbar.arena.layout.HorizontalLayout
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.Label
+import edu.ui.domain.AppModel.ResolverMisterioAppModel
+import org.uqbar.arena.widgets.tables.Table
+import org.uqbar.arena.widgets.tables.Column
+import edu.ui.domain.CarmenSan10.Pais
 
-class ViajarWindow extends SimpleWindow<MapamundiAppModel>{
+class ViajarWindow extends SimpleWindow<ResolverMisterioAppModel>{
 	
-	new(WindowOwner parent, MapamundiAppModel model) {
+	new(WindowOwner parent, ResolverMisterioAppModel model) {
 		super(parent, model)
 		title = "Viajar"
 	}
 	
 	override protected addActions(Panel actionsPanel) {
-//		val formH = new Panel(actionsPanel) => [
-//			layout = new HorizontalLayout
-//		]
+		
+		val elementSelected = new NotNullObservable("paisSeleccionado")
+		
 		
 		new Button(actionsPanel) => [
 			caption = "Volver al Pais anterior"
-			//onClick[|modelObject.regresarAlPaisAnterior]
+			onClick[|regresarAlPaisAnterior]
 			setAsDefault // se asocia con el <Enter> del usuario
 		]
 		
 		new Button(actionsPanel) => [
 			caption = "Viajar"
-			onClick [| 
-				modelObject.viajar
-			]
+			onClick [| viajar]
+			bindEnabled(elementSelected)
 			setAsDefault
-			
 		]
+	}
+	
+	def viajar() 
+	{
+		// modelObject.viajar
+		this.close()
+	}
+	
+	def regresarAlPaisAnterior() 
+	{
+		// modelObject.regresarAlPaisAnterior
+		this.close()
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
 		val form = new Panel(mainPanel)
 		
 		new Label(form) => [
-			text = "Estas en: " + modelObject.nombrePais
+			text = "Estas en: " // + modelObject.nombrePaisActual
 		]
 		
 		// Add Table componente propio
-		
-		
+		val table = new Table<Pais>(mainPanel, typeof(Pais)) => [
+			
+			items <=> "paisesConexionAerea" // método que contiene la lista de paises
+			value <=> "paisSeleccionado" // asocia el valor seleccionado con la propiedad paisSeleccionado
+			
+			new Column<Pais>(it) => [
+					title = "Posibles destinos"
+					//background = Color.GRAY
+					fixedSize = 200
+					//bindContentsToProperty("nombrePais") // nombre de la propiedad con la que bindea en cada Pais
+			]
+		]
 	}
 	
 }

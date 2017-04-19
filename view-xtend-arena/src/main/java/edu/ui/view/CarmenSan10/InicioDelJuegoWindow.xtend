@@ -10,6 +10,7 @@ import edu.ui.domain.CarmenSan10.Detective
 import edu.ui.domain.CarmenSan10.ACME
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.layout.ColumnLayout
+import edu.ui.domain.AppModel.ResolverMisterioAppModel
 
 class InicioDelJuegoWindow extends SimpleWindow<Caso> 
 {
@@ -26,8 +27,8 @@ class InicioDelJuegoWindow extends SimpleWindow<Caso>
 		panelDelCaso.layout = new VerticalLayout()
 		new Label(panelDelCaso).text = "Detective, tenemos un caso para usted!"
 		val detalleDelCaso = new Panel(panelDelCaso)
-		detalleDelCaso.layout = new ColumnLayout(1)
-		//new Label(panelDelCaso).text = modelObject.caso.reporteDelActoCriminal
+		detalleDelCaso.layout = new VerticalLayout
+		//new Label(detalleDelCaso).text = modelObject.reporteDelActoCriminal
 		new Label(detalleDelCaso).text = "A las 9 de la mañana en la ciudad del Cairo la comunidad científica fue conmovida al darse cuenta del bla bla bla"
 	}
 	
@@ -43,6 +44,6 @@ class InicioDelJuegoWindow extends SimpleWindow<Caso>
 	{
 		//val caso = modelObject.caso
 		//new DialogWindow(this, new Detective).open
-		new ResolviendoMisterioWindow(this, new Detective).open
+		new ResolviendoMisterioWindow(this, new ResolverMisterioAppModel).open
 	}
 }

@@ -93,12 +93,19 @@ class Detective
 	}
 	
 	/**
+	 * @Propósito Devuelve el nombre del Pais de ubicación actual del Detective.
+	 */
+	def nombreDelPaisActual ()
+	{
+		ubicacionActual.nombrePais
+	}
+	
+	/**
 	 * @Propósito El detective regresa al Pais anterior..
 	 */
 	def regresarAlPaisAnterior()
 	{
 		viajarA (recorrido.get(recorrido.size-2))
-		
 	}
 	
 	/**
@@ -126,6 +133,15 @@ class Detective
 	def cantidadDePaisesRecorridos() 
 	{
 		recorrido.length
+	}
+	
+	/**
+	 * @Propósito Devuelve la lista de paises que el detective recorrió erroneamente.
+	 * @param recorridoDelVillano Es el recorrido correcto que debe realizar el villano.
+	 */
+	def destinosFallidos(List<Pais> recorridoDelVillano)
+	{
+		recorrido.filter[pais | pais.estaFueraDelRecorrido(recorridoDelVillano) ].toList
 	}
 	
 }

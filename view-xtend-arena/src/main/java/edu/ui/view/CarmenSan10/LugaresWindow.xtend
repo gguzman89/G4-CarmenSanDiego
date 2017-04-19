@@ -10,12 +10,14 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.VerticalLayout
+import edu.ui.domain.CarmenSan10.LugarInteres
+import org.uqbar.arena.windows.Dialog
 
-class LugaresWindow extends TransactionalDialog<MapamundiAppModel>{
+class LugaresWindow extends Dialog<LugarInteres>{
 	
-	new(WindowOwner owner, MapamundiAppModel model) {
+	new(WindowOwner owner, LugarInteres model) {
 		super(owner, model)
-		title = defaultTitle(modelObject.nombreCaso)
+		//title = defaultTitle(modelObject.nombreCaso)
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
