@@ -1,11 +1,7 @@
 package edu.ui.view.runnable
 
 import org.uqbar.arena.Application
-import edu.ui.view.CarmenSan10.EditarPaisWindows
-import edu.ui.domain.CarmenSan10.Pais
-import edu.ui.view.CarmenSan10.MenuDeAccionesWindow
 import edu.ui.view.CarmenSan10.MapamundiWindow
-import edu.ui.domain.CarmenSan10.Mapamundi
 import org.uqbar.arena.windows.Window
 
 class CarmenApplication extends Application{
