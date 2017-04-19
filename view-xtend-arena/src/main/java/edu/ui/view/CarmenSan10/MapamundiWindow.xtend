@@ -15,11 +15,12 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
 import edu.ui.domain.CarmenSan10.Pais
+import edu.ui.domain.AppModel.MapamundiAppModel
 
-class MapamundiWindow extends SimpleWindow<Mapamundi>{
+class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 	
-	new(WindowOwner parent, Mapamundi mapa) {
-		super(parent, mapa)
+	new(WindowOwner parent) {
+		super(parent, new MapamundiAppModel)
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
