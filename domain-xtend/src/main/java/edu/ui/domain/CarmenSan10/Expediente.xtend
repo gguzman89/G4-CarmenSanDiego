@@ -4,15 +4,20 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import edu.ui.domain.Exceptions.ElVillanoYaEstaCargadoException
 import java.util.ArrayList
+import org.uqbar.commons.utils.Observable
 
+@Observable
 @Accessors
 class Expediente 
 {
 	private var List<Villano> villanos;
 	
 	new()
+	{}
+	
+	new(List<Villano> villanosACargar)
 	{
-		villanos = new ArrayList<Villano>()
+		villanos = villanosACargar
 	}
 	
 	/**

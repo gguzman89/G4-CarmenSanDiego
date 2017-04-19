@@ -60,8 +60,7 @@ class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 	
 	def iniciarJuego() 
 	{
-		var caso = modelObject.caso
-		new InicioDelJuegoWindow(this, caso).open
+		new InicioDelJuegoWindow(this, new Caso).open
 	}
 	
 	def mapamundi() 

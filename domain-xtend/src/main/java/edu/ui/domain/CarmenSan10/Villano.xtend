@@ -5,7 +5,9 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.ArrayList
 import edu.ui.domain.Exceptions.YaExisteLaSeniaParticularException
 import edu.ui.domain.Exceptions.YaExisteElHobbieException
+import org.uqbar.commons.utils.Observable
 
+@Observable
 @Accessors
 class Villano extends Ocupante {
 	
