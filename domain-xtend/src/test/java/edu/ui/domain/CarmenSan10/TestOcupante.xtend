@@ -4,21 +4,19 @@ package edu.ui.domain.CarmenSan10
 import org.junit.Test
 import static org.mockito.Mockito.*
 import junit.framework.Assert
-import java.util.ArrayList
 import org.junit.Before
 
 class TestOcupante {
 	Ocupante ocupante
 	Banco bancoMock
-	Pais indiaMock
+
 	
 	@Before
 	def void setUp() {
 		//ocupante = new Informante ()
-//me conviene definir el tipo del ocupante en cada caso de prueba, asi testeo si reaccionan de acuerdo a lo establecido
+//me conviene definir el tipo del ocupante en cada caso de prueba, 
+//asi testeo si reaccionan de acuerdo a lo establecido para cada uno
 		bancoMock = mock(Banco)
-		indiaMock = mock(Pais)
-		when(indiaMock.nombrePais).thenReturn("India")
 	}
 	
 	/**

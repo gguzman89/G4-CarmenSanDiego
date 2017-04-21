@@ -2,6 +2,7 @@ package edu.ui.domain.CarmenSan10
 
 import org.junit.Test
 import org.junit.Before
+import static org.mockito.Mockito.*
 import org.junit.Assert
 import java.util.ArrayList
 import org.uqbar.commons.model.UserException
@@ -9,6 +10,9 @@ import org.uqbar.commons.model.UserException
 class TestVillano 
 {
 	Villano villano
+	Club clubMock
+	Biblioteca bibliotecaMock
+	Detective detectiveMock
 	
 	@Before
 	def void setUp() 
@@ -19,7 +23,13 @@ class TestVillano
 		var senias = new ArrayList<String>()
 		senias.add("Pelo rojo")
 		
-		villano = new Villano ("Carmen Sandiego", "Femenino", senias, hobbies)
+		clubMock = mock(Club)
+		bibliotecaMock = mock(Biblioteca)
+		detectiveMock = mock (Detective)
+		
+		villano = new Villano ("Carmen Sandiego", "Femenino", senias, hobbies, clubMock)
+		
+		detectiveMock.ordenarArresto(villano)
 		
 	}
 	
@@ -207,4 +217,38 @@ class TestVillano
 		villano.borrarSenia("Posee un collar de rubies")
 		Assert.assertTrue(villano.existeLaSenia("Pelo rojo"))
 	}
+	
+	/**
+	 * Dado un villano con escondido en el club...
+	 * si justo cae el detective averiguando...
+	 * debera responder acorde a las circunstancias.
+	 */
+	@Test
+	def void testResponderAlDetectiveEnCasoDeQueMeEncuentre ()
+	{
+//		if (villano.tieneElMismoNombreQue(detectiveMock.ordenDeArresto)){
+//			Assert.assertTrue(villano.responderAlDetective(clubMock).contains("ALTO!"))
+//		}
+//		else
+//			Assert.assertFalse(villano.responderAlDetective(clubMock).contains("ALTO!"))
+/*
+ * la verificacion de arriba la podria hacer el detective
+ * en este caso si entra un detective al lugar que estoy escondido
+ * sea o no sea el villano en cuestion, corro!
+ */		Assert.assertTrue(villano.responderAlDetective(clubMock).contains("ALTO!"))
+	}
+	
+	/**
+	 * Dado un villano con escondido en el club...
+	 * si el detective averigua en la Biblioteca...
+	 * debera advertirle al detective que esta cerca.
+	 */
+	@Test
+	def void testResponderAlDetectiveEnCasoDeNoQueMeEncuentre ()
+	{
+		
+		Assert.assertTrue(villano.responderAlDetective(bibliotecaMock).contains("CUIDADO DETECTIVE!"))
+	}
+	
+	
 }
