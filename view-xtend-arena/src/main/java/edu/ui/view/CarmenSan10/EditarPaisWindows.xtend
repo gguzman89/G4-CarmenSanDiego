@@ -38,7 +38,7 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 			]
 			
 			new TextBox(editCol) => [
-				//value <=> "paisSeleccionado.nombre"
+				value <=> "nombrePais"
 				width = 200
 			]
 			

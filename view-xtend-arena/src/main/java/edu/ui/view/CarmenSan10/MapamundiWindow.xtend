@@ -1,7 +1,7 @@
 package edu.ui.view.CarmenSan10
 
 import org.uqbar.arena.windows.SimpleWindow
-import org.uqbar.arena.windows.WindowOwner
+ import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.HorizontalLayout
@@ -11,6 +11,8 @@ import org.uqbar.arena.widgets.tables.Table
 import edu.ui.domain.CarmenSan10.Pais
 import edu.ui.domain.AppModel.MapamundiAppModel
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.windows.Dialog
+import org.uqbar.arena.bindings.NotNullObservable
 
 class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 	
@@ -26,19 +28,21 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 			
 			val ladoIzq = new Panel(it) => [
 				
+				//val elementSelected = new NotNullObservable("itemSeleccionado")
+				
 			var table = new Table<Pais>(it, typeof(Pais)) => [
 			height = 200
 			width = 450 
 			bindItemsToProperty("todosLosPaises")
 			bindValueToProperty("itemSeleccionado")
-		]
-			
-		new Column<Pais>(table) => [
-			title = "Paises"
-			fixedSize = 150
-			bindContentsToProperty("nombrePais")
-		]
+			]
 				
+			new Column<Pais>(table) => [
+				title = "Paises"
+				fixedSize = 150
+				bindContentsToProperty("nombrePais")
+			]
+			
 				new Button(it) => [
 					caption = "Eliminar"
 				]
@@ -46,6 +50,8 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 				new Button(it) => [
 					caption = "Editar"
 					onClick ([|editarPais])
+					//new NotNullObservable("itemSeleccionado")
+					//enabled <=> "itemSeleccionado"
 				]
 			
 				new Button(it) => [
@@ -115,19 +121,23 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 					]
 				]
 			]
-		
 		]
 		
 	}
 	
 	def agregarNuevoPais() 
 	{
-		new NuevoPaisWindow(this).open
+		this.openDialog(new NuevoPaisWindow(this))
 	}
 	
 	def editarPais() 
 	{
-		new EditarPaisWindows(this, new Pais).open
+		this.openDialog(new EditarPaisWindows(this, modelObject.itemSeleccionado))
+	}
+	
+	def openDialog(Dialog<?> dialog) {
+		dialog.onAccept[|modelObject.search]
+		dialog.open
 	}
 	
 	override protected addActions(Panel actionsPanel) {}
