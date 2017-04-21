@@ -1,46 +1,61 @@
 package edu.ui.view.CarmenSan10
 
-import edu.ui.view.CarmenSan10.ExpedientesResolverMisterioView
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.tables.Table
 import edu.ui.domain.CarmenSan10.Villano
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.Button
 
-class ExpedienteMenuDeAccionesView extends ExpedientesResolverMisterioView {
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.windows.SimpleWindow
+import edu.ui.domain.AppModel.ExpedienteAppModel
+import org.uqbar.arena.layout.HorizontalLayout
+
+class ExpedienteMenuDeAccionesView extends SimpleWindow<ExpedienteAppModel> {
 	
 	new(WindowOwner parent) {
-		super(parent)
+		super(parent, new ExpedienteAppModel)
+		title = defaultTitle
 	}
 	
-	override createLeftPanel(Panel panelPadre) {
-		val panelIzquierdo = new Panel (panelPadre)=>[
-			layout = new VerticalLayout // es el layout por defecto
+	def defaultTitle() {
+		"Expedientes"
+	}
+	
+	override protected createFormPanel(Panel mainPanel) {
+		val general = new Panel(mainPanel) => [
+			layout = new HorizontalLayout
 		]
 		
-		var table = new Table<Villano>(panelIzquierdo, typeof(Villano)) => [
-			height = 200 //ni idea
-			width = 450  //tampoco
-			bindItemsToProperty("villanos")
+		val ladoIzq = new Panel(general)
+		
+		var table = new Table<Villano>(ladoIzq, typeof(Villano)) => [
+			height = 200
+			width = 450
+			bindItemsToProperty("todosLosVillanos")
 			bindValueToProperty("selectedVillano")
+		
 		]
 			
 		new Column<Villano>(table) => [
 			title = "Villano"
-			fixedSize = 150 // ni idea
-			bindContentsToProperty("nombre")//bindeamos al nombre del villano en cuestion
+			fixedSize = 150
+			bindContentsToProperty("nombre")
 		]
-	// todo lo de arriba lo mismo, pero le agrego los botones
-	   new Button (panelIzquierdo)=> [
-	   	caption = "Nuevo"
-	   	//on click
-	   ]
-	   new Button (panelIzquierdo)=> [
-	   	caption = "Editar"
-	   	//on click
-	   ]
+		
+		new Button(ladoIzq) => [
+			caption = "Nuevo"
+		]
+		
+		new Button(ladoIzq) => [
+			caption = "Editar"
+		]
 	}
+	
+	override protected addActions(Panel actionsPanel) {
+		
+	}
+	
 	
 }

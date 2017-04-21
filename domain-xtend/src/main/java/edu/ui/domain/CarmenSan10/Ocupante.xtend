@@ -4,7 +4,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.model.Entity
 
 @Accessors
-abstract class Ocupante extends Entity{
+abstract class Ocupante extends Entity implements Cloneable{
 
 	String profesion
 	// Es un STRATEGY
