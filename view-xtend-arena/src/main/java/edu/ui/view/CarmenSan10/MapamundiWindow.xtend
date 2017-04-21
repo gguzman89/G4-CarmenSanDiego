@@ -1,12 +1,10 @@
 package edu.ui.view.CarmenSan10
 
 import org.uqbar.arena.windows.SimpleWindow
-import edu.ui.domain.CarmenSan10.Mapamundi
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.HorizontalLayout
-import java.awt.Color
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
@@ -78,22 +76,23 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 				 *  - al menos una columna
 				 */
 				
-				val table = new Table<Pais>(it, typeof(Pais)) => [
+				var table = new Table<Pais>(it, typeof(Pais)) => [
 					
-					//bindItemsToProperty("todasLasCaracteristicas")
-					//bindValueToProperty("itemSeleccionado")
+					//items <=> "itemSeleccionado.caracteristicaPais"
+					//value <=> "itemSeleccionado"
+					
 					new Column<Pais>(it) => [
 						title = "Caraterísticas"
 						fixedSize = 200
-						//bindContentsToProperty("todasLasCaracteristicas")
+						//bindContentsToProperty("caracteristicaPais")
 					]
 				]
 				
 				new Label(it).text = "Conexiones"
 				
-				val table2 = new Table<Pais>(it, typeof(Pais)) => [
+				var table2 = new Table<Pais>(it, typeof(Pais)) => [
 					
-					items <=> "todasLasConexiones"
+					items <=> "itemSeleccionado.paisesConexionAerea"
 					value <=> "itemSeleccionado"
 					new Column<Pais>(it) => [
 						title = "Conexiones"
@@ -104,14 +103,15 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 				
 				new Label(it).text = "Lugares De Interes"
 				
-				val table3 = new Table<Pais>(it, typeof(Pais)) => [
+				var table3 = new Table<Pais>(it, typeof(Pais)) => [
 					
-					//bindItemsToProperty("todasLosLugares")
-					//bindValueToProperty("itemSeleccionado")
+					//items <=> "itemSeleccionado.lugares"
+					//value <=> "itemSeleccionado"
+					
 					new Column<Pais>(it) => [
 						title = "Lugares"
 						fixedSize = 200
-						//bindContentsToProperty("pais.lugaresInteres")
+						//bindContentsToProperty("nombre")
 					]
 				]
 			]
@@ -130,20 +130,7 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 		new EditarPaisWindows(this, new Pais).open
 	}
 	
-	override protected addActions(Panel actionsPanel) {
-		
-//		new Button(actionsPanel) => [
-//			caption = "Eliminar"
-//		]
-//		
-//		new Button(actionsPanel) => [
-//			caption = "Editar"
-//		]
-//			
-//		new Button(actionsPanel) => [
-//			caption = "Nuevo"
-//		]
-	}
+	override protected addActions(Panel actionsPanel) {}
 	
 	
 }

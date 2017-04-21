@@ -6,8 +6,10 @@ import edu.ui.domain.Repo.RepoVillanos
 import java.util.List
 import org.uqbar.commons.utils.ApplicationContext
 import java.io.Serializable
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@Observable
 class ExpedienteAppModel implements Serializable {
 	//private Expediente expediente
 	Villano selectedVillano

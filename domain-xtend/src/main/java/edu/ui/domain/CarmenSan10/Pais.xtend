@@ -24,6 +24,7 @@ class Pais extends Entity implements Cloneable {
 		caracteristicaPais = new ArrayList<String>()
 		lugares = new ArrayList<LugarInteres>()
 		paisesConexionAerea = new ArrayList<Pais>()
+		
 	}
 	
 	// y todo lo que se pueda jugar con una lista por cada lista

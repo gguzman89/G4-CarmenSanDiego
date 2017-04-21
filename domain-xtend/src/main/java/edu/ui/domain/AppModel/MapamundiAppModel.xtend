@@ -12,7 +12,6 @@ import java.util.List
 @Observable
 class MapamundiAppModel implements Serializable{
 	
-	//Mapamundi mapa
 	Pais itemSeleccionado
 	
 	new() {}
@@ -21,7 +20,6 @@ class MapamundiAppModel implements Serializable{
 	{
 		ApplicationContext.instance.getSingleton(typeof(Pais))
 	}
-	
 	
 	def List<Pais> getTodosLosPaises(){
 		paisesRepo.objects
@@ -32,6 +30,8 @@ class MapamundiAppModel implements Serializable{
 	def List<String> getTodasLasCaracteristicas() {
 		itemSeleccionado.caracteristicaPais
 	}
+	
+	def void setTodasLasCaracteristicas(List<String> feature) {}
 	
 	def List<Pais> getTodasLasConexiones() {
 		itemSeleccionado.paisesConexionAerea
@@ -48,11 +48,6 @@ class MapamundiAppModel implements Serializable{
 	def void search() {
 		//aMostrar = repoMapamundi.search(itemSeleccionado.nombrePais)
 	}
-	
-//	def caracteristicasPaisSeleccionado () 
-//	{
-//		itemSeleccionado.caracteristicaPais
-//	}
 	
 	def String getNombreCaso() {
 		

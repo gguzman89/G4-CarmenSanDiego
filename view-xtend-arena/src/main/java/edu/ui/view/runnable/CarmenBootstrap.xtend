@@ -23,19 +23,22 @@ class CarmenBootstrap extends CollectionBasedBootstrap{
 		val lugarI = new Embajada => [
 			politicaDelLugar = "el delicuente me guiño el ojo"
 		]
-		val cArgentina = new Pais("Venezuela")
-		
 		
 		val lugarZ = new Embajada => [
 			politicaDelLugar = "recuerdo que tenia una barba muy larga"
 		]
+		
+		val cArgentina = repoMapamundi.create("Venezuela",
+											  #["bandera amarillo y verde"],
+											  #[lugarZ],
+											  #[])
+		
+		
 		////////////////////////////////////////////////////////////////////////////////////////////
 		
 		repoVillanos.create("Lorenzo", "masculino", 
 							#["guiño de ojo"],
 							#["escuchar musica"], lugarI)
-							
-		repoMapamundi.create(cArgentina)
 							
 		repoMapamundi => [
 			create("Argentina", 
