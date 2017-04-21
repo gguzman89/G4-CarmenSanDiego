@@ -13,7 +13,6 @@ class LugarInteresAppModel
 {
 	LugarInteres lugar
 	Caso caso
-	Pais paisActual
 	Detective detective
 	
 	new(){}
@@ -36,7 +35,7 @@ class LugarInteresAppModel
 	
 	def preguntarAlOcupante()
 	{
-		//lugar.responderAlDetective(paisActual)
+		//lugar.responderAlDetective(detective.ubicacionActual)
 	}
 
 	def ordenDeArresto()
@@ -44,10 +43,11 @@ class LugarInteresAppModel
 		detective.ordenDeArresto
 	}
 	
-	def atrapamosAlVillano() 
+	def esElFinDelJuego() 
 	{
 		// Implementarlo bien
-		caso.responzable.tieneElMismoNombreQue(ordenDeArresto)
+		caso.esElFinDelCaso(detective.ubicacionActual) && lugar.seEncuentraElVillano()
 	}
+	
 	
 }

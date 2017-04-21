@@ -64,4 +64,9 @@ class Caso
 		planDeEscape.exists[p | p.nombrePais == pais.nombrePais]
 	}
 	
+	def esElFinDelCaso (Pais paisActual) 
+	{
+		paisActual.esElFinalDelRecorrido(planDeEscape)
+	}
+	
 }
