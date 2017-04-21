@@ -50,8 +50,6 @@ class RepoMapamundi extends CollectionBasedRepo<Pais>{
 		pNombre.toString.toLowerCase.contains(nombre.toString.toLowerCase)
 	}
 		
-		
-	
 	override def getEntityType() {
 		typeof(Pais)
 	}

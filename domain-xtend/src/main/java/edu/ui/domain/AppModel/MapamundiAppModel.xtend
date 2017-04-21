@@ -30,12 +30,7 @@ class MapamundiAppModel implements Serializable{
 	def void setTodosLosPaises(List<Pais> paises){
 		
 	} 
-//	
-//	def paises()
-//	{
-//		mapa.paises
-//	}
-//	
+	
 	def void search() {
 		//aMostrar = repoMapamundi.search(itemSeleccionado.nombrePais)
 	}

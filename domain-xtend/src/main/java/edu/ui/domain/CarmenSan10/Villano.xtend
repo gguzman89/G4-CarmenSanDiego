@@ -6,10 +6,14 @@ import java.util.ArrayList
 import edu.ui.domain.Exceptions.YaExisteLaSeniaParticularException
 import edu.ui.domain.Exceptions.YaExisteElHobbieException
 import org.uqbar.commons.utils.Observable
+import org.uqbar.commons.utils.TransactionalAndObservable
 
-@Observable
 @Accessors
+@TransactionalAndObservable
 class Villano extends Ocupante {
+	// extends Entity
+	// @TransactionalAndObservable deberia estar aca? 
+	// 		creo q en principio si
 	
 	String nombre
 	String sexo
