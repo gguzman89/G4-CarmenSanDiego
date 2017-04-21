@@ -3,6 +3,7 @@ package edu.ui.view.runnable
 import org.uqbar.arena.Application
 import edu.ui.view.CarmenSan10.MapamundiWindow
 import org.uqbar.arena.windows.Window
+import edu.ui.view.CarmenSan10.MenuDeAccionesWindow
 
 class CarmenApplication extends Application{
 	
@@ -11,7 +12,7 @@ class CarmenApplication extends Application{
 	}
 	
 	override Window<?> createMainWindow() {
-		new MapamundiWindow(this)
+		new MenuDeAccionesWindow(this)
 	}
  	
 	/**
