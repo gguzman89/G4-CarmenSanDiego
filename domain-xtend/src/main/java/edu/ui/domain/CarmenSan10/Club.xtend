@@ -8,6 +8,11 @@ class Club extends LugarInteres {
 	
 	String infoHobbies
 	
+	override getNombre()
+	{
+		"Club"
+	}
+	
 	def pistaSobreHobbies() {
 		var Random soloTalves = new Random
 		var int rnd = soloTalves.nextInt(75)

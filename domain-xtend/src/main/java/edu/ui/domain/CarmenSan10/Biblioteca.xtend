@@ -8,6 +8,11 @@ class Biblioteca extends LugarInteres {
 	
 	String infoAdicional
 	
+	override getNombre()
+	{
+		"Biblioteca"
+	}
+	
 	def pistaSobreHobbies() {
 		var Random soloTalves = new Random
 		var int rnd = soloTalves.nextInt(99)

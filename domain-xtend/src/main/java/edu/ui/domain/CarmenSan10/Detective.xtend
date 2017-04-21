@@ -139,7 +139,7 @@ class Detective
 	 * @Propósito Devuelve la lista de paises que el detective recorrió erroneamente.
 	 * @param recorridoDelVillano Es el recorrido correcto que debe realizar el villano.
 	 */
-	def destinosFallidos(List<Pais> recorridoDelVillano)
+	def List<Pais>destinosFallidos(List<Pais> recorridoDelVillano)
 	{
 		recorrido.filter[pais | pais.estaFueraDelRecorrido(recorridoDelVillano) ].toList
 	}
