@@ -15,6 +15,7 @@ class Villano extends Ocupante {
 	String sexo
 	List<String> seniasParticulares
 	List<String> hobbies
+	LugarInteres  dondeMeEncuentro
 	
 	new () {}
 	
@@ -25,12 +26,13 @@ class Villano extends Ocupante {
 	 * @param variasSenias Son las señas que caracterizan al Villanos.
 	 * @param variosHobbies Son los hobbies que tendrá el Villano.
 	 */
-	new(String unNombre, String unSexo, ArrayList<String> variasSenias, ArrayList<String> variosHobbies) 
+	new(String unNombre, String unSexo, ArrayList<String> variasSenias, ArrayList<String> variosHobbies, LugarInteres destinoFinal) 
 	{
 		nombre = unNombre
 		sexo = unSexo
 		seniasParticulares = variasSenias
 		hobbies = variosHobbies
+		dondeMeEncuentro= destinoFinal
 	}
 	
 	/**
@@ -43,6 +45,7 @@ class Villano extends Ocupante {
 		nombre == unNombre
 	}
 	
+	//como verifico si esta en el lugar ese? es una variable del villano??
 	override responderAlDetective(LugarInteres unLugar) 
 	{
 		if (! seEncuentraEnVillanoEnElLugar(unLugar))
@@ -51,10 +54,11 @@ class Villano extends Ocupante {
 			"ALTO!! Detengase"
 	}
 	
-	def Boolean seEncuentraEnVillanoEnElLugar(LugarInteres lugar)// No debo recibir un lugar, sino un País
+	def Boolean seEncuentraEnVillanoEnElLugar(LugarInteres lugar)
+	// Ademas de recibir un lugar, debería recibir el País de donde pertenece
+	// los lugares no conocen a que pais pertenecen??
 	{
-		// yo acá debo generar de manera aleatoria... 
-		// ...un lugar de interes del pais que debo recibir por parametro.
+		dondeMeEncuentro == lugar
 	}
 	
 	/*Los villanos si están en el país pero no en el lugar al que visitamos intentan matarnos y fallan.
