@@ -1,32 +1,29 @@
 package edu.ui.view.CarmenSan10
 
-import edu.ui.domain.AppModel.MapamundiAppModel
-import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
-import org.uqbar.arena.layout.ColumnLayout
-import org.uqbar.arena.layout.VerticalLayout
-import edu.ui.domain.CarmenSan10.LugarInteres
 import org.uqbar.arena.windows.Dialog
+import edu.ui.domain.AppModel.LugarInteresAppModel
 
-class LugaresWindow extends Dialog<LugarInteres>{
+class LugaresWindow extends Dialog<LugarInteresAppModel>{
 	
-	new(WindowOwner owner, LugarInteres model) {
+	new(WindowOwner owner, LugarInteresAppModel model) {
 		super(owner, model)
-		//title = defaultTitle(modelObject.nombreCaso)
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
+		title = "Resolviendo: " + modelObject.nombreDelCaso
+		
 		val form = new Panel(mainPanel)//.layout = new VerticalLayout
 		
 		form.width = 200
 		
 		new Label(form) =>[
-			text = "Estas visitando: " + modelObject.nombreLugar
+			text = "Estas visitando: " + modelObject.nombreDelLugar
 		]
 		
 //		val hor = new Panel(form) => [
@@ -46,12 +43,16 @@ que pueden ser buenas o malas noticias:"
 	override protected addActions(Panel actionsPanel) {
 		new Button(actionsPanel) => [
 			caption = "Continuar"
-			onClick[| modelObject.validacionContinuar
-			]
+			onClick[| validacionContinuar ]
 		]
 	}
 	
-	def defaultTitle(String nombreCaso) {
-		"Resolviendo: " + nombreCaso
+	def validacionContinuar() 
+	{
+		if (modelObject.atrapamosAlVillano())
+			new FinDelJuegoWindow(this, modelObject).open
+		this.close()
+		
 	}
+	
 }

@@ -72,7 +72,8 @@ class Pais extends Entity implements Cloneable {
 	
 	def perteneceAlRecorrido(List<Pais> recorrido)
 	{
-		var recorridoSinUltimoPais = recorrido.filter[pais| pais.noEsElUltimoDelRecorrido(recorrido)].toList
+		val recorridoAux = recorrido
+		var recorridoSinUltimoPais = recorrido.filter[pais| pais.noEsElUltimoDelRecorrido(recorridoAux)].toList
 		estaDentroDelRecorrido(recorridoSinUltimoPais)
 	}
 	

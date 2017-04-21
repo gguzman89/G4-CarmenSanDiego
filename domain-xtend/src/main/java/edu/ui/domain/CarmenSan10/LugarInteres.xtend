@@ -5,6 +5,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 abstract class LugarInteres {
 	
+	String nombre
 	String politicaDelLugar
 	//segun el lugar sabe una pista
 	Ocupante tipo
