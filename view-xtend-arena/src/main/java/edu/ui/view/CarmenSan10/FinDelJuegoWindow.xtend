@@ -11,7 +11,6 @@ class FinDelJuegoWindow extends Dialog<LugarInteresAppModel>{
 	new(WindowOwner owner, LugarInteresAppModel model) {
 		super(owner, model)
 		title = defaultTitle
-		
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

@@ -43,16 +43,15 @@ que pueden ser buenas o malas noticias:"
 	override protected addActions(Panel actionsPanel) {
 		new Button(actionsPanel) => [
 			caption = "Continuar"
-			onClick[| validacionContinuar ]
+			onClick[| validacionParaContinuar ]
 		]
 	}
 	
-	def validacionContinuar() 
+	def validacionParaContinuar() 
 	{
-		if (modelObject.atrapamosAlVillano())
+		if (modelObject.esElFinDelJuego)
 			new FinDelJuegoWindow(this, modelObject).open
 		this.close()
-		
 	}
 	
 }
