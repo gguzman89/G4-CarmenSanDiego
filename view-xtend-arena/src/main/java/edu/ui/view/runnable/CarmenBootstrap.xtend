@@ -25,18 +25,29 @@ class CarmenBootstrap extends CollectionBasedBootstrap{
 		]
 		val cArgentina = new Pais("Venezuela")
 		
+		
+		val lugarZ = new Embajada => [
+			politicaDelLugar = "recuerdo que tenia una barba muy larga"
+		]
 		////////////////////////////////////////////////////////////////////////////////////////////
 		
 		repoVillanos.create("Lorenzo", "masculino", 
 							#["guiño de ojo"],
 							#["escuchar musica"], lugarI)
 							
+		repoMapamundi.create(cArgentina)
+							
 		repoMapamundi => [
 			create("Argentina", 
 				  #["bandera azul y blanca"],
 				  #[lugarI],
-				  #[cArgentina]
-				  )
+				  #[cArgentina])
+//				  
+//			create("Japon", 
+//				  #["bandera blanco con un punto rojo"],
+//				  #[lugarZ], 
+//				  #[cArgentina]	)
 		]
+		
 	}
 }

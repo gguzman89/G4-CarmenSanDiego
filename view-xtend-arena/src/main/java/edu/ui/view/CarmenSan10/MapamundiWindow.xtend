@@ -6,16 +6,13 @@ import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.List
 import java.awt.Color
-
-// Para que aparezca este “chiche” tenés que agregar el siguiente import:
-import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
 import edu.ui.domain.CarmenSan10.Pais
 import edu.ui.domain.AppModel.MapamundiAppModel
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 
 class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 	
@@ -60,12 +57,20 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 			]
 			
 			val ladoDer = new Panel(it) => [
-				new Label(it) => [
-					text = "Nombre:" // + value
-					//value <=> "paisSeleccionado"
+				
+				val horPanel = new Panel(it) => [
+					layout = new HorizontalLayout
 				]
 				
-				new Label(it).text = "CaracteriHsticas"
+				new Label(horPanel) => [
+					text = "Nombre:"
+				]
+				
+				new Label(horPanel) => [
+					value <=> "itemSeleccionado.nombrePais"
+				]
+				
+				new Label(it).text = "Características"
 				
 				/**
 				 * Es obligatorio definir(Table)
@@ -73,29 +78,37 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 				 *  - al menos una columna
 				 */
 				
-				val table = new Table<Mapamundi>(it, typeof(Mapamundi)) => [
-					new Column<Mapamundi>(it) => [
-						title = "CarateristicasPPP"
-						background = Color.GRAY
+				val table = new Table<Pais>(it, typeof(Pais)) => [
+					
+					//bindItemsToProperty("todasLasCaracteristicas")
+					//bindValueToProperty("itemSeleccionado")
+					new Column<Pais>(it) => [
+						title = "Caraterísticas"
 						fixedSize = 200
-						//bindContentsToProperty("pais.Caracteristicas")
+						//bindContentsToProperty("todasLasCaracteristicas")
 					]
 				]
 				
 				new Label(it).text = "Conexiones"
 				
-				val table2 = new Table<Mapamundi>(it, typeof(Mapamundi)) => [
-					new Column<Mapamundi>(it) => [
-						title = "Conextions"
+				val table2 = new Table<Pais>(it, typeof(Pais)) => [
+					
+					items <=> "todasLasConexiones"
+					value <=> "itemSeleccionado"
+					new Column<Pais>(it) => [
+						title = "Conexiones"
 						fixedSize = 200
-						//bindContentsToProperty("pais.conexcionesAereas")
+						bindContentsToProperty("nombrePais")
 					]
 				]
 				
 				new Label(it).text = "Lugares De Interes"
 				
-				val table3 = new Table<Mapamundi>(it, typeof(Mapamundi)) => [
-					new Column<Mapamundi>(it) => [
+				val table3 = new Table<Pais>(it, typeof(Pais)) => [
+					
+					//bindItemsToProperty("todasLosLugares")
+					//bindValueToProperty("itemSeleccionado")
+					new Column<Pais>(it) => [
 						title = "Lugares"
 						fixedSize = 200
 						//bindContentsToProperty("pais.lugaresInteres")

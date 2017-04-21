@@ -1,17 +1,11 @@
 package edu.ui.view.CarmenSan10
 
 import edu.ui.domain.AppModel.ResolverMisterioAppModel
-import edu.ui.domain.CarmenSan10.Detective
-import edu.ui.domain.CarmenSan10.LugarInteres
-import edu.ui.domain.CarmenSan10.Pais
-import edu.ui.view.runnable.CarmenApplication
-import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
-import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 

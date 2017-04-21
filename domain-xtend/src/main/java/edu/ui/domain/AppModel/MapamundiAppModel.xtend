@@ -27,18 +27,32 @@ class MapamundiAppModel implements Serializable{
 		paisesRepo.objects
 	}
 	
-	def void setTodosLosPaises(List<Pais> paises){
-		
-	} 
+	def void setTodosLosPaises(List<Pais> paises) {}
+	
+	def List<String> getTodasLasCaracteristicas() {
+		itemSeleccionado.caracteristicaPais
+	}
+	
+	def List<Pais> getTodasLasConexiones() {
+		itemSeleccionado.paisesConexionAerea
+	}
+	
+	def void setTodasLasConexiones(List<Pais> paises) {}
+	
+	def List<String> getNombreCoxiones() {
+		itemSeleccionado.paisesConexionAerea.map[p| p.nombrePais]
+	}
+	
+	def void setNombreCoxiones(List<String> nombresPaises) {}
 	
 	def void search() {
 		//aMostrar = repoMapamundi.search(itemSeleccionado.nombrePais)
 	}
 	
-	def caracteristicasPaisSeleccionado () 
-	{
-		itemSeleccionado.caracteristicaPais
-	}
+//	def caracteristicasPaisSeleccionado () 
+//	{
+//		itemSeleccionado.caracteristicaPais
+//	}
 	
 	def String getNombreCaso() {
 		
