@@ -10,15 +10,12 @@ class FinDelJuegoWindow extends Dialog<LugarInteresAppModel>{
 	
 	new(WindowOwner owner, LugarInteresAppModel model) {
 		super(owner, model)
-		title = defaultTitle
-	}
-	
-	override protected createFormPanel(Panel mainPanel) {
 		
 	}
 	
-	def defaultTitle() {
-		modelObject.nombreCaso + "- Resuelto"
+	override protected createFormPanel(Panel mainPanel) {
+		title = modelObject.nombreDelCaso + "- Resuelto"
+		
 	}
 	
 }

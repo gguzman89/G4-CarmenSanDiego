@@ -46,7 +46,8 @@ class LugarInteresAppModel
 	def esElFinDelJuego() 
 	{
 		// Implementarlo bien
-		caso.esElFinDelCaso(detective.ubicacionActual)
+		caso.esElFinDelCaso(detective.ubicacionActual) && lugar.seEncuentraElVillano()
 	}
+	
 	
 }
