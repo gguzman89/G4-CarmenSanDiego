@@ -10,30 +10,29 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.TextBox
-import org.eclipse.xtend.lib.annotations.Accessors
+import edu.ui.domain.CarmenSan10.Pais
 
-@Accessors
-class EditorWindow extends TransactionalDialog<Object>{
+class EditorSuperConexion extends TransactionalDialog<Pais>{
 	
-	String tableName
-	
-	new(WindowOwner owner, Object model) {
+	new(WindowOwner owner, Pais model) {
 		super(owner, model)
 		title = defaultTitle()
 	}
 	
 	def defaultTitle() {
-		""
+		"Editar Conexiones"
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {
 		
 		val general = new Panel(mainPanel)
 		
-		val table = new Table<Object>(general, typeof(Object)) => [
-			new Column<Object>(it) => [
-				title = tableName
-				//bindContentsToProperty("pais.caracteristicas")
+		val table = new Table<Pais>(general, typeof(Pais)) => [
+			
+			items <=> "paisesConexionAerea"
+			new Column<Pais>(it) => [
+				title = "Característica"
+				bindContentsToProperty("nombrePais")
 			]
 		]
 		
