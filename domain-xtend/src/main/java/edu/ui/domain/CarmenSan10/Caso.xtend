@@ -9,11 +9,11 @@ import org.uqbar.commons.utils.Observable
 @Accessors
 class Caso 
 {
-	private var Villano responzable;
-	private var List<Pais> planDeEscape;
-	private var String reporteDelActoCriminal;
-	private var String objetoDelRobo;
-	private var Pais paisDelRobo;
+	Villano responzable;
+	List<Pais> planDeEscape;
+	String reporteDelActoCriminal;
+	String objetoDelRobo;
+	Pais paisDelRobo;
 	
 	new () {}
 	

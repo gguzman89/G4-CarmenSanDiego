@@ -47,5 +47,9 @@ class Biblioteca extends LugarInteres {
 		}
 	}
 	
+	override setPoliticaDelLugar(Caso c, Pais actual) {
+			politicaDelLugar = c.planDeEscape.get(c.planDeEscape.indexOf(actual.nombrePais)+1).caracteristicaPais.findFirst[]+ c.responzable.seniasParticulares.findLast[]
+	}
+	
 	
 }

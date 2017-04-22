@@ -14,11 +14,19 @@ abstract class LugarInteres {
 	//segun el lugar sabe una pista
 	Ocupante tipo
 	
-	new (){}
-	
-	new(Ocupante cual) {
-		tipo = cual
+	new (){
 	}
+	
+	
+	def void establecerOcupante(Pais p, Caso c){
+		if (p.estaFueraDelRecorrido(c.planDeEscape)){
+			tipo = new Cuidador
+		}
+		else{
+			
+		}
+	}
+	
 	
 	def preguntarAlOcupante() {
 		tipo.responderAlDetective(this)// + adicional() AQUÍ NO VA - Informante
@@ -29,5 +37,7 @@ abstract class LugarInteres {
 	def getNombreLugares() {
 		nombre
 	}
+	
+	def abstract void setPoliticaDelLugar (Caso c, Pais actual)
 
 }

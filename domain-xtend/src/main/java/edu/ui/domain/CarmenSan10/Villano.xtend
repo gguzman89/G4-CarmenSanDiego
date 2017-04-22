@@ -144,4 +144,10 @@ class Villano extends Ocupante {
 		seniasParticulares.contains(senia)
 	}
 	
+	override crearMiTipo(Pais p, Caso c) {
+		if (p.esElFinalDelRecorrido(c.planDeEscape)){
+			return this
+		}
+	}
+	
 }

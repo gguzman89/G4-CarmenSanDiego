@@ -6,11 +6,11 @@ import org.uqbar.commons.model.Entity
 @Accessors
 abstract class Ocupante extends Entity implements Cloneable{
 
-	String profesion
 	// Es un STRATEGY
-	// ... parece q nos mudamos a un STATE
-
+	
 	new() {}
+	
+	def abstract Ocupante crearMiTipo(Pais p, Caso c)
 	
 	def abstract String responderAlDetective(LugarInteres unLugar)
 	
