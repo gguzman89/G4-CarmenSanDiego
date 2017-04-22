@@ -47,6 +47,7 @@ class MapamundiAppModel implements Serializable{
 	
 	def void search() {
 		//aMostrar = repoMapamundi.search(itemSeleccionado.nombrePais)
+		paisesRepo.search(itemSeleccionado.nombrePais)
 	}
 	
 	def String getNombreCaso() {
@@ -69,6 +70,12 @@ class MapamundiAppModel implements Serializable{
 	}
 	
 	def String getObjetoRobado() {
+	}
+	
+	def eliminarPaisSeleccionado() {
+		getPaisesRepo().delete(itemSeleccionado)
+		this.search()
+		itemSeleccionado = null
 	}
 	
 }
