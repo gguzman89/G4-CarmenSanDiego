@@ -15,7 +15,6 @@ import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import edu.ui.domain.Repo.RepoMapamundi
 import org.uqbar.commons.utils.ApplicationContext
-import java.awt.Dialog
 
 class EditarPaisWindows extends TransactionalDialog<Pais>{
 	
@@ -134,7 +133,7 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 	}
 	
 	def editarLugares() {
-		new EditorWindow(this, Pais).open
+		new EditorSuperConexion(this, modelObject).open
 	}
 
 	def realizarCambios() 
