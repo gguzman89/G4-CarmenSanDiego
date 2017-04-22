@@ -27,6 +27,12 @@ class Pais extends Entity implements Cloneable {
 		
 	}
 	
+	def List<String> getNombreLugares() {
+		//lugares.map[l| l.nombre]
+	}
+	
+	def void setNombreLugares(List<LugarInteres> plugares) {}
+	
 	// y todo lo que se pueda jugar con una lista por cada lista
 	
 	def tieneConexionAereaCon(Pais pais) {

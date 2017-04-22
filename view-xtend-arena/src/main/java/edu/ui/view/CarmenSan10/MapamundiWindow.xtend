@@ -113,7 +113,6 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 					
 					//items <=> "itemSeleccionado.lugares"
 					//value <=> "itemSeleccionado"
-					
 					new Column<Pais>(it) => [
 						title = "Lugares"
 						fixedSize = 200

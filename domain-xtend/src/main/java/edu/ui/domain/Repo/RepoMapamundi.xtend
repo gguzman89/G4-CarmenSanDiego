@@ -15,15 +15,6 @@ class RepoMapamundi extends CollectionBasedRepo<Pais>{
 	 *  Altas y bajas
 	 */
 	 
-//	 def void create(String pNombre, List<String> pFeature, List<LugarInteres> pLugar, List<Pais> pConection) {
-//	 	this.create(new Pais => [
-//	 		nombrePais = pNombre
-//	 		caracteristicaPais = pFeature
-//	 		lugares = pLugar
-//	 		paisesConexionAerea = pConection
-//	 	])
-//	 }
-	 
 	 def Pais create(String pNombre, List<String> pFeature, List<LugarInteres> pLugar, List<Pais> pConection) {
 	 	val pais = new Pais => [
 	 		nombrePais = pNombre

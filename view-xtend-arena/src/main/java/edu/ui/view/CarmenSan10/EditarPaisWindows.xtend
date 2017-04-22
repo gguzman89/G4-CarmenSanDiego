@@ -27,7 +27,6 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 	
 	override protected createFormPanel(Panel mainPanel) {
 		val general = new Panel(mainPanel) => [
-			//title = "Mapamundi-Editar Pais"
 			
 			val editCol = new Panel(it) => [
 				layout = new ColumnLayout(2)
@@ -52,10 +51,12 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 			]
 			
 			val table = new Table<Pais>(it, typeof(Pais)) => [
-				//title = "Caracteristicas"
+				
+				//items <=> "caracteristicaPais"
+				//value <=> "modelObject"
 				new Column<Pais>(it) => [
 					title = "Caracteristicas"
-					//bindContentsToProperty("pais.caracteristicas")
+					//bindContentsToProperty("caracteristicasPais")//.transformer = [String carac | carac.get(0)]
 				]
 			]
 			
@@ -73,10 +74,11 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 			]
 			
 			val table2 = new Table<Pais>(it, typeof(Pais)) => [
-				//title = "Caracteristicas"
+				
+				items <=> "paisesConexionAerea"
 				new Column<Pais>(it) => [
 					title = "Conexiones"
-					//bindContentsToProperty("pais.conexiones")
+					bindContentsToProperty("nombrePais")
 				]
 			]
 			
@@ -94,10 +96,11 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 			]
 			
 			val table3 = new Table<Pais>(it, typeof(Pais)) => [
-				//title = "Caracteristicas"
+				
+				items <=> "lugares"
 				new Column<Pais>(it) => [
-					title = "Lugare de Interes"
-					//bindContentsToProperty("pais.lugares")
+					title = "Lugares de Interes"
+					bindContentsToProperty("nombreLugares")
 				]
 			]
 			

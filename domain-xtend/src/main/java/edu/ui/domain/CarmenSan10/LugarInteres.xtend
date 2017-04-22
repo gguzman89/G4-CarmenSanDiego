@@ -1,8 +1,12 @@
 package edu.ui.domain.CarmenSan10
 
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.TransactionalAndObservable
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@TransactionalAndObservable
+//@Observable
 abstract class LugarInteres {
 	
 	String nombre
@@ -21,5 +25,9 @@ abstract class LugarInteres {
 		}
 	
 	def abstract String adicional()
+	
+	def getNombreLugares() {
+		nombre
+	}
 
 }
