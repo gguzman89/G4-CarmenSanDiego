@@ -8,6 +8,7 @@ import edu.ui.domain.CarmenSan10.Pais
 import edu.ui.domain.CarmenSan10.Embajada
 import edu.ui.domain.CarmenSan10.Villano
 import edu.ui.domain.Repo.RepoVillanos
+import edu.ui.domain.CarmenSan10.Biblioteca
 
 class CarmenBootstrap extends CollectionBasedBootstrap{
 	
@@ -21,6 +22,13 @@ class CarmenBootstrap extends CollectionBasedBootstrap{
 		val repoVillanos = ApplicationContext.instance.getSingleton(typeof(Villano)) as RepoVillanos
 		
 		val lugarI = new Embajada => [
+			nombre = "Embajada"
+			politicaDelLugar = "el delicuente me guiño el ojo"
+		]
+		
+		
+		val lugarB = new Biblioteca => [
+			nombre = "El libro loco"
 			politicaDelLugar = "el delicuente me guiño el ojo"
 		]
 		
@@ -43,7 +51,7 @@ class CarmenBootstrap extends CollectionBasedBootstrap{
 		repoMapamundi => [
 			create("Argentina", 
 				  #["bandera azul y blanca"],
-				  #[lugarI],
+				  #[lugarI, lugarB],
 				  #[cArgentina])
 //				  
 //			create("Japon", 

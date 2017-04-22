@@ -27,9 +27,10 @@ class Pais extends Entity implements Cloneable {
 		
 	}
 	
-	def List<String> getNombreLugares() {
-		//lugares.map[l| l.nombre]
-	}
+//	def List<String> getNombreLugares() {
+//		lugares.map[l| l.nombre]
+//		//lugares.get(0).nombre
+//	}
 	
 	def void setNombreLugares(List<LugarInteres> plugares) {}
 	
