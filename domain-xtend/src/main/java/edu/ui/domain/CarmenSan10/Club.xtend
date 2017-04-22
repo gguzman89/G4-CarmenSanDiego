@@ -29,6 +29,10 @@ class Club extends LugarInteres {
 		infoHobbies
 	}
 	
+	override setPoliticaDelLugar(Caso c, Pais actual) {
+		politicaDelLugar = c.responzable.seniasParticulares.findFirst[]+c.responzable.seniasParticulares.findLast[]
+	}
+	
 	/*
 	 * cuando tiene información del malechor da dos pistas sobre las señas particulares y 
 	 * el 70% de las veces agrega información de sus hobbies (adicional a las dos señas particulares).

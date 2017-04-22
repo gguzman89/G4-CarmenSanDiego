@@ -10,4 +10,8 @@ class Banco extends LugarInteres {
 	
 	override adicional() {}
 	
+	override setPoliticaDelLugar(Caso c, Pais actual) {
+		politicaDelLugar = c.planDeEscape.get(c.planDeEscape.indexOf(actual.nombrePais)+1).caracteristicaPais.findFirst[]
+	}
+	
 }
