@@ -28,7 +28,7 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 			
 			val ladoIzq = new Panel(it) => [
 				
-				//val elementSelected = new NotNullObservable("itemSeleccionado")
+				val elementSelected = new NotNullObservable("itemSeleccionado")
 				
 			var table = new Table<Pais>(it, typeof(Pais)) => [
 			height = 200
@@ -45,18 +45,19 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 			
 				new Button(it) => [
 					caption = "Eliminar"
+					onClick([|modelObject.eliminarPaisSeleccionado])
+					bindEnabled(elementSelected)
 				]
 		
 				new Button(it) => [
 					caption = "Editar"
 					onClick ([|editarPais])
-					//new NotNullObservable("itemSeleccionado")
-					//enabled <=> "itemSeleccionado"
+					bindEnabled(elementSelected)
 				]
 			
 				new Button(it) => [
 					caption = "Nuevo"
-					onClick ([|agregarNuevoPais])
+					onClick ([|this.agregarNuevoPais])
 				]
 			]
 			
