@@ -9,8 +9,11 @@ import org.uqbar.arena.widgets.tables.Column
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.HorizontalLayout
-import org.uqbar.arena.widgets.TextBox
 import edu.ui.domain.CarmenSan10.Pais
+import org.uqbar.commons.utils.ApplicationContext
+import edu.ui.domain.Repo.RepoMapamundi
+import org.uqbar.arena.widgets.Selector
+import org.uqbar.arena.bindings.ObservableProperty
 
 class EditorSuperConexion extends TransactionalDialog<Pais>{
 	
@@ -46,9 +49,12 @@ class EditorSuperConexion extends TransactionalDialog<Pais>{
 			layout = new HorizontalLayout
 		]
 		
-		new TextBox(editHor) => [
-			width = 150
-			//value <=> "itemSeleccionado.nombre"
+		new Selector<Pais>(editHor) => [
+			allowNull(false)
+			value <=> "paisesConexionAerea"
+			val propiedadModelos = bindItems(new ObservableProperty(paisesRepo, "paises"))
+			propiedadModelos.adaptWith(typeof(Pais), "nombrePais") // opción A
+			//propiedadModelos.adapter = new PropertyAdapter(typeof(Modelo), "descripcionEntera") // opción B
 		]
 		
 		new Button(editHor) => [
@@ -60,6 +66,15 @@ class EditorSuperConexion extends TransactionalDialog<Pais>{
 			caption = "Aceptar"
 			onClick([| this.accept])
 		]
+	}
+	
+	def RepoMapamundi getPaisesRepo() {
+		ApplicationContext.instance.getSingleton(typeof(Pais))
+	}
+	
+	override executeTask() {
+		paisesRepo.update(modelObject)
+		super.executeTask()
 	}
 	
 }

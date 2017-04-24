@@ -2,7 +2,6 @@ package edu.ui.view.runnable
 
 import org.uqbar.arena.bootstrap.CollectionBasedBootstrap
 import org.uqbar.commons.utils.ApplicationContext
-import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.Repo.RepoMapamundi
 import edu.ui.domain.CarmenSan10.Pais
 import edu.ui.domain.CarmenSan10.Embajada
@@ -28,7 +27,7 @@ class CarmenBootstrap extends CollectionBasedBootstrap{
 		
 		
 		val lugarB = new Biblioteca => [
-			nombre = "El libro loco"
+			nombre = "Biblioteca"
 			politicaDelLugar = "el delicuente me guiño el ojo"
 		]
 		
@@ -53,11 +52,11 @@ class CarmenBootstrap extends CollectionBasedBootstrap{
 				  #["bandera azul y blanca"],
 				  #[lugarI, lugarB],
 				  #[cArgentina])
-//				  
-//			create("Japon", 
-//				  #["bandera blanco con un punto rojo"],
-//				  #[lugarZ], 
-//				  #[cArgentina]	)
+				  
+			create("Japon", 
+				  #["bandera blanco con un punto rojo"],
+				  #[lugarZ], 
+				  #[cArgentina]	)
 		]
 		
 	}
