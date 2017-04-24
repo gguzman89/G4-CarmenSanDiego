@@ -31,6 +31,7 @@ class Pais extends Entity implements Cloneable {
 //		lugares.map[l| l.nombre]
 //		//lugares.get(0).nombre
 //	}
+// Suena extraño porque NO puedo borrar/comentar la linea setNombreLugares y correr la app
 	
 	def void setNombreLugares(List<LugarInteres> plugares) {}
 	
@@ -104,5 +105,8 @@ class Pais extends Entity implements Cloneable {
 		
 	}
 	
+	def eliminarCaracteristicaSelecionada(String feature) {
+		caracteristicaPais.remove(feature)
+	}
 	
 }

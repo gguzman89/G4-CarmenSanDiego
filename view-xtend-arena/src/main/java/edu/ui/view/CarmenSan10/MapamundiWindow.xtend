@@ -31,17 +31,17 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 				val elementSelected = new NotNullObservable("itemSeleccionado")
 				
 			var table = new Table<Pais>(it, typeof(Pais)) => [
-			height = 200
-			width = 450 
-			bindItemsToProperty("todosLosPaises")
-			bindValueToProperty("itemSeleccionado")
+				height = 200
+				width = 450 
+				bindItemsToProperty("todosLosPaises")
+				bindValueToProperty("itemSeleccionado")
 			]
 				
-			new Column<Pais>(table) => [
-				title = "Paises"
-				fixedSize = 150
-				bindContentsToProperty("nombrePais")
-			]
+				new Column<Pais>(table) => [
+					title = "Paises"
+					fixedSize = 150
+					bindContentsToProperty("nombrePais")
+				]
 			
 				new Button(it) => [
 					caption = "Eliminar"

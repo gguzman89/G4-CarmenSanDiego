@@ -67,8 +67,6 @@ class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 	
 	def expediente() 
 	{
-		// Abri una ventana de dialog como ejemplo de como abrir una ventana
-		// modelObject devuelve el objeto con el que estamos modelando la vista.
 		new ExpedienteMenuDeAccionesView(this).open
 	}
 	

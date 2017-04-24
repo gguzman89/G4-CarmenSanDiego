@@ -1,7 +1,6 @@
 package edu.ui.view.runnable
 
 import org.uqbar.arena.Application
-import edu.ui.view.CarmenSan10.MapamundiWindow
 import org.uqbar.arena.windows.Window
 import edu.ui.view.CarmenSan10.MenuDeAccionesWindow
 

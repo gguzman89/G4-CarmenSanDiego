@@ -30,15 +30,16 @@ class EditorSuperConexion extends TransactionalDialog<Pais>{
 		val table = new Table<Pais>(general, typeof(Pais)) => [
 			
 			items <=> "paisesConexionAerea"
-			new Column<Pais>(it) => [
-				title = "Característica"
-				bindContentsToProperty("nombrePais")
-			]
+		]
+		
+		new Column<Pais>(table) => [
+			title = "Característica"
+			bindContentsToProperty("nombrePais")
 		]
 		
 		new Button(general) => [
 			caption = "Eliminar"
-			//onClick([| this.editar])
+			//onClick([| modelObject.eliminarCaracteristicaSelecionada])
 		]
 		
 		val editHor = new Panel(general) =>[
@@ -57,7 +58,7 @@ class EditorSuperConexion extends TransactionalDialog<Pais>{
 		
 		new Button(general) => [
 			caption = "Aceptar"
-			//onClick([| this.editar]) ???
+			onClick([| this.accept])
 		]
 	}
 	

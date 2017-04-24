@@ -49,7 +49,7 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 				
 				new Button(editCol) => [
 					caption = "Editar Caracteristicas"
-					//onClick([| this.editarCarateristica])
+					onClick([| this.editarCaracteristica])
 				]
 			
 			val table = new Table<Pais>(it, typeof(Pais)) => [
@@ -72,7 +72,7 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 			
 			new Button(editCol2) => [
 				caption = "Editar Conexiones"
-				//onClick([| this.editarConexiones])
+				onClick([| this.editarConexiones])
 			]
 			
 			val table2 = new Table<Pais>(it, typeof(Pais)) => [
@@ -119,6 +119,7 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 		]
 	}
 	
+	
 	override executeTask() {
 		if (modelObject.isNew) {
 			paisesRepo.create(modelObject)
@@ -132,8 +133,16 @@ class EditarPaisWindows extends TransactionalDialog<Pais>{
 		ApplicationContext.instance.getSingleton(typeof(Pais))
 	}
 	
-	def editarLugares() {
+	def editarConexiones() {
 		new EditorSuperConexion(this, modelObject).open
+	}
+	
+	def editarLugares() {
+		new EditorLugarInteresWindow(this, modelObject).open
+	}
+	
+	def editarCaracteristica() {
+		new EditorCaracteristicaWindow(this, modelObject).open
 	}
 
 	def realizarCambios() 
