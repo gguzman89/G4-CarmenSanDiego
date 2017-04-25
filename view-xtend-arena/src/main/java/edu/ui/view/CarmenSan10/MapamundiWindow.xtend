@@ -47,7 +47,9 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 				new Button(ladoIzq) => [
 					caption = "Eliminar"
 					onClick([|modelObject.eliminarPaisSeleccionado])
+					//bindValueToProperty("todosLosPaises")
 					bindEnabled(elementSelected)
+					
 				]
 				
 				new Button(ladoIzq) => [
