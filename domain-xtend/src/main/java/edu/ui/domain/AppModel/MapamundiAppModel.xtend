@@ -8,6 +8,7 @@ import edu.ui.domain.Repo.RepoMapamundi
 import java.io.Serializable
 import java.util.List
 import org.uqbar.commons.utils.Dependencies
+import org.uqbar.commons.model.ObservableUtils
 
 @Accessors
 @Observable
@@ -83,6 +84,7 @@ class MapamundiAppModel implements Serializable{
 		getPaisesRepo().delete(itemSeleccionado)
 		this.search()
 		itemSeleccionado = null
+		ObservableUtils.firePropertyChanged(this,"todosLosPaises", todosLosPaises)
 	}
 	
 }
