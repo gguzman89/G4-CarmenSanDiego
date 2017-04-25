@@ -22,15 +22,16 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 	
 	override protected createFormPanel(Panel mainPanel) {
 		title = "Mapamundi"
+		
 		val general = new Panel(mainPanel) => [
-	
-			layout = new HorizontalLayout
-			
-			val ladoIzq = new Panel(it) => [
+				layout = new HorizontalLayout
+		]
 				
-				val elementSelected = new NotNullObservable("itemSeleccionado")
+			val elementSelected = new NotNullObservable("itemSeleccionado")
 				
-			var table = new Table<Pais>(it, typeof(Pais)) => [
+			val ladoIzq = new Panel(general)
+				
+			var table = new Table<Pais>(ladoIzq, typeof(Pais)) => [
 				height = 200
 				width = 450 
 				bindItemsToProperty("todosLosPaises")
@@ -43,27 +44,26 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 					bindContentsToProperty("nombrePais")
 				]
 			
-				new Button(it) => [
+				new Button(ladoIzq) => [
 					caption = "Eliminar"
 					onClick([|modelObject.eliminarPaisSeleccionado])
 					bindEnabled(elementSelected)
 				]
-		
-				new Button(it) => [
+				
+				new Button(ladoIzq) => [
 					caption = "Editar"
 					onClick ([|editarPais])
 					bindEnabled(elementSelected)
 				]
-			
-				new Button(it) => [
+				
+				new Button(ladoIzq) => [
 					caption = "Nuevo"
 					onClick ([|this.agregarNuevoPais])
 				]
-			]
 			
-			val ladoDer = new Panel(it) => [
+			val ladoDer = new Panel(general)
 				
-				val horPanel = new Panel(it) => [
+				val horPanel = new Panel(ladoDer) => [
 					layout = new HorizontalLayout
 				]
 				
@@ -75,7 +75,8 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 					value <=> "itemSeleccionado.nombrePais"
 				]
 				
-				new Label(it).text = "Características"
+			
+				new Label(ladoDer).text = "Características"
 				
 				/**
 				 * Es obligatorio definir(Table)
@@ -83,46 +84,42 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 				 *  - al menos una columna
 				 */
 				
-				var table = new Table<Pais>(it, typeof(Pais)) => [
-					
+				var tableT = new Table<Pais>(ladoDer, typeof(Pais)) => [
 					//items <=> "itemSeleccionado.caracteristicaPais"
 					//value <=> "itemSeleccionado"
-					
-					new Column<Pais>(it) => [
+				]
+				
+					new Column<Pais>(tableT) => [
 						title = "Caraterísticas"
 						fixedSize = 200
 						//bindContentsToProperty("caracteristicaPais")
 					]
-				]
 				
-				new Label(it).text = "Conexiones"
+				new Label(ladoDer).text = "Conexiones"
 				
-				var table2 = new Table<Pais>(it, typeof(Pais)) => [
-					
+				var table2 = new Table<Pais>(ladoDer, typeof(Pais)) => [
 					items <=> "itemSeleccionado.paisesConexionAerea"
 					value <=> "itemSeleccionado"
-					new Column<Pais>(it) => [
+				]
+					
+					new Column<Pais>(table2) => [
 						title = "Conexiones"
 						fixedSize = 200
 						bindContentsToProperty("nombrePais")
 					]
+			
+				new Label(ladoDer).text = "Lugares De Interes"
+				
+				var table3 = new Table<Pais>(ladoDer, typeof(Pais)) => [
+					items <=> "itemSeleccionado.lugares"
+					value <=> "itemSeleccionado"
 				]
 				
-				new Label(it).text = "Lugares De Interes"
-				
-				var table3 = new Table<Pais>(it, typeof(Pais)) => [
-					
-					//items <=> "itemSeleccionado.lugares"
-					//value <=> "itemSeleccionado"
-					new Column<Pais>(it) => [
+					new Column<Pais>(table3) => [
 						title = "Lugares"
 						fixedSize = 200
-						//bindContentsToProperty("nombre")
+						bindContentsToProperty("nombreLugares")
 					]
-				]
-			]
-		]
-		
 	}
 	
 	def agregarNuevoPais() 
@@ -141,6 +138,5 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 	}
 	
 	override protected addActions(Panel actionsPanel) {}
-	
 	
 }
