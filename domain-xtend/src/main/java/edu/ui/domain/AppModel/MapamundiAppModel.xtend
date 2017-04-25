@@ -14,6 +14,11 @@ class MapamundiAppModel implements Serializable{
 	
 	Pais itemSeleccionado
 	
+	/**
+	 * Todos los application model deben anotarse con @Observable.
+	 * También es conveniente que implementen la interfaz Serializable.
+	 */
+	
 	new() {}
 	
 	def RepoMapamundi getPaisesRepo() 
@@ -46,7 +51,6 @@ class MapamundiAppModel implements Serializable{
 	def void setNombreCoxiones(List<String> nombresPaises) {}
 	
 	def void search() {
-		//aMostrar = repoMapamundi.search(itemSeleccionado.nombrePais)
 		paisesRepo.search(itemSeleccionado.nombrePais)
 	}
 	

@@ -54,7 +54,6 @@ class EditorSuperConexion extends TransactionalDialog<Pais>{
 			value <=> "paisesConexionAerea"
 			val propiedadModelos = bindItems(new ObservableProperty(paisesRepo, "paises"))
 			propiedadModelos.adaptWith(typeof(Pais), "nombrePais") // opción A
-			//propiedadModelos.adapter = new PropertyAdapter(typeof(Modelo), "descripcionEntera") // opción B
 		]
 		
 		new Button(editHor) => [
