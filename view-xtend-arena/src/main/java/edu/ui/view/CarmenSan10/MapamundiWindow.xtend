@@ -13,6 +13,7 @@ import edu.ui.domain.AppModel.MapamundiAppModel
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.bindings.NotNullObservable
+import edu.ui.domain.CarmenSan10.Caracteristicas
 
 class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 	
@@ -85,15 +86,15 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 				 *  - al menos una columna
 				 */
 				
-				var tableT = new Table<Pais>(ladoDer, typeof(Pais)) => [
+				var tableT = new Table<Caracteristicas>(ladoDer, typeof(Caracteristicas)) => [
 					items <=> "itemSeleccionado.caracteristicaPais"
 					value <=> "itemSeleccionado"
 				]
 				
-					new Column<Pais>(tableT) => [
+					new Column<Caracteristicas>(tableT) => [
 						title = "Caraterísticas"
 						fixedSize = 200
-						//bindContentsToProperty("nombre")
+						bindContentsToProperty("nombre")
 					]
 				
 				new Label(ladoDer).text = "Conexiones"
