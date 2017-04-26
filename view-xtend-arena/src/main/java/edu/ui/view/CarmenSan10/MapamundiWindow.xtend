@@ -34,8 +34,8 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 			var table = new Table<Pais>(ladoIzq, typeof(Pais)) => [
 				height = 600
 				width = 200 
-				bindItemsToProperty("todosLosPaises")
-				bindValueToProperty("itemSeleccionado")
+				items <=> "todosLosPaises"
+				value <=> "itemSeleccionado"
 			]
 				
 				new Column<Pais>(table) => [
@@ -86,14 +86,14 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 				 */
 				
 				var tableT = new Table<Pais>(ladoDer, typeof(Pais)) => [
-					//items <=> "itemSeleccionado.caracteristicaPais"
-					//value <=> "itemSeleccionado"
+					items <=> "itemSeleccionado.caracteristicaPais"
+					value <=> "itemSeleccionado"
 				]
 				
 					new Column<Pais>(tableT) => [
 						title = "Caraterísticas"
 						fixedSize = 200
-						//bindContentsToProperty("caracteristicaPais")
+						//bindContentsToProperty("nombre")
 					]
 				
 				new Label(ladoDer).text = "Conexiones"

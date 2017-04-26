@@ -4,11 +4,10 @@ import org.uqbar.arena.bootstrap.CollectionBasedBootstrap
 import org.uqbar.commons.utils.ApplicationContext
 import edu.ui.domain.Repo.RepoMapamundi
 import edu.ui.domain.CarmenSan10.Pais
-import edu.ui.domain.CarmenSan10.Embajada
 import edu.ui.domain.CarmenSan10.Villano
 import edu.ui.domain.Repo.RepoVillanos
-import edu.ui.domain.CarmenSan10.Biblioteca
 import edu.ui.domain.CarmenSan10.LugarDeInteres
+import edu.ui.domain.CarmenSan10.Caracteristicas
 
 class CarmenBootstrap extends CollectionBasedBootstrap{
 	
@@ -21,48 +20,55 @@ class CarmenBootstrap extends CollectionBasedBootstrap{
 		val repoMapamundi = ApplicationContext.instance.getSingleton(typeof(Pais)) as RepoMapamundi
 		val repoVillanos = ApplicationContext.instance.getSingleton(typeof(Villano)) as RepoVillanos
 		
-//		val lugarI = new Embajada => [
-//			nombre = "Embajada"
-//			politicaDelLugar = "el delicuente me guiño el ojo"
-//		]
-		
 		val lugar1 = LugarDeInteres.BANCO
+		val lugar11 = LugarDeInteres.BIBLIOTECA
+		val lugar12 = LugarDeInteres.CLUB
 		
 		val lugar2 = LugarDeInteres.BIBLIOTECA
+		val lugar21 = LugarDeInteres.BANCO
+		val lugar22 = LugarDeInteres.CLUB
 		
+		val feature1 = new Caracteristicas => [
+			nombre = "bandera amarillo y verde"
+		]
 		
-//		val lugarB = new Biblioteca => [
-//			nombre = "Biblioteca"
-//			politicaDelLugar = "el delicuente me guiño el ojo"
-//		]
+		val feature2 = new Caracteristicas => [
+			nombre = "bandera azul y blanca"
+		]
 		
-//		val lugarZ = new Embajada => [
-//			politicaDelLugar = "recuerdo que tenia una barba muy larga"
-//		]
+		val feature3 = new Caracteristicas => [
+			nombre = "bandera blanco con un punto rojo"
+		]
 		
 		val cArgentina = repoMapamundi.create("Venezuela",
-											  #["bandera amarillo y verde"],
-											  #[lugar1],
+											  #[feature1],
+											  #[lugar1, lugar11, lugar12],
 											  #[])
 		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////
-		
-		repoVillanos.create("Lorenzo", "masculino", 
-							#["guiño de ojo"],
-							#["escuchar musica"])
-							
 		repoMapamundi => [
 			create("Argentina", 
-				  #["bandera azul y blanca"],
-				  #[lugar1, lugar2],
+				  #[feature2],
+				  #[lugar1, lugar2, lugar12],
 				  #[cArgentina])
 				  
 			create("Japon", 
-				  #["bandera blanco con un punto rojo"],
-				  #[lugar2], 
+				  #[feature3],
+				  #[lugar2, lugar21, lugar22], 
 				  #[cArgentina]	)
 		]
+		
+		val villaFeature = new Caracteristicas => [
+			nombre = "guiño de ojo"
+		]
+		
+		val villaFeature2 = new Caracteristicas => [
+			nombre = "escuchar musica"
+		]
+		
+		repoVillanos.create("Lorenzo", "masculino", 
+							#[villaFeature],
+							#[villaFeature2])
+							
 		
 	}
 }

@@ -3,13 +3,12 @@ package edu.ui.domain.Repo
 import org.uqbar.commons.model.CollectionBasedRepo
 import edu.ui.domain.CarmenSan10.Villano
 import org.apache.commons.collections15.Predicate
-import edu.ui.domain.CarmenSan10.LugarInteres
 import java.util.List
-import edu.ui.domain.CarmenSan10.LugarDeInteres
+import edu.ui.domain.CarmenSan10.Caracteristicas
 
 class RepoVillanos extends CollectionBasedRepo<Villano>{
 	
-	def Villano create(String nombreVi, String sexoVi, List<String> senias, List<String> hobbiesVi) {
+	def Villano create(String nombreVi, String sexoVi, List<Caracteristicas> senias, List<Caracteristicas> hobbiesVi) {
 		// devolver un villano no va servir en el bootstrap
 		val villano = new Villano => [
 			nombre = nombreVi

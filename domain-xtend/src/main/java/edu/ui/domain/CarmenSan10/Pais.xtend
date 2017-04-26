@@ -14,7 +14,7 @@ import java.util.Random
 class Pais extends Entity implements Cloneable {
 	
 	String nombrePais
-	List<String> caracteristicaPais
+	List<Caracteristicas> caracteristicaPais
 	List<LugarDeInteres> lugares
 	List<Pais> paisesConexionAerea
 	Ocupante ocupante
@@ -23,7 +23,7 @@ class Pais extends Entity implements Cloneable {
 	
 	new(String nombre) {
 		nombrePais = nombre
-		caracteristicaPais = new ArrayList<String>()
+		caracteristicaPais = new ArrayList<Caracteristicas>()
 		lugares = new ArrayList<LugarDeInteres>()
 		paisesConexionAerea = new ArrayList<Pais>()
 	}
@@ -34,7 +34,9 @@ class Pais extends Entity implements Cloneable {
 //	}
 // Suena extraño porque NO puedo borrar/comentar la linea setNombreLugares y correr la app
 	
-	def void setNombreLugares(List<LugarInteres> plugares) {}
+	def void setNombreLugares(List<LugarDeInteres> plugares) {}
+	
+	def void setNombreCaracteristica(List<Caracteristicas> pfeature) {}
 	
 	// y todo lo que se pueda jugar con una lista por cada lista
 	
@@ -92,15 +94,15 @@ class Pais extends Entity implements Cloneable {
 	}
 	
 	def validar() {
-		if(nombrePais == null) {
-			throw new UserException("El nombre no puede quedar vacion")
-		}
-		
-		if(caracteristicaPais.isEmpty) {
-			throw new UserException("Al menos debe tener 1 caracteristica")
-		}
-		
-		if(lugares.size == 3) {
+//		if(nombrePais == null) {
+//			throw new UserException("El nombre no puede quedar vacion")
+//		}
+//		
+//		if(caracteristicaPais.isEmpty) {
+//			throw new UserException("Al menos debe tener 1 caracteristica")
+//		}
+//		
+		if(lugares.size != 3) {
 			throw new UserException("Te faltan agregar mas Lugar para visitar")
 		}
 		

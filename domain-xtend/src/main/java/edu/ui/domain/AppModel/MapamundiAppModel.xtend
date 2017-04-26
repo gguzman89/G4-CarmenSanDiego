@@ -28,18 +28,19 @@ class MapamundiAppModel implements Serializable{
 		ApplicationContext.instance.getSingleton(typeof(Pais))
 	}
 	
-	//@Dependencies("itemSeleccionado")
 	def List<Pais> getTodosLosPaises(){
 		paisesRepo.objects
 	}
 	
 	def void setTodosLosPaises(List<Pais> paises) {}
 	
-	def List<String> getTodasLasCaracteristicas() {
-		itemSeleccionado.caracteristicaPais
-	}
+//	def List<String> getTodasLasCaracteristicas() {
+//		itemSeleccionado.caracteristicaPais
+//	}
 	
-	def void setTodasLasCaracteristicas(List<String> feature) {}
+	//def void setTodasLasCaracteristicas(List<String> feature) {}
+	
+	def getNombreCaracteristicas() {}
 	
 	def List<Pais> getTodasLasConexiones() {
 		itemSeleccionado.paisesConexionAerea

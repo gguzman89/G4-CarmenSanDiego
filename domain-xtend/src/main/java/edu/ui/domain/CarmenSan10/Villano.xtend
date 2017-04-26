@@ -5,7 +5,6 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.ArrayList
 import edu.ui.domain.Exceptions.YaExisteLaSeniaParticularException
 import edu.ui.domain.Exceptions.YaExisteElHobbieException
-import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.utils.TransactionalAndObservable
 import java.util.Random
 
@@ -18,8 +17,8 @@ class Villano extends Ocupante {
 	
 	String nombre
 	String sexo
-	List<String> seniasParticulares
-	List<String> hobbies
+	List<Caracteristicas> seniasParticulares
+	List<Caracteristicas> hobbies
 	
 	new () {}
 	
@@ -30,7 +29,7 @@ class Villano extends Ocupante {
 	 * @param variasSenias Son las señas que caracterizan al Villanos.
 	 * @param variosHobbies Son los hobbies que tendrá el Villano.
 	 */
-	new(String unNombre, String unSexo, ArrayList<String> variasSenias, ArrayList<String> variosHobbies) 
+	new(String unNombre, String unSexo, ArrayList<Caracteristicas> variasSenias, ArrayList<Caracteristicas> variosHobbies) 
 	{
 		nombre = unNombre
 		sexo = unSexo
@@ -52,7 +51,7 @@ class Villano extends Ocupante {
 	 * 
 	 * @param hobbie Es el hobbie al que se le agrega al villano.
 	 */
-	def agregarHobbie (String hobbie)
+	def agregarHobbie (Caracteristicas hobbie)
 	{
 		hobbies.add(hobbie)
 	}
@@ -60,7 +59,7 @@ class Villano extends Ocupante {
 	/** PROPÓSITO: Agrega un hobbie al Villano solo si no fue agregada anteriormente.
 	 * @param hobbie Es el hobbie que se quiere intentar agregar.
 	 * */
-	def agregarHobbieSiPuede (String hobbie)
+	def agregarHobbieSiPuede (Caracteristicas hobbie)
 	{
 		if (! tieneElHobbie(hobbie))
 			agregarHobbie (hobbie)
@@ -71,7 +70,7 @@ class Villano extends Ocupante {
 	/** PROPÓSITO: Pregunta si el Villano ya tiene el hobbie especificada por parámetro.
 	 * @param hobbie Es el hobbie por el que se hace la verificación.
 	 */
-	def tieneElHobbie(String hobbie) 
+	def tieneElHobbie(Caracteristicas hobbie) 
 	{
 		hobbies.contains(hobbie)
 	}
@@ -98,7 +97,7 @@ class Villano extends Ocupante {
 	 * 
 	 * @param senia Es la senia que se le quita al villano.
 	 */
-	def agregarSenia(String senia)
+	def agregarSenia(Caracteristicas senia)
 	{
 		seniasParticulares.add (senia)
 	}
@@ -106,7 +105,7 @@ class Villano extends Ocupante {
 	/** PROPÓSITO: Agrega una senia particular al Villano solo si no fue agregada anteriormente.
 	 * @param senia Es la senia particular que se quiere intentar agregar.
 	 * */
-	def agregarSeniaSiPuede (String senia)
+	def agregarSeniaSiPuede (Caracteristicas senia)
 	{
 		if (! existeLaSenia(senia))
 			agregarSenia(senia)
@@ -118,7 +117,7 @@ class Villano extends Ocupante {
 	 * @param senia Es la senia particular por la que se hace la verificación.
 	 * 
 	 */
-	def existeLaSenia(String senia) 
+	def existeLaSenia(Caracteristicas senia) 
 	{
 		seniasParticulares.contains(senia)
 	}
