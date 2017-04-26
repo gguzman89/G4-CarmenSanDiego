@@ -7,6 +7,7 @@ import edu.ui.domain.Exceptions.YaEstaAgregadaEsaConexion
 import org.uqbar.commons.utils.TransactionalAndObservable
 import org.uqbar.commons.model.Entity
 import org.uqbar.commons.model.UserException
+import java.util.Random
 
 @Accessors
 @TransactionalAndObservable
@@ -14,17 +15,17 @@ class Pais extends Entity implements Cloneable {
 	
 	String nombrePais
 	List<String> caracteristicaPais
-	List<LugarInteres> lugares
+	List<LugarDeInteres> lugares
 	List<Pais> paisesConexionAerea
+	Ocupante ocupante
 	
 	new (){}
 	
 	new(String nombre) {
 		nombrePais = nombre
 		caracteristicaPais = new ArrayList<String>()
-		lugares = new ArrayList<LugarInteres>()
+		lugares = new ArrayList<LugarDeInteres>()
 		paisesConexionAerea = new ArrayList<Pais>()
-		
 	}
 	
 //	def List<String> getNombreLugares() {
@@ -107,6 +108,23 @@ class Pais extends Entity implements Cloneable {
 	
 	def eliminarCaracteristicaSelecionada(String feature) {
 		caracteristicaPais.remove(feature)
+	}
+	
+	/**
+	 * @PROPÓSITO: Retorna un lugar de los lugares de interes del país de manera aleatoria.
+	 */
+	def lugarDelVillano() 
+	{
+		var Random rnd = new Random
+		var int lugar = rnd.nextInt(2)
+		lugares.get(lugar)
+	}
+	
+	def pistaDeSusCaracteristicas() 
+	{
+		var Random rnd = new Random
+		var int caracteristica = rnd.nextInt(caracteristicaPais.size-1)
+		caracteristicaPais.get(caracteristica)
 	}
 	
 }

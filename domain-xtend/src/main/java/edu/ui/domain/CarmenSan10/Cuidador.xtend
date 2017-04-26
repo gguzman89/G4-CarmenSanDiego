@@ -7,15 +7,15 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Cuidador extends Ocupante {
 	
-	override String responderAlDetective(LugarInteres unLugar) {
-		//si el ocupante es cuidador, es porque el villano no se encuentra en el pais
-		return	"Lo siento creo que se ha equivocado de cuidad, no hay nadie con esas caracteristicas"
-	}
-	
 	override crearMiTipo(Pais p, Caso c) {
 		if (p.estaFueraDelRecorrido(c.planDeEscape)){
 			return this
 		}
+	}
+	
+	override responderAlDetective(Caso caso, LugarDeInteres unLugar, Pais paisActual) 
+	{
+		"Lo siento creo que se ha equivocado de cuidad, no hay nadie con esas caracteristicas"
 	}
 	
 	
