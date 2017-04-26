@@ -78,10 +78,9 @@ class Detective
 	 * @Propósito El Detective recorre un LugarDeInteres del Pais actual en el que se encuentra y recibe su política.
 	 * @param unLugar Es el LugarDeInteres al que el Detective recorre.
 	 */
-	def recorrer (LugarInteres unLugar)
+	def recorrer (LugarDeInteres unLugar)
 	{
-		unLugar.preguntarAlOcupante() 
-		// Esta bien que devuelva la politica del lugar? o tengo que mostrar otra cosa?
+		
 	}
 	
 	/**
