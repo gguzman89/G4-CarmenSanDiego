@@ -4,16 +4,18 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.Exceptions.ElPaisYaEstaIncluidoException
 import org.uqbar.commons.utils.Observable
+import java.util.Random
 
 @Observable
 @Accessors
 class Caso 
 {
-	Villano responzable;
+	Villano responsable;
 	List<Pais> planDeEscape;
 	String reporteDelActoCriminal;
 	String objetoDelRobo;
 	Pais paisDelRobo;
+	LugarDeInteres lugarDelVillano;
 	
 	new () {}
 	
@@ -27,11 +29,32 @@ class Caso
 	 */
 	new (Villano unCriminal, List<Pais> unPlanDeEscape, String reporte, String objetoRobado, Pais unPais) 
 	{
-		responzable = unCriminal
+		responsable = unCriminal
 		planDeEscape = unPlanDeEscape
 		reporteDelActoCriminal = reporte
 		objetoDelRobo = objetoRobado
 		paisDelRobo = unPais
+		lugarDelVillano = lugarDondeSeEncuentraElVillano
+	}
+	
+	def lugarDondeSeEncuentraElVillano() 
+	{
+		ultimoPaisDelRecorrido.lugarDelVillano
+	}
+	
+	def informacionAdicional(Caso caso, int porcentaje) 
+	{
+		var Random rnd = new Random
+		var int adicional = rnd.nextInt(99)
+		if (adicional > (porcentaje-1))
+		{
+			pistaSobreHobbie(caso.responsable)
+		}
+	}
+	
+	def pistaSobreHobbie(Villano villano) 
+	{
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
 	/**
@@ -68,5 +91,17 @@ class Caso
 	{
 		paisActual.esElFinalDelRecorrido(planDeEscape)
 	}
+	
+	def ultimoPaisDelRecorrido()
+	{
+		planDeEscape.get(planDeEscape.size-1)
+	}
+	
+	def proximoDestino(Pais pais) 
+	{
+		val posicionPaisActual = planDeEscape.indexOf(pais)
+		planDeEscape.get(posicionPaisActual+1)
+	}
+	
 	
 }

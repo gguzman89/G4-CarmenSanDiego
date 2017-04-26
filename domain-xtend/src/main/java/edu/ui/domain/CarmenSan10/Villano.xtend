@@ -7,6 +7,7 @@ import edu.ui.domain.Exceptions.YaExisteLaSeniaParticularException
 import edu.ui.domain.Exceptions.YaExisteElHobbieException
 import org.uqbar.commons.utils.Observable
 import org.uqbar.commons.utils.TransactionalAndObservable
+import java.util.Random
 
 @Accessors
 @TransactionalAndObservable
@@ -19,7 +20,6 @@ class Villano extends Ocupante {
 	String sexo
 	List<String> seniasParticulares
 	List<String> hobbies
-	LugarInteres  dondeMeEncuentro
 	
 	new () {}
 	
@@ -30,13 +30,12 @@ class Villano extends Ocupante {
 	 * @param variasSenias Son las señas que caracterizan al Villanos.
 	 * @param variosHobbies Son los hobbies que tendrá el Villano.
 	 */
-	new(String unNombre, String unSexo, ArrayList<String> variasSenias, ArrayList<String> variosHobbies, LugarInteres destinoFinal) 
+	new(String unNombre, String unSexo, ArrayList<String> variasSenias, ArrayList<String> variosHobbies) 
 	{
 		nombre = unNombre
 		sexo = unSexo
 		seniasParticulares = variasSenias
 		hobbies = variosHobbies
-		dondeMeEncuentro= destinoFinal
 	}
 	
 	/**
@@ -48,26 +47,6 @@ class Villano extends Ocupante {
 	{
 		nombre == unNombre
 	}
-	
-	//como verifico si esta en el lugar ese? es una variable del villano??
-	override responderAlDetective(LugarInteres unLugar) 
-	{
-		if (! seEncuentraEnVillanoEnElLugar(unLugar))
-			"CUIDADO DETECTIVE!! Ah estado a punto de caer en una trampa... La persona que busca está en la ciudad"
-		else
-			"ALTO!! Detengase"
-	}
-	
-	def Boolean seEncuentraEnVillanoEnElLugar(LugarInteres lugar)
-	// Ademas de recibir un lugar, debería recibir el País de donde pertenece
-	// los lugares no conocen a que pais pertenecen??
-	{
-		dondeMeEncuentro == lugar
-	}
-	
-	/*Los villanos si están en el país pero no en el lugar al que visitamos intentan matarnos y fallan.
-	 * En ese caso encontramos en cada uno de los LugarInteres un villano, el mismo
-	 */
 	
 	/** PROPÓSITO: Agrega un hobbie al villano.
 	 * 
@@ -148,6 +127,37 @@ class Villano extends Ocupante {
 		if (p.esElFinalDelRecorrido(c.planDeEscape)){
 			return this
 		}
+	}
+	
+	override responderAlDetective(Caso caso, LugarDeInteres unLugar, Pais paisActual)
+	{
+		if (seEncuentraElVillanoEnElLugar(caso, unLugar))
+			"ALTO!! Detengase"
+		else
+			"CUIDADO DETECTIVE!! Ah estado a punto de caer en una trampa... La persona que busca está en la ciudad"
+		
+	}
+	
+	def seEncuentraElVillanoEnElLugar(Caso caso, LugarDeInteres interes) 
+	{
+		interes == caso.lugarDelVillano
+	}
+	
+	/**
+	 * PROPÓSITO: Devuelve un hobbie del Villano.
+	 */
+	def pistaDeHobbies() 
+	{
+		var Random rnd = new Random
+		var int numeroPista = rnd.nextInt(hobbies.size-1)
+		hobbies.get(numeroPista)
+	}
+	
+	def pistaDeSeniasParticulares() 
+	{
+		var Random rnd = new Random
+		var int numeroPista = rnd.nextInt(seniasParticulares.size-1)
+		seniasParticulares.get(numeroPista)
 	}
 	
 }
