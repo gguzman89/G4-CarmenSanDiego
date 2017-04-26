@@ -7,7 +7,7 @@ import org.uqbar.commons.utils.ApplicationContext
 import edu.ui.domain.Repo.RepoMapamundi
 import java.io.Serializable
 import java.util.List
-import org.uqbar.commons.utils.Dependencies
+//import org.uqbar.commons.utils.Dependencies
 import org.uqbar.commons.model.ObservableUtils
 
 @Accessors
@@ -28,7 +28,7 @@ class MapamundiAppModel implements Serializable{
 		ApplicationContext.instance.getSingleton(typeof(Pais))
 	}
 	
-	@Dependencies("itemSeleccionado")
+	//@Dependencies("itemSeleccionado")
 	def List<Pais> getTodosLosPaises(){
 		paisesRepo.objects
 	}

@@ -5,17 +5,17 @@ import edu.ui.domain.CarmenSan10.Villano
 import org.apache.commons.collections15.Predicate
 import edu.ui.domain.CarmenSan10.LugarInteres
 import java.util.List
+import edu.ui.domain.CarmenSan10.LugarDeInteres
 
 class RepoVillanos extends CollectionBasedRepo<Villano>{
 	
-	def Villano create(String nombreVi, String sexoVi, List<String> senias, List<String> hobbiesVi, LugarInteres unLugar ) {
+	def Villano create(String nombreVi, String sexoVi, List<String> senias, List<String> hobbiesVi) {
 		// devolver un villano no va servir en el bootstrap
 		val villano = new Villano => [
 			nombre = nombreVi
 			sexo = sexoVi
 			seniasParticulares = senias
 			hobbies = hobbiesVi
-			dondeMeEncuentro = unLugar
 		]
 		this.create(villano)
 		villano

@@ -7,6 +7,7 @@ import org.apache.commons.collections15.Predicate
 import edu.ui.domain.CarmenSan10.LugarInteres
 import java.util.List
 import org.uqbar.commons.model.UserException
+import edu.ui.domain.CarmenSan10.LugarDeInteres
 
 @Observable
 class RepoMapamundi extends CollectionBasedRepo<Pais>{
@@ -15,7 +16,7 @@ class RepoMapamundi extends CollectionBasedRepo<Pais>{
 	 *  Altas y bajas
 	 */
 	 
-	 def Pais create(String pNombre, List<String> pFeature, List<LugarInteres> pLugar, List<Pais> pConection) {
+	 def Pais create(String pNombre, List<String> pFeature, List<LugarDeInteres> pLugar, List<Pais> pConection) {
 	 	val pais = new Pais => [
 	 		nombrePais = pNombre
 	 		caracteristicaPais = pFeature
