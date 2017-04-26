@@ -8,6 +8,7 @@ import edu.ui.domain.CarmenSan10.Embajada
 import edu.ui.domain.CarmenSan10.Villano
 import edu.ui.domain.Repo.RepoVillanos
 import edu.ui.domain.CarmenSan10.Biblioteca
+import edu.ui.domain.CarmenSan10.LugarDeInteres
 
 class CarmenBootstrap extends CollectionBasedBootstrap{
 	
@@ -20,24 +21,28 @@ class CarmenBootstrap extends CollectionBasedBootstrap{
 		val repoMapamundi = ApplicationContext.instance.getSingleton(typeof(Pais)) as RepoMapamundi
 		val repoVillanos = ApplicationContext.instance.getSingleton(typeof(Villano)) as RepoVillanos
 		
-		val lugarI = new Embajada => [
-			nombre = "Embajada"
-			politicaDelLugar = "el delicuente me guiño el ojo"
-		]
+//		val lugarI = new Embajada => [
+//			nombre = "Embajada"
+//			politicaDelLugar = "el delicuente me guiño el ojo"
+//		]
+		
+		val lugar1 = LugarDeInteres.BANCO
+		
+		val lugar2 = LugarDeInteres.BIBLIOTECA
 		
 		
-		val lugarB = new Biblioteca => [
-			nombre = "Biblioteca"
-			politicaDelLugar = "el delicuente me guiño el ojo"
-		]
+//		val lugarB = new Biblioteca => [
+//			nombre = "Biblioteca"
+//			politicaDelLugar = "el delicuente me guiño el ojo"
+//		]
 		
-		val lugarZ = new Embajada => [
-			politicaDelLugar = "recuerdo que tenia una barba muy larga"
-		]
+//		val lugarZ = new Embajada => [
+//			politicaDelLugar = "recuerdo que tenia una barba muy larga"
+//		]
 		
 		val cArgentina = repoMapamundi.create("Venezuela",
 											  #["bandera amarillo y verde"],
-											  #[lugarZ],
+											  #[lugar1],
 											  #[])
 		
 		
@@ -45,17 +50,17 @@ class CarmenBootstrap extends CollectionBasedBootstrap{
 		
 		repoVillanos.create("Lorenzo", "masculino", 
 							#["guiño de ojo"],
-							#["escuchar musica"], lugarI)
+							#["escuchar musica"])
 							
 		repoMapamundi => [
 			create("Argentina", 
 				  #["bandera azul y blanca"],
-				  #[lugarI, lugarB],
+				  #[lugar1, lugar2],
 				  #[cArgentina])
 				  
 			create("Japon", 
 				  #["bandera blanco con un punto rojo"],
-				  #[lugarZ], 
+				  #[lugar2], 
 				  #[cArgentina]	)
 		]
 		
