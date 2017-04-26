@@ -50,8 +50,16 @@ que pueden ser buenas o malas noticias:"
 	def validacionParaContinuar() 
 	{
 		if (modelObject.esElFinDelJuego)
-			new FinDelJuegoWindow(this, modelObject).open
+			abrirResultadoDelJuego()
+			
 		this.close()
+	}
+	
+	def abrirResultadoDelJuego() 
+	{
+		//if ()
+			new FinDelJuegoWindow(this, modelObject).open
+		// if()
 	}
 	
 }
