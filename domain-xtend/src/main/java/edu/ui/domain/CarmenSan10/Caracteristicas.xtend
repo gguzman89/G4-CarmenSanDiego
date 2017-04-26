@@ -7,7 +7,7 @@ import org.uqbar.commons.utils.TransactionalAndObservable
 @TransactionalAndObservable
 class Caracteristicas {
 	
-	String nombre
+	String nombre = ""
 	
 	new() {}
 	

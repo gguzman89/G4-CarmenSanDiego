@@ -36,7 +36,7 @@ class EditorSuperConexion extends TransactionalDialog<Pais>{
 		]
 		
 		new Column<Pais>(table) => [
-			title = "Característica"
+			title = "Conexiones"
 			bindContentsToProperty("nombrePais")
 		]
 		

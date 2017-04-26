@@ -4,16 +4,17 @@ import edu.ui.domain.CarmenSan10.Pais
 import java.io.Serializable
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.uqbar.commons.utils.Observable
-import edu.ui.domain.CarmenSan10.LugarInteres
+import edu.ui.domain.CarmenSan10.LugarDeInteres
+import edu.ui.domain.CarmenSan10.Caracteristicas
 
 @Accessors
 @Observable
 class PaisAppModel implements Serializable{
 	
 	String featureSelected
-	LugarInteres lugarSelected
+	//LugarDeInteres lugarSelected
 	Pais paisSelected
-	//String nombrePais
+	Caracteristicas nueva = new Caracteristicas
 	
 	/**
 	 * String nombrePais

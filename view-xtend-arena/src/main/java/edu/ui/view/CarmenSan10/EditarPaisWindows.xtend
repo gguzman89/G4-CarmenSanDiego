@@ -15,6 +15,7 @@ import edu.ui.domain.Repo.RepoMapamundi
 import org.uqbar.commons.utils.ApplicationContext
 import edu.ui.domain.AppModel.PaisAppModel
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import edu.ui.domain.CarmenSan10.Caracteristicas
 
 class EditarPaisWindows extends TransactionalDialog<PaisAppModel>{
 	
@@ -52,14 +53,14 @@ class EditarPaisWindows extends TransactionalDialog<PaisAppModel>{
 					onClick([| this.editarCaracteristica])
 				]
 			
-			val table = new Table<Pais>(general, typeof(Pais)) => [
-				//items <=> "caracteristicaPais"
-				//value <=> "modelObject"
+			val table = new Table<Caracteristicas>(general, typeof(Caracteristicas)) => [
+				items <=> "paisSelected.caracteristicaPais"
+				value <=> "paisSelected"
 			]
 			
-				new Column<Pais>(table) => [
+				new Column<Caracteristicas>(table) => [
 					title = "Caracteristicas"
-					//bindContentsToProperty("caracteristicasPais")
+					bindContentsToProperty("nombre")
 				]
 			
 			val editCol2 = new Panel(general) => [
