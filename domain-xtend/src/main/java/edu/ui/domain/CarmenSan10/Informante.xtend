@@ -7,12 +7,6 @@ import java.util.Random
 @Observable
 @Accessors
 class Informante extends Ocupante {
-
-	def String responderAlDetective(LugarInteres unLugar) {
-		//si el ocupante es informante, es porque el villano paso por el pais
-
-		unLugar.politicaDelLugar + unLugar.adicional
-	}
 	
 	override crearMiTipo(Pais p, Caso c) {
 		if(p.estaDentroDelRecorrido(c.planDeEscape)){
