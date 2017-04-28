@@ -7,15 +7,21 @@ import org.eclipse.xtend.lib.annotations.Accessors
 @Accessors
 class Cuidador extends Ocupante {
 	
-	override crearMiTipo(Pais p, Caso c) {
-		if (p.estaFueraDelRecorrido(c.planDeEscape)){
-			return this
-		}
-	}
-	
 	override responderAlDetective(Caso caso, LugarDeInteres unLugar, Pais paisActual) 
 	{
 		"Lo siento creo que se ha equivocado de cuidad, no hay nadie con esas caracteristicas"
+	}
+	
+	override actualizar(Caso caso, Pais p) 
+	{
+		if (p.esElFinalDelRecorrido(caso.planDeEscape))
+		{
+			p.ocupante= caso.responsable
+		}
+		if (p.seEncuentraEnRecorridoSinElUltimoPais(caso.planDeEscape))
+		{
+			p.ocupante= new Informante()
+		}
 	}
 	
 	

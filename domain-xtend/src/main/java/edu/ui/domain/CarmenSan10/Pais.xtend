@@ -26,6 +26,7 @@ class Pais extends Entity implements Cloneable {
 		caracteristicaPais = new ArrayList<Caracteristicas>()
 		lugares = new ArrayList<LugarDeInteres>()
 		paisesConexionAerea = new ArrayList<Pais>()
+		ocupante = new Cuidador()
 	}
 	
 //	def List<String> getNombreLugares() {
@@ -81,7 +82,7 @@ class Pais extends Entity implements Cloneable {
 		! estaDentroDelRecorrido(recorrido)
 	}
 	
-	def perteneceAlRecorrido(List<Pais> recorrido)
+	def seEncuentraEnRecorridoSinElUltimoPais(List<Pais> recorrido)
 	{
 		val recorridoAux = recorrido
 		var recorridoSinUltimoPais = recorrido.filter[pais| pais.noEsElUltimoDelRecorrido(recorridoAux)].toList
@@ -127,6 +128,39 @@ class Pais extends Entity implements Cloneable {
 		var Random rnd = new Random
 		var int caracteristica = rnd.nextInt(caracteristicaPais.size-1)
 		caracteristicaPais.get(caracteristica)
+	}
+	
+	def dar2PistaDeSusCaracteristicas() 
+	{
+		var pistas = caracteristicaPais
+		
+		var Random rnd = new Random
+		var int caracteristica = rnd.nextInt(pistas.size-1)
+		val pista1 = pistas.get(caracteristica)
+		
+		pistas.drop(caracteristica).toList
+		
+		var int caracteristica2 = rnd.nextInt(pistas.size-1)
+		val pista2 = pistas.get(caracteristica2)
+		
+		pista1.nombre + pista2.nombre
+		
+	}
+	
+	def cambiarEstado(Caso caso) {
+		ocupante.actualizar(caso, this)
+	}
+	
+	def List<String> pistas(Caso caso) 
+	{
+		val pistasResultantes = new ArrayList<String>
+		val pista1 = ocupante.responderAlDetective(caso, lugares.get(0), this)
+		val pista2 = ocupante.responderAlDetective(caso, lugares.get(1), this)
+		val pista3 = ocupante.responderAlDetective(caso, lugares.get(3), this)
+		pistasResultantes.add (pista1)
+		pistasResultantes.add (pista2)
+		pistasResultantes.add (pista3)
+		pistasResultantes
 	}
 	
 }

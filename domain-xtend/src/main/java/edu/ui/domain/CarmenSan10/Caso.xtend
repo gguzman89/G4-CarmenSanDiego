@@ -16,6 +16,8 @@ class Caso
 	String objetoDelRobo;
 	Pais paisDelRobo;
 	LugarDeInteres lugarDelVillano;
+	List<List<LugarDeInteres>> lugaresDelPlanEscape;
+	List<List<String>> pistasDelPlanDeEscape;
 	
 	new () {}
 	
@@ -30,11 +32,49 @@ class Caso
 	new (Villano unCriminal, List<Pais> unPlanDeEscape, String reporte, String objetoRobado, Pais unPais) 
 	{
 		responsable = unCriminal
-		planDeEscape = unPlanDeEscape
+		planDeEscape = actualizarPaises(unPlanDeEscape)
 		reporteDelActoCriminal = reporte
 		objetoDelRobo = objetoRobado
 		paisDelRobo = unPais
 		lugarDelVillano = lugarDondeSeEncuentraElVillano
+		lugaresDelPlanEscape = lugaresDelRecorrido(planDeEscape)
+		pistasDelPlanDeEscape = pistasDelRecorrido(planDeEscape)
+	}
+	
+	def mostrarPista(Pais p, LugarDeInteres lugar) {
+		
+		/**
+		 * Falta contemplar el caso en el que el pais NO se encuentra en el 
+		 * planDeEscape
+		 */
+		 
+		val posLugarPista = planDeEscape.indexOf(p)
+		
+		val resLugares = lugaresDelPlanEscape.get(posLugarPista).indexOf(lugar)
+		
+		pistasDelPlanDeEscape.get(posLugarPista).get(resLugares)
+	}
+	
+	def pistasDelRecorrido(List<Pais> paises) 
+	{
+		paises.map[pais | pais.pistas(this)].toList
+	}
+	
+	def lugaresDelRecorrido(List<Pais> paises) 
+	{
+		paises.map[pais | pais.lugares].toList
+	}
+	
+	
+	def actualizarPaises(List<Pais> paises) 
+	{
+		paises.forEach[p | p.cambiarEstado(this)]
+		paises
+	}
+	
+	
+	def Pais actualizarUltimoPaisVillano(Pais ultimo) {
+		
 	}
 	
 	def lugarDondeSeEncuentraElVillano() 
@@ -103,5 +143,11 @@ class Caso
 		planDeEscape.get(posicionPaisActual+1)
 	}
 	
+	def estaResuelto(Detective doc) {
+		
+		doc.ubicacionActual.esElFinalDelRecorrido(planDeEscape) &&
+		doc.ordenDeArresto == responsable.nombre				&&
+		doc.ultimoLugarVisitado == lugarDelVillano 
+	}
 	
 }

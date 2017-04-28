@@ -7,22 +7,18 @@ import java.util.Random
 @Observable
 @Accessors
 class Informante extends Ocupante {
-	
-	override crearMiTipo(Pais p, Caso c) {
-		if(p.estaDentroDelRecorrido(c.planDeEscape)){
-			return this
-		}
-	}
+
+	new(){}	
 
 	override responderAlDetective(Caso caso, LugarDeInteres unLugar, Pais paisActual) 
 	{	
-		switch(unLugar)
-		{
-			case LugarDeInteres.BANCO : responderAlBanco(caso, paisActual)
-			case LugarDeInteres.BIBLIOTECA : responderALaBiblioteca(caso, paisActual)
-			case LugarDeInteres.CLUB : responderAlClub(caso)
-			case LugarDeInteres.EMBAJADA : responderALaEmbajada(caso, paisActual)
-		}
+//		switch(unLugar)
+//		{
+//			case LugarDeInteres.BANCO : responderAlBanco(caso, paisActual)
+//			case LugarDeInteres.BIBLIOTECA : responderALaBiblioteca(caso, paisActual)
+//			case LugarDeInteres.CLUB : responderAlClub(caso)
+//			case LugarDeInteres.EMBAJADA : responderALaEmbajada(caso, paisActual)
+//		}
 	}
 	
 	def responderALaEmbajada(Caso caso, Pais paisActual)
@@ -35,19 +31,19 @@ class Informante extends Ocupante {
 	def responderAlClub(Caso caso)
 	{
 		// 2 señas particulares
-		pistaSobreSeniaParticular(caso.responsable) +
-		pistaSobreSeniaParticular(caso.responsable) +
+		//pistaSobreSeniaParticular(caso.responsable) +
+		//pistaSobreSeniaParticular(caso.responsable) +
 		// 70% 1 hobbie
-		informacionAdicional(caso, 70)
+		//informacionAdicional(caso, 70)
 	}
 	
 	
 	def responderALaBiblioteca(Caso caso, Pais paisActual) 
 	{
 		// lo mismo del banco
-		responderAlBanco(caso, paisActual) + 
+		//responderAlBanco(caso, paisActual) + 
 		// 50% 1 hobbies
-		informacionAdicional(caso, 50)
+		// informacionAdicional(caso, 50)
 	}
 	
 	def responderAlBanco(Caso caso, Pais paisActual)
@@ -66,8 +62,8 @@ class Informante extends Ocupante {
 	
 	def String pistaSobrePaisDestino(Caso caso, Pais paisActual) 
 	{
-		val proximoPais = caso.proximoDestino(paisActual)
-		proximoPais.pistaDeSusCaracteristicas
+		//val proximoPais = caso.proximoDestino(paisActual)
+		//proximoPais.pistaDeSusCaracteristicas
 	}
 	
 	def informacionAdicional(Caso caso, int porcentaje) 
@@ -83,6 +79,9 @@ class Informante extends Ocupante {
 	def pistaSobreHobbie(Villano villano) 
 	{
 		villano.pistaDeHobbies()
+	}
+	
+	override actualizar(Caso caso, Pais p) {
 	}
 	
 	

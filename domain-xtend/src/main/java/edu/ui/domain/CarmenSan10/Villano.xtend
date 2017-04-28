@@ -11,9 +11,6 @@ import java.util.Random
 @Accessors
 @TransactionalAndObservable
 class Villano extends Ocupante {
-	// extends Entity
-	// @TransactionalAndObservable deberia estar aca? 
-	// 		creo q en principio si
 	
 	String nombre
 	String sexo
@@ -122,12 +119,6 @@ class Villano extends Ocupante {
 		seniasParticulares.contains(senia)
 	}
 	
-	override crearMiTipo(Pais p, Caso c) {
-		if (p.esElFinalDelRecorrido(c.planDeEscape)){
-			return this
-		}
-	}
-	
 	override responderAlDetective(Caso caso, LugarDeInteres unLugar, Pais paisActual)
 	{
 		if (seEncuentraElVillanoEnElLugar(caso, unLugar))
@@ -157,6 +148,9 @@ class Villano extends Ocupante {
 		var Random rnd = new Random
 		var int numeroPista = rnd.nextInt(seniasParticulares.size-1)
 		seniasParticulares.get(numeroPista)
+	}
+	
+	override actualizar(Caso caso, Pais p) {
 	}
 	
 }

@@ -3,7 +3,6 @@ package edu.ui.domain.CarmenSan10
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import edu.ui.domain.Exceptions.ElVillanoYaEstaCargadoException
-import java.util.ArrayList
 import org.uqbar.commons.utils.Observable
 
 @Observable

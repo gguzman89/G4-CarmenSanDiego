@@ -16,6 +16,7 @@ class Detective
 {
 	private var List<Pais> recorrido;
 	private var String ordenDeArresto;
+	List<LugarDeInteres> lugaresVisitados
 	
 	/**
 	 * @Propósito: Crea un Detective.
@@ -24,6 +25,7 @@ class Detective
 	{
 		recorrido = new ArrayList<Pais>()
 		ordenDeArresto = ""
+		lugaresVisitados = new ArrayList<LugarDeInteres>()
 	}
 	
 	/**
@@ -50,7 +52,10 @@ class Detective
 	def void viajarSiPuedeA (Pais paisAViajar)
 	{
 		if (puedeViajarA(paisAViajar))
+		{
 			viajarA (paisAViajar)
+			lugaresVisitados = new ArrayList<LugarDeInteres>() // Limpia los lugaresVisitados
+		}
 		else 
 			throw new NoExisteUnaConexionAereaException ("No existe una conexion aerea")
 	}
@@ -63,6 +68,11 @@ class Detective
 	{
 		// no mandar el objeto, sino solo el nombre del pais
 		ubicacionActual.tieneConexionAereaCon(paisAViajar)
+	}
+	
+	def visitarLugar (LugarDeInteres lugar)
+	{
+		lugaresVisitados.add(lugar)
 	}
 	
 	/**
@@ -141,6 +151,16 @@ class Detective
 	def List<Pais>destinosFallidos(List<Pais> recorridoDelVillano)
 	{
 		recorrido.filter[pais | pais.estaFueraDelRecorrido(recorridoDelVillano) ].toList
+	}
+	
+	def ultimoLugarVisitado() 
+	{
+		lugaresVisitados.last
+	}
+	
+	def pedirPista(Caso caso)
+	{
+		caso.mostrarPista(ubicacionActual, ultimoLugarVisitado)
 	}
 	
 }
