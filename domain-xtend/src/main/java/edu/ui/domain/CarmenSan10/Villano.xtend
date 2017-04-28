@@ -140,17 +140,33 @@ class Villano extends Ocupante {
 	{
 		var Random rnd = new Random
 		var int numeroPista = rnd.nextInt(hobbies.size-1)
-		hobbies.get(numeroPista)
+		hobbies.get(numeroPista).nombre
 	}
 	
 	def pistaDeSeniasParticulares() 
 	{
 		var Random rnd = new Random
 		var int numeroPista = rnd.nextInt(seniasParticulares.size-1)
-		seniasParticulares.get(numeroPista)
+		seniasParticulares.get(numeroPista).nombre
 	}
 	
 	override actualizar(Caso caso, Pais p) {
+	}
+	
+	def dar2PistasSeniasParticulares() 
+	{
+		var senias = seniasParticulares
+		
+		var Random rnd = new Random
+		var int pista1 = rnd.nextInt(senias.size-1)
+		var senia1 = senias.get(pista1)
+		
+		senias.drop(pista1).toList
+		
+		var int pista2 = rnd.nextInt(senias.size-1)
+		var senia2 = senias.get(pista2)
+		
+		senia1.nombre + senia2.nombre
 	}
 	
 }

@@ -12,58 +12,45 @@ class Informante extends Ocupante {
 
 	override responderAlDetective(Caso caso, LugarDeInteres unLugar, Pais paisActual) 
 	{	
-//		switch(unLugar)
-//		{
-//			case LugarDeInteres.BANCO : responderAlBanco(caso, paisActual)
-//			case LugarDeInteres.BIBLIOTECA : responderALaBiblioteca(caso, paisActual)
-//			case LugarDeInteres.CLUB : responderAlClub(caso)
-//			case LugarDeInteres.EMBAJADA : responderALaEmbajada(caso, paisActual)
-//		}
+		switch(unLugar)
+		{
+			case LugarDeInteres.BANCO : responderAlBanco(caso, paisActual)
+			case LugarDeInteres.BIBLIOTECA : responderALaBiblioteca(caso, paisActual)
+			case LugarDeInteres.CLUB : responderAlClub(caso)
+			case LugarDeInteres.EMBAJADA : responderALaEmbajada(caso, paisActual)
+		}
 	}
 	
 	def responderALaEmbajada(Caso caso, Pais paisActual)
 	{
 		// 2 pistas del destino del villano
-		pistaSobrePaisDestino(caso, paisActual) +
-		pistaSobrePaisDestino(caso, paisActual)
+		val proximoPais = caso.proximoDestino(paisActual)
+		proximoPais.dar2PistaDeSusCaracteristicas
 	}
 	
 	def responderAlClub(Caso caso)
 	{
 		// 2 señas particulares
-		//pistaSobreSeniaParticular(caso.responsable) +
-		//pistaSobreSeniaParticular(caso.responsable) +
+		caso.responsable.dar2PistasSeniasParticulares +
 		// 70% 1 hobbie
-		//informacionAdicional(caso, 70)
-	}
-	
-	
-	def responderALaBiblioteca(Caso caso, Pais paisActual) 
-	{
-		// lo mismo del banco
-		//responderAlBanco(caso, paisActual) + 
-		// 50% 1 hobbies
-		// informacionAdicional(caso, 50)
+		informacionAdicional(caso, 70)
 	}
 	
 	def responderAlBanco(Caso caso, Pais paisActual)
 	{
 		// 1 pais destino
-		pistaSobrePaisDestino(caso, paisActual)
+		val proximoPais = caso.proximoDestino(paisActual)
+		proximoPais.pistaDeSusCaracteristicas +
 		// 1 señas particulares
-		pistaSobreSeniaParticular(caso.responsable)
+		caso.responsable.pistaDeSeniasParticulares
 	}
 	
-	
-	def pistaSobreSeniaParticular(Villano villano) 
+	def responderALaBiblioteca(Caso caso, Pais paisActual) 
 	{
-		villano.pistaDeSeniasParticulares()
-	}
-	
-	def String pistaSobrePaisDestino(Caso caso, Pais paisActual) 
-	{
-		//val proximoPais = caso.proximoDestino(paisActual)
-		//proximoPais.pistaDeSusCaracteristicas
+		// lo mismo del banco
+		responderAlBanco(caso, paisActual) + 
+		// 50% 1 hobbies
+		informacionAdicional(caso, 50)
 	}
 	
 	def informacionAdicional(Caso caso, int porcentaje) 
@@ -78,7 +65,7 @@ class Informante extends Ocupante {
 	
 	def pistaSobreHobbie(Villano villano) 
 	{
-		villano.pistaDeHobbies()
+		villano.pistaDeHobbies
 	}
 	
 	override actualizar(Caso caso, Pais p) {

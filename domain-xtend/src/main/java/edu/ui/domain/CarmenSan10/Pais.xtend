@@ -127,7 +127,7 @@ class Pais extends Entity implements Cloneable {
 	{
 		var Random rnd = new Random
 		var int caracteristica = rnd.nextInt(caracteristicaPais.size-1)
-		caracteristicaPais.get(caracteristica)
+		caracteristicaPais.get(caracteristica).nombre
 	}
 	
 	def dar2PistaDeSusCaracteristicas() 
