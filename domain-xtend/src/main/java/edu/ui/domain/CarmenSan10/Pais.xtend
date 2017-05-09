@@ -18,8 +18,14 @@ class Pais extends Entity implements Cloneable {
 	List<LugarDeInteres> lugares
 	List<Pais> paisesConexionAerea
 	Ocupante ocupante
+	int id
 	
 	new (){}
+	
+	new(int identi, String nombre) {
+		id = identi
+		nombrePais = nombre
+	}
 	
 	new(String nombre) {
 		nombrePais = nombre
@@ -28,6 +34,10 @@ class Pais extends Entity implements Cloneable {
 		paisesConexionAerea = new ArrayList<Pais>()
 		ocupante = new Cuidador()
 	}
+	
+	 override getId() { // xq me pide que redefina el id?
+	 	id				// si antes jamas lo habia creado?
+	 }					// donde puede estar ese id?
 	
 //	def List<String> getNombreLugares() {
 //		lugares.map[l| l.nombre]

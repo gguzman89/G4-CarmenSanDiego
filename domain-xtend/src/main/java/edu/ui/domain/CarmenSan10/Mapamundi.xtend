@@ -4,28 +4,24 @@ import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.Exceptions.ElPaisYaFueAgregadoException
 import org.uqbar.commons.utils.Observable
+import java.util.ArrayList
 
 @Accessors
 @Observable
 class Mapamundi {
 	
 	List<Pais> paises
-	//Pais paisSeleccionado
+	List<PaisMini> paisesMini = new ArrayList<PaisMini>
 	
 	new() {}	
 	
 	def buscarPais(String nombreDelPaisABuscar) {
 		
-		/*
-		 * como diferencias un pais de otros?
-		 * solo por el nombre
-		 */
 		paises.filter[pais | pais.nombrePais == nombreDelPaisABuscar].toList
 		// (PREGUNTAR) Otra manera de hacerlo...
 		//paises.findFirst[pais | pais.nombrePais == nombreDelPaisABuscar]
 		
 	}
-	
 	
 	def borrarPais(Pais paisABorrar) {
 		paises.remove(paisABorrar)
@@ -47,5 +43,15 @@ class Mapamundi {
 	private def elPaisYaEstaAgregado(Pais paisAgregar) {
 		paises.exists[pais | pais.nombrePais == paisAgregar.nombrePais]
 	}
+	
+	def setPaisMini(PaisMini mini) {
+		eliminarPaisMini(mini.id)
+		paisesMini.add(mini)
+	}
+	
+	def eliminarPaisMini(int id) {
+		paisesMini.removeIf[ it.id == id ]
+	}
+	
 	
 }
