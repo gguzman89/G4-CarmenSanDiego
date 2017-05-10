@@ -5,15 +5,16 @@ import org.uqbar.xtrest.json.JSONUtils
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.http.ContentType
 import edu.ui.domain.CarmenSan10.Mapamundi
+import edu.ui.domain.Dummy.CarmenSan10Dummy
 
 @Controller
 class CarmenSan10RestAPI {
 	extension JSONUtils = new JSONUtils
 	
-	Mapamundi mapamundi
+	CarmenSan10Dummy carmenSan10
 	
-	new (Mapamundi mapa) {
-		mapamundi = mapa
+	new (CarmenSan10Dummy dummy) {
+		carmenSan10 = dummy
 	}
 	
 	
@@ -23,6 +24,15 @@ class CarmenSan10RestAPI {
 	@Get("/paises")
 	def getPaises() {
 		response.contentType = ContentType.APPLICATION_JSON
-		ok(mapamundi.paisesMini.toJson)
+		ok(carmenSan10.mapamundi.paisesMini.toJson)
+	}
+	
+	/**
+	 * paises - devuelve todos los paises
+	 */
+	@Get("/villanos")
+	def getVillanos() {
+		response.contentType = ContentType.APPLICATION_JSON
+		ok(carmenSan10.expediente.toJson)
 	}
 }

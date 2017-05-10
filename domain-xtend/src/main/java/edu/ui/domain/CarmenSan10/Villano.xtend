@@ -12,6 +12,7 @@ import java.util.Random
 @TransactionalAndObservable
 class Villano extends Ocupante {
 	
+	Integer id
 	String nombre
 	String sexo
 	List<Caracteristicas> seniasParticulares

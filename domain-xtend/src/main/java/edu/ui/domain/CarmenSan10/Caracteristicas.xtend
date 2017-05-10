@@ -11,6 +11,11 @@ class Caracteristicas {
 	
 	new() {}
 	
+	new(String caracteristica) 
+	{
+		nombre = caracteristica
+	}
+	
 //	def getNombreCaracteristicas() {
 //		nombre
 //	}

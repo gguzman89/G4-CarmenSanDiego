@@ -4,17 +4,14 @@ import org.uqbar.xtrest.api.XTRest
 import edu.ui.web.rest.CarmenSan10RestAPI
 import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.CarmenSan10.PaisMini
+import edu.ui.domain.Dummy.CarmenSan10Dummy
 
 class CarmanSan10App {
 	
 	def static void main(String[] args) {
-		var mapamundi = new Mapamundi
 		
-		mapamundi.setPaisMini(new PaisMini(1, "Venezuela"))
-		mapamundi.setPaisMini(new PaisMini(6, "Brazil"))
-		mapamundi.setPaisMini(new PaisMini(7, "Argentina"))
+		var dummy = new CarmenSan10Dummy
 		
-		
-		XTRest.startInstance(new CarmenSan10RestAPI(mapamundi), 9000)
+		XTRest.startInstance(new CarmenSan10RestAPI(dummy), 9000)
 	}
 }
