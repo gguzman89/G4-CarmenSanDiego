@@ -28,10 +28,6 @@ class CarmenSan10Dummy
 			paisesMini = miniPaises
 		]
 		
-<<<<<<< HEAD
-=======
-		
->>>>>>> a34ce02d4144472e09f9c87085dbabf62a9bd94f
 		val seniasParticularesCS = new ArrayList<Caracteristicas>()
 		val seniaCS1 = new Caracteristicas("Pelo rojo")
 		val seniaCS2 = new Caracteristicas("Maneja un convertible")
