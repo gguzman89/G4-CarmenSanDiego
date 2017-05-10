@@ -18,8 +18,6 @@ class Villano extends Ocupante {
 	List<Caracteristicas> seniasParticulares
 	List<Caracteristicas> hobbies
 	
-	new () {}
-	
 	/** PROPÓSITO: Crea un Villano con un nombre, sexo, señas particulares y hobbies. 
 	 * 
 	 * @param unNombre Es el nombre que tendrá el Villano.
@@ -34,6 +32,8 @@ class Villano extends Ocupante {
 		seniasParticulares = variasSenias
 		hobbies = variosHobbies
 	}
+	
+	new () {}
 	
 	/**
 	 * PROPÓSITO: Pregunta si el Villano tiene el mismo nombre que se especifica por parámetro.
@@ -168,6 +168,11 @@ class Villano extends Ocupante {
 		var senia2 = senias.get(pista2)
 		
 		senia1.nombre + senia2.nombre
+	}
+	
+	def tieneLaId(Integer id) 
+	{
+		this.id ==id 
 	}
 	
 }

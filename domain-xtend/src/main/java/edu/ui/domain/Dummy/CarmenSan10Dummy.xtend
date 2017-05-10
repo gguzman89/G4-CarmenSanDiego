@@ -12,7 +12,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class CarmenSan10Dummy 
 {
 	Mapamundi mapamundi
-	Expediente expediente = new Expediente
+	Expediente expediente
 	
 	new ()
 	{	
@@ -25,8 +25,6 @@ class CarmenSan10Dummy
 		mapamundi = new Mapamundi => [
 			paisesMini = miniPaises
 		]
-		
-		
 		
 		val seniasParticularesCS = new ArrayList<Caracteristicas>()
 		val seniaCS1 = new Caracteristicas("Pelo rojo")
@@ -42,11 +40,26 @@ class CarmenSan10Dummy
 			id = 3
 		]
 		
-		val villanosD = new ArrayList<Villano>()
-		villanosD.add(villanoCS)
+		val seniasParticularesII = new ArrayList<Caracteristicas>()
+		val seniaII1 = new Caracteristicas("Pelo rubio")
+		val seniaII2 = new Caracteristicas("Maneja un descapotable")
+		seniasParticularesII.add(seniaII1)
+		seniasParticularesII.add(seniaII2)
+		
+		val hobbiesII = new ArrayList<Caracteristicas>()
+		val hobbieII = new Caracteristicas("Juega tenis")
+		hobbiesII.add(hobbieII)
+		
+		val villanoII = new Villano("Ivan Igorovich", "Masculino", seniasParticularesII, hobbiesII) => [
+			id = 2
+		]
+		
+		val villanosDummy = new ArrayList<Villano>()
+		villanosDummy.add(villanoCS)
+		villanosDummy.add(villanoII)
 		
 		expediente = new Expediente => [
-			villanos = villanosD
+			villanos = villanosDummy
 		]
 		
 	}

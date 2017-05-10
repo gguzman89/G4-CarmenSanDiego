@@ -66,4 +66,14 @@ class Expediente
 		villanos.map[v | v.nombre].toList
 	}
 	
+	def obtenerVillanoDeId(Integer idABuscar) 
+	{
+		villanos.findFirst[v|v.tieneLaId(idABuscar)]
+	}
+	
+	def eliminarVillano(Villano villano) 
+	{
+		villanos.remove(villano)
+	}
+	
 }

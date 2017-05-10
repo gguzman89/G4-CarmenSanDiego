@@ -6,6 +6,7 @@ import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.http.ContentType
 import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.Dummy.CarmenSan10Dummy
+import org.uqbar.xtrest.api.annotation.Delete
 
 @Controller
 class CarmenSan10RestAPI {
@@ -28,11 +29,61 @@ class CarmenSan10RestAPI {
 	}
 	
 	/**
-	 * paises - devuelve todos los paises
+	 * villanos - devuelve todos los villanos
 	 */
 	@Get("/villanos")
 	def getVillanos() {
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(carmenSan10.expediente.toJson)
 	}
+	
+	/**
+     * Permite obtener un villano por su id.
+     * 
+     * Atiende requests de la forma GET /villanos/17.
+     */
+    @Get("/villanos/:id")
+    def getVillanosById() {
+        response.contentType = ContentType.APPLICATION_JSON
+        try {        	
+            var villano = carmenSan10.expediente.obtenerVillanoDeId(Integer.valueOf(id))
+            if (villano === null) 
+            {
+            	notFound("No existe un villano con ese id")
+            } 
+            else 
+            {
+            	ok(villano.toJson)
+            }
+        }
+        catch (NumberFormatException ex) 
+        {
+        	badRequest("El id debe ser un numero entero")
+        }
+    }
+    
+    /**
+     * Permite eliminar un villano por su id.
+     * 
+     * Atiende requests de la forma DELETE /villanos/7.
+     */
+    @Delete('/villanos/:id')
+    def deleteVillanoById() {
+        response.contentType = ContentType.APPLICATION_JSON
+        try {
+        	var villano = carmenSan10.expediente.obtenerVillanoDeId(Integer.valueOf(id))
+        	if (villano === null)
+        	{
+        		notFound("No existe un villano con ese id")
+        	}
+        	else
+        	{
+        		carmenSan10.expediente.eliminarVillano(villano)
+        		ok()
+        	}
+        }
+        catch (NumberFormatException ex) {
+        	badRequest("El id debe ser un numero entero")
+        }
+    }
 }
