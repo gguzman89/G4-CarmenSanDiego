@@ -191,4 +191,9 @@ class Villano extends Ocupante {
 		hobbies.size < 1
 	}
 	
+	def simplificar() 
+	{
+		new VillanoMini(id, nombre)
+	}
+	
 }

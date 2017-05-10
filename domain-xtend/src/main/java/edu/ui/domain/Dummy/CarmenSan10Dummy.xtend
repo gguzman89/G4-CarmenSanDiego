@@ -32,6 +32,8 @@ class CarmenSan10Dummy
 											#[new PaisSimple(3, "Rumania")]	))
 											// xq no me deja agregar a venezuela?
 		
+		//VILLANOS
+		
 		val seniasParticularesCS = new ArrayList<Caracteristicas>()
 		val seniaCS1 = new Caracteristicas("Pelo rojo")
 		val seniaCS2 = new Caracteristicas("Maneja un convertible")
@@ -42,9 +44,7 @@ class CarmenSan10Dummy
 		val hobbieCS = new Caracteristicas("Juega tenis")
 		hobbiesCS.add(hobbieCS)
 		
-		val villanoCS = new Villano("Carmen Sandiego", "Femenino", seniasParticularesCS, hobbiesCS) => [
-			id = 3
-		]
+		val villanoCS = new Villano("Carmen Sandiego", "Femenino", seniasParticularesCS, hobbiesCS)
 		
 		val seniasParticularesII = new ArrayList<Caracteristicas>()
 		val seniaII1 = new Caracteristicas("Pelo rubio")
@@ -56,17 +56,11 @@ class CarmenSan10Dummy
 		val hobbieII = new Caracteristicas("Juega tenis")
 		hobbiesII.add(hobbieII)
 		
-		val villanoII = new Villano("Ivan Igorovich", "Masculino", seniasParticularesII, hobbiesII) => [
-			id = 2
-		]
+		val villanoII = new Villano("Ivan Igorovich", "Masculino", seniasParticularesII, hobbiesII)
 		
-		val villanosDummy = new ArrayList<Villano>()
-		villanosDummy.add(villanoCS)
-		villanosDummy.add(villanoII)
-		
-		expediente = new Expediente => [
-			villanos = villanosDummy
-		]
+		expediente = new Expediente
+		expediente.agregarVillano(villanoCS)
+		expediente.agregarVillano(villanoII)
 		
 	}
 	

@@ -7,4 +7,10 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class ExpedienteMini 
 {
 	List<VillanoMini> miniVillanos
+	
+	def agregarVillanoMini(VillanoMini vm) 
+	{
+		miniVillanos.add(vm)
+	}
+	
 }

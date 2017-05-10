@@ -11,8 +11,8 @@ import org.uqbar.xtrest.api.annotation.Body
 import org.uqbar.commons.model.UserException
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import edu.ui.domain.CarmenSan10.Villano
-import edu.ui.domain.Exceptions.VillanoIncompletoException
-import edu.ui.domain.Exceptions.ElVillanoYaEstaCargadoException
+import edu.ui.domain.CarmenSan10.ExpedienteMini
+import edu.ui.dominioXTrest.ExpedienteRest
 
 @Controller
 class CarmenSan10RestAPI {
@@ -20,10 +20,10 @@ class CarmenSan10RestAPI {
 	
 	CarmenSan10Dummy carmenSan10
 	
-	new (CarmenSan10Dummy dummy) {
+	new (CarmenSan10Dummy dummy) 
+	{
 		carmenSan10 = dummy
 	}
-	
 	
 	/**
 	 * paises - devuelve todos los paises
@@ -43,7 +43,7 @@ class CarmenSan10RestAPI {
 		response.contentType = ContentType.APPLICATION_JSON
 		
 		var pais = carmenSan10.getPais(Integer.valueOf(id))
-		if(pais == null) {
+		if(pais === null) {
 			notFound("no se existe el pais con ese ID")
 		}else {
 			ok(pais.toJson)
@@ -63,7 +63,8 @@ class CarmenSan10RestAPI {
 	@Get("/villanos")
 	def getVillanos() {
 		response.contentType = ContentType.APPLICATION_JSON
-		ok(carmenSan10.expediente.toJson)
+		val expedientes = new ExpedienteRest(carmenSan10.expediente.villanos)
+		ok(expedientes.minificador.toJson)
 	}
 	
 	/**
@@ -128,8 +129,8 @@ class CarmenSan10RestAPI {
 	        val Villano villano = body.fromJson(Villano)
 	        try 
 	        {
-				carmenSan10.expediente.editarVillano(villano)
-				ok()	        	
+				carmenSan10.expediente.agregarVillanoNuevo(villano)
+				ok()
 	        }
 	        catch (UserException exception) {
 	        	badRequest(errorToJson(exception.message))

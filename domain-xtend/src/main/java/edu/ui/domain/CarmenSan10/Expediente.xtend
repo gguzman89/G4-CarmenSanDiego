@@ -7,15 +7,19 @@ import org.uqbar.commons.utils.Observable
 import edu.ui.domain.Exceptions.VillanoIncompletoException
 import edu.ui.domain.Exceptions.FaltaAgregarSeniasParticulares
 import edu.ui.domain.Exceptions.FaltaAgregarHobbiesException
+import java.util.ArrayList
 
 @Observable
 @Accessors
 class Expediente 
 {
-	private var List<Villano> villanos;
+	private var List<Villano> villanos
+	private var Integer secuencia = 1
 	
 	new()
-	{}
+	{
+		villanos = new ArrayList<Villano>()
+	}
 	
 	new(List<Villano> villanosACargar)
 	{
@@ -49,9 +53,11 @@ class Expediente
 	 * @Propósito Agrega un villano.
 	 * @param villanoAAgregar Es el Villano que se agrega.
 	 */
-	def agregarVillano (Villano villanoAAgregar)
+	def void agregarVillano (Villano villanoAAgregar)
 	{
+		villanoAAgregar.id = secuencia
 		villanos.add(villanoAAgregar)
+		secuencia++
 	}
 	
 	/**
@@ -86,11 +92,22 @@ class Expediente
 		agregarVillano(villano)
 	}
 	
+	def agregarVillanoNuevo(Villano villano) 
+	{	
+		validarVillano(villano)
+		agregarVillano(villano)
+	}
+	
 	def validarVillano(Villano villano)
 	{
 		if (!villano.estaCompleto) 
 		{
 			throw new VillanoIncompletoException("El villano debe estar completo")
+		}
+		
+		if (elVillanoYaExiste(villano.nombre))
+		{
+			throw new ElVillanoYaEstaCargadoException("Ya existe un villano con ese nombre")
 		}
 		
 		if (faltaAgregarSeniasParticulares(villano))
@@ -113,5 +130,6 @@ class Expediente
 	{
 		villano.faltanSeniasParticulares
 	}
+	
 	
 }

@@ -7,4 +7,11 @@ class VillanoMini
 {
 	Integer id
 	String nombre
+	
+	new(Integer integer, String string) 
+	{
+		id =integer
+		nombre = string
+	}
+	
 }
