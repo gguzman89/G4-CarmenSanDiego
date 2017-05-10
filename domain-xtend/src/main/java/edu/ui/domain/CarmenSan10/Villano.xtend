@@ -7,6 +7,7 @@ import edu.ui.domain.Exceptions.YaExisteLaSeniaParticularException
 import edu.ui.domain.Exceptions.YaExisteElHobbieException
 import org.uqbar.commons.utils.TransactionalAndObservable
 import java.util.Random
+import org.apache.commons.lang.StringUtils
 
 @Accessors
 @TransactionalAndObservable
@@ -173,6 +174,21 @@ class Villano extends Ocupante {
 	def tieneLaId(Integer id) 
 	{
 		this.id ==id 
+	}
+	
+	def estaCompleto() 
+	{
+		StringUtils.isNotBlank(nombre) && StringUtils.isNotBlank(sexo)
+	}
+	
+	def faltanSeniasParticulares() 
+	{
+		seniasParticulares.size < 2
+	}
+	
+	def faltaAgregarHobbie() 
+	{
+		hobbies.size < 1
 	}
 	
 }
