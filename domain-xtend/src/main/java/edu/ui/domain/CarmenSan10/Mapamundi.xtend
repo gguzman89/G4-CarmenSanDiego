@@ -11,7 +11,7 @@ import java.util.ArrayList
 class Mapamundi {
 	
 	List<Pais> paises
-	List<PaisMini> paisesMini = new ArrayList<PaisMini>
+	List<PaisSimple> paisesMini = new ArrayList<PaisSimple>
 	
 	new() {}	
 	
@@ -44,12 +44,12 @@ class Mapamundi {
 		paises.exists[pais | pais.nombrePais == paisAgregar.nombrePais]
 	}
 	
-	def setPaisMini(PaisMini mini) {
-		eliminarPaisMini(mini.id)
+	def setPaisSimple(PaisSimple mini) {
+		eliminarPaisSimple(mini.id)
 		paisesMini.add(mini)
 	}
 	
-	def eliminarPaisMini(int id) {
+	def eliminarPaisSimple(int id) {
 		paisesMini.removeIf[ it.id == id ]
 	}
 	

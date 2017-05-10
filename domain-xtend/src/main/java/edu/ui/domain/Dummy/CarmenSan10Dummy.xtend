@@ -4,9 +4,9 @@ import edu.ui.domain.CarmenSan10.Villano
 import edu.ui.domain.CarmenSan10.Caracteristicas
 import java.util.ArrayList
 import edu.ui.domain.CarmenSan10.Mapamundi
-import edu.ui.domain.CarmenSan10.PaisMini
 import edu.ui.domain.CarmenSan10.Expediente
 import org.eclipse.xtend.lib.annotations.Accessors
+import edu.ui.domain.CarmenSan10.PaisSimple
 
 @Accessors
 class CarmenSan10Dummy 
@@ -16,16 +16,22 @@ class CarmenSan10Dummy
 	
 	new ()
 	{	
-		val miniPaises = new ArrayList<PaisMini>()
+		val miniPaises = new ArrayList<PaisSimple>() // ya se instacio en el new
 		
-		miniPaises.add(new PaisMini(1, "Venezuela"))
-		miniPaises.add(new PaisMini(6, "Brazil"))
-		miniPaises.add(new PaisMini(7, "Argentina"))
+		miniPaises.add(new PaisSimple(1, "Venezuela"))
+		miniPaises.add(new PaisSimple(6, "Brazil"))
+		miniPaises.add(new PaisSimple(7, "Argentina"))
+				
+		//mapamundi.setPaisMini(new PaisSimple(4, "gop"))
 		
 		mapamundi = new Mapamundi => [
 			paisesMini = miniPaises
 		]
 		
+<<<<<<< HEAD
+=======
+		
+>>>>>>> a34ce02d4144472e09f9c87085dbabf62a9bd94f
 		val seniasParticularesCS = new ArrayList<Caracteristicas>()
 		val seniaCS1 = new Caracteristicas("Pelo rojo")
 		val seniaCS2 = new Caracteristicas("Maneja un convertible")
@@ -63,4 +69,9 @@ class CarmenSan10Dummy
 		]
 		
 	}
+	
+	def getPais(int identi) {
+		mapamundi.paisesMini.findFirst[ id == identi]
+	}
+	
 }

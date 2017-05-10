@@ -2,8 +2,6 @@ package edu.ui.web.app
 
 import org.uqbar.xtrest.api.XTRest
 import edu.ui.web.rest.CarmenSan10RestAPI
-import edu.ui.domain.CarmenSan10.Mapamundi
-import edu.ui.domain.CarmenSan10.PaisMini
 import edu.ui.domain.Dummy.CarmenSan10Dummy
 
 class CarmanSan10App {
