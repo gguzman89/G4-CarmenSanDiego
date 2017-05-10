@@ -7,6 +7,8 @@ import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.CarmenSan10.Expediente
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.CarmenSan10.PaisSimple
+import edu.ui.domain.CarmenSan10.PaisConId
+import edu.ui.domain.CarmenSan10.LugarDeInteres
 
 @Accessors
 class CarmenSan10Dummy 
@@ -16,17 +18,19 @@ class CarmenSan10Dummy
 	
 	new ()
 	{	
-		val miniPaises = new ArrayList<PaisSimple>() // ya se instacio en el new
+		mapamundi = new Mapamundi // y nose si es necesario el tener una propiedad Mapamundi
 		
-		miniPaises.add(new PaisSimple(1, "Venezuela"))
-		miniPaises.add(new PaisSimple(6, "Brazil"))
-		miniPaises.add(new PaisSimple(7, "Argentina"))
-				
-		//mapamundi.setPaisMini(new PaisSimple(4, "gop"))
+		var venezuela = new PaisSimple(1, "Venezuela") 
 		
-		mapamundi = new Mapamundi => [
-			paisesMini = miniPaises
-		]
+		mapamundi.setPaisMini(venezuela)
+		mapamundi.setPaisMini(new PaisSimple(6, "Brazil"))
+		mapamundi.setPaisMini(new PaisSimple(7, "Argentina"))
+		
+		mapamundi.setPaisMini(new PaisConId("Chile", 9, 
+											#[LugarDeInteres.BANCO], // xq muestra 3 y en el model 4? 
+																	 // y ademas muestra 2 listas...
+											#[new PaisSimple(3, "Rumania")]	))
+											// xq no me deja agregar a venezuela?
 		
 		val seniasParticularesCS = new ArrayList<Caracteristicas>()
 		val seniaCS1 = new Caracteristicas("Pelo rojo")
