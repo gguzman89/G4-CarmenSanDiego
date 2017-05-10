@@ -26,17 +26,28 @@ class CarmenSan10RestAPI {
 		ok(carmenSan10.mapamundi.paisesMini.toJson)
 	}
 	
-//	@Get("/paises/:id")
-//	def getLibroById() {
-//		response.contentType = ContentType.APPLICATION_JSON
-//		
-//		var pais = carmenSan10.getPais(Integer.valueOf(id))
-//		if(pais == null) {
-//			notFound("no se existe el pais con ese ID")
-//		}else {
-//			ok(pais.toJson)
-//		}
-//	}
+	
+	/**
+	 * pais - devuelve los datos del país 
+	 */
+	@Get("/paises/:id")
+	def getLibroById() {
+		response.contentType = ContentType.APPLICATION_JSON
+		
+		var pais = carmenSan10.getPais(Integer.valueOf(id))
+		if(pais == null) {
+			notFound("no se existe el pais con ese ID")
+		}else {
+			ok(pais.toJson)
+		}
+	}
+	
+	
+	@Get("/pais/:id")
+	def deletePaisById() {
+		ok
+	}
+	
 	
 	/**
 	 * paises - devuelve todos los paises

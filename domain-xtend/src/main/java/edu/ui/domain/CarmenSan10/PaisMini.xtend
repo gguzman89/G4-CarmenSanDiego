@@ -11,6 +11,10 @@ abstract class PaisMini {
 	new(String nombre) {
 		nombrePais = nombre
 	}
+	
+	abstract def int getId()
+	
+	abstract def void setID(int identi) 
 }
 
 @Accessors
@@ -22,6 +26,8 @@ class PaisSimple extends PaisMini {
 		super(nombre)
 		id = identi
 	}
+	
+	override setID(int identi) {}
 	
 }
 
@@ -38,6 +44,8 @@ class PaisConId extends PaisMini {
 		lugares = interes
 		conexiones = simples
 	}
+	
+	override setID(int identi) {}
 	
 	
 	
