@@ -4,7 +4,6 @@ import org.uqbar.xtrest.api.annotation.Controller
 import org.uqbar.xtrest.json.JSONUtils
 import org.uqbar.xtrest.api.annotation.Get
 import org.uqbar.xtrest.http.ContentType
-import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.Dummy.CarmenSan10Dummy
 
 @Controller
@@ -26,6 +25,18 @@ class CarmenSan10RestAPI {
 		response.contentType = ContentType.APPLICATION_JSON
 		ok(carmenSan10.mapamundi.paisesMini.toJson)
 	}
+	
+//	@Get("/paises/:id")
+//	def getLibroById() {
+//		response.contentType = ContentType.APPLICATION_JSON
+//		
+//		var pais = carmenSan10.getPais(Integer.valueOf(id))
+//		if(pais == null) {
+//			notFound("no se existe el pais con ese ID")
+//		}else {
+//			ok(pais.toJson)
+//		}
+//	}
 	
 	/**
 	 * paises - devuelve todos los paises
