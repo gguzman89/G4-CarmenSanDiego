@@ -11,8 +11,8 @@ import org.uqbar.xtrest.api.annotation.Body
 import org.uqbar.commons.model.UserException
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import edu.ui.domain.CarmenSan10.Villano
-import edu.ui.domain.CarmenSan10.ExpedienteMini
 import edu.ui.dominioXTrest.ExpedienteRest
+import edu.ui.dominioXTrest.MapamundiRest
 
 @Controller
 class CarmenSan10RestAPI {
@@ -31,30 +31,31 @@ class CarmenSan10RestAPI {
 	@Get("/paises")
 	def getPaises() {
 		response.contentType = ContentType.APPLICATION_JSON
-		ok(carmenSan10.mapamundi.paisesMini.toJson)
+		val mapamundi = new MapamundiRest(carmenSan10.mapamundi.paises)
+		ok(mapamundi.minificador.toJson)
 	}
 	
 	
-	/**
-	 * pais - devuelve los datos del país 
-	 */
-	@Get("/paises/:id")
-	def getLibroById() {
-		response.contentType = ContentType.APPLICATION_JSON
-		
-		var pais = carmenSan10.getPais(Integer.valueOf(id))
-		if(pais === null) {
-			notFound("no se existe el pais con ese ID")
-		}else {
-			ok(pais.toJson)
-		}
-	}
-	
-	
-	@Get("/pais/:id")
-	def deletePaisById() {
-		ok
-	}
+//	/**
+//	 * pais - devuelve los datos del país 
+//	 */
+//	@Get("/paises/:id")
+//	def getLibroById() {
+//		response.contentType = ContentType.APPLICATION_JSON
+//		
+//		var pais = carmenSan10.mapamundi.getPais(Integer.valueOf(id))
+//		if(pais === null) {
+//			notFound("no se existe el pais con ese ID")
+//		}else {
+//			ok(pais.toJson)
+//		}
+//	}
+//	
+//	
+//	@Get("/pais/:id")
+//	def deletePaisById() {
+//		ok
+//	}
 	
 	
 	/**

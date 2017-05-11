@@ -11,14 +11,15 @@ import java.util.ArrayList
 class Mapamundi {
 	
 	List<Pais> paises
-	List<PaisMini> paisesMini = new ArrayList<PaisMini>
+	int secuencia = 1
 	
-	new() {}	
+	new() {
+		paises = new ArrayList<Pais> // dummy for XTrest
+	}	
 	
 	def buscarPais(String nombreDelPaisABuscar) {
 		
 		paises.filter[pais | pais.nombrePais == nombreDelPaisABuscar].toList
-		// (PREGUNTAR) Otra manera de hacerlo...
 		//paises.findFirst[pais | pais.nombrePais == nombreDelPaisABuscar]
 		
 	}
@@ -36,7 +37,6 @@ class Mapamundi {
 		if (! elPaisYaEstaAgregado(paisAgregar))
 			agregarPais(paisAgregar)
 		else
-			// ¿Por qué ocurrio una excepción? Porque...
 			throw new ElPaisYaFueAgregadoException("No se puede agregar el mismo pais dos veces")
 	}
 	
@@ -44,13 +44,19 @@ class Mapamundi {
 		paises.exists[pais | pais.nombrePais == paisAgregar.nombrePais]
 	}
 	
-	def setPaisMini(PaisMini mini) {
-		eliminarPaisMini(mini.id)
-		paisesMini.add(mini)
+	def void setPaisMini(Pais mini) {
+		
+		mini.id = secuencia
+		paises.add(mini)
+		secuencia++
 	}
 	
 	def eliminarPaisMini(int id) {
-		paisesMini.removeIf[ it.id == id ]
+		paises.removeIf[ it.id == id ]
+	}
+	
+	def getPais(int identi) {
+		paises.findFirst[ id == identi]
 	}
 	
 }

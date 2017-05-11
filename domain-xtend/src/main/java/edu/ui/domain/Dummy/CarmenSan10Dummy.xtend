@@ -6,9 +6,7 @@ import java.util.ArrayList
 import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.CarmenSan10.Expediente
 import org.eclipse.xtend.lib.annotations.Accessors
-import edu.ui.domain.CarmenSan10.PaisSimple
-import edu.ui.domain.CarmenSan10.PaisConId
-import edu.ui.domain.CarmenSan10.LugarDeInteres
+import edu.ui.domain.CarmenSan10.Pais
 
 @Accessors
 class CarmenSan10Dummy 
@@ -20,16 +18,15 @@ class CarmenSan10Dummy
 	{	
 		mapamundi = new Mapamundi // y nose si es necesario el tener una propiedad Mapamundi
 		
-		var venezuela = new PaisSimple(1, "Venezuela") 
+		var venezuela = new Pais("Venezuela") 
 		
 		mapamundi.setPaisMini(venezuela)
-		mapamundi.setPaisMini(new PaisSimple(6, "Brazil"))
-		mapamundi.setPaisMini(new PaisSimple(7, "Argentina"))
+		mapamundi.setPaisMini(new Pais("Brazil"))
+		mapamundi.setPaisMini(new Pais("Argentina"))
 		
-		mapamundi.setPaisMini(new PaisConId("Chile", 9, 
-											#[LugarDeInteres.BANCO], // xq muestra 3 y en el model 4? 
-																	 // y ademas muestra 2 listas...
-											#[new PaisSimple(3, "Rumania")]	))
+//		mapamundi.setPaisMini(new Pais("Chile", 9, 
+//											#[LugarDeInteres.BANCO], 
+//											#[new PaisSimple(3, "Rumania")]	))
 											// xq no me deja agregar a venezuela?
 		
 		//VILLANOS
@@ -64,8 +61,6 @@ class CarmenSan10Dummy
 		
 	}
 	
-	def getPais(int identi) {
-		mapamundi.paisesMini.findFirst[ id == identi]
-	}
+	
 	
 }
