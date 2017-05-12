@@ -164,7 +164,7 @@ class Pais extends Entity implements Cloneable {
 		val pistasResultantes = new ArrayList<String>
 		val pista1 = ocupante.responderAlDetective(caso, lugares.get(0), this)
 		val pista2 = ocupante.responderAlDetective(caso, lugares.get(1), this)
-		val pista3 = ocupante.responderAlDetective(caso, lugares.get(3), this)
+		val pista3 = ocupante.responderAlDetective(caso, lugares.get(2), this)
 		pistasResultantes.add (pista1)
 		pistasResultantes.add (pista2)
 		pistasResultantes.add (pista3)
