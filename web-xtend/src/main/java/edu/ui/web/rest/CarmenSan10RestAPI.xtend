@@ -14,6 +14,7 @@ import edu.ui.domain.CarmenSan10.Villano
 import edu.ui.dominioXTrest.ExpedienteRest
 import edu.ui.dominioXTrest.MapamundiRest
 import org.uqbar.xtrest.api.annotation.Put
+import edu.ui.dominioXTrest.PaisSinID
 
 @Controller
 class CarmenSan10RestAPI {
@@ -32,7 +33,7 @@ class CarmenSan10RestAPI {
 	@Get("/paises")
 	def getPaises() {
 		response.contentType = ContentType.APPLICATION_JSON
-		val mapamundi = new MapamundiRest(carmenSan10.mapamundi.paises)
+		val mapamundi = new MapamundiRest(carmenSan10.mapamundi.paises) // comparte o calcula?
 		ok(mapamundi.minificador.toJson)
 	}
 	
@@ -40,28 +41,57 @@ class CarmenSan10RestAPI {
 	/**
 	 * pais - devuelve los datos del país 
 	 */
-	@Get("/paises/:id")
+	@Get("/pais/:id")
 	def getLibroById() {
 		response.contentType = ContentType.APPLICATION_JSON
+		try{
+			var pais = carmenSan10.mapamundi.getPais(Integer.valueOf(id))
+			val mapamundi = new MapamundiRest(carmenSan10.mapamundi.paises) // puede ser un new() {}???
+			val resConexiones = mapamundi.minificador(pais.paisesConexionAerea)
+			
+			var pais_mini = mapamundi.miniPais(pais, resConexiones)
+			// que onda los notFoundo o bad request?
+			// tendra algo que ver el .json del ejemplo Biblioteca
+			if(pais == null) { //pais_mini == null || 
+				notFound("no existe el pais con ese ID")
+			} else {
+				ok(pais_mini.toJson)
+			}
 		
-		var pais = carmenSan10.mapamundi.getPais(Integer.valueOf(id))
-		val mapamundi = new MapamundiRest(carmenSan10.mapamundi.paises)
-		val resConexiones = mapamundi.minificador(pais.paisesConexionAerea)
-		
-		var pais_mini = mapamundi.miniPais(pais, resConexiones)
-		
-		if(pais_mini === null) {
-			notFound("no se existe el pais con ese ID")
-		}else {
-			ok(pais_mini.toJson)
+		} catch (NumberFormatException ex) {
+			badRequest(getErrorJson("El id debe ser un numero entero"))
 		}
 	}
 	
 	
-//	@Get("/pais/:id")
-//	def deletePaisById() {
-//		ok
-//	}
+	/**
+	 * pais - eliminar un pais por su id
+	 * Atiende requests de la forma DELETE /paises/4.
+	 */
+	@Delete("/pais/:id")
+	def deletePaisById() {
+		response.contentType = ContentType.APPLICATION_JSON
+		
+		try {
+			carmenSan10.mapamundi.eliminarPaisMini(Integer.valueOf(id))
+			ok()
+		} catch (NumberFormatException exception) {
+			badRequest("El id debe ser un numero entero")
+		}
+	}
+	
+	
+	@Post("/paises")
+	def createPais(@Body String body) {
+		response.contentType = ContentType.APPLICATION_JSON
+		
+		val PaisSinID pais = body.fromJson(PaisSinID)
+		val mapamundi = new MapamundiRest(carmenSan10.mapamundi.paises)
+		var paisMaxi = mapamundi.maximizar(pais, carmenSan10.mapamundi)
+		carmenSan10.mapamundi.setPaisMini(paisMaxi)
+		
+		ok(carmenSan10.mapamundi.getPais(paisMaxi.nombrePais).id.toJson)
+	}
 	
 	
 	/**
@@ -177,6 +207,10 @@ class CarmenSan10RestAPI {
     
     private def messageToJson(String message) 
     {
+        '{ "error": "' + message + '" }'
+    }
+    
+    private def getErrorJson(String message) { // es indiferente
         '{ "error": "' + message + '" }'
     }
 }

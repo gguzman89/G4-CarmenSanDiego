@@ -30,6 +30,15 @@ class Pais extends Entity implements Cloneable {
 		ocupante = new Cuidador()
 	}
 	
+	new(String nombre, List<LugarDeInteres> lugarest, List<Pais> conex_rest) {
+		nombrePais = nombre
+		lugares = lugarest
+		paisesConexionAerea = conex_rest
+		caracteristicaPais = new ArrayList<Caracteristicas>()
+		ocupante = new Cuidador()
+		
+	}
+	
 //	def List<String> getNombreLugares() {
 //		lugares.map[l| l.nombre]
 //		//lugares.get(0).nombre
@@ -40,8 +49,6 @@ class Pais extends Entity implements Cloneable {
 	
 	def void setNombreCaracteristica(List<Caracteristicas> pfeature) {}
 	
-	// y todo lo que se pueda jugar con una lista por cada lista
-	
 	def tieneConexionAereaCon(Pais pais) {
 		paisesConexionAerea.exists[p | p.nombrePais == pais.nombrePais]
 	}
@@ -51,7 +58,7 @@ class Pais extends Entity implements Cloneable {
 	}
 	
 	def agregarConexionSiPuede(Pais unPais) {
-		if (! paisesConexionAerea.contains(unPais)) { // Returns true if this list contains the specified element.
+		if (! paisesConexionAerea.contains(unPais)) {
 			agregarConexionesAerea
 		} else {
 			throw new YaEstaAgregadaEsaConexion("Tenes un conexion/pais ya definida")

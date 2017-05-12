@@ -59,4 +59,16 @@ class Mapamundi {
 		paises.findFirst[ id == identi]
 	}
 	
+	def getPais(String nombre) {
+		paises.findFirst[ nombrePais == nombre]
+	}
+	
+	def getUltimoPaisAgregado() {
+		var ultimo_pais = paises.map[p|p.id].toList
+		val idMax = ultimo_pais.max
+		// no confundir id con posicion
+		getPais(idMax)
+		
+	}
+	
 }
