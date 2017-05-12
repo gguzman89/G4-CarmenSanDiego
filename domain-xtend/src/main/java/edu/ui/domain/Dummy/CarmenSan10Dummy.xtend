@@ -7,6 +7,7 @@ import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.CarmenSan10.Expediente
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.CarmenSan10.Pais
+import edu.ui.domain.CarmenSan10.LugarDeInteres
 
 @Accessors
 class CarmenSan10Dummy 
@@ -16,13 +17,21 @@ class CarmenSan10Dummy
 	
 	new ()
 	{	
-		mapamundi = new Mapamundi // y nose si es necesario el tener una propiedad Mapamundi
+		mapamundi = new Mapamundi
 		
-		var venezuela = new Pais("Venezuela") 
+		val venezuela = new Pais("Venezuela") // diff entre val y var 
+		val uruguay = new Pais() => [
+			nombrePais = "Uruguay"
+			lugares = #[LugarDeInteres.BANCO, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB]
+			paisesConexionAerea = #[venezuela]
+			caracteristicaPais = #[new Caracteristicas("A toda hora mate :D")]
+		]
 		
-		mapamundi.setPaisMini(venezuela)
-		mapamundi.setPaisMini(new Pais("Brazil"))
-		mapamundi.setPaisMini(new Pais("Argentina"))
+		mapamundi.setPaisMini(venezuela)			 // id = 1
+		mapamundi.setPaisMini(new Pais("Brazil"))	 // id = 2
+		mapamundi.setPaisMini(new Pais("Argentina")) // id = 3
+		
+		mapamundi.setPaisMini(uruguay)				 // id = 4
 		
 //		mapamundi.setPaisMini(new Pais("Chile", 9, 
 //											#[LugarDeInteres.BANCO], 

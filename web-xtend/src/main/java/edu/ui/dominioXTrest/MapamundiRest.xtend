@@ -23,4 +23,22 @@ class MapamundiRest {
 		}
 		paisesMini
 	}
+	
+	def minificador(List<Pais> conexiones) 
+	{
+		val paisesMini = new ArrayList<PaisRest>
+		for(pais : paises)
+		{
+			paisesMini.add(new PaisRest(pais.id, pais.nombrePais))
+		}
+		paisesMini
+	}
+	
+	def miniPais(Pais pais, List<PaisRest> paisesRest) {
+		
+		val rest = new PaisConID(pais.nombrePais, pais.lugares, pais.id, paisesRest)
+		rest
+	}
+	
+	
 }
