@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException
 import edu.ui.domain.CarmenSan10.Villano
 import edu.ui.dominioXTrest.ExpedienteRest
 import edu.ui.dominioXTrest.MapamundiRest
+import org.uqbar.xtrest.api.annotation.Put
 import edu.ui.dominioXTrest.PaisSinID
 
 @Controller
@@ -114,14 +115,14 @@ class CarmenSan10RestAPI {
      * 
      * Atiende requests de la forma GET /villanos/17.
      */
-    @Get("/villanos/:id")
+    @Get("/villano/:id")
     def getVillanosById() {
         response.contentType = ContentType.APPLICATION_JSON
         try {        	
             var villano = carmenSan10.expediente.obtenerVillanoDeId(Integer.valueOf(id))
-            if (villano === null) 
+            if (villano.equals(null)) 
             {
-            	notFound("No existe un villano con ese id")
+            	notFound(messageToJson("No existe un villano con ese id"))
             } 
             else 
             {
@@ -130,7 +131,7 @@ class CarmenSan10RestAPI {
         }
         catch (NumberFormatException ex) 
         {
-        	badRequest(errorToJson("El id debe ser un numero entero"))
+        	badRequest(messageToJson("El id debe ser un numero entero"))
         }
     }
     
@@ -140,13 +141,13 @@ class CarmenSan10RestAPI {
      * Atiende requests de la forma DELETE /villanos/7.
      */
     @Delete('/villanos/:id')
-    def deleteVillanoById() {
+    def borrarVillano() {
         response.contentType = ContentType.APPLICATION_JSON
         try {
         	var villano = carmenSan10.expediente.obtenerVillanoDeId(Integer.valueOf(id))
-        	if (villano === null)
+        	if (villano.equals(null))
         	{
-        		notFound("No existe un villano con ese id")
+        		notFound(messageToJson("No existe un villano con ese id"))
         	}
         	else
         	{
@@ -155,35 +156,62 @@ class CarmenSan10RestAPI {
         	}
         }
         catch (NumberFormatException ex) {
-        	badRequest(errorToJson("El id debe ser un numero entero"))
+        	badRequest(messageToJson("El id debe ser un numero entero"))
         }
     }
     
      /**
-     * Permite crear o modificar un villano.
+     * Permite crear un villano.
      * 
      * Atiende requests de la forma POST /villanos con un villano en el body (en formato JSON).
      */
-    @Post("/villanos")
-    def createLibro(@Body String body) {
+    @Post("/villano")
+    def crearVillano(@Body String body) {
         response.contentType = ContentType.APPLICATION_JSON
         try {
 	        val Villano villano = body.fromJson(Villano)
 	        try 
 	        {
 				carmenSan10.expediente.agregarVillanoNuevo(villano)
-				ok()
+				ok('{"id":' + ' "carmenSan10.expediente.idDelVillano(villano.nombre)" }')
 	        }
 	        catch (UserException exception) {
-	        	badRequest(errorToJson(exception.message))
+	        	badRequest(messageToJson(exception.message))
 	        }
         } 
         catch (UnrecognizedPropertyException exception) {
-        	badRequest(errorToJson("El body debe ser un Villano"))
+        	badRequest(messageToJson("El body debe ser un Villano"))
         }
     }
     
-    private def errorToJson(String message) 
+     /**
+     * Permite editar un villano.
+     * 
+     * Atiende requests de la forma POST /villanos/2 con un villano en el body (en formato JSON).
+     */
+    @Put("/villano/:id")
+    def modificarVillano(@Body String body) 
+    {
+        response.contentType = ContentType.APPLICATION_JSON
+        try {
+	        val Villano villano = body.fromJson(Villano) // villano nuevo
+	        val Integer idV = Integer.valueOf(id) // id del villano a modificar
+	        try 
+	        {
+				carmenSan10.expediente.editarVillano(villano, idV)
+				ok(messageToJson("Villano actualizado correctamente"))
+	        }
+	        catch (UserException exception) 
+	        {
+	        	badRequest(messageToJson(exception.message))
+	        }
+        } 
+        catch (UnrecognizedPropertyException exception) {
+        	badRequest(messageToJson("El body debe ser un Villano"))
+        }
+    }
+    
+    private def messageToJson(String message) 
     {
         '{ "error": "' + message + '" }'
     }

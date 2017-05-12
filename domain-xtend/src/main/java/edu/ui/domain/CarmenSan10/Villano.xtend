@@ -191,6 +191,15 @@ class Villano extends Ocupante {
 		hobbies.size < 1
 	}
 	
+	def actualizarInformacion(String nuevoNombre, String nuevoSexo, List<Caracteristicas> nuevasSenias, List<Caracteristicas> nuevosHobbies) 
+	{
+		nombre = nuevoNombre
+		sexo = nuevoSexo
+		seniasParticulares = nuevasSenias
+		hobbies = nuevosHobbies
+	}
+	
+	
 //	def simplificar() 
 //	{
 //		new VillanoMini(id, nombre)

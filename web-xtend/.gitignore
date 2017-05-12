@@ -2,6 +2,8 @@
 bin
 /bin/
 /xtend-gen/
+web-xtend/src/main/xtend-gen/*
+web-xtend/src/main/xtend-gen/
 src/main/generated-sources
 src/test/generated-sources
 .project

@@ -44,7 +44,7 @@ class Expediente
 	 */
 	def elVillanoYaExiste (String unNombre) 
 	{
-		villanos.exists[v | v.tieneElMismoNombreQue (unNombre)]
+		villanos.exists[v | v.tieneElMismoNombreQue(unNombre)]
 		// Que es lo mismo que escribir...
 		// expedientes.exists[| it.nombre == villano.nombre]
 	}
@@ -85,11 +85,9 @@ class Expediente
 		villanos.remove(villano)
 	}
 	
-	def editarVillano(Villano villano) 
+	def void editarVillano(Villano villano, Integer id) 
 	{	
-		validarVillano(villano)
-		eliminarVillanoDeId(villano.id) // Elimina un eventual duplicado con mismo id
-		agregarVillano(villano)
+		obtenerVillanoDeId(id).actualizarInformacion(villano.nombre, villano.sexo, villano.seniasParticulares, villano.hobbies)
 	}
 	
 	def agregarVillanoNuevo(Villano villano) 
@@ -129,6 +127,12 @@ class Expediente
 	def faltaAgregarSeniasParticulares(Villano villano) 
 	{
 		villano.faltanSeniasParticulares
+	}
+	
+	def idDelVillano(String nombre) 
+	{
+		var villano = buscarVillano(nombre).get(0)
+		villano.id
 	}
 	
 	
