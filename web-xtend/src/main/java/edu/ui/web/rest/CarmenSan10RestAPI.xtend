@@ -93,6 +93,12 @@ class CarmenSan10RestAPI {
 	}
 	
 	
+	@Get("/pistaDelLugar")
+	def getPistaDelLugarById() {
+		ok
+	}
+	
+	
 	/**
 	 * villanos - devuelve todos los villanos
 	 */
