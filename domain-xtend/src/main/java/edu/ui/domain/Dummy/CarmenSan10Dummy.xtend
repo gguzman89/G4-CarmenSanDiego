@@ -16,29 +16,51 @@ class CarmenSan10Dummy
 	Expediente expediente
 	
 	new ()
-	{	
+	{
+		/**
+		 * Mapamundi - Paises
+		 */	
 		mapamundi = new Mapamundi
 		
-		val venezuela = new Pais("Venezuela") // diff entre val y var 
+		// diff entre val y var?
+		val venezuela = new Pais() => [
+			nombrePais = "Venezuela"
+			lugares = #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB]
+			paisesConexionAerea = #[]
+			caracteristicaPais = #[new Caracteristicas("Maduro a la cabeza")]
+		]
+		
+		val brazil = new Pais() => [
+			nombrePais = "Brazil"
+			lugares = #[LugarDeInteres.EMBAJADA, LugarDeInteres.BANCO, LugarDeInteres.CLUB]
+			paisesConexionAerea = #[venezuela]
+			caracteristicaPais = #[new Caracteristicas("Joga bonito")]
+		]
+		
+		val argentina = new Pais() => [
+			nombrePais = "Argentina"
+			lugares = #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.BANCO]
+			paisesConexionAerea = #[venezuela, brazil]
+			caracteristicaPais = #[new Caracteristicas("Bandera azul y blanca")]
+		]
+		
 		val uruguay = new Pais() => [
 			nombrePais = "Uruguay"
 			lugares = #[LugarDeInteres.BANCO, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB]
-			paisesConexionAerea = #[venezuela]
+			paisesConexionAerea = #[venezuela, brazil, argentina]
 			caracteristicaPais = #[new Caracteristicas("A toda hora mate :D")]
 		]
 		
-		mapamundi.setPaisMini(venezuela)			 // id = 1
-		mapamundi.setPaisMini(new Pais("Brazil"))	 // id = 2
-		mapamundi.setPaisMini(new Pais("Argentina")) // id = 3
 		
-		mapamundi.setPaisMini(uruguay)				 // id = 4
+		mapamundi.setPaisMini(venezuela) // id = 1
+		mapamundi.setPaisMini(brazil)	 // id = 2
+		mapamundi.setPaisMini(argentina) // id = 3
+		mapamundi.setPaisMini(uruguay)	 // id = 4
 		
-//		mapamundi.setPaisMini(new Pais("Chile", 9, 
-//											#[LugarDeInteres.BANCO], 
-//											#[new PaisSimple(3, "Rumania")]	))
-											// xq no me deja agregar a venezuela?
 		
-		//VILLANOS
+		/**
+		 * Expediente - Villanos
+		 */
 		
 		val seniasParticularesCS = new ArrayList<Caracteristicas>()
 		val seniaCS1 = new Caracteristicas("Pelo rojo")
@@ -69,7 +91,6 @@ class CarmenSan10Dummy
 		expediente.agregarVillano(villanoII)
 		
 	}
-	
 	
 	
 }

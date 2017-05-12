@@ -3,6 +3,7 @@ package edu.ui.dominioXTrest
 import org.eclipse.xtend.lib.annotations.Accessors
 import java.util.List
 import edu.ui.domain.CarmenSan10.LugarDeInteres
+import edu.ui.domain.CarmenSan10.Mapamundi
 
 @Accessors
 class PaisRest {
@@ -18,6 +19,12 @@ class PaisRest {
 		id = identi
 		nombre = name
 	}
+	
+	def maximizar(Mapamundi mapa, String nombre) {
+		
+		var pais_maxi = mapa.getPais(nombre)
+		pais_maxi
+	} 
 }
 
 @Accessors
@@ -38,4 +45,14 @@ class PaisConID {
 		mini_conexiones = rests
 	}
 	
+}
+
+@Accessors
+class PaisSinID {
+	
+	String nombre
+	List<LugarDeInteres> lugares
+	List<PaisRest> mini_conexiones
+	
+	new() {}
 }
