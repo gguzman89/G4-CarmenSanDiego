@@ -94,6 +94,10 @@ class CarmenSan10RestAPI {
 	}
 	
 	
+	/**
+	 * How to pass url query params?
+	 * For eg: http://www.abx.com?x=2&y=3
+	 */
 	@Get("/pistaDelLugar")
 	def getPistaDelLugarById() {
 		ok
