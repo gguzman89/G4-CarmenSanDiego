@@ -15,6 +15,8 @@ import edu.ui.dominioXTrest.ExpedienteRest
 import edu.ui.dominioXTrest.MapamundiRest
 import org.uqbar.xtrest.api.annotation.Put
 import edu.ui.dominioXTrest.PaisSinID
+import edu.ui.dominioXTrest.EmitirOrdenRequest
+import edu.ui.dominioXTrest.ViajeRequest
 
 @Controller
 class CarmenSan10RestAPI {
@@ -126,7 +128,7 @@ class CarmenSan10RestAPI {
             var villano = carmenSan10.expediente.obtenerVillanoDeId(Integer.valueOf(id))
             if (villano.equals(null)) 
             {
-            	notFound(messageToJson("No existe un villano con ese id"))
+            	notFound(getErrorJson("No existe un villano con ese id"))
             } 
             else 
             {
@@ -135,7 +137,7 @@ class CarmenSan10RestAPI {
         }
         catch (NumberFormatException ex) 
         {
-        	badRequest(messageToJson("El id debe ser un numero entero"))
+        	badRequest(getErrorJson("El id debe ser un numero entero"))
         }
     }
     
@@ -151,7 +153,7 @@ class CarmenSan10RestAPI {
         	var villano = carmenSan10.expediente.obtenerVillanoDeId(Integer.valueOf(id))
         	if (villano.equals(null))
         	{
-        		notFound(messageToJson("No existe un villano con ese id"))
+        		notFound(getErrorJson("No existe un villano con ese id"))
         	}
         	else
         	{
@@ -160,7 +162,7 @@ class CarmenSan10RestAPI {
         	}
         }
         catch (NumberFormatException ex) {
-        	badRequest(messageToJson("El id debe ser un numero entero"))
+        	badRequest(getErrorJson("El id debe ser un numero entero"))
         }
     }
     
@@ -177,14 +179,14 @@ class CarmenSan10RestAPI {
 	        try 
 	        {
 				carmenSan10.expediente.agregarVillanoNuevo(villano)
-				ok('{"id":' + ' "carmenSan10.expediente.idDelVillano(villano.nombre)" }')
+				ok(carmenSan10.expediente.idDelVillano(villano.nombre).toJson)
 	        }
 	        catch (UserException exception) {
-	        	badRequest(messageToJson(exception.message))
+	        	badRequest(getErrorJson(exception.message))
 	        }
         } 
         catch (UnrecognizedPropertyException exception) {
-        	badRequest(messageToJson("El body debe ser un Villano"))
+        	badRequest(getErrorJson("El body debe ser un Villano"))
         }
     }
     
@@ -202,23 +204,68 @@ class CarmenSan10RestAPI {
 	        val Integer idV = Integer.valueOf(id) // id del villano a modificar
 	        try 
 	        {
-				carmenSan10.expediente.editarVillano(villano, idV)
-				ok(messageToJson("Villano actualizado correctamente"))
+				carmenSan10.expediente.editarVillanoSiPuede(villano, idV)
+				ok("Villano actualizado correctamente".toJson)
 	        }
 	        catch (UserException exception) 
 	        {
-	        	badRequest(messageToJson(exception.message))
+	        	badRequest(getErrorJson(exception.message))
 	        }
         } 
         catch (UnrecognizedPropertyException exception) {
-        	badRequest(messageToJson("El body debe ser un Villano"))
+        	badRequest(getErrorJson("El body debe ser un Villano"))
         }
     }
     
-    private def messageToJson(String message) 
-    {
-        '{ "error": "' + message + '" }'
+     /**
+     * Permite emitir una orden de arresto.
+     * 
+     * Atiende requests de la forma POST /emitirOrdenPara con un EmitirOrdenRequest en el body (en formato JSON).
+     */
+    @Post("/emitirOrdenPara")
+    def emitirOrdenRequest(@Body String body) {
+        response.contentType = ContentType.APPLICATION_JSON
+        try {
+	        val EmitirOrdenRequest ordenDeArresto = body.fromJson(EmitirOrdenRequest)
+	        try 
+	        {
+				//carmenSan10.caso.generarOrdenDeArresto(ordenDeArresto)
+				ok("Orden emitida correctamente")
+	        }
+	        catch (UserException exception) {
+	        	badRequest(getErrorJson(exception.message))
+	        }
+        } 
+        catch (UnrecognizedPropertyException exception) {
+        	badRequest(getErrorJson("El body debe ser un EmitirOrdenRequest"))
+        }
     }
+    
+    /**
+     * Permite viajar una a otro pais.
+     * 
+     * Atiende requests de la forma POST /viajar con un ViajeRequest en el body (en formato JSON).
+     */
+    @Post("/viajar")
+    def viajar(@Body String body) 
+    {
+        response.contentType = ContentType.APPLICATION_JSON
+        try {
+	        val ViajeRequest viaje = body.fromJson(ViajeRequest)
+	        try 
+	        {
+				//carmenSan10.caso.generarOrdenDeArresto(viaje)
+				ok("Orden emitida correctamente")
+	        }
+	        catch (UserException exception) {
+	        	badRequest(getErrorJson(exception.message))
+	        }
+        } 
+        catch (UnrecognizedPropertyException exception) {
+        	badRequest(getErrorJson("El body debe ser un ViajeRequest"))
+        }
+    }
+    
     
     private def getErrorJson(String message) { // es indiferente
         '{ "error": "' + message + '" }'

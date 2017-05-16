@@ -10,6 +10,7 @@ import java.util.Random
 @Accessors
 class Caso 
 {
+	Integer id;
 	Villano responsable;
 	List<Pais> planDeEscape;
 	String reporteDelActoCriminal;
@@ -31,6 +32,7 @@ class Caso
 	 */
 	new (Villano unCriminal, List<Pais> unPlanDeEscape, String reporte, String objetoRobado, Pais unPais) 
 	{
+		id = 1
 		responsable = unCriminal
 		planDeEscape = actualizarPaises(unPlanDeEscape)
 		reporteDelActoCriminal = reporte

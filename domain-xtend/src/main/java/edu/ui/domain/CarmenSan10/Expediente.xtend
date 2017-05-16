@@ -85,8 +85,9 @@ class Expediente
 		villanos.remove(villano)
 	}
 	
-	def void editarVillano(Villano villano, Integer id) 
+	def void editarVillanoSiPuede(Villano villano, Integer id) 
 	{	
+		validarEdicion(villano, id)
 		obtenerVillanoDeId(id).actualizarInformacion(villano.nombre, villano.sexo, villano.seniasParticulares, villano.hobbies)
 	}
 	
@@ -94,6 +95,29 @@ class Expediente
 	{	
 		validarVillano(villano)
 		agregarVillano(villano)
+	}
+	
+	def validarEdicion(Villano villano, Integer id)
+	{
+		if (!villano.estaCompleto) 
+		{
+			throw new VillanoIncompletoException("El villano debe estar completo")
+		}
+		
+		if (elNombreYaFueUtilizado(villano, id))
+		{
+			throw new ElVillanoYaEstaCargadoException("Ya existe un villano con ese nombre")
+		}
+		
+		if (faltaAgregarSeniasParticulares(villano))
+		{
+			throw new FaltaAgregarSeniasParticulares("El villano debe tener al menos 2 senias particulares")
+		}
+		
+		if (faltaAgregarElHobbie(villano))
+		{
+			throw new FaltaAgregarHobbiesException("El villano debe tener al menos 1 hobbie")
+		}
 	}
 	
 	def validarVillano(Villano villano)
@@ -117,6 +141,11 @@ class Expediente
 		{
 			throw new FaltaAgregarHobbiesException("El villano debe tener al menos 1 hobbie")
 		}
+	}
+	
+	def elNombreYaFueUtilizado(Villano villano, Integer id) 
+	{
+		villanos.exists[v|v.tieneElMismoNombreQue(villano.nombre) && (v.id != id)]
 	}
 	
 	def faltaAgregarElHobbie(Villano villano) 
