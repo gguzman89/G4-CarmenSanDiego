@@ -17,6 +17,8 @@ import org.uqbar.xtrest.api.annotation.Put
 import edu.ui.dominioXTrest.PaisSinID
 import edu.ui.dominioXTrest.EmitirOrdenRequest
 import edu.ui.dominioXTrest.ViajeRequest
+import edu.ui.dominioXTrest.CasoRest
+import edu.ui.domain.CarmenSan10.Caso
 
 @Controller
 class CarmenSan10RestAPI {
@@ -83,7 +85,7 @@ class CarmenSan10RestAPI {
 	}
 	
 	
-	@Post("/paises")
+	@Post("/pais")
 	def createPais(@Body String body) {
 		response.contentType = ContentType.APPLICATION_JSON
 		
@@ -97,11 +99,27 @@ class CarmenSan10RestAPI {
 	
 	
 	/**
+	 * inicia un juego y devuelve un caso
+	 */
+	 @Post("/iniciarJuego")
+	 def getIniciarJuego(@Body String body) {
+	 	response.contentType = ContentType.APPLICATION_JSON
+	 	val Caso caso = body.fromJson(Caso)
+	 	ok()
+	 }
+	 
+	
+	/**
 	 * How to pass url query params?
 	 * For eg: http://www.abx.com?x=2&y=3
 	 */
 	@Get("/pistaDelLugar")
-	def getPistaDelLugarById() {
+	def getPistaDelLugar(String name, String caso) {
+		response.contentType = ContentType.APPLICATION_JSON
+		
+		//var caso = caso.fromJson(Caso)
+		
+		
 		ok
 	}
 	

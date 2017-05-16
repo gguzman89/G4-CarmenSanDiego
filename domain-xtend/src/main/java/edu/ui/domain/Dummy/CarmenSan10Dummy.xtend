@@ -8,12 +8,24 @@ import edu.ui.domain.CarmenSan10.Expediente
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.CarmenSan10.Pais
 import edu.ui.domain.CarmenSan10.LugarDeInteres
+import edu.ui.domain.CarmenSan10.Caso
+import edu.ui.domain.CarmenSan10.Detective
 
 @Accessors
 class CarmenSan10Dummy 
 {
 	Mapamundi mapamundi
 	Expediente expediente
+	
+	Detective doc
+	Caso caso
+	
+	/**
+	 * ACME? necesitamos un administrador?
+	 * o xq esta Caso en ACME si en ningun momento la instancia
+	 * o inicializa?
+	 */
+
 	
 	new ()
 	{
@@ -90,6 +102,18 @@ class CarmenSan10Dummy
 		expediente.agregarVillano(villanoCS)
 		expediente.agregarVillano(villanoII)
 		
+		
+		/**
+		 * Caso
+		 */
+		 
+		 caso = new Caso()
+		 
+		 
+		 /**
+		  * Detective
+		  */
+		doc = new Detective()
 	}
 	
 	
