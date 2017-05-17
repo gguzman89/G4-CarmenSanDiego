@@ -246,14 +246,9 @@ class CarmenSan10RestAPI {
         response.contentType = ContentType.APPLICATION_JSON
         try {
 	        val EmitirOrdenRequest ordenDeArresto = body.fromJson(EmitirOrdenRequest)
-	        try 
-	        {
-				//carmenSan10.caso.generarOrdenDeArresto(ordenDeArresto)
-				ok("Orden emitida correctamente")
-	        }
-	        catch (UserException exception) {
-	        	badRequest(getErrorJson(exception.message))
-	        }
+	       	val villano = carmenSan10.expediente.obtenerVillanoDeId(ordenDeArresto.villanoId)
+			carmenSan10.doc.ordenarArresto(villano)
+			ok("Orden emitida correctamente")
         } 
         catch (UnrecognizedPropertyException exception) {
         	badRequest(getErrorJson("El body debe ser un EmitirOrdenRequest"))

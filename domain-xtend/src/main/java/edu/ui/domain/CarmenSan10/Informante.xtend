@@ -70,11 +70,6 @@ class Informante extends Ocupante {
 	
 	override actualizar(Caso caso, Pais p) 
 	{
-		if (p.seEncuentraEnRecorridoSinElUltimoPais(caso.planDeEscape))
-		{
-			p.ocupante = new Informante()
-		}
 	}
-	
 	
 }

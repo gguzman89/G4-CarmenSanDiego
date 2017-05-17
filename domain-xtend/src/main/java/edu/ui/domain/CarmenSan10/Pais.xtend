@@ -20,7 +20,9 @@ class Pais extends Entity implements Cloneable {
 	Ocupante ocupante
 	Integer id
 	
-	new() {}
+	new() {
+		ocupante = new Cuidador()
+	}
 	
 	new(String nombre) {
 		nombrePais = nombre
@@ -71,7 +73,7 @@ class Pais extends Entity implements Cloneable {
 	
 	def esElFinalDelRecorrido(List<Pais> recorrido)
 	{
-		var Pais paisDestino = recorrido.get(recorrido.size - 1)
+		val Pais paisDestino = recorrido.get(recorrido.size - 1)
 		this.esIgualA(paisDestino.nombrePais)
 	}
 	
@@ -155,7 +157,8 @@ class Pais extends Entity implements Cloneable {
 		
 	}
 	
-	def cambiarEstado(Caso caso) {
+	def cambiarEstado(Caso caso) 
+	{
 		ocupante.actualizar(caso, this)
 	}
 	
