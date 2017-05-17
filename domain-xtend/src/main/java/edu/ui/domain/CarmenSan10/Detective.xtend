@@ -14,8 +14,8 @@ import org.uqbar.commons.utils.Observable
 
 class Detective 
 {
-	private var List<Pais> recorrido;
-	private var String ordenDeArresto;
+	private var List<Pais> recorrido
+	private var String ordenDeArresto
 	List<LugarDeInteres> lugaresVisitados
 	
 	/**

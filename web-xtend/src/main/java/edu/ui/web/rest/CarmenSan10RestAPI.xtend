@@ -19,6 +19,7 @@ import edu.ui.dominioXTrest.EmitirOrdenRequest
 import edu.ui.dominioXTrest.ViajeRequest
 import edu.ui.dominioXTrest.CasoRest
 import edu.ui.domain.CarmenSan10.Caso
+import edu.ui.domain.CarmenSan10.Pais
 
 @Controller
 class CarmenSan10RestAPI {
@@ -272,7 +273,8 @@ class CarmenSan10RestAPI {
 	        val ViajeRequest viaje = body.fromJson(ViajeRequest)
 	        try 
 	        {
-				//carmenSan10.caso.generarOrdenDeArresto(viaje)
+	        	val Pais destino = carmenSan10.mapamundi.getPais(viaje.destinoId)
+				//carmenSan10.doc.viajar(destino)
 				ok("Orden emitida correctamente")
 	        }
 	        catch (UserException exception) {
