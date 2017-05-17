@@ -105,7 +105,7 @@ class CarmenSan10RestAPI {
 	 @Post("/iniciarJuego")
 	 def getIniciarJuego(@Body String body) {
 	 	response.contentType = ContentType.APPLICATION_JSON
-	 	val CasoRest caso = body.fromJson(CasoRest)
+	 	val casoMax = carmenSan10.caso
 	 	ok()
 	 }
 	 
