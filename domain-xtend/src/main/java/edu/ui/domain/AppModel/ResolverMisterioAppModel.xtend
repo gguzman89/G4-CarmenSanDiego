@@ -1,11 +1,9 @@
 package edu.ui.domain.AppModel
 
-import edu.ui.domain.CarmenSan10.Detective
-import edu.ui.domain.CarmenSan10.Caso
 import edu.ui.domain.CarmenSan10.ACME
 import edu.ui.domain.CarmenSan10.Pais
 import edu.ui.domain.CarmenSan10.Villano
-import edu.ui.domain.CarmenSan10.LugarInteres
+import edu.ui.domain.CarmenSan10.LugarDeInteres
 
 class ResolverMisterioAppModel 
 {
@@ -60,16 +58,16 @@ class ResolverMisterioAppModel
 		acme.detectiveViajaA(paisSeleccionado)
 	}
 	
-	def LugarInteres el1erLugarDeInteres() {
+	def LugarDeInteres el1erLugarDeInteres() {
 		// devuelve el 1er lugar de interes
 	}
 	
-	def LugarInteres el2erLugarDeInteres() 
+	def LugarDeInteres el2erLugarDeInteres() 
 	{
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 	
-	def LugarInteres el3erLugarDeInteres() 
+	def LugarDeInteres el3erLugarDeInteres() 
 	{
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
