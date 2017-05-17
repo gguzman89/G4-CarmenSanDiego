@@ -11,7 +11,7 @@ import java.util.ArrayList
 class Mapamundi {
 	
 	List<Pais> paises
-	int secuencia = 1
+	Integer secuencia = 1
 	
 	new() {
 		paises = new ArrayList<Pais> // dummy for XTrest
@@ -51,11 +51,11 @@ class Mapamundi {
 		secuencia++
 	}
 	
-	def eliminarPaisMini(int id) {
+	def eliminarPaisMini(Integer id) {
 		paises.removeIf[ it.id == id ]
 	}
 	
-	def getPais(int identi) {
+	def getPais(Integer identi) {
 		paises.findFirst[ id == identi]
 	}
 	

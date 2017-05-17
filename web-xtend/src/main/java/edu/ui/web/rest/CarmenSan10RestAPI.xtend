@@ -271,10 +271,11 @@ class CarmenSan10RestAPI {
         response.contentType = ContentType.APPLICATION_JSON
         try {
 	        val ViajeRequest viaje = body.fromJson(ViajeRequest)
+	        val ViajeRequest pais = new ViajeRequest(viaje.destinoId, viaje.casoId) 
 	        try 
 	        {
-	        	val Pais destino = carmenSan10.mapamundi.getPais(viaje.destinoId)
-				//carmenSan10.doc.viajar(destino)
+	        	val Pais destino = carmenSan10.mapamundi.getPais(pais.destinoId)
+				carmenSan10.doc.viajarSiPuedeA(destino)
 				ok("Orden emitida correctamente")
 	        }
 	        catch (UserException exception) {

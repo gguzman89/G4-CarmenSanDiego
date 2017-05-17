@@ -110,17 +110,21 @@ class CarmenSan10Dummy
 		 caso = new Caso() => 
 		 [
 		 	responsable = villanoCS
-		 	planDeEscape = #[venezuela, brazil, argentina] // Carmensita sabe que en Argentina hay impunidad
+		 	planDeEscape = #[argentina, brazil, venezuela] // Carmensita sabe que en venexuela hay impunidad
 		 	reporteDelActoCriminal = "A las 9 de la mañana en la ciudad del Cairo la comunidad científica fue conmovida al darse cuenta del faltante de gran valor! El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III. El criminal fue muy prolijo y la escena del crimen no contaba con pista alguna, su misión como detective es desifrar el responsable de tal crímen y apresarlo."
 		 	objetoDelRobo = "Tumba del faraón"
-		 	paisDelRobo = venezuela // Cualquier cosa, anteriormente, La tumba del faraón se la habia robado Maduro
+		 	paisDelRobo = argentina
 		 ]
 		 
 		 
 		 /**
 		  * Detective
 		  */
-		doc = new Detective()
+		doc = new Detective() =>
+		[
+			recorrido = #[argentina]
+		]
+		
 	}
 	
 	
