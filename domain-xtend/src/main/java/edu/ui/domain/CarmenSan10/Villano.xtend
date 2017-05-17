@@ -152,7 +152,12 @@ class Villano extends Ocupante {
 		seniasParticulares.get(numeroPista).nombre
 	}
 	
-	override actualizar(Caso caso, Pais p) {
+	override actualizar(Caso caso, Pais p) 
+	{
+		if (p.esElFinalDelRecorrido(caso.planDeEscape))
+		{
+			p.ocupante = caso.responsable
+		}
 	}
 	
 	def dar2PistasSeniasParticulares() 

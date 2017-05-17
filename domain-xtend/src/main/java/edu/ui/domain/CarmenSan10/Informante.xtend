@@ -68,7 +68,12 @@ class Informante extends Ocupante {
 		villano.pistaDeHobbies
 	}
 	
-	override actualizar(Caso caso, Pais p) {
+	override actualizar(Caso caso, Pais p) 
+	{
+		if (p.seEncuentraEnRecorridoSinElUltimoPais(caso.planDeEscape))
+		{
+			p.ocupante = new Informante()
+		}
 	}
 	
 	

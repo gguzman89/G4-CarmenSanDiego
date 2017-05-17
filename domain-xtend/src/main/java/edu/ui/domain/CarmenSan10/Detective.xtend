@@ -16,7 +16,7 @@ class Detective
 {
 	private var List<Pais> recorrido
 	private var String ordenDeArresto
-	List<LugarDeInteres> lugaresVisitados
+	List<LugarDeInteres> lugaresVisitados // puede que no lo necesite
 	
 	/**
 	 * @Propósito: Crea un Detective.
@@ -25,7 +25,7 @@ class Detective
 	{
 		recorrido = new ArrayList<Pais>()
 		ordenDeArresto = ""
-		lugaresVisitados = new ArrayList<LugarDeInteres>()
+		lugaresVisitados = new ArrayList<LugarDeInteres>() // puede que no lo necesite
 	}
 	
 	/**
@@ -153,14 +153,19 @@ class Detective
 		recorrido.filter[pais | pais.estaFueraDelRecorrido(recorridoDelVillano) ].toList
 	}
 	
-	def ultimoLugarVisitado() 
+	def ultimoLugarVisitado() // puede que no lo necesite
 	{
 		lugaresVisitados.last
 	}
 	
-	def pedirPista(Caso caso)
+	def pedirPista(Caso caso) // puede que no lo necesite
 	{
 		caso.mostrarPista(ubicacionActual, ultimoLugarVisitado)
+	}
+	
+	def pedirPista(Caso caso, LugarDeInteres lugar)
+	{
+		caso.mostrarPista(ubicacionActual, lugar)
 	}
 	
 }
