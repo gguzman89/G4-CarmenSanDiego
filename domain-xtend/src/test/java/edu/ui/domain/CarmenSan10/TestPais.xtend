@@ -16,7 +16,6 @@ class TestPais {
 	////////////////////////////////////////////////////////////////////////////////////
 	
 	Villano nn
-	Informante nerd
 	Caso expo
 	
 	Caso hard
@@ -43,8 +42,6 @@ class TestPais {
 		nn = new Villano() => [
 			nombre = "Julian"
 		]
-		
-		nerd = new Informante()
 		
 		expo = new Caso() => [
 			planDeEscape = #[venezuela, belgica, panama]
@@ -97,10 +94,9 @@ class TestPais {
 		
 		panama.cambiarEstado(expo)
 		
-		Assert.assertTrue("no resp a Equals", panama.ocupante == expo.responsable) 
-		// si a NotEquals
-		// o tambien puedo verificar el ID
-		// claro los 2 son Ocupantes :P
+		println("Villano Panama --> " + panama.ocupante.nombre)
+		println("Responsable Expo --> " + expo.responsable.nombre)
+		Assert.assertTrue("no resp a Equals", panama.ocupante.nombre == expo.responsable.nombre)
 	}
 	
 	@Test
@@ -108,7 +104,9 @@ class TestPais {
 		
 		venezuela.cambiarEstado(expo)
 		
-		Assert.assertNotNull("no resp a equals", venezuela.ocupante)
+		println("Informante Venezuela --> " + venezuela.ocupante.nombre)
+		println("Responsable Expo --> " + expo.responsable.nombre)
+		Assert.assertTrue("no resp a equals", venezuela.ocupante.nombre != expo.responsable.nombre)
 		/**
 		 * se que no esta vacia pero no se si resp a ser Informante
 		 */

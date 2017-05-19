@@ -68,13 +68,19 @@ class Caso
 	}
 	
 	
-	def actualizarPaises(List<Pais> paises) 
+	def List<Pais> actualizarPaises(List<Pais> paises) 
 	{
+<<<<<<< HEAD
 		for (var i=0; i>=paises.size; i++)
 		{
 			paises.get(i).cambiarEstado(this)
 		}
 		//paises.forEach[p | p.cambiarEstado(this)]
+=======
+		//paises.map[p|p.cambiarEstado(this)]
+		
+		paises.forEach[p | p.cambiarEstado(this)]
+>>>>>>> 5175cddc20282da894fa082e1348fa3cdcd250b3
 		paises
 	}
 	

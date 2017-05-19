@@ -30,37 +30,35 @@ class Informante extends Ocupante {
 	
 	def responderAlClub(Caso caso)
 	{
-		// 2 señas particulares
-		caso.responsable.dar2PistasSeniasParticulares +
-		// 70% 1 hobbie
-		informacionAdicional(caso, 70)
+		caso.responsable.dar2PistasSeniasParticulares + " " + informacionAdicional(caso, 70)
+		// 2 señas particulares									// 70% 1 hobbie
 	}
 	
 	def responderAlBanco(Caso caso, Pais paisActual)
 	{
-		// 1 pais destino
 		val proximoPais = caso.proximoDestino(paisActual)
-		proximoPais.pistaDeSusCaracteristicas +
-		// 1 señas particulares
-		caso.responsable.pistaDeSeniasParticulares
+		proximoPais.pistaDeSusCaracteristicas + " " + caso.responsable.pistaDeSeniasParticulares
+		// 1 pais destino								// 1 señas particulares
 	}
 	
 	def responderALaBiblioteca(Caso caso, Pais paisActual) 
 	{
-		// lo mismo del banco
-		responderAlBanco(caso, paisActual) + 
-		// 50% 1 hobbies
-		informacionAdicional(caso, 50)
+		responderAlBanco(caso, paisActual) + " " + informacionAdicional(caso, 50)
+		// lo mismo del banco						// 50% 1 hobbies
 	}
 	
 	def informacionAdicional(Caso caso, int porcentaje) 
 	{
 		var Random rnd = new Random
 		var int adicional = rnd.nextInt(99)
+		
+		var respuesta = ""
+		
 		if (adicional > (porcentaje-1))
 		{
-			pistaSobreHobbie(caso.responsable)
+			respuesta = pistaSobreHobbie(caso.responsable)
 		}
+		respuesta
 	}
 	
 	def pistaSobreHobbie(Villano villano) 
