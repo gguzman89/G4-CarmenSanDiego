@@ -16,7 +16,9 @@ class Detective
 {
 	private var List<Pais> recorrido
 	private var String ordenDeArresto
-	List<LugarDeInteres> lugaresVisitados // puede que no lo necesite
+	List<LugarDeInteres> lugaresVisitados // puede que no lo necesite.
+	// lugaresVisitados estaba pensado para que pueda consultar la pista correspondiente al ultimo lugar que estoy visitando...
+	// pero es mejro esperar a que me lo pasen por aprametro que tenerlo guardado.
 	
 	/**
 	 * @Propósito: Crea un Detective.

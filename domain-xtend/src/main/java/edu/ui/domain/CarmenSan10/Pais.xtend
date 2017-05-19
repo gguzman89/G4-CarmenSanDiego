@@ -158,7 +158,7 @@ class Pais extends Entity implements Cloneable {
 		// reparar el casos donde retorna las misma pista 2 veces
 	}
 	
-	def cambiarEstado(Caso caso) 
+	def void cambiarEstado(Caso caso) // este funciona realmente
 	{
 		ocupante.actualizar(caso, this)
 	}
