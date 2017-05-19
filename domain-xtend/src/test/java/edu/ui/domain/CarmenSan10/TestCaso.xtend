@@ -141,11 +141,17 @@ class TestCaso
 	@Test
 	def void testAgregarPaisDeEscape ()
 	{	
-		casoFeliz = new Caso(villano, planDeEscape, reporteDelCrimen, objetoRobado, argentina)
+		val caso = new Caso()
 		
-		casoFeliz.agregarPaisDeEscape(bolivia)
+		val resultado = caso.actualizarPaises(planDeEscape)
 		
-		Assert.assertTrue(casoFeliz.estaIncluidoEnElPlanDeEscape(bolivia))
+		//casoFeliz = new Caso(villano, planDeEscape, reporteDelCrimen, objetoRobado, argentina)
+		
+		//casoFeliz.agregarPaisDeEscape(bolivia)
+		
+		//Assert.assertTrue(casoFeliz.estaIncluidoEnElPlanDeEscape(bolivia))
+		
+		Assert.assertTrue(resultado.last.nombrePais == "Venezuela")
 	}
 	
 	/**

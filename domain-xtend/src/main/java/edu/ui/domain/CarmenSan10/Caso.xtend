@@ -70,7 +70,11 @@ class Caso
 	
 	def actualizarPaises(List<Pais> paises) 
 	{
-		paises.forEach[p | p.cambiarEstado(this)]
+		for (var i=0; i>=paises.size; i++)
+		{
+			paises.get(i).cambiarEstado(this)
+		}
+		//paises.forEach[p | p.cambiarEstado(this)]
 		paises
 	}
 	
