@@ -143,15 +143,17 @@ class Pais extends Entity implements Cloneable {
 		var pistas = caracteristicaPais
 		
 		var Random rnd = new Random
-		var int caracteristica = rnd.nextInt(pistas.size)
+		var Integer caracteristica = rnd.nextInt(pistas.size)
 		val pista1 = pistas.get(caracteristica)
 		
-		pistas.drop(caracteristica).toList
-		//pistas.remove(caracteristica) no sirve
+		println("numero aleatorio " + caracteristica)
+		//println("antes " + pistas.size)
+		val pistasRestantes = pistas.filter[c | c.nombre != pista1.nombre].toList
+		//println("despues " + pistasRestantes.size)
 		
-		var int caracteristica2 = rnd.nextInt(pistas.size)
-		val pista2 = pistas.get(caracteristica2)
-		
+		var Integer caracteristica2 = rnd.nextInt(pistasRestantes.size)
+		val pista2 = pistasRestantes.get(caracteristica2)
+		println("numero aleatorio 2 " + caracteristica2)
 		pista1.nombre +" "+ pista2.nombre
 		// reparar el casos donde retorna las misma pista 2 veces
 	}
@@ -219,7 +221,7 @@ class Pais extends Entity implements Cloneable {
 		println(panama.caracteristicaPais.get(2).nombre)
 		println("pista --> " + panama.pistaDeSusCaracteristicas)
 		println("2 pistas --> " + panama.dar2PistaDeSusCaracteristicas)
-		println(caracteristica)
+		println("numero random " + caracteristica)
 		println("----------------------------------------")
 		println(pistas.get(0))
 		//println(venezuela.seEncuentraEnRecorridoSinElUltimoPais(hard.planDeEscape))
