@@ -28,7 +28,7 @@ class Villano extends Ocupante {
 	 * @param variasSenias Son las señas que caracterizan al Villanos.
 	 * @param variosHobbies Son los hobbies que tendrá el Villano.
 	 */
-	new(String unNombre, String unSexo, ArrayList<Caracteristicas> variasSenias, ArrayList<Caracteristicas> variosHobbies) 
+	new(String unNombre, String unSexo, List<Caracteristicas> variasSenias, List<Caracteristicas> variosHobbies) 
 	{
 		nombre = unNombre
 		sexo = unSexo

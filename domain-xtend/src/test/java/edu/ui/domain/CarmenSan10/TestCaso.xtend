@@ -10,10 +10,11 @@ import org.junit.Before
 
 class TestCaso 
 {
-	Pais paisMock1
-	Pais paisMock2
+	List<Pais> planDeEscape
 	
-	/////////////////////////////////////////////////////////////////////////
+	String reporteDelCrimen
+	
+	String objetoRobado
 	
 	Pais argentina
 	Pais bolivia
@@ -21,38 +22,114 @@ class TestCaso
 	Pais venezuela
 	Pais brazil
 	
-	Villano expo
-	////////////////////////////////////////////////////////////////////////
+	List<LugarDeInteres> lugaresArg
+	List<LugarDeInteres> lugaresBo
+	List<LugarDeInteres> lugaresMx
+	List<LugarDeInteres> lugaresVe
+	List<LugarDeInteres> lugaresBr
+	
+	List<Pais> conexionesArg
+	List<Pais> conexionesBo
+	List<Pais> conexioneMx
+	List<Pais> conexionesVe
+	List<Pais> conexionesBr
+	
+	Villano villano
+	
+	Caracteristicas senia1
+	Caracteristicas senia2
+	Caracteristicas senia3
+	
+	Caracteristicas hobbie1
+	
+	List<Caracteristicas> seniasParticulares
+	List<Caracteristicas> hobbies
 	
 	Caso casoFeliz
+	Caso casoInfeliz
 	
 	@Before
 	def void setUp() {
-		paisMock1 = mock(Pais)
-		paisMock2 = mock(Pais)
-		
 		////////////////////////////////////////////////////////////////////////
 		
-		argentina = new Pais("Argentina")
-		bolivia = new Pais("Bolivia")
-		mexico = new Pais("Mexico")
-		venezuela = new Pais("Venezuela")
-		brazil = new Pais("Brazil")
+		lugaresArg = new ArrayList<LugarDeInteres>()
 		
-		val planDeEscape = new ArrayList<Pais>()
+		lugaresArg.add(LugarDeInteres.BIBLIOTECA)
+		lugaresArg.add(LugarDeInteres.CLUB)
+		lugaresArg.add(LugarDeInteres.EMBAJADA)
+		
+		lugaresBo = new ArrayList<LugarDeInteres>()
+		lugaresBo.add(LugarDeInteres.BANCO)
+		lugaresBo.add(LugarDeInteres.CLUB)
+		lugaresBo.add(LugarDeInteres.EMBAJADA)
+		
+		lugaresMx = new ArrayList<LugarDeInteres>()
+		lugaresMx.add(LugarDeInteres.BANCO)
+		lugaresMx.add(LugarDeInteres.BIBLIOTECA)
+		lugaresMx.add(LugarDeInteres.EMBAJADA)
+		
+		lugaresVe = new ArrayList<LugarDeInteres>()
+		lugaresVe.add(LugarDeInteres.BANCO)
+		lugaresVe.add(LugarDeInteres.CLUB)
+		lugaresVe.add(LugarDeInteres.EMBAJADA)
+		
+		lugaresBr = new ArrayList<LugarDeInteres>()
+		lugaresBr.add(LugarDeInteres.BANCO)
+		lugaresBr.add(LugarDeInteres.CLUB)
+		lugaresBr.add(LugarDeInteres.BIBLIOTECA)
+		
+		
+		venezuela = new Pais("Venezuela", lugaresVe, conexionesVe)
+		
+		conexionesBr = new ArrayList<Pais>()
+		conexionesBr.add(venezuela)
+		brazil = new Pais("Brazil", lugaresBr, conexionesBr)
+		
+		conexionesBo = new ArrayList<Pais>()
+		conexionesBo.add(brazil)
+		bolivia = new Pais("Bolivia", lugaresBo, conexionesBo)
+		
+		conexioneMx = new ArrayList<Pais>()
+		conexioneMx.add(bolivia)
+		conexioneMx.add(brazil)
+		mexico = new Pais("Mexico", lugaresMx, conexioneMx)
+
+		conexionesArg = new ArrayList<Pais>()
+		conexionesArg.add (brazil)
+		conexionesArg.add (mexico)
+		argentina = new Pais("Argentina", lugaresArg, conexionesArg)
+		
+		
+		planDeEscape = new ArrayList<Pais>()
 		planDeEscape.add(argentina)
-		planDeEscape.add(bolivia)
-		planDeEscape.add(mexico)
+		planDeEscape.add(brazil)
 		planDeEscape.add(venezuela)
+		
+		
+		senia1 = new Caracteristicas("Tiene el pelo rojo")
+		senia2 = new Caracteristicas("Posee un collar de rubies")
+		senia3 = new Caracteristicas("Maneja un convertible")
+		
+		hobbie1 = new Caracteristicas("Juega tenis")
+		
+		seniasParticulares = new ArrayList<Caracteristicas>()
+		seniasParticulares.add(senia1)
+		seniasParticulares.add(senia2)
+		seniasParticulares.add(senia3)
+		
+		
+		hobbies = new ArrayList<Caracteristicas>()
+		hobbies.add(hobbie1)
+		
+		villano = new Villano("Carmen Sandiego", "Femenino", seniasParticulares, hobbies)
 		
 		//////////////////////////////////////////////////////////////////////
 		
-		val reporteCrimen = "A las 9 de la mañana en la ciudad del Cairo la comunidad científica fue conmovida al darse cuenta del faltante de gran valor! El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III. El criminal fue muy prolijo y la escena del crimen no contaba con pista alguna, su misión como detective es desifrar el responsable de tal crímen y apresarlo."
-		val objetoRobado = "Tumba del faraón"
+		reporteDelCrimen = "A las 9 de la mañana en la ciudad del Cairo la comunidad científica fue conmovida al darse cuenta del faltante de gran valor! El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III. El criminal fue muy prolijo y la escena del crimen no contaba con pista alguna, su misión como detective es desifrar el responsable de tal crímen y apresarlo."
+		objetoRobado = "Tumba del faraón"
 		
-		expo = new Villano()
+		//casoFeliz = new Caso(villano, planDeEscape, reporteCrimen, objetoRobado, argentina)
 		
-		casoFeliz = new Caso(expo, planDeEscape, reporteCrimen, objetoRobado, brazil)
 		
 	}
 	
@@ -64,13 +141,11 @@ class TestCaso
 	@Test
 	def void testAgregarPaisDeEscape ()
 	{	
-		var caso = new Caso (new Villano(), new ArrayList<Pais>(), "", "", new Pais())
-		var Pais paisMock = mock(Pais)
+		casoFeliz = new Caso(villano, planDeEscape, reporteDelCrimen, objetoRobado, argentina)
 		
-		when(paisMock.nombrePais).thenReturn("Italia")
-		caso.agregarPaisDeEscape(paisMock)
+		casoFeliz.agregarPaisDeEscape(bolivia)
 		
-		Assert.assertFalse(caso.estaIncluidoEnElPlanDeEscape(paisMock))
+		Assert.assertTrue(casoFeliz.estaIncluidoEnElPlanDeEscape(bolivia))
 	}
 	
 	/**
@@ -83,7 +158,7 @@ class TestCaso
 	{	
 		var List<Pais> plan = new ArrayList()
 		plan.add(paisMock1)
-		var caso = new Caso (new Villano(), plan, "", "", new Pais())
+		var caso = new Caso (villanoMock, plan, "soy un reporte criminal", "", paisDelCrimenMock)
 		
 		when(paisMock1.nombrePais).thenReturn("Italia")
 		when(paisMock2.nombrePais).thenReturn("Rusia")
@@ -103,7 +178,7 @@ class TestCaso
 	{	
 		var List<Pais> plan = new ArrayList()
 		plan.add(paisMock1)
-		var caso = new Caso (new Villano(), plan, "", "", new Pais())
+		var caso = new Caso (villanoMock, plan, "soy un reporte criminal", "", paisDelCrimenMock)
 		
 		when(paisMock1.nombrePais).thenReturn("Italia")
 		when(paisMock2.nombrePais).thenReturn("Italia")

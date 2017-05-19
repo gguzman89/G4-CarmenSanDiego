@@ -123,7 +123,7 @@ class Caso
 	/**
 	 * @Propósito Pregunta si pais ya está incluido en el plan de escape.
 	 * @param pais Es el Pais que se quiere verificar.
-	 */
+	 */ 
 	def estaIncluidoEnElPlanDeEscape(Pais pais) 
 	{
 		planDeEscape.exists[p | p.nombrePais == pais.nombrePais]
