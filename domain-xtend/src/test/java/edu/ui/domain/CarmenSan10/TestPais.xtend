@@ -94,7 +94,7 @@ class TestPais {
 		
 		panama.cambiarEstado(expo)
 		
-		println("Ocupante Panama --> " + panama.ocupante.nombre)
+		println("Villano Panama --> " + panama.ocupante.nombre)
 		println("Responsable Expo --> " + expo.responsable.nombre)
 		Assert.assertTrue("no resp a Equals", panama.ocupante.nombre == expo.responsable.nombre)
 	}

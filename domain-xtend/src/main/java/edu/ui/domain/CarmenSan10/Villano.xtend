@@ -141,40 +141,38 @@ class Villano extends Ocupante {
 	def pistaDeHobbies() 
 	{
 		var Random rnd = new Random
-		var int numeroPista = rnd.nextInt(hobbies.size-1)
+		var int numeroPista = rnd.nextInt(hobbies.size)
 		hobbies.get(numeroPista).nombre
 	}
 	
 	def pistaDeSeniasParticulares() 
 	{
 		var Random rnd = new Random
-		var int numeroPista = rnd.nextInt(seniasParticulares.size-1)
+		var int numeroPista = rnd.nextInt(seniasParticulares.size)
 		seniasParticulares.get(numeroPista).nombre
 	}
 	
-	override actualizar(Caso caso, Pais p) 
-	{
-	}
+	override actualizar(Caso caso, Pais p) {}
 	
 	def dar2PistasSeniasParticulares() 
 	{
 		var senias = seniasParticulares
 		
 		var Random rnd = new Random
-		var int pista1 = rnd.nextInt(senias.size-1)
-		var senia1 = senias.get(pista1)
+		var Integer pista1 = rnd.nextInt(senias.size)
+		val senia1 = senias.get(pista1)
 		
-		senias.drop(pista1).toList
+		val pistasRestantes = senias.filter[v | v.nombre != senia1.nombre].toList
 		
-		var int pista2 = rnd.nextInt(senias.size-1)
-		var senia2 = senias.get(pista2)
+		var Integer pista2 = rnd.nextInt(pistasRestantes.size)
+		val senia2 = pistasRestantes.get(pista2)
 		
-		senia1.nombre + senia2.nombre
+		senia1.nombre + " " + senia2.nombre
 	}
 	
 	def tieneLaId(Integer id) 
 	{
-		this.id ==id 
+		this.id == id 
 	}
 	
 	def estaCompleto() 
@@ -200,10 +198,28 @@ class Villano extends Ocupante {
 		hobbies = nuevosHobbies
 	}
 	
-	
-//	def simplificar() 
-//	{
-//		new VillanoMini(id, nombre)
-//	}
+	def static void main(String[] args) {
+		
+		val senia01_Julian = new Caracteristicas("Tiene el pelo azul.")
+		val senia02_Julian = new Caracteristicas("Se rasca la oreja de forma extraña.")
+		//val senia03_Julian = new Caracteristicas("")
+		
+		val hobbie01_Julian = new Caracteristicas("Plantar tomate.")
+		val hobbie02_Julian = new Caracteristicas("Comer chupentines.")
+		//val hobbie03_Julian = new Caracteristicas("")
+		
+		val Villano nn = new Villano() => [ 
+			nombre = "Julian"
+			seniasParticulares = #[senia01_Julian, senia02_Julian]
+			hobbies = #[hobbie01_Julian, hobbie02_Julian]
+		]
+		
+		//var pistas = nn.dar2PistasSeniasParticulares
+		
+		println("señas particulares = " + nn.seniasParticulares.size)
+		println("hobbies = " + nn.hobbies.size)
+		println(nn.dar2PistasSeniasParticulares)
+		
+	}
 	
 }

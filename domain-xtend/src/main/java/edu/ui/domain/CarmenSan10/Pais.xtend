@@ -146,16 +146,11 @@ class Pais extends Entity implements Cloneable {
 		var Integer caracteristica = rnd.nextInt(pistas.size)
 		val pista1 = pistas.get(caracteristica)
 		
-		println("numero aleatorio " + caracteristica)
-		//println("antes " + pistas.size)
 		val pistasRestantes = pistas.filter[c | c.nombre != pista1.nombre].toList
-		//println("despues " + pistasRestantes.size)
 		
 		var Integer caracteristica2 = rnd.nextInt(pistasRestantes.size)
 		val pista2 = pistasRestantes.get(caracteristica2)
-		println("numero aleatorio 2 " + caracteristica2)
-		pista1.nombre +" "+ pista2.nombre
-		// reparar el casos donde retorna las misma pista 2 veces
+		pista1.nombre + " " + pista2.nombre
 	}
 	
 	def void cambiarEstado(Caso caso) // este funciona realmente
@@ -167,11 +162,11 @@ class Pais extends Entity implements Cloneable {
 	{
 		val pistasResultantes = new ArrayList<String>
 		val pista1 = ocupante.responderAlDetective(caso, lugares.get(0), this)
-		//val pista2 = ocupante.responderAlDetective(caso, lugares.get(1), this)
-		//val pista3 = ocupante.responderAlDetective(caso, lugares.get(2), this)
+		val pista2 = ocupante.responderAlDetective(caso, lugares.get(1), this)
+		val pista3 = ocupante.responderAlDetective(caso, lugares.get(2), this)
 		pistasResultantes.add (pista1)
-		//pistasResultantes.add (pista2)
-		//pistasResultantes.add (pista3)
+		pistasResultantes.add (pista2)
+		pistasResultantes.add (pista3)
 		pistasResultantes
 	}
 	
@@ -183,18 +178,10 @@ class Pais extends Entity implements Cloneable {
 		
 		val Pais panama = new Pais("Panama")
 		panama.ocupante = new Informante()
+		panama.caracteristicaPais = #[feature01_panama, feature02_panama, feature03_panama]
 		
-		panama.caracteristicaPais = #[feature02_panama, feature01_panama, feature03_panama]
-		
-		var Random rnd = new Random
-		var int caracteristica = rnd.nextInt(panama.caracteristicaPais.size)
-		
-		////////////////////////////////////////////////////////////////////////////
-		
-		val Villano nn = new Villano() => [ nombre = "Julian" ]
-		
-		val lugares02 = #[LugarDeInteres.EMBAJADA]
-		
+		val lugares02 = #[LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB, LugarDeInteres.EMBAJADA]
+	
 		val venezuela = new Pais("Venezuela")
 		venezuela.lugares = lugares02
 		venezuela.ocupante = new Informante()
@@ -203,29 +190,47 @@ class Pais extends Entity implements Cloneable {
 		
 		val argentina = new Pais("Argentina")
 		
+		////////////////////////////////////////////////////////////////////////////
+		
+		val senia01_Julian = new Caracteristicas("Tiene el pelo azul.")
+		val senia02_Julian = new Caracteristicas("Se rasca la oreja de forma extraña.")
+		val senia03_Julian = new Caracteristicas("Canta Bandana en el tren")
+		
+		val hobbie01_Julian = new Caracteristicas("Plantar tomate.")
+		val hobbie02_Julian = new Caracteristicas("Comer chupentines.")
+		val hobbie03_Julian = new Caracteristicas("Juega LoL")
+		
+		val Villano nn = new Villano() => [ 
+			nombre = "Julian"
+			seniasParticulares = #[senia01_Julian, senia02_Julian, senia03_Julian]
+			hobbies = #[hobbie01_Julian, hobbie02_Julian, hobbie03_Julian]
+		]
+		
 		val hard = new Caso() => [
 			planDeEscape = #[venezuela, panama, argentina, belgica]
 			responsable = nn
 		]
 		
-		belgica.cambiarEstado(hard)
-		argentina.cambiarEstado(hard)
-		
-		//venezuela.cambiarEstado(hard)
-		
 		var pistas = venezuela.pistas(hard)
 		
-		println(panama.caracteristicaPais.length)
+		//belgica.cambiarEstado(hard)
+		//argentina.cambiarEstado(hard)
+		
+		println("----------------------------------------")
+		
 		println(panama.caracteristicaPais.get(0).nombre)
 		println(panama.caracteristicaPais.get(1).nombre)
 		println(panama.caracteristicaPais.get(2).nombre)
+		
 		println("pista --> " + panama.pistaDeSusCaracteristicas)
 		println("2 pistas --> " + panama.dar2PistaDeSusCaracteristicas)
-		println("numero random " + caracteristica)
+		
 		println("----------------------------------------")
+		
+		println("cantidad de pistas = " + pistas.size)
 		println(pistas.get(0))
-		//println(venezuela.seEncuentraEnRecorridoSinElUltimoPais(hard.planDeEscape))
-		println(argentina.esElFinalDelRecorrido(hard.planDeEscape))
+		println(pistas.get(1))
+		println(pistas.get(2))
 		
 	}
 	
