@@ -19,26 +19,23 @@ class TestPais {
 	Informante nerd
 	Caso expo
 	
+	Caso hard
+	
 	@Before
 	def void setUp() {
 		
 		val lugares01 = #[LugarDeInteres.BANCO, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB]
-		val lugares02 = #[LugarDeInteres.CLUB, LugarDeInteres.BIBLIOTECA, LugarDeInteres.EMBAJADA]
-		
-		val feature01_panama = new Caracteristicas("mucho viento del norte")
-		val feature02_panama = new Caracteristicas("mi bandera es mi patria")
-		val feature03_panama = new Caracteristicas("este lugar es poco visitado")
-		
-		var  List<Caracteristicas> list_panama = #[feature01_panama, feature02_panama, feature03_panama]
-		
-		
+		val lugares02 = #[LugarDeInteres.EMBAJADA]
 		
 		argentina = new Pais("Argentina", lugares01, #[])
 							
 		uruguay = new Pais("Uruguay", lugares02, #[argentina])
 		
 		panama = new Pais("Panama")
+		
 		venezuela = new Pais("Venezuela")
+		venezuela.lugares = lugares02
+		
 		belgica = new Pais("Belgica")
 		
 		//////////////////////////////////////////////////////////////////////////////
@@ -51,6 +48,11 @@ class TestPais {
 		
 		expo = new Caso() => [
 			planDeEscape = #[venezuela, belgica, panama]
+			responsable = nn
+		]
+		
+		hard = new Caso() => [
+			planDeEscape = #[venezuela, panama, belgica]
 			responsable = nn
 		]
 		
@@ -98,6 +100,7 @@ class TestPais {
 		Assert.assertTrue("no resp a Equals", panama.ocupante == expo.responsable) 
 		// si a NotEquals
 		// o tambien puedo verificar el ID
+		// claro los 2 son Ocupantes :P
 	}
 	
 	@Test
@@ -107,7 +110,7 @@ class TestPais {
 		
 		Assert.assertNotNull("no resp a equals", venezuela.ocupante)
 		/**
-		 * se que no esta vacia pero no se si resp a las pistas
+		 * se que no esta vacia pero no se si resp a ser Informante
 		 */
 	}
 	
@@ -137,6 +140,10 @@ class TestPais {
 		var List<Caracteristicas> list_panama = #[feature01_panama, feature02_panama, feature03_panama]
 		
 		panama.caracteristicaPais = list_panama
+		
+		var pistas = venezuela.pistas(hard)
+		
+		Assert.assertTrue(pistas.size == 1)
 		
 		
 	}

@@ -20,9 +20,7 @@ class Pais extends Entity implements Cloneable {
 	Ocupante ocupante
 	Integer id
 	
-	new() {
-		//ocupante = new Cuidador()
-	}
+	new() {}
 	
 	new(String nombre) {
 		nombrePais = nombre
@@ -154,7 +152,7 @@ class Pais extends Entity implements Cloneable {
 		var int caracteristica2 = rnd.nextInt(pistas.size)
 		val pista2 = pistas.get(caracteristica2)
 		
-		pista1.nombre +". "+ pista2.nombre
+		pista1.nombre +" "+ pista2.nombre
 		// reparar el casos donde retorna las misma pista 2 veces
 	}
 	
@@ -167,26 +165,53 @@ class Pais extends Entity implements Cloneable {
 	{
 		val pistasResultantes = new ArrayList<String>
 		val pista1 = ocupante.responderAlDetective(caso, lugares.get(0), this)
-		val pista2 = ocupante.responderAlDetective(caso, lugares.get(1), this)
-		val pista3 = ocupante.responderAlDetective(caso, lugares.get(2), this)
+		//val pista2 = ocupante.responderAlDetective(caso, lugares.get(1), this)
+		//val pista3 = ocupante.responderAlDetective(caso, lugares.get(2), this)
 		pistasResultantes.add (pista1)
-		pistasResultantes.add (pista2)
-		pistasResultantes.add (pista3)
+		//pistasResultantes.add (pista2)
+		//pistasResultantes.add (pista3)
 		pistasResultantes
 	}
 	
 	def static void main(String[] args) {
 		
-		val feature01_panama = new Caracteristicas("mucho viento del norte")
-		val feature02_panama = new Caracteristicas("mi bandera es mi patria")
-		val feature03_panama = new Caracteristicas("este lugar es poco visitado")
+		val feature01_panama = new Caracteristicas("Mucho viento del norte.")
+		val feature02_panama = new Caracteristicas("Mi bandera es mi patria.")
+		val feature03_panama = new Caracteristicas("Este lugar es poco visitado.")
 		
 		val Pais panama = new Pais("Panama")
+		panama.ocupante = new Informante()
 		
 		panama.caracteristicaPais = #[feature02_panama, feature01_panama, feature03_panama]
 		
 		var Random rnd = new Random
 		var int caracteristica = rnd.nextInt(panama.caracteristicaPais.size)
+		
+		////////////////////////////////////////////////////////////////////////////
+		
+		val Villano nn = new Villano() => [ nombre = "Julian" ]
+		
+		val lugares02 = #[LugarDeInteres.EMBAJADA]
+		
+		val venezuela = new Pais("Venezuela")
+		venezuela.lugares = lugares02
+		venezuela.ocupante = new Informante()
+		
+		val belgica = new Pais("Belgica")
+		
+		val argentina = new Pais("Argentina")
+		
+		val hard = new Caso() => [
+			planDeEscape = #[venezuela, panama, argentina, belgica]
+			responsable = nn
+		]
+		
+		belgica.cambiarEstado(hard)
+		argentina.cambiarEstado(hard)
+		
+		//venezuela.cambiarEstado(hard)
+		
+		var pistas = venezuela.pistas(hard)
 		
 		println(panama.caracteristicaPais.length)
 		println(panama.caracteristicaPais.get(0).nombre)
@@ -195,7 +220,10 @@ class Pais extends Entity implements Cloneable {
 		println("pista --> " + panama.pistaDeSusCaracteristicas)
 		println("2 pistas --> " + panama.dar2PistaDeSusCaracteristicas)
 		println(caracteristica)
-		
+		println("----------------------------------------")
+		println(pistas.get(0))
+		//println(venezuela.seEncuentraEnRecorridoSinElUltimoPais(hard.planDeEscape))
+		println(argentina.esElFinalDelRecorrido(hard.planDeEscape))
 		
 	}
 	
