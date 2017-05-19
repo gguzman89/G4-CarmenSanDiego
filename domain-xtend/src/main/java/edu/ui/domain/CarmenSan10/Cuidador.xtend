@@ -16,14 +16,18 @@ class Cuidador extends Ocupante {
 	{
 		if (p.esElFinalDelRecorrido(caso.planDeEscape))
 		{
-			p.ocupante= caso.responsable
+			p.ocupante = caso.responsable
 			println("ahora soy el Villano")
 		}
 		if (p.seEncuentraEnRecorridoSinElUltimoPais(caso.planDeEscape))
 		{
-			p.ocupante= new Informante()
 			println("ahora soy un Informante")
+			p.ocupante = new Informante() => [
+				nombre = "Batistuta"
+			]
 		}
+		
+		p.ocupante
 	}
 	
 	

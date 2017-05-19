@@ -68,8 +68,10 @@ class Caso
 	}
 	
 	
-	def actualizarPaises(List<Pais> paises) 
+	def List<Pais> actualizarPaises(List<Pais> paises) 
 	{
+		//paises.map[p|p.cambiarEstado(this)]
+		
 		paises.forEach[p | p.cambiarEstado(this)]
 		paises
 	}

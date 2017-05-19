@@ -12,13 +12,13 @@ abstract class Ocupante extends Entity implements Cloneable {
 	 * State -> actualizar
 	 * Strategy -> responderAlDetective
 	 */
+	 String nombre 
 	
-	new() 
-	{}
+	new() {}
 	
 	def abstract String responderAlDetective(Caso caso, LugarDeInteres unLugar, Pais paisActual)
 	
-	def void actualizar (Caso caso, Pais p)
+	def Ocupante actualizar (Caso caso, Pais p)
 	
 	
 }
