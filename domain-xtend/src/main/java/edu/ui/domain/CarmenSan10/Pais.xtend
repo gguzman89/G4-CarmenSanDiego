@@ -21,7 +21,7 @@ class Pais extends Entity implements Cloneable {
 	Integer id
 	
 	new() {
-		ocupante = new Cuidador()
+		//ocupante = new Cuidador()
 	}
 	
 	new(String nombre) {
@@ -136,7 +136,7 @@ class Pais extends Entity implements Cloneable {
 	def pistaDeSusCaracteristicas() 
 	{
 		var Random rnd = new Random
-		var int caracteristica = rnd.nextInt(caracteristicaPais.size-1)
+		var int caracteristica = rnd.nextInt(caracteristicaPais.size)
 		caracteristicaPais.get(caracteristica).nombre
 	}
 	
@@ -145,16 +145,17 @@ class Pais extends Entity implements Cloneable {
 		var pistas = caracteristicaPais
 		
 		var Random rnd = new Random
-		var int caracteristica = rnd.nextInt(pistas.size-1)
+		var int caracteristica = rnd.nextInt(pistas.size)
 		val pista1 = pistas.get(caracteristica)
 		
 		pistas.drop(caracteristica).toList
+		//pistas.remove(caracteristica) no sirve
 		
-		var int caracteristica2 = rnd.nextInt(pistas.size-1)
+		var int caracteristica2 = rnd.nextInt(pistas.size)
 		val pista2 = pistas.get(caracteristica2)
 		
-		pista1.nombre + pista2.nombre
-		
+		pista1.nombre +". "+ pista2.nombre
+		// reparar el casos donde retorna las misma pista 2 veces
 	}
 	
 	def cambiarEstado(Caso caso) 
@@ -172,6 +173,30 @@ class Pais extends Entity implements Cloneable {
 		pistasResultantes.add (pista2)
 		pistasResultantes.add (pista3)
 		pistasResultantes
+	}
+	
+	def static void main(String[] args) {
+		
+		val feature01_panama = new Caracteristicas("mucho viento del norte")
+		val feature02_panama = new Caracteristicas("mi bandera es mi patria")
+		val feature03_panama = new Caracteristicas("este lugar es poco visitado")
+		
+		val Pais panama = new Pais("Panama")
+		
+		panama.caracteristicaPais = #[feature02_panama, feature01_panama, feature03_panama]
+		
+		var Random rnd = new Random
+		var int caracteristica = rnd.nextInt(panama.caracteristicaPais.size)
+		
+		println(panama.caracteristicaPais.length)
+		println(panama.caracteristicaPais.get(0).nombre)
+		println(panama.caracteristicaPais.get(1).nombre)
+		println(panama.caracteristicaPais.get(2).nombre)
+		println("pista --> " + panama.pistaDeSusCaracteristicas)
+		println("2 pistas --> " + panama.dar2PistaDeSusCaracteristicas)
+		println(caracteristica)
+		
+		
 	}
 	
 }

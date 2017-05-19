@@ -13,10 +13,47 @@ class TestCaso
 	Pais paisMock1
 	Pais paisMock2
 	
+	/////////////////////////////////////////////////////////////////////////
+	
+	Pais argentina
+	Pais bolivia
+	Pais mexico
+	Pais venezuela
+	Pais brazil
+	
+	Villano expo
+	////////////////////////////////////////////////////////////////////////
+	
+	Caso casoFeliz
+	
 	@Before
 	def void setUp() {
 		paisMock1 = mock(Pais)
 		paisMock2 = mock(Pais)
+		
+		////////////////////////////////////////////////////////////////////////
+		
+		argentina = new Pais("Argentina")
+		bolivia = new Pais("Bolivia")
+		mexico = new Pais("Mexico")
+		venezuela = new Pais("Venezuela")
+		brazil = new Pais("Brazil")
+		
+		val planDeEscape = new ArrayList<Pais>()
+		planDeEscape.add(argentina)
+		planDeEscape.add(bolivia)
+		planDeEscape.add(mexico)
+		planDeEscape.add(venezuela)
+		
+		//////////////////////////////////////////////////////////////////////
+		
+		val reporteCrimen = "A las 9 de la mañana en la ciudad del Cairo la comunidad científica fue conmovida al darse cuenta del faltante de gran valor! El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III. El criminal fue muy prolijo y la escena del crimen no contaba con pista alguna, su misión como detective es desifrar el responsable de tal crímen y apresarlo."
+		val objetoRobado = "Tumba del faraón"
+		
+		expo = new Villano()
+		
+		casoFeliz = new Caso(expo, planDeEscape, reporteCrimen, objetoRobado, brazil)
+		
 	}
 	
 	/**
@@ -33,7 +70,7 @@ class TestCaso
 		when(paisMock.nombrePais).thenReturn("Italia")
 		caso.agregarPaisDeEscape(paisMock)
 		
-		Assert.assertTrue(caso.estaIncluidoEnElPlanDeEscape(paisMock))
+		Assert.assertFalse(caso.estaIncluidoEnElPlanDeEscape(paisMock))
 	}
 	
 	/**

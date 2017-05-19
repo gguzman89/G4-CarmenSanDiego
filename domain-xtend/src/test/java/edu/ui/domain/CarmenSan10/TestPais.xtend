@@ -3,6 +3,7 @@ package edu.ui.domain.CarmenSan10
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert
+import java.util.List
 
 class TestPais {
 	
@@ -12,11 +13,25 @@ class TestPais {
 	Pais venezuela
 	Pais belgica
 	
+	////////////////////////////////////////////////////////////////////////////////////
+	
+	Villano nn
+	Informante nerd
+	Caso expo
+	
 	@Before
 	def void setUp() {
 		
 		val lugares01 = #[LugarDeInteres.BANCO, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB]
 		val lugares02 = #[LugarDeInteres.CLUB, LugarDeInteres.BIBLIOTECA, LugarDeInteres.EMBAJADA]
+		
+		val feature01_panama = new Caracteristicas("mucho viento del norte")
+		val feature02_panama = new Caracteristicas("mi bandera es mi patria")
+		val feature03_panama = new Caracteristicas("este lugar es poco visitado")
+		
+		var  List<Caracteristicas> list_panama = #[feature01_panama, feature02_panama, feature03_panama]
+		
+		
 		
 		argentina = new Pais("Argentina", lugares01, #[])
 							
@@ -26,14 +41,103 @@ class TestPais {
 		venezuela = new Pais("Venezuela")
 		belgica = new Pais("Belgica")
 		
+		//////////////////////////////////////////////////////////////////////////////
+		
+		nn = new Villano() => [
+			nombre = "Julian"
+		]
+		
+		nerd = new Informante()
+		
+		expo = new Caso() => [
+			planDeEscape = #[venezuela, belgica, panama]
+			responsable = nn
+		]
+		
 	}
 	
 	@Test
-	def void testEsElFinalDelRecorrido() {
+	def void testEsElFinalDelRecorrido_NoFeliz() {
+
+		val recorrido = #[belgica, venezuela, belgica, panama, argentina]
+	
+	Assert.assertFalse(panama.esElFinalDelRecorrido(recorrido))
+		
+	}
+	
+	@Test
+	def void testEsElFinalDelRecorrido_Feliz() {
 
 		val recorrido = #[panama, venezuela, belgica, argentina]
 	
-	Assert.assertFalse(panama.esElFinalDelRecorrido(recorrido))
+	Assert.assertTrue(argentina.esElFinalDelRecorrido(recorrido))
+		
+	}
+	
+	@Test
+	def void testRecorridoSinElUltimoPais_NoFeliz() {
+		
+		val recorrido = #[panama, venezuela, belgica, belgica, argentina]
+		
+		Assert.assertFalse(argentina.seEncuentraEnRecorridoSinElUltimoPais(recorrido))
+	}
+	
+	@Test
+	def void testRecorridoSinElUltimoPais_Feliz() {
+		
+		val recorrido = #[belgica, panama, venezuela, belgica, argentina]
+		
+		Assert.assertTrue(panama.seEncuentraEnRecorridoSinElUltimoPais(recorrido))
+	}
+	
+	@Test
+	def void testCambiarEstado_Villano() {
+		
+		panama.cambiarEstado(expo)
+		
+		Assert.assertTrue("no resp a Equals", panama.ocupante == expo.responsable) 
+		// si a NotEquals
+		// o tambien puedo verificar el ID
+	}
+	
+	@Test
+	def void testCambiarEstado_Informante() {
+		
+		venezuela.cambiarEstado(expo)
+		
+		Assert.assertNotNull("no resp a equals", venezuela.ocupante)
+		/**
+		 * se que no esta vacia pero no se si resp a las pistas
+		 */
+	}
+	
+	@Test
+	def void testPistaDeSusCaracteristica() {
+		
+		val feature01_panama = new Caracteristicas("mucho viento del norte")
+		val feature02_panama = new Caracteristicas("mi bandera es mi patria")
+		val feature03_panama = new Caracteristicas("este lugar es poco visitado")
+		
+		var List<Caracteristicas> list_panama = #[feature01_panama, feature02_panama, feature03_panama]
+		
+		panama.caracteristicaPais = list_panama
+		
+		val resp = new Caracteristicas(panama.pistaDeSusCaracteristicas)
+		
+		Assert.assertTrue(list_panama.exists[c | c.nombre == resp.nombre])
+	}
+	
+	@Test
+	def void test2PistasdeSusCaracteristicas() {
+		
+		val feature01_panama = new Caracteristicas("mucho viento del norte")
+		val feature02_panama = new Caracteristicas("mi bandera es mi patria")
+		val feature03_panama = new Caracteristicas("este lugar es poco visitado")
+		
+		var List<Caracteristicas> list_panama = #[feature01_panama, feature02_panama, feature03_panama]
+		
+		panama.caracteristicaPais = list_panama
+		
 		
 	}
 }

@@ -19,6 +19,8 @@ class Villano extends Ocupante {
 	List<Caracteristicas> seniasParticulares
 	List<Caracteristicas> hobbies
 	
+	new () {}
+	
 	/** PROPÓSITO: Crea un Villano con un nombre, sexo, señas particulares y hobbies. 
 	 * 
 	 * @param unNombre Es el nombre que tendrá el Villano.
@@ -33,8 +35,6 @@ class Villano extends Ocupante {
 		seniasParticulares = variasSenias
 		hobbies = variosHobbies
 	}
-	
-	new () {}
 	
 	/**
 	 * PROPÓSITO: Pregunta si el Villano tiene el mismo nombre que se especifica por parámetro.
