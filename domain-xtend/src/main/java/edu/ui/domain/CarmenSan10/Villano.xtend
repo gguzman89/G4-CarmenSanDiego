@@ -152,7 +152,10 @@ class Villano extends Ocupante {
 		seniasParticulares.get(numeroPista).nombre
 	}
 	
-	override actualizar(Caso caso, Pais p) {}
+	override actualizar(List<Pais> ps, Pais p, Villano v) 
+	{
+		
+	}
 	
 	def dar2PistasSeniasParticulares() 
 	{

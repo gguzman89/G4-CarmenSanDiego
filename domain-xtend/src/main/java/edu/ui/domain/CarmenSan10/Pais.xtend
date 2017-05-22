@@ -127,7 +127,7 @@ class Pais extends Entity implements Cloneable {
 	def lugarDelVillano() 
 	{
 		var Random rnd = new Random
-		var int lugar = rnd.nextInt(2)
+		var int lugar = rnd.nextInt(3)
 		lugares.get(lugar)
 	}
 	
@@ -153,9 +153,10 @@ class Pais extends Entity implements Cloneable {
 		pista1.nombre + " " + pista2.nombre
 	}
 	
-	def void cambiarEstado(Caso caso) // este funciona realmente
+	def void cambiarEstado(List<Pais> ps, Villano v) // este funciona realmente
 	{
-		ocupante.actualizar(caso, this)
+		// cambie los parametros del mensaje Actualizar
+		ocupante = ocupante.actualizar(ps, this, v)
 	}
 	
 	def List<String> pistas(Caso caso) 

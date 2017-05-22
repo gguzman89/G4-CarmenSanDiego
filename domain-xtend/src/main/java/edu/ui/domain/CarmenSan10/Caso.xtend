@@ -34,11 +34,11 @@ class Caso
 	{
 		id = 1
 		responsable = unCriminal
-		planDeEscape = actualizarPaises(unPlanDeEscape)
+		planDeEscape = actualizarPaises(unPlanDeEscape, unCriminal)
 		reporteDelActoCriminal = reporte
 		objetoDelRobo = objetoRobado
 		paisDelRobo = unPais
-		lugarDelVillano = lugarDondeSeEncuentraElVillano
+		lugarDelVillano = lugarDondeSeEncuentraElVillano(unPlanDeEscape.last)
 		lugaresDelPlanEscape = lugaresDelRecorrido(planDeEscape)
 		pistasDelPlanDeEscape = pistasDelRecorrido(planDeEscape)
 	}
@@ -68,19 +68,14 @@ class Caso
 	}
 	
 	
-	def List<Pais> actualizarPaises(List<Pais> paises) 
+	def List<Pais> actualizarPaises(List<Pais> paises, Villano v) 
 	{
-<<<<<<< HEAD
-		for (var i=0; i>=paises.size; i++)
+		// creo un respaldo de paises solo para hacer las verificaciones sobre cada pais iterado pero no hago nado con él
+		val plan = paises
+		for (var i=0; i<paises.size; i++)
 		{
-			paises.get(i).cambiarEstado(this)
+			paises.get(i).cambiarEstado(plan, v)
 		}
-		//paises.forEach[p | p.cambiarEstado(this)]
-=======
-		//paises.map[p|p.cambiarEstado(this)]
-		
-		paises.forEach[p | p.cambiarEstado(this)]
->>>>>>> 5175cddc20282da894fa082e1348fa3cdcd250b3
 		paises
 	}
 	
@@ -89,9 +84,9 @@ class Caso
 		
 	}
 	
-	def lugarDondeSeEncuentraElVillano() 
+	def lugarDondeSeEncuentraElVillano (Pais p) 
 	{
-		ultimoPaisDelRecorrido.lugarDelVillano
+		p.lugarDelVillano
 	}
 	
 	def informacionAdicional(Caso caso, int porcentaje) 

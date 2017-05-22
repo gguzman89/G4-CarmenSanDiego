@@ -92,21 +92,22 @@ class TestPais {
 	@Test
 	def void testCambiarEstado_Villano() {
 		
-		panama.cambiarEstado(expo)
+		// cambie los parametros del cambiar estado
+		panama.cambiarEstado(expo.planDeEscape, expo.responsable)
 		
 		println("Villano Panama --> " + panama.ocupante.nombre)
 		println("Responsable Expo --> " + expo.responsable.nombre)
-		Assert.assertTrue("no resp a Equals", panama.ocupante.nombre == expo.responsable.nombre)
+		Assert.assertTrue(panama.ocupante.nombre.equals(expo.responsable.nombre))
 	}
 	
 	@Test
 	def void testCambiarEstado_Informante() {
 		
-		venezuela.cambiarEstado(expo)
+		venezuela.cambiarEstado(expo.planDeEscape, expo.responsable)
 		
 		println("Informante Venezuela --> " + venezuela.ocupante.nombre)
 		println("Responsable Expo --> " + expo.responsable.nombre)
-		Assert.assertTrue("no resp a equals", venezuela.ocupante.nombre != expo.responsable.nombre)
+		Assert.assertTrue(venezuela.ocupante.nombre.equals("Informante"))
 		/**
 		 * se que no esta vacia pero no se si resp a ser Informante
 		 */
