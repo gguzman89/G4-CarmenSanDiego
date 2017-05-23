@@ -20,13 +20,6 @@ class CarmenSan10Dummy
 	Detective doc
 	Caso caso
 	
-	/**
-	 * ACME? necesitamos un administrador?
-	 * o xq esta Caso en ACME si en ningun momento la instancia
-	 * o inicializa?
-	 */
-
-	
 	new ()
 	{
 		/**
@@ -38,7 +31,7 @@ class CarmenSan10Dummy
 		val venezuela = new Pais() => [
 			nombrePais = "Venezuela"
 			lugares = #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB]
-			paisesConexionAerea = #[]
+			paisesConexionAerea = #[] // ponerle al menos 1
 			caracteristicaPais = #[new Caracteristicas("Maduro a la cabeza")]
 		]
 		
@@ -107,27 +100,32 @@ class CarmenSan10Dummy
 		 * Caso
 		 */
 		 
-//		 caso = new Caso() => 
-//		 [
-//		 	responsable = villanoCS
-//		 	planDeEscape = #[argentina, brazil, venezuela] // Carmensita sabe que en venexuela hay impunidad
-//		 	reporteDelActoCriminal = "A las 9 de la mañana en la ciudad del Cairo la comunidad científica fue conmovida al darse cuenta del faltante de gran valor! El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III. El criminal fue muy prolijo y la escena del crimen no contaba con pista alguna, su misión como detective es desifrar el responsable de tal crímen y apresarlo."
-//		 	objetoDelRobo = "Tumba del faraón"
-//		 	paisDelRobo = argentina
-//		 ]
-		 
 		 val reporteDelCrimen = "A las 9 de la mañana en la ciudad del Cairo la comunidad científica fue conmovida al darse cuenta del faltante de gran valor! El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III. El criminal fue muy prolijo y la escena del crimen no contaba con pista alguna, su misión como detective es desifrar el responsable de tal crímen y apresarlo."
 		 val objetoRobado = "Tumba del faraón"
 		 
-		 caso = new Caso(villanoCS,	#[argentina, brazil, venezuela], reporteDelCrimen, objetoRobado, argentina)
+		 caso = new Caso() => 
+		 [
+		 	id = 1
+		 	responsable = villanoCS
+		 	planDeEscape = #[argentina, brazil, venezuela]
+		 	reporteDelActoCriminal = reporteDelCrimen
+		 	objetoDelRobo = objetoRobado
+		 	paisDelRobo = argentina
+		 	lugarDelVillano = lugarDondeSeEncuentraElVillano(planDeEscape.last)
+		 	lugaresDelPlanEscape = lugaresDelRecorrido(planDeEscape)
+		 	pistasDelPlanDeEscape = pistasDelRecorrido(planDeEscape)
+		 ]
 		 
+//		 caso = new Caso(villanoCS,	#[argentina, brazil, venezuela], reporteDelCrimen, objetoRobado, argentina)
+//		 ver que otra cosa puede ser... o dejar de usar
 		 
 		 /**
 		  * Detective
 		  */
 		doc = new Detective() =>
 		[
-			recorrido = #[argentina]
+			recorrido = #[]
+			lugaresVisitados = #[]
 		]
 		
 	}

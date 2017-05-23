@@ -18,7 +18,6 @@ import edu.ui.dominioXTrest.PaisSinID
 import edu.ui.dominioXTrest.EmitirOrdenRequest
 import edu.ui.dominioXTrest.ViajeRequest
 import edu.ui.dominioXTrest.CasoRest
-import edu.ui.domain.CarmenSan10.Caso
 import edu.ui.domain.CarmenSan10.Pais
 
 @Controller
@@ -56,7 +55,6 @@ class CarmenSan10RestAPI {
 			
 			var pais_mini = mapamundi.miniPais(pais, resConexiones)
 			// que onda los notFoundo o bad request?
-			// tendra algo que ver el .json del ejemplo Biblioteca
 			if(pais == null) { //pais_mini == null || 
 				notFound("no existe el pais con ese ID")
 			} else {
@@ -103,10 +101,23 @@ class CarmenSan10RestAPI {
 	 * inicia un juego y devuelve un caso
 	 */
 	 @Post("/iniciarJuego")
-	 def getIniciarJuego(@Body String body) {
+	 def getIniciarJuego() {
 	 	response.contentType = ContentType.APPLICATION_JSON
+
+		val pais = carmenSan10.caso.paisDelRobo
+	 	
+	 	//val paisRobo = carmenSan10.mapamundi.getPais(pais.id)
+	 	
+	 	val mapamundi = new MapamundiRest(carmenSan10.mapamundi.paises)
+	 	
+	 	val resConexiones = mapamundi.minificador(pais.paisesConexionAerea)
+	 	
 	 	val casoMax = carmenSan10.caso
-	 	ok()
+	 	val docMax = carmenSan10.doc
+	 	
+	 	val casoRest = new CasoRest(casoMax, docMax, mapamundi, resConexiones)
+	 	
+	 	ok(casoRest.toJson)
 	 }
 	 
 	

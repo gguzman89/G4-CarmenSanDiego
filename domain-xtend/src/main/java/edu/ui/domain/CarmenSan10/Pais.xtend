@@ -13,7 +13,7 @@ import java.util.Random
 @TransactionalAndObservable
 class Pais extends Entity implements Cloneable {
 	
-	String nombrePais
+	public String nombrePais
 	List<Caracteristicas> caracteristicaPais
 	List<LugarDeInteres> lugares
 	List<Pais> paisesConexionAerea
