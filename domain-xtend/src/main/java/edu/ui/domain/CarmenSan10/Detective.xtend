@@ -171,7 +171,7 @@ class Detective
 	}
 	
 	def paisesVisitados(List<Pais> pais) 
-	{	// Saco el primer pais que pertenece al pais del robo.
+	{	
 		val visitados = new ArrayList<Pais>()
 		
 		// SacarLosPaisesRepetidos
@@ -180,8 +180,11 @@ class Detective
 			agregarSiPuede(visitados, p)
 		}
 		
+		// Saca el pais en donde me encuentro
+		visitados.remove(visitados.size-1)
+		
 		// Sacar los paises fallidos
-		visitados.filter[p | ! p.estaDentroDelRecorrido(pais)].toList
+		visitados.filter[p | p.estaDentroDelRecorrido(pais)].toList
 	}
 	
 	def agregarSiPuede(ArrayList<Pais> paises, Pais pais) 
