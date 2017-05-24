@@ -8,6 +8,12 @@ class ViajeRequest
 	Integer destinoId
 	Integer casoId
 	
+	new()
+	{
+		destinoId = 0
+		casoId = 0
+	}
+	
 	new(Integer idDestino, Integer idCaso)
 	{
 		this.destinoId = idDestino

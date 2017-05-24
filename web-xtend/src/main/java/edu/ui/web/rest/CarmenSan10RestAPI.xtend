@@ -46,7 +46,7 @@ class CarmenSan10RestAPI {
 	 * pais - devuelve los datos del país 
 	 */
 	@Get("/pais/:id")
-	def getLibroById() {
+	def getPaisById() {
 		response.contentType = ContentType.APPLICATION_JSON
 		try{
 			var pais = carmenSan10.mapamundi.getPais(Integer.valueOf(id))
@@ -105,6 +105,8 @@ class CarmenSan10RestAPI {
 	 	response.contentType = ContentType.APPLICATION_JSON
 
 		val pais = carmenSan10.caso.paisDelRobo
+	 	
+	 	carmenSan10.doc.viajarA(pais)
 	 	
 	 	//val paisRobo = carmenSan10.mapamundi.getPais(pais.id)
 	 	
@@ -258,8 +260,17 @@ class CarmenSan10RestAPI {
         try {
 	        val EmitirOrdenRequest ordenDeArresto = body.fromJson(EmitirOrdenRequest)
 	       	val villano = carmenSan10.expediente.obtenerVillanoDeId(ordenDeArresto.villanoId)
-			carmenSan10.doc.ordenarArresto(villano)
-			ok("Orden emitida correctamente")
+			
+			if (villano.equals(null))
+        	{
+        		notFound(getErrorJson("No existe un villano con ese id"))
+        	}
+        	else
+        	{
+        		carmenSan10.doc.ordenarArresto(villano)
+				ok("Orden emitida correctamente")
+        	}
+			
         } 
         catch (UnrecognizedPropertyException exception) {
         	badRequest(getErrorJson("El body debe ser un EmitirOrdenRequest"))
@@ -276,13 +287,20 @@ class CarmenSan10RestAPI {
     {
         response.contentType = ContentType.APPLICATION_JSON
         try {
-	        val ViajeRequest viaje = body.fromJson(ViajeRequest)
-	        val ViajeRequest pais = new ViajeRequest(viaje.destinoId, viaje.casoId) 
+	        val ViajeRequest viaje = body.fromJson(ViajeRequest) 
+	        val Pais destino = carmenSan10.mapamundi.getPais(viaje.destinoId)
 	        try 
 	        {
-	        	val Pais destino = carmenSan10.mapamundi.getPais(pais.destinoId)
 				carmenSan10.doc.viajarSiPuedeA(destino)
-				ok("Orden emitida correctamente")
+				
+				// En vez de crear un mamaundiRest, podría mandarle a CasoRest el original y que sea él quien..
+				//  se encargue de crear el MamamundiRest, quien sabe minificar.
+				val mapamundi = new MapamundiRest(carmenSan10.mapamundi.paises)
+	 			val conexiones = mapamundi.minificador(destino.paisesConexionAerea)
+	 			
+				val CasoRest casoRespuesta = new CasoRest (carmenSan10.caso, carmenSan10.doc, mapamundi, conexiones)
+				
+				ok(casoRespuesta.toJson) //"Orden emitida correctamente"
 	        }
 	        catch (UserException exception) {
 	        	badRequest(getErrorJson(exception.message))

@@ -19,7 +19,7 @@ class CasoRest {
 	new(Caso caso, Detective detective, MapamundiRest minificador, List<PaisRest> restCntc) {
 		id = caso.id
 		pais = minificador.miniPais(caso.paisDelRobo, restCntc)
-		paisesVisitados = nombrePaises(detective.recorrido)
+		paisesVisitados = nombrePaises(detective.paisesVisitados(caso.planDeEscape))
 		paisesFallidos = nombrePaises(detective.destinosFallidos(caso.planDeEscape))
 	}
 	

@@ -9,6 +9,12 @@ class EmitirOrdenRequest
 	Integer villanoId
 	Integer casoId
 	
+	new ()
+	{
+		villanoId = 0
+		casoId = 0
+	}
+	
 	new(Integer idVillano, Integer idCaso)
 	{
 		this.villanoId = idVillano

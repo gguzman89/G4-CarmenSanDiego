@@ -122,11 +122,7 @@ class CarmenSan10Dummy
 		 /**
 		  * Detective
 		  */
-		doc = new Detective() =>
-		[
-			recorrido = #[]
-			lugaresVisitados = #[]
-		]
+		doc = new Detective()
 		
 	}
 	

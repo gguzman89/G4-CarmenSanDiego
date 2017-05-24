@@ -170,4 +170,26 @@ class Detective
 		caso.mostrarPista(ubicacionActual, lugar)
 	}
 	
+	def paisesVisitados(List<Pais> pais) 
+	{	// Saco el primer pais que pertenece al pais del robo.
+		val visitados = new ArrayList<Pais>()
+		
+		// SacarLosPaisesRepetidos
+		for (p : recorrido)
+		{
+			agregarSiPuede(visitados, p)
+		}
+		
+		// Sacar los paises fallidos
+		visitados.filter[p | ! p.estaDentroDelRecorrido(pais)].toList
+	}
+	
+	def agregarSiPuede(ArrayList<Pais> paises, Pais pais) 
+	{
+		if (! paises.contains(pais))
+		{
+			paises.add(pais)
+		}
+	}
+	
 }
