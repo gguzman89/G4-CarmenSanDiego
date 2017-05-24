@@ -5,6 +5,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.Exceptions.ElPaisYaEstaIncluidoException
 import org.uqbar.commons.utils.Observable
 import java.util.Random
+import java.util.ArrayList
 
 @Observable
 @Accessors
@@ -40,16 +41,17 @@ class Caso
 		paisDelRobo = unPais
 		lugarDelVillano = lugarDondeSeEncuentraElVillano(unPlanDeEscape.last)
 		lugaresDelPlanEscape = lugaresDelRecorrido(planDeEscape)
-		pistasDelPlanDeEscape = pistasDelRecorrido(planDeEscape)
+		pistasDelPlanDeEscape = new ArrayList<List<String>>()
+		//pistasDelRecorrido(planDeEscape)
 	}
 	
 	def mostrarPista(Pais p, LugarDeInteres lugar) {
 		
 		/**
 		 * Falta contemplar el caso en el que el pais NO se encuentra en el 
-		 * planDeEscape
+		 * planDeEscape (responde el cuidador)
 		 */
-		 
+		
 		val posLugarPista = planDeEscape.indexOf(p)
 		
 		val resLugares = lugaresDelPlanEscape.get(posLugarPista).indexOf(lugar)

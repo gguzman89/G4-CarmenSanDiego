@@ -10,6 +10,7 @@ import edu.ui.domain.CarmenSan10.Pais
 import edu.ui.domain.CarmenSan10.LugarDeInteres
 import edu.ui.domain.CarmenSan10.Caso
 import edu.ui.domain.CarmenSan10.Detective
+import java.util.List
 
 @Accessors
 class CarmenSan10Dummy 
@@ -113,8 +114,9 @@ class CarmenSan10Dummy
 		 	paisDelRobo = argentina
 		 	lugarDelVillano = lugarDondeSeEncuentraElVillano(planDeEscape.last)
 		 	lugaresDelPlanEscape = lugaresDelRecorrido(planDeEscape)
-		 	pistasDelPlanDeEscape = pistasDelRecorrido(planDeEscape)
+		 	pistasDelPlanDeEscape = new ArrayList<List<String>>()
 		 ]
+		 caso.pistasDelRecorrido(caso.planDeEscape) 
 		 
 //		 caso = new Caso(villanoCS,	#[argentina, brazil, venezuela], reporteDelCrimen, objetoRobado, argentina)
 //		 ver que otra cosa puede ser... o dejar de usar
