@@ -170,4 +170,13 @@ class Detective
 		caso.mostrarPista(ubicacionActual, lugar)
 	}
 	
+	def posicionActual(Caso caso) {
+		
+		if(recorrido.empty) {
+			caso.paisDelRobo
+		} else {
+			ubicacionActual
+		}
+	}
+	
 }
