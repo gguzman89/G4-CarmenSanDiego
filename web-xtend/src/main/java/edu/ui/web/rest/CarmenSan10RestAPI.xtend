@@ -19,6 +19,8 @@ import edu.ui.dominioXTrest.EmitirOrdenRequest
 import edu.ui.dominioXTrest.ViajeRequest
 import edu.ui.dominioXTrest.CasoRest
 import edu.ui.domain.CarmenSan10.Pais
+import edu.ui.domain.CarmenSan10.LugarDeInteres
+import edu.ui.dominioXTrest.PistaRest
 
 @Controller
 class CarmenSan10RestAPI {
@@ -128,13 +130,24 @@ class CarmenSan10RestAPI {
 	 * For eg: http://www.abx.com?x=2&y=3
 	 */
 	@Get("/pistaDelLugar")
-	def getPistaDelLugar(String name, String caso) {
+	def getPistaDelLugar(String lugar, String caso) {
 		response.contentType = ContentType.APPLICATION_JSON
 		
-		//var caso = caso.fromJson(Caso)
+//		val lugarJson = "{'nombre':" + lugar + "}" 
+//		val lugarP = lugarJson.fromJson(LugarDeInteres)
 		
+//		val lugarParam = parseo O String - ubicacionActual
+
+		val LugarDeInteres parse = LugarDeInteres.valueOf(lugar)
 		
-		ok
+		val casoMax = carmenSan10.caso
+		
+		val paisActual = carmenSan10.doc.posicionActual(casoMax)
+		
+		val mostrarPista = carmenSan10.caso.mostrarPista(paisActual, parse)
+		
+		val pista = new PistaRest(mostrarPista)
+		ok(pista.toJson)
 	}
 	
 	

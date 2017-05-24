@@ -170,6 +170,7 @@ class Detective
 		caso.mostrarPista(ubicacionActual, lugar)
 	}
 	
+<<<<<<< HEAD
 	def paisesVisitados(List<Pais> pais) 
 	{	
 		val visitados = new ArrayList<Pais>()
@@ -192,6 +193,14 @@ class Detective
 		if (! paises.contains(pais))
 		{
 			paises.add(pais)
+=======
+	def posicionActual(Caso caso) {
+		
+		if(recorrido.empty) {
+			caso.paisDelRobo
+		} else {
+			ubicacionActual
+>>>>>>> 3c1f3ffc85d2e6d547582989db36b20d6ad73c69
 		}
 	}
 	
