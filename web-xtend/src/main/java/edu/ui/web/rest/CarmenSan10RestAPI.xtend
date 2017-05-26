@@ -170,7 +170,7 @@ class CarmenSan10RestAPI {
         response.contentType = ContentType.APPLICATION_JSON
         try {        	
             var villano = carmenSan10.expediente.obtenerVillanoDeId(Integer.valueOf(id))
-            if (villano.equals(null)) 
+            if (villano == null) 
             {
             	notFound(getErrorJson("No existe un villano con ese id"))
             } 

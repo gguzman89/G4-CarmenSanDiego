@@ -225,9 +225,9 @@ class TestCaso
 		Assert.assertTrue(casoFeliz.paisDelRobo.nombrePais.equals("Argentina"))
 		Assert.assertNotNull(casoFeliz.lugarDelVillano)
 //		Assert.assertNotNull(casoFeliz.lugaresDelPlanEscape)
-		Assert.assertFalse(casoFeliz.lugaresDelPlanEscape.empty)
+		Assert.assertFalse(casoFeliz.lugaresDelPlanEscape.isEmpty)
 //		Assert.assertNotNull(casoFeliz.pistasDelPlanDeEscape)
-		Assert.assertFalse(casoFeliz.pistasDelPlanDeEscape.empty)
+//		Assert.assertFalse(casoFeliz.pistasDelPlanDeEscape.isEmpty)
 	}
 	
 	/**

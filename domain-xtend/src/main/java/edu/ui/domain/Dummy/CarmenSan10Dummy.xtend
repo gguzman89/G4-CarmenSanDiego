@@ -29,31 +29,19 @@ class CarmenSan10Dummy
 		mapamundi = new Mapamundi
 		
 		// diff entre val y var?
-		val venezuela = new Pais() => [
-			nombrePais = "Venezuela"
-			lugares = #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB]
-			paisesConexionAerea = #[] // ponerle al menos 1
-			caracteristicaPais = #[new Caracteristicas("Maduro a la cabeza")]
-		]
+		val venezuela = new Pais("Venezuela", #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB], new ArrayList<Pais>())
+		venezuela.caracteristicaPais = #[new Caracteristicas("Maduro a la cabeza")]
 		
-		val brazil = new Pais() => [
-			nombrePais = "Brazil"
-			lugares = #[LugarDeInteres.EMBAJADA, LugarDeInteres.BANCO, LugarDeInteres.CLUB]
-			paisesConexionAerea = #[venezuela]
+		
+		val brazil = new Pais("Brazil", #[LugarDeInteres.EMBAJADA, LugarDeInteres.BANCO, LugarDeInteres.CLUB], #[venezuela]) => [
 			caracteristicaPais = #[new Caracteristicas("Joga bonito")]
 		]
 		
-		val argentina = new Pais() => [
-			nombrePais = "Argentina"
-			lugares = #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.BANCO]
-			paisesConexionAerea = #[venezuela, brazil]
+		val argentina = new Pais("Argentina", #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.BANCO], #[venezuela, brazil]) => [
 			caracteristicaPais = #[new Caracteristicas("Bandera azul y blanca")]
 		]
 		
-		val uruguay = new Pais() => [
-			nombrePais = "Uruguay"
-			lugares = #[LugarDeInteres.BANCO, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB]
-			paisesConexionAerea = #[venezuela, brazil, argentina]
+		val uruguay = new Pais("Uruguay", #[LugarDeInteres.BANCO, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB], #[venezuela, brazil, argentina]) => [
 			caracteristicaPais = #[new Caracteristicas("A toda hora mate :D")]
 		]
 		
@@ -78,7 +66,14 @@ class CarmenSan10Dummy
 		val hobbieCS = new Caracteristicas("Juega tenis")
 		hobbiesCS.add(hobbieCS)
 		
-		val villanoCS = new Villano("Carmen Sandiego", "Femenino", seniasParticularesCS, hobbiesCS)
+		//val villanoCS = new Villano("Carmen Sandiego", "Femenino", seniasParticularesCS, hobbiesCS)
+		
+		val villanoCS = new Villano => [
+			nombre = "Carmen Sandiego"
+			sexo = "Femenino"
+			seniasParticulares = seniasParticularesCS
+			hobbies = hobbiesCS
+		]
 		
 		val seniasParticularesII = new ArrayList<Caracteristicas>()
 		val seniaII1 = new Caracteristicas("Pelo rubio")
@@ -104,21 +99,22 @@ class CarmenSan10Dummy
 		 val reporteDelCrimen = "A las 9 de la mañana en la ciudad del Cairo la comunidad científica fue conmovida al darse cuenta del faltante de gran valor! El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III. El criminal fue muy prolijo y la escena del crimen no contaba con pista alguna, su misión como detective es desifrar el responsable de tal crímen y apresarlo."
 		 val objetoRobado = "Tumba del faraón"
 		 
-		 caso = new Caso() => 
-		 [
-		 	id = 1
-		 	responsable = villanoCS
-		 	planDeEscape = #[argentina, brazil, venezuela]
-		 	reporteDelActoCriminal = reporteDelCrimen
-		 	objetoDelRobo = objetoRobado
-		 	paisDelRobo = argentina
-		 	lugarDelVillano = lugarDondeSeEncuentraElVillano(planDeEscape.last)
-		 	lugaresDelPlanEscape = lugaresDelRecorrido(planDeEscape)
-		 	pistasDelPlanDeEscape = new ArrayList<List<String>>()
-		 ]
-		 caso.pistasDelRecorrido(caso.planDeEscape) 
+//		 caso = new Caso() => 
+//		 [
+//		 	id = 1
+//		 	responsable = villanoCS
+//		 	planDeEscape = #[argentina, brazil, venezuela]
+//		 	reporteDelActoCriminal = reporteDelCrimen
+//		 	objetoDelRobo = objetoRobado
+//		 	paisDelRobo = argentina
+//		 	lugarDelVillano = lugarDondeSeEncuentraElVillano(planDeEscape.last)
+//		 	lugaresDelPlanEscape = lugaresDelRecorrido(planDeEscape)
+//		 	pistasDelPlanDeEscape = new ArrayList<List<String>>()
+//		 ]
+//		 caso.pistasDelRecorrido(caso.planDeEscape) 
 		 
-//		 caso = new Caso(villanoCS,	#[argentina, brazil, venezuela], reporteDelCrimen, objetoRobado, argentina)
+		 caso = new Caso(villanoCS,	#[argentina, brazil, venezuela], reporteDelCrimen, objetoRobado, argentina)
+		 caso.pistasDelRecorrido(caso.planDeEscape)
 //		 ver que otra cosa puede ser... o dejar de usar
 		 
 		 /**

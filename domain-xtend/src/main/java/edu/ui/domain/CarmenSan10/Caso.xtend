@@ -53,8 +53,10 @@ class Caso
 		 */
 		
 		val posLugarPista = planDeEscape.indexOf(p)
+		// indexOf = hay que reemplazar por un metodo que reciba un pais y una lista, y me de la posicion del pais ne esa lista
 		
-		val resLugares = lugaresDelPlanEscape.get(posLugarPista).indexOf(lugar)
+		val resLugares = lugaresDelPlanEscape.get(posLugarPista).indexOf(lugar) // la posicion dentro de la lista de lugares
+		// indexOf = dado un lugar y una lista de lugares, te devuelve el lugar de esa posicion.
 		
 		pistasDelPlanDeEscape.get(posLugarPista).get(resLugares)
 	}

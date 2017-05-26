@@ -19,7 +19,10 @@ class Villano extends Ocupante {
 	List<Caracteristicas> seniasParticulares
 	List<Caracteristicas> hobbies
 	
-	new () {}
+	new () 
+	{
+		
+	}
 	
 	/** PROPÓSITO: Crea un Villano con un nombre, sexo, señas particulares y hobbies. 
 	 * 
