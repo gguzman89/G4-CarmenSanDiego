@@ -48,17 +48,25 @@ class Caso
 	def mostrarPista(Pais p, LugarDeInteres lugar) {
 		
 		/**
-		 * Falta contemplar el caso en el que el pais NO se encuentra en el 
+		 * Falta contemplar el caso en el que el pais NO se encuentra en el    => RESUELTO
 		 * planDeEscape (responde el cuidador)
 		 */
+		 
+		if (p.estaDentroDelRecorrido(planDeEscape))
+		{
+			val posLugarPista = planDeEscape.indexOf(p)
+			// posicionEnLosPaises = Me da el index de la posicion de p en el planDeEscape
+			val resLugares = lugaresDelPlanEscape.get(posLugarPista).indexOf(lugar)
+			// posicionEnLosLugares = Me da el index de la posicion de lugar en una lista de lugares
 		
-		val posLugarPista = planDeEscape.indexOf(p)
-		// indexOf = hay que reemplazar por un metodo que reciba un pais y una lista, y me de la posicion del pais ne esa lista
+			pistasDelPlanDeEscape.get(posLugarPista).get(resLugares)	
+		}
 		
-		val resLugares = lugaresDelPlanEscape.get(posLugarPista).indexOf(lugar) // la posicion dentro de la lista de lugares
-		// indexOf = dado un lugar y una lista de lugares, te devuelve el lugar de esa posicion.
+		else	// Si el pais no se encuentra en el plan de escape...
+		{
+			p.ocupante.responderAlDetective(this, lugar, p)
+		}
 		
-		pistasDelPlanDeEscape.get(posLugarPista).get(resLugares)
 	}
 	
 	def pistasDelRecorrido(List<Pais> paises) 

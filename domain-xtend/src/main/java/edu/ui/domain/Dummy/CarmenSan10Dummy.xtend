@@ -30,19 +30,19 @@ class CarmenSan10Dummy
 		
 		// diff entre val y var?
 		val venezuela = new Pais("Venezuela", #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB], new ArrayList<Pais>())
-		venezuela.caracteristicaPais = #[new Caracteristicas("Maduro a la cabeza")]
+		venezuela.caracteristicaPais = #[new Caracteristicas("Maduro a la cabeza"), new Caracteristicas("Su lider cosmico supremo habla con los pajaritos")]
 		
 		
 		val brazil = new Pais("Brazil", #[LugarDeInteres.EMBAJADA, LugarDeInteres.BANCO, LugarDeInteres.CLUB], #[venezuela]) => [
-			caracteristicaPais = #[new Caracteristicas("Joga bonito")]
+			caracteristicaPais = #[new Caracteristicas("Joga bonito"), new Caracteristicas("Su bandera es verde y amarilla")]
 		]
 		
 		val argentina = new Pais("Argentina", #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.BANCO], #[venezuela, brazil]) => [
-			caracteristicaPais = #[new Caracteristicas("Bandera azul y blanca")]
+			caracteristicaPais = #[new Caracteristicas("Bandera azul y blanca"), new Caracteristicas("Su arbol nacional es el Ceibo")]
 		]
 		
 		val uruguay = new Pais("Uruguay", #[LugarDeInteres.BANCO, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB], #[venezuela, brazil, argentina]) => [
-			caracteristicaPais = #[new Caracteristicas("A toda hora mate :D")]
+			caracteristicaPais = #[new Caracteristicas("A toda hora mate :D"), new Caracteristicas("Es una una provincia de Argentina")]
 		]
 		
 		
@@ -113,8 +113,12 @@ class CarmenSan10Dummy
 //		 ]
 //		 caso.pistasDelRecorrido(caso.planDeEscape) 
 		 
+//		 val plan = new ArrayList<Pais>()
+//		 plan.add(argentina)
+//		 plan.add(brazil)
+//		 plan.add(venezuela)
 		 caso = new Caso(villanoCS,	#[argentina, brazil, venezuela], reporteDelCrimen, objetoRobado, argentina)
-		 caso.pistasDelRecorrido(caso.planDeEscape)
+		 caso.pistasDelPlanDeEscape = caso.pistasDelRecorrido(#[argentina, brazil, venezuela])
 //		 ver que otra cosa puede ser... o dejar de usar
 		 
 		 /**
