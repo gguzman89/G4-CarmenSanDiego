@@ -1,0 +1,4 @@
+carmenApp.controller('ExpedienteController', function () 
+{ 
+
+}
