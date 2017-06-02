@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('carmenApp', ['ui.router','ngResource','ui.bootstrap']);
 
 carmenApp.factory('DataService', function()

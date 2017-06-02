@@ -9,7 +9,7 @@ carmenApp.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: "partials/menuDeAcciones.html",  // El nombre del partial de la pagina principal seria "menuDeAcciones.html"
       controller: "MenuController as menuCtrl"      // El controllador del partial de la pagina principal se llamaría "menuController.js"
     })
-
+/*
     .state('mapamundi', {
       url: "/paises",
       templateUrl: "partials/mapamundi.html",       // El nombre del partial de mapamundi sería "mapamundi.html"
@@ -21,7 +21,7 @@ carmenApp.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: "partials/expediente.html",       // El nombre del partial de expediente sería "expediente.html"
       controller: "ExpedienteController as expCtrl" // El nombre del controller de "expediente.html" se llamaría "expedienteController"
     })
-
+*/
     .state('resolviendoMisterio', {
       url: "/iniciarJuego",   // Esta parte no estoy muy segura en la url...
       templateUrl: "partials/resolviendoCaso.html", // El nombre del partial de resolviendo misterio sería "resolviendoCaso.html"
@@ -47,19 +47,35 @@ carmenApp.config(function ($stateProvider, $urlRouterProvider) {
 //  }
 //  )
 
-//     .state('administrar',{
-//     url: '/villanos',
-//     views: {
-//      'panelHeader': {
-//        templateUrl: "partials/opciones-logo.html",
-//        controller: "OpcionesController as opcionesCtrl"
-//      },
-//     'panelBody': {
-//        templateUrl: "partials/opcionesDeEncabezado.html",
-//        controller: "LogueadoController as logueadoCtrl"
-//      }
-//    }
-//  }
-//  )
+     .state('admExpedientes',{
+     url: '/villanos',
+     views: {
+      'panelHeader': {
+        templateUrl: "partials/opciones-logo.html",
+        controller: "OpcionesController as opcionesCtrl"
+      },
+     'panelBody': {
+        templateUrl: "partials/expediente.html",
+        controller: "ExpedienteController as expCtrl"
+      }
+    }
+  }
+  )
+
+     .state('admMapamundi',{
+     url: '/paises',
+     views: {
+      'panelHeader': {
+        templateUrl: "partials/opciones-logo.html",
+        controller: "OpcionesController as opcionesCtrl"
+      },
+     'panelBody': {
+        templateUrl: "partials/mapamundi.html",
+        controller: "MapamundiController as mapaCtrl"
+      }
+    }
+  }
+  )
+
 
 });
