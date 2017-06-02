@@ -10,7 +10,7 @@ carmenApp.factory('IniciarJuego', function($resource)
 
 carmenApp.factory('Pista', function($resource) {
     return $resource('/pistaDelLugar', {}, {
-         'query': { method: 'GET', isArray: true}
+         'query': { method: 'GET' }
     });
 });
 
