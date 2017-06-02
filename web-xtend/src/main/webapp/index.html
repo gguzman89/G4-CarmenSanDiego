@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<!doctype html>
-<html>
-	<head>
-		<title> Donde esta Carmen Sandiego</title>
-	</head>
-	<body>
-		<h1>Hola, wacho!</h1>
-	</body>
-=======
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -24,6 +14,11 @@
 
 <!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <body data-ng-controller= "MenuController as menuCtrl">
+    <body data-ng-controller= "MapamundiController as mapaCtrl">
+    <body data-ng-controller= "ExpedienteController as expCtrl">
+    <body data-ng-controller= "ResolviendoController as docCtrl">
+    
 		<title>¿Dónde está Carmen Sandiego?</title>
   </head>
 
@@ -40,7 +35,7 @@
 		  <div class="col-md-9 col-md-push-3">
 
 		  	<button type="button" class="btn btn-primary">Expediente</button>
-		  	<button type="button" class="btn btn-default">Resolver Misterio</button>
+		  	<button type="button" class="btn btn-default" ng-click="menuCtrl.jugar()">Resolver Misterio</button>
 		  	<button type="button" class="btn btn-default">Mapamundi</button>
 
 		  </div>
@@ -56,7 +51,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-  </body>
 
->>>>>>> 075d0ecc3df80a0811358d1541a0c01e521db9c2
+    <script src="js/app.js"></script>
+
+    <script src="js/menuController.js"></script>
+    <script src="js/carmenService.js"></script>
+    <script src="js/resolviendoController.js"></script>
+    
+    <script src="js/ExpedienteController.js"></script>
+    <script src="js/expedienteService.js"></script>
+    
+    <script src="js/mapamundiController.js"></script>
+    <script src="js/mapamundiService.js"></script>
+    
+
+
+  </body>
 </html>

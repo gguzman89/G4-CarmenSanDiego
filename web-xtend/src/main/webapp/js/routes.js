@@ -47,4 +47,19 @@ carmenApp.config(function ($stateProvider, $urlRouterProvider) {
 //  }
 //  )
 
+//     .state('administrar',{
+//     url: '/villanos',
+//     views: {
+//      'panelHeader': {
+//        templateUrl: "partials/opciones-logo.html",
+//        controller: "OpcionesController as opcionesCtrl"
+//      },
+//     'panelBody': {
+//        templateUrl: "partials/opcionesDeEncabezado.html",
+//        controller: "LogueadoController as logueadoCtrl"
+//      }
+//    }
+//  }
+//  )
+
 });
