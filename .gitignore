@@ -11,3 +11,4 @@ src/test/generated-sources
 /.settings/
 /.settings
 /settings/
+web-xtend/src/main/webapp/node_modules
