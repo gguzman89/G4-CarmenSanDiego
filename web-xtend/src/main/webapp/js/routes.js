@@ -49,33 +49,16 @@ carmenApp.config(function ($stateProvider, $urlRouterProvider) {
 
      .state('admExpedientes',{
      url: '/villanos',
-     views: {
-      'panelHeader': {
-        templateUrl: "partials/opciones-logo.html",
-        controller: "OpcionesController as opcionesCtrl"
-      },
-     'panelBody': {
-        templateUrl: "partials/expediente.html",
-        controller: "ExpedienteController as expCtrl"
-      }
-    }
-  }
-  )
+     templateUrl: "partials/villano-exdiente.html",
+     controller: "ExpedienteController as expediente"
+     }
+     )
 
      .state('admMapamundi',{
      url: '/paises',
-     views: {
-      'panelHeader': {
-        templateUrl: "partials/opciones-logo.html",
-        controller: "OpcionesController as opcionesCtrl"
-      },
-     'panelBody': {
-        templateUrl: "partials/mapamundi.html",
-        controller: "MapamundiController as mapaCtrl"
-      }
-    }
-  }
-  )
-
+     templateUrl: "partials/mapamundi.html", // realizar html
+     controller: "MapamundiController as mapa"
+     }
+     )
 
 });

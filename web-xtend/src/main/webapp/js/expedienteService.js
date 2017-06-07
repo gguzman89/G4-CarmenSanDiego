@@ -10,7 +10,7 @@ carmenApp.factory('ModificarVillano', function($resource) {
 
 carmenApp.factory('Expediente', function($resource) {
     return $resource('/villanos', {}, {                 // En /villanos solo se puede consultar...
-         'queryAll': { method: 'GET', isArray: true}
+         'queryAll': { method: 'GET', isArray: true}    // Expediente -> 
     });
 });
 
