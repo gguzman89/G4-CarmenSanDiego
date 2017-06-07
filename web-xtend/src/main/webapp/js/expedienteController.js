@@ -1,4 +1,4 @@
-carmenApp.controller('ExpedienteController', function ($timeout, Expediente) 
+carmenApp.controller('ExpedienteController', function ($timeout, Expediente, ModificarVillano) 
 { 
 	'use strict';
 	var self = this;
@@ -29,5 +29,13 @@ carmenApp.controller('ExpedienteController', function ($timeout, Expediente)
         $timeout(function() {
             while (mensajes.length > 0) mensajes.pop();
         }, 3000);
+    }
+
+    this.borrarVillano = function(villano) {
+    	ModificarVillano.remove(villano, function(data) {
+    		self.villanos = data
+    	} // terminar
+
+    		)
     }
 });
