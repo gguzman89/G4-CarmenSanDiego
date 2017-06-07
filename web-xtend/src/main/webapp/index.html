@@ -1,56 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    <!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <body data-ng-controller= "MenuController as menuCtrl">
-    <body data-ng-controller= "MapamundiController as mapaCtrl">
-    <body data-ng-controller= "ExpedienteController as expCtrl">
-    <body data-ng-controller= "ResolviendoController as docCtrl">
+<!Doctype html>
+<html lang="en" ng-app="carmenApp">
+<head>
+    <meta charset="utf-8">
     
-		<title>¿Dónde está Carmen Sandiego?</title>
-  </head>
+    <!-- add AngularJS | node_modules -->
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
 
-  <body>
+    <!-- JQUERY -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
 
-  	<div class="container">
-  		
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <title>¿Dónde está Carmen Sandiego?</title>
+</head>
+<body ng-controller="MenuCtrl as menu">
+
+    <div class="container">
+        
       <div class="jumbotron">
         <h1>¿Qué haremos ahora Detective?</h1>
         <p class="text-center">Colega, elige alguna opcion...</p>
 
-		<div class="row">
+        <div class="row">
 
-		  <div class="col-md-9 col-md-push-3">
+          <div class="col-md-9 col-md-push-3">
 
-		  	<button type="button" class="btn btn-primary">Expediente</button>
-		  	<button type="button" class="btn btn-default" ng-click="menuCtrl.jugar()">Resolver Misterio</button>
-		  	<button type="button" class="btn btn-default">Mapamundi</button>
+            <button type="button" class="btn btn-primary">Expediente</button>
+            <button type="button" class="btn btn-default" ng-click="menu.jugar()">Resolver Misterio</button>
+            <button type="button" class="btn btn-default">Mapamundi</button>
 
-		  </div>
-		  
-		</div>
+          </div>
+          
+        </div>
 
       </div>
-
+      <div ui-view></div>
     </div><!-- /.container -->
-    
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <!-- add JSscript -->
     <script src="js/app.js"></script>
 
     <script src="js/menuController.js"></script>
@@ -62,6 +54,7 @@
     
     <script src="js/mapamundiController.js"></script>
     <script src="js/mapamundiService.js"></script>
+    <script type="text/javascript" src="js/routes.js"></script>
     
-  </body>
+</body>
 </html>

@@ -1,13 +1,13 @@
 'use strict';
 
-var app = angular.module('carmenApp', ['ui.router','ngResource','ui.bootstrap']);
+var carmenApp = angular.module('carmenApp', ['ui.router','ngResource']);
 
 carmenApp.factory('DataService', function()
 {
 	// return { caso:{} };
 });
 
-rankitApp.directive('onlyDigits', function () {
+carmenApp.directive('onlyDigits', function () {
     return {
       require: 'ngModel',
       restrict: 'A',

@@ -7,7 +7,7 @@ carmenApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('inicio', {
       url: "/",
       templateUrl: "partials/menuDeAcciones.html",  // El nombre del partial de la pagina principal seria "menuDeAcciones.html"
-      controller: "MenuController as menuCtrl"      // El controllador del partial de la pagina principal se llamaría "menuController.js"
+      controller: "MenuCtrl as menu"      // El controllador del partial de la pagina principal se llamaría "menuController.js"
     })
 /*
     .state('mapamundi', {

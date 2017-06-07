@@ -1,9 +1,10 @@
-carmenApp.controller('MenuController', function (Pista, $state, CarmenService) 
+carmenApp.controller('MenuCtrl', function (Pista, $state) 
 { 
 	this.jugar = function()
 	{
-		CarmenService.play();
-		$state.go('resolviendoMisterio');
+		//.play();
+		console.log("play?")
+		$state.go("resolviendoMisterio");
 	}
 
 	this.pista = function(l, idcaso) {
@@ -11,4 +12,4 @@ carmenApp.controller('MenuController', function (Pista, $state, CarmenService)
 			console.log(data);
 		})
 	}
-}
+});
