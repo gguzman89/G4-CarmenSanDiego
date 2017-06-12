@@ -12,4 +12,12 @@ carmenApp.controller('MenuCtrl', function (Pista, $state)
 			console.log(data);
 		})
 	}
+
+	this.openMapamundi = function() {
+		$state.go("admMapamundi");
+	}
+
+	this.openExpediente = function() {
+		$state.go("admExpedientes");
+	}
 });
