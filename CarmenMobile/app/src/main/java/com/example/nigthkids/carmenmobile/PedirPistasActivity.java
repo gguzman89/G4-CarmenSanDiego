@@ -2,12 +2,28 @@ package com.example.nigthkids.carmenmobile;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.nigthkids.carmenmobile.service.CarmenService;
 
 import retrofit.RestAdapter;
 
 public class PedirPistasActivity extends AppCompatActivity {
+
+    TextView tvPedirPista;
+    Button bnt1;
+    Button bnt2;
+    Button bnt3;
+
+    EditText etNombre;
+    EditText etPista;
+
+    EditText etOrden;
+
+    Button btnOrden;
+    Button btnViajar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
