@@ -1,13 +1,12 @@
 package edu.ui.domain.CarmenSan10
 
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.uqbar.commons.model.Entity
 import org.uqbar.commons.utils.TransactionalAndObservable
 import java.util.List
 
 @TransactionalAndObservable
 @Accessors
-abstract class Ocupante extends Entity implements Cloneable {
+abstract class Ocupante {
 
 	/**
 	 * State -> actualizar
