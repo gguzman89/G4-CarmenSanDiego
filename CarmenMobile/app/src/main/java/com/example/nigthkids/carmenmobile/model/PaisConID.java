@@ -6,7 +6,7 @@ import java.util.List;
  * Created by BGH-Ana on 21/6/2017.
  */
 
-class PaisConID {
+public class PaisConID {
 
     Integer id;
     String nombre;

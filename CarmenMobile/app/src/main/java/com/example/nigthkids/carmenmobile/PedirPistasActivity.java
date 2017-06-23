@@ -2,16 +2,23 @@ package com.example.nigthkids.carmenmobile;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.nigthkids.carmenmobile.model.Caso;
 import com.example.nigthkids.carmenmobile.service.CarmenService;
 
+import retrofit.Callback;
 import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class PedirPistasActivity extends AppCompatActivity {
+
+    String tituloPaisActual;
 
     Button pista1;
     Button pista2;
@@ -37,6 +44,22 @@ public class PedirPistasActivity extends AppCompatActivity {
 
         orden = (Button) findViewById(R.id.btnOrden);
         viajar = (Button) findViewById(R.id.btnViajar);
+
+        iniciarCamenService().iniciarJuego(new Callback<Caso>() {
+            @Override
+            public void success(Caso caso, Response response) {
+                tituloPaisActual = caso.getPais().getNombre();
+                pista1.setText(caso.getPais().getLugares().get(0).getNombre());
+                pista2.setText(caso.getPais().getLugares().get(1).getNombre());
+                pista3.setText(caso.getPais().getLugares().get(2).getNombre());
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                // t.printStackTrace();
+                //Log.e("CarmenApp"), t.getMessage());
+            }
+        });
 
         pista1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +88,10 @@ public class PedirPistasActivity extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setTitle("Estas en: " + "Pais");
+        getSupportActionBar().setTitle("Estas en: " + tituloPaisActual);
         // averiguar de donde puedo sacar el Pais -> new Caso
 
-        iniciarCamenService();
+
     }
 
 
