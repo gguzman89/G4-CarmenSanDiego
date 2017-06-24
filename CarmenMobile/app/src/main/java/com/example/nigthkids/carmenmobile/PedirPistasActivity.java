@@ -33,9 +33,7 @@ public class PedirPistasActivity extends AppCompatActivity {
     Button pista3;
 
     TextView lugar;
-    TextView pistaByBtn1;
-    TextView pistaByBtn2;
-    TextView pistaByBtn3;
+    TextView pistaByBtn;
 
     TextView ordenEmitida;
 
@@ -127,21 +125,8 @@ public class PedirPistasActivity extends AppCompatActivity {
             @Override
             public void failure(RetrofitError error) {
 
-<<<<<<< HEAD
             }
         });
-=======
-    private CarmenService iniciarCamenService() {
-
-        String SERVER_IP = "10.9.0.140"; // revisar antes de funcionar
-        String API_URL = "http://" + SERVER_IP + ":9000";
-
-        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
-
-        CarmenService carmenService = restAdapter.create(CarmenService.class);
-
-        return carmenService;
->>>>>>> 58fc0b58353d7ed919090c3c18ef51ec92ca7da5
     }
 
 }
