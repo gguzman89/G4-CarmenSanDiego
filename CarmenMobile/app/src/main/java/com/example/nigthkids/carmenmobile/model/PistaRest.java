@@ -7,6 +7,11 @@ package com.example.nigthkids.carmenmobile.model;
 public class PistaRest {
     private String pista;
 
+    public PistaRest(String p)
+    {
+        setPista(p);
+    }
+
     public String getPista() {
         return pista;
     }

@@ -8,7 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.nigthkids.carmenmobile.model.CarmenServiceFactory;
 import com.example.nigthkids.carmenmobile.model.Caso;
+import com.example.nigthkids.carmenmobile.model.LugarDeInteres;
+import com.example.nigthkids.carmenmobile.model.PistaRest;
 import com.example.nigthkids.carmenmobile.service.CarmenService;
 
 import retrofit.Callback;
@@ -20,12 +23,20 @@ public class PedirPistasActivity extends AppCompatActivity {
 
     String tituloPaisActual;
 
+    LugarDeInteres lugar1;
+    LugarDeInteres lugar2;
+    LugarDeInteres lugar3;
+
     Button pista1;
     Button pista2;
     Button pista3;
 
     TextView lugar;
-    TextView pistaByBtn;
+    TextView pistaByBtn1;
+    TextView pistaByBtn2;
+    TextView pistaByBtn3;
+
+    TextView ordenEmitida;
 
     Button orden;
     Button viajar;
@@ -45,13 +56,16 @@ public class PedirPistasActivity extends AppCompatActivity {
         orden = (Button) findViewById(R.id.btnOrden);
         viajar = (Button) findViewById(R.id.btnViajar);
 
-        iniciarCamenService().iniciarJuego(new Callback<Caso>() {
+        new CarmenServiceFactory().getServiceFactory().iniciarJuego(new Callback<Caso>() {
             @Override
             public void success(Caso caso, Response response) {
                 tituloPaisActual = "Pepe";//caso.getPais().getNombre();
                 pista1.setText(caso.getPais().getLugares().get(0).getNombre());
                 pista2.setText(caso.getPais().getLugares().get(1).getNombre());
                 pista3.setText(caso.getPais().getLugares().get(2).getNombre());
+                lugar1 = (caso.getPais().getLugares().get(0));
+                lugar2 = (caso.getPais().getLugares().get(1));
+                lugar3 = (caso.getPais().getLugares().get(2));
             }
 
             @Override
@@ -66,7 +80,7 @@ public class PedirPistasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nameBtn1 = pista1.getText().toString();
                 lugar.setText(nameBtn1);
-                pistaByBtn.setText("Apretaste el 1er button");
+                obtenerPistaDe(lugar1);
             }
         });
 
@@ -75,7 +89,7 @@ public class PedirPistasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nameBtn2 = pista2.getText().toString();
                 lugar.setText(nameBtn2);
-                pistaByBtn.setText("Apretaste el 2er button");
+                obtenerPistaDe(lugar2);
             }
         });
 
@@ -84,7 +98,7 @@ public class PedirPistasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nameBTn3 = pista3.getText().toString();
                 lugar.setText(nameBTn3);
-                pistaByBtn.setText("Apretaste el 3er button");
+                obtenerPistaDe(lugar3);
             }
         });
 
@@ -94,17 +108,18 @@ public class PedirPistasActivity extends AppCompatActivity {
 
     }
 
+    public void obtenerPistaDe(LugarDeInteres lugar) {
+        new CarmenServiceFactory().getServiceFactory().getPista(lugar, "1", new Callback<PistaRest>() {
+            @Override
+            public void success(PistaRest pistaRest, Response response) {
+                pistaByBtn.setText(pistaRest.getPista());
+            }
 
+            @Override
+            public void failure(RetrofitError error) {
 
-    private CarmenService iniciarCamenService() {
-
-        String SERVER_IP = "192.168.0.104"; // revisar antes de funcionar
-        String API_URL = "http://" + SERVER_IP + ":9000";
-
-        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
-
-        CarmenService carmenService = restAdapter.create(CarmenService.class);
-
-        return carmenService;
+            }
+        });
     }
+
 }
