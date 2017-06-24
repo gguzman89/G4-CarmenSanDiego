@@ -36,11 +36,11 @@
                     android:text="Orden de arresto contra: " />
 
                 <TextView
-                    android:id="@+id/editText"
+                    android:id="@+id/etVillano"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Carmen San Diego" />
+                    android:text="Carmen San Diego" />
 
             </LinearLayout>
 
