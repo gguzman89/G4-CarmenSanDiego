@@ -9,7 +9,7 @@ public class PistaRest {
 
     public PistaRest(String p)
     {
-        setPista(p);
+        pista = p;
     }
 
     public String getPista() {

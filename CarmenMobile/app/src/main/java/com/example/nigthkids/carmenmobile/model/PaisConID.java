@@ -13,6 +13,12 @@ public class PaisConID {
     List<LugarDeInteres> lugares;
     List<PaisRest> mini_conexiones;
 
+    public PaisConID(String nombre, List<LugarDeInteres> lugares, List<PaisRest> mini_conexiones) {
+        this.nombre = nombre;
+        this.lugares = lugares;
+        this.mini_conexiones = mini_conexiones;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -13,6 +13,12 @@ public class Caso {
     List<String> paisesVisitados;
     List<String> paisesFallidos;
 
+    public Caso(PaisConID pais, List<String> paisesVisitados, List<String> paisesFallidos) {
+        this.pais = pais;
+        this.paisesVisitados = paisesVisitados;
+        this.paisesFallidos = paisesFallidos;
+    }
+
     public Integer getId() {
         return id;
     }

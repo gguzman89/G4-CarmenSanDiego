@@ -58,13 +58,13 @@ public class PedirPistasActivity extends AppCompatActivity {
         new CarmenServiceFactory().getServiceFactory().iniciarJuego(new Callback<Caso>() {
             @Override
             public void success(Caso caso, Response response) {
-                tituloPaisActual = "Pepe";//caso.getPais().getNombre();
+                tituloPaisActual = (String) caso.getPais().getNombre();
                 pista1.setText(caso.getPais().getLugares().get(0).getNombre());
                 pista2.setText(caso.getPais().getLugares().get(1).getNombre());
                 pista3.setText(caso.getPais().getLugares().get(2).getNombre());
-                lugar1 = (caso.getPais().getLugares().get(0));
-                lugar2 = (caso.getPais().getLugares().get(1));
-                lugar3 = (caso.getPais().getLugares().get(2));
+                lugar1 = (LugarDeInteres) caso.getPais().getLugares().get(0);
+                lugar2 = (LugarDeInteres) caso.getPais().getLugares().get(1);
+                lugar3 = (LugarDeInteres) caso.getPais().getLugares().get(2);
             }
 
             @Override
