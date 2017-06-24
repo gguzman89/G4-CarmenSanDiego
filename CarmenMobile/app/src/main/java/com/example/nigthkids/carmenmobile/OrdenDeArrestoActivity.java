@@ -8,7 +8,9 @@ import android.widget.Button;
 
 public class OrdenDeArrestoActivity extends AppCompatActivity {
 
-    Button btnPista;
+    Button btnVolverPista;
+
+    Button btnPedirOrden;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,14 +18,18 @@ public class OrdenDeArrestoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_orden_de_arresto);
 
 
-        btnPista = (Button) findViewById(R.id.btnPista);
+        btnVolverPista = (Button) findViewById(R.id.btnPista);
 
-        btnPista.setOnClickListener(new View.OnClickListener() {
+        btnPedirOrden = (Button) findViewById(R.id.btnPedirOrden);
+
+        btnVolverPista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(OrdenDeArrestoActivity.this, PedirPistasActivity.class);
                 startActivity(intent);
             }
         });
+
+        
     }
 }
