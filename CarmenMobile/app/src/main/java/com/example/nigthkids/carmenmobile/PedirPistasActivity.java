@@ -1,5 +1,6 @@
 package com.example.nigthkids.carmenmobile;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -102,6 +103,14 @@ public class PedirPistasActivity extends AppCompatActivity {
             }
         });
 
+        orden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PedirPistasActivity.this, OrdenDeArrestoActivity.class);
+                startActivity(intent);
+            }
+        });
+
         getSupportActionBar().setTitle("Estas en: " + tituloPaisActual);
         // averiguar como puedo cambiar el titulo sin null
 
@@ -118,8 +127,21 @@ public class PedirPistasActivity extends AppCompatActivity {
             @Override
             public void failure(RetrofitError error) {
 
+<<<<<<< HEAD
             }
         });
+=======
+    private CarmenService iniciarCamenService() {
+
+        String SERVER_IP = "10.9.0.140"; // revisar antes de funcionar
+        String API_URL = "http://" + SERVER_IP + ":9000";
+
+        RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
+
+        CarmenService carmenService = restAdapter.create(CarmenService.class);
+
+        return carmenService;
+>>>>>>> 58fc0b58353d7ed919090c3c18ef51ec92ca7da5
     }
 
 }
