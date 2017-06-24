@@ -48,7 +48,7 @@ public class PedirPistasActivity extends AppCompatActivity {
         iniciarCamenService().iniciarJuego(new Callback<Caso>() {
             @Override
             public void success(Caso caso, Response response) {
-                tituloPaisActual = caso.getPais().getNombre();
+                tituloPaisActual = "Pepe";//caso.getPais().getNombre();
                 pista1.setText(caso.getPais().getLugares().get(0).getNombre());
                 pista2.setText(caso.getPais().getLugares().get(1).getNombre());
                 pista3.setText(caso.getPais().getLugares().get(2).getNombre());
@@ -89,7 +89,7 @@ public class PedirPistasActivity extends AppCompatActivity {
         });
 
         getSupportActionBar().setTitle("Estas en: " + tituloPaisActual);
-        // averiguar de donde puedo sacar el Pais -> new Caso
+        // averiguar como puedo cambiar el titulo sin null
 
 
     }
