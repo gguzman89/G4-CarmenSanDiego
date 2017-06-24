@@ -35,14 +35,12 @@
                     android:layout_weight="1"
                     android:text="Orden de arresto contra: " />
 
-                <EditText
+                <TextView
                     android:id="@+id/editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="Carmen San Diego" />
+                    android:hint="Carmen San Diego" />
 
             </LinearLayout>
 
@@ -65,21 +63,19 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/button7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Viajar" />
 
                 <Button
-                    android:id="@+id/button8"
+                    android:id="@+id/btnPista"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="Buscar Pistas" />
 
             </LinearLayout>
