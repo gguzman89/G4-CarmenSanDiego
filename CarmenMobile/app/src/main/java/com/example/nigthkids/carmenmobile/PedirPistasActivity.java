@@ -40,6 +40,8 @@ public class PedirPistasActivity extends AppCompatActivity {
     Button orden;
     Button viajar;
 
+    Caso varCaso;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,10 @@ public class PedirPistasActivity extends AppCompatActivity {
                 pista3.setText(caso.getPais().getLugares().get(2).getNombre());
                 lugar2 = (LugarDeInteres) caso.getPais().getLugares().get(1);
                 lugar3 = (LugarDeInteres) caso.getPais().getLugares().get(2);
+
+                varCaso = (Caso) caso;
+
+
             }
 
             @Override
@@ -79,11 +85,12 @@ public class PedirPistasActivity extends AppCompatActivity {
                 String nameBtn1 = pista1.getText().toString();
                 lugar.setText(nameBtn1);
                 // Intento consultar con un LugarDeInteres creado con el String del boton....
-                new CarmenServiceFactory().getServiceFactory().getPista(LugarDeInteres.valueOf(nameBtn1), "1", new Callback<PistaRest>() {
+                new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(0).getNombre().toUpperCase(), "1", new Callback<PistaRest>() {
                     @Override
                     public void success(PistaRest pistaRest, Response response) {
-                        cambiarTextoPista(pistaRest);
-                        pistaByBtn.setText(pistaRest.getPista());
+                        //cambiarTextoPista(pistaRest);
+                        String pistaResult = (String) pistaRest.getPista().toString();
+                        pistaByBtn.setText(pistaRest.getPista().toString());
                     }
 
                     @Override
@@ -91,9 +98,14 @@ public class PedirPistasActivity extends AppCompatActivity {
                         pistaByBtn.setText("El servidor esta respondiendo mal");
                     }
                 });
+
+                //pistaByBtn.setText();
+
+
             }
         });
 
+        /**
         pista2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,9 +122,10 @@ public class PedirPistasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Intento generar una consulta sin utilizar un metodo aparte donde recibe el LugarDeinteres inicializado
                 // anteriormente en el iniciarJuego.
+                // -> debo mandarle un string con el nombre del Lugar <-
                 String nameBTn3 = pista3.getText().toString();
                 lugar.setText(nameBTn3);
-                new CarmenServiceFactory().getServiceFactory().getPista(lugar3, "1", new Callback<PistaRest>() {
+                new CarmenServiceFactory().getServiceFactory().getPista(caso.getPais().getLugares().get(0).getNombre(), "1", new Callback<PistaRest>() {
                     @Override
                     public void success(PistaRest pistaRest, Response response) {
                         cambiarTextoPista(pistaRest);
@@ -125,7 +138,7 @@ public class PedirPistasActivity extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
 
         orden.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +159,7 @@ public class PedirPistasActivity extends AppCompatActivity {
     }
 
     public void obtenerPistaDe(LugarDeInteres l) {
-        new CarmenServiceFactory().getServiceFactory().getPista(l, "1", new Callback<PistaRest>() {
+        new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(0).getNombre(), "1", new Callback<PistaRest>() {
             @Override
             public void success(PistaRest pistaRest, Response response) {
                 pistaByBtn.setText(pistaRest.getPista());

@@ -10,11 +10,7 @@ public enum LugarDeInteres {
 
     public String nombre;
 
-     LugarDeInteres()
-    {
-    }
-
-     LugarDeInteres(String nombre) {
+    LugarDeInteres(String nombre) {
         this.nombre = nombre;
     }
 
