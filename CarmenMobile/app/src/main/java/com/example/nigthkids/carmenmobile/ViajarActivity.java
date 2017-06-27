@@ -31,6 +31,8 @@ public class ViajarActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, items);
         lvPaises.setAdapter(adapter);
+
+
         orden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +44,7 @@ public class ViajarActivity extends AppCompatActivity {
         pistas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent lugaresView = new Intent(ViajarActivity.this, OrdenDeArrestoActivity.class);
+                Intent lugaresView = new Intent(ViajarActivity.this, PedirPistasActivity.class);
                 startActivity(lugaresView);
             }
         });

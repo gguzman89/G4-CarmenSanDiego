@@ -12,8 +12,11 @@ import android.widget.TextView;
 import com.example.nigthkids.carmenmobile.model.CarmenServiceFactory;
 import com.example.nigthkids.carmenmobile.model.Caso;
 import com.example.nigthkids.carmenmobile.model.LugarDeInteres;
+import com.example.nigthkids.carmenmobile.model.PaisRest;
 import com.example.nigthkids.carmenmobile.model.PistaRest;
 import com.example.nigthkids.carmenmobile.service.CarmenService;
+
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -41,6 +44,9 @@ public class PedirPistasActivity extends AppCompatActivity {
     Button viajar;
 
     Caso varCaso;
+
+    List<String> mini_conexiones;
+    List<String> paisesVitados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,10 +129,16 @@ public class PedirPistasActivity extends AppCompatActivity {
             }
         });
 
+        mini_conexiones = (ArrayList<String>) cambiarTextoPista(varCaso.getPais().getMini_conexiones(), mini_conexiones);
+        paisesVitados = (List<String>) varCaso.getPaisesVisitados();
+
         viajar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PedirPistasActivity.this, ViajarActivity.class);
+                intent.putExtra("nombrePaisActual", tituloPaisActual);
+                intent.putIntegerArrayListExtra("Paises Conexiones", mini_conexiones);
+
                 startActivity(intent);
             }
         });
@@ -134,6 +146,15 @@ public class PedirPistasActivity extends AppCompatActivity {
         // averiguar como puedo cambiar el titulo sin null
         // o como puede ponerlo al tiempo que se actualize o viaje
 
+    }
+
+
+
+    public List<String> pasarPaisesAString(List<PaisRest> mini_conexiones, List<String> miniStrings) {
+        for (PaisRest pais : mini_conexiones) {
+                miniStrings.add(pais.getNombre());
+        }
+        return miniStrings;
     }
 
     private void cambiarTextoPista(PistaRest pistaRest) {

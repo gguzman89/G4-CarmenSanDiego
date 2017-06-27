@@ -4,7 +4,7 @@ package com.example.nigthkids.carmenmobile.model;
  * Created by BGH-Ana on 21/6/2017.
  */
 
-class PaisRest {
+public class PaisRest {
     String nombre;
     Integer id;
 
