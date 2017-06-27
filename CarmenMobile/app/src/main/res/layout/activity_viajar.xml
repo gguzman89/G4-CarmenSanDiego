@@ -20,10 +20,16 @@
             tools:layout_editor_absoluteY="8dp">
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Pedir Pista" />
+
+            <ListView
+                android:id="@+id/lvPaises"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitulo"/>
 
             <Button
                 android:id="@+id/button9"
