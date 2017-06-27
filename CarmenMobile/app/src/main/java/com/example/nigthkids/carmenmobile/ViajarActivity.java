@@ -4,9 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ViajarActivity extends AppCompatActivity {
+
+    ListView lvPaises;
+
+    String[] items = {"Argentina", "Bolivia", "Paraguay", "Chile"};
 
     Button orden;
     Button pistas;
@@ -16,8 +24,18 @@ public class ViajarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viajar);
 
+<<<<<<< HEAD
 
 
+=======
+        lvPaises = (ListView) findViewById(R.id.lvPaises);
+
+        orden = (Button) findViewById(R.id.btnVolverOrden);
+        pistas = (Button) findViewById(R.id.btnVolverViajar);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, items);
+        lvPaises.setAdapter(adapter);
+>>>>>>> 65b50f54c3af26972de89fedf52036a7a2b7a2bd
         orden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

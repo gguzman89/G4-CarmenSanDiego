@@ -21,12 +21,18 @@
             tools:layout_editor_absoluteY="8dp">
 
             <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Pedir Pista"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp" />
+
+            <ListView
+                android:id="@+id/lvPaises"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvTitulo"/>
 
             <Button
                 android:id="@+id/button9"
@@ -74,14 +80,14 @@
                 android:transitionGroup="true">
 
                 <Button
-                    android:id="@+id/button12"
+                    android:id="@+id/btnVolverOrden"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Orden de Arresto" />
 
                 <Button
-                    android:id="@+id/button13"
+                    android:id="@+id/btnVolverViajar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
