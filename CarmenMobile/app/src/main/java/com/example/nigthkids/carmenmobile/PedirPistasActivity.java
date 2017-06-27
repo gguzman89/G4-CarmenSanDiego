@@ -92,18 +92,7 @@ public class PedirPistasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nameBtn1 = pista1.getText().toString();
                 lugar.setText(nameBtn1);
-                new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(0).getNombre().toUpperCase(), "1", new Callback<PistaRest>() {
-                    @Override
-                    public void success(PistaRest pistaRest, Response response) {
-                        //cambiarTextoPista(pistaRest);
-                        pistaByBtn.setText(pistaRest.getPista().toString());
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        pistaByBtn.setText("Enum problem");
-                    }
-                });
+                obtenerPistaDe(0);
             }
         });
 
@@ -172,16 +161,17 @@ public class PedirPistasActivity extends AppCompatActivity {
         pistaByBtn.setText(pistaRest.getPista());
     }
 
-    public void obtenerPistaDe(LugarDeInteres l) {
-        new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(0).getNombre(), "1", new Callback<PistaRest>() {
+    public void obtenerPistaDe(Integer indexPista) {
+        new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(indexPista).getNombre().toUpperCase(), "1", new Callback<PistaRest>() {
             @Override
             public void success(PistaRest pistaRest, Response response) {
-                pistaByBtn.setText(pistaRest.getPista());
+                //cambiarTextoPista(pistaRest);
+                pistaByBtn.setText(pistaRest.getPista().toString());
             }
 
             @Override
             public void failure(RetrofitError error) {
-                pistaByBtn.setText("El servidor esta respondiendo mal");
+                pistaByBtn.setText("Enum problem");
             }
         });
     }
