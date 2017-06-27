@@ -92,7 +92,7 @@ public class PedirPistasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nameBtn1 = pista1.getText().toString();
                 lugar.setText(nameBtn1);
-                obtenerPistaDe(0);
+                obtenerPista(0);
             }
         });
 
@@ -102,17 +102,7 @@ public class PedirPistasActivity extends AppCompatActivity {
                 String nameBtn2 = pista2.getText().toString();
                 lugar.setText(nameBtn2);
 
-                new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(1).getNombre().toUpperCase(), "1", new Callback<PistaRest>() {
-                    @Override
-                    public void success(PistaRest pistaRest, Response response) {
-                        pistaByBtn.setText(pistaRest.getPista().toString());
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        pistaByBtn.setText("fix remove onClick");
-                    }
-                });
+                obtenerPista(1);
             }
         });
 
@@ -121,18 +111,7 @@ public class PedirPistasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nameBTn3 = pista3.getText().toString();
                 lugar.setText(nameBTn3);
-                new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(2).getNombre().toUpperCase(), "1", new Callback<PistaRest>() {
-                    @Override
-                    public void success(PistaRest pistaRest, Response response) {
-                        //cambiarTextoPista(pistaRest);
-                        pistaByBtn.setText(pistaRest.getPista());
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        pistaByBtn.setText("Enum problem");
-                    }
-                });
+                obtenerPista(2);
             }
         });
 
@@ -147,10 +126,10 @@ public class PedirPistasActivity extends AppCompatActivity {
         viajar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(PedirPistasActivity.this, ViajarActivity.class);
+                startActivity(intent);
             }
         });
-
         //getSupportActionBar().setTitle("Estas en: " + tituloPaisActual);
         // averiguar como puedo cambiar el titulo sin null
         // o como puede ponerlo al tiempo que se actualize o viaje
@@ -161,7 +140,7 @@ public class PedirPistasActivity extends AppCompatActivity {
         pistaByBtn.setText(pistaRest.getPista());
     }
 
-    public void obtenerPistaDe(Integer indexPista) {
+    public void obtenerPista(Integer indexPista) {
         new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(indexPista).getNombre().toUpperCase(), "1", new Callback<PistaRest>() {
             @Override
             public void success(PistaRest pistaRest, Response response) {
