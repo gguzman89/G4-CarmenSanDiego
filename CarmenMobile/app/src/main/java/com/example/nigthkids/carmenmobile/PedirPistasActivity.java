@@ -69,7 +69,7 @@ public class PedirPistasActivity extends AppCompatActivity {
 
                 varCaso = (Caso) caso;
 
-
+                getSupportActionBar().setTitle("Estas en: " + tituloPaisActual);
             }
 
             @Override
@@ -84,61 +84,60 @@ public class PedirPistasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String nameBtn1 = pista1.getText().toString();
                 lugar.setText(nameBtn1);
-                // Intento consultar con un LugarDeInteres creado con el String del boton....
                 new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(0).getNombre().toUpperCase(), "1", new Callback<PistaRest>() {
                     @Override
                     public void success(PistaRest pistaRest, Response response) {
                         //cambiarTextoPista(pistaRest);
-                        String pistaResult = (String) pistaRest.getPista().toString();
                         pistaByBtn.setText(pistaRest.getPista().toString());
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
-                        pistaByBtn.setText("El servidor esta respondiendo mal");
+                        pistaByBtn.setText("Enum problem");
                     }
                 });
-
-                //pistaByBtn.setText();
-
-
             }
         });
 
-        /**
         pista2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intento crear una consulta con el metodo creado aparte donde recibe el LugarDeInteres inicializado
-                // anteriormente en iniciarJuego
                 String nameBtn2 = pista2.getText().toString();
                 lugar.setText(nameBtn2);
-                obtenerPistaDe(lugar2);
+
+                new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(1).getNombre().toUpperCase(), "1", new Callback<PistaRest>() {
+                    @Override
+                    public void success(PistaRest pistaRest, Response response) {
+                        pistaByBtn.setText(pistaRest.getPista().toString());
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        pistaByBtn.setText("fix remove onClick");
+                    }
+                });
             }
         });
 
         pista3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intento generar una consulta sin utilizar un metodo aparte donde recibe el LugarDeinteres inicializado
-                // anteriormente en el iniciarJuego.
-                // -> debo mandarle un string con el nombre del Lugar <-
                 String nameBTn3 = pista3.getText().toString();
                 lugar.setText(nameBTn3);
-                new CarmenServiceFactory().getServiceFactory().getPista(caso.getPais().getLugares().get(0).getNombre(), "1", new Callback<PistaRest>() {
+                new CarmenServiceFactory().getServiceFactory().getPista(varCaso.getPais().getLugares().get(2).getNombre().toUpperCase(), "1", new Callback<PistaRest>() {
                     @Override
                     public void success(PistaRest pistaRest, Response response) {
-                        cambiarTextoPista(pistaRest);
+                        //cambiarTextoPista(pistaRest);
                         pistaByBtn.setText(pistaRest.getPista());
                     }
 
                     @Override
                     public void failure(RetrofitError error) {
-                        pistaByBtn.setText("El servidor esta respondiendo mal");
+                        pistaByBtn.setText("Enum problem");
                     }
                 });
             }
-        });*/
+        });
 
         orden.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,9 +147,16 @@ public class PedirPistasActivity extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setTitle("Estas en: " + tituloPaisActual);
-        // averiguar como puedo cambiar el titulo sin null
+        viajar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
+        //getSupportActionBar().setTitle("Estas en: " + tituloPaisActual);
+        // averiguar como puedo cambiar el titulo sin null
+        // o como puede ponerlo al tiempo que se actualize o viaje
 
     }
 

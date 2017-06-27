@@ -4,4 +4,7 @@
     <string name="pedir_pistas">Pedir Pistas</string>
     <string name="orden_de_arresto_para">Orden de arresto para...</string>
     <string name="tvPais">Pais</string>
+
+    <!-- usar si es necesario, cuando el tp este terminado -->
+    <string name="mostrar_Inicio">Seleccione Villano</string>
 </resources>
