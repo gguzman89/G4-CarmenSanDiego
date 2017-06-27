@@ -50,22 +50,7 @@ public class OrdenDeArrestoActivity extends AppCompatActivity {
 
         btnVolverPista = (Button) findViewById(R.id.btnPista);
         btnPedirOrden = (Button) findViewById(R.id.btnPedirOrden);
-        btnPedirOrden.setClickable(true);
-        btnPedirOrden.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (villanoSelected==1)
-                {
-                    btnPedirOrden.setClickable(false);
-                }
 
-                else
-                {
-                    btnPedirOrden.setClickable(true);
-                }
-
-            }
-        });
         tvVillano = (TextView) findViewById(R.id.tvVillano);
 
         btnSpinner = (Spinner) findViewById(R.id.spinner);
@@ -117,7 +102,7 @@ public class OrdenDeArrestoActivity extends AppCompatActivity {
             }
         });
 
-        eoEnviar = new EmitirOrdenRequest(villanoSelected, 1);
+        eoEnviar = new EmitirOrdenRequest(villanoSelected+1, 1);
 
 
         btnPedirOrden.setOnClickListener(new View.OnClickListener() {

@@ -29,6 +29,13 @@ public class ViajarActivity extends AppCompatActivity {
         orden = (Button) findViewById(R.id.btnVolverOrden);
         pistas = (Button) findViewById(R.id.btnVolverViajar);
 
+        Bundle bundle = getIntent().getExtras();
+
+        if(bundle != null) {
+            String nombrePaisActual = bundle.getString("nombrePaisActual").toString();
+            getSupportActionBar().setTitle("Estas en: " + nombrePaisActual);
+        }
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, items);
         lvPaises.setAdapter(adapter);
 

@@ -130,7 +130,7 @@ public class PedirPistasActivity extends AppCompatActivity {
         });
 
         //mini_conexiones = (ArrayList<String>) cambiarTextoPista(varCaso.getPais().getMini_conexiones(), mini_conexiones);
-        paisesVitados = (List<String>) varCaso.getPaisesVisitados();
+        //paisesVitados = (List<String>) varCaso.getPaisesVisitados();
 
         viajar.setOnClickListener(new View.OnClickListener() {
             @Override
