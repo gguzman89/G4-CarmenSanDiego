@@ -54,8 +54,16 @@ public class PedirPistasActivity extends AppCompatActivity {
         lugar = (TextView) findViewById(R.id.tvLugar);
         pistaByBtn = (TextView) findViewById(R.id.tvPista);
 
+        ordenEmitida = (TextView) findViewById(R.id.tvNombreVillano);
+
         orden = (Button) findViewById(R.id.btnOrden);
         viajar = (Button) findViewById(R.id.btnViajar);
+
+        Bundle bundle = getIntent().getExtras();
+
+        if( bundle != null){
+            String villanoNombre = bundle.getString("villanoName").toString();
+            ordenEmitida.setText(villanoNombre); }
 
         new CarmenServiceFactory().getServiceFactory().iniciarJuego(new Callback<Caso>() {
             @Override
@@ -178,4 +186,14 @@ public class PedirPistasActivity extends AppCompatActivity {
         });
     }
 
+    /**@Override
+    protected void onResume() {
+        super.onResume();
+
+        Bundle bundle = getIntent().getExtras();
+
+        String villanoNombre = bundle.getString("villanoName").toString();
+
+        ordenEmitida.setText(villanoNombre);
+    }*/
 }

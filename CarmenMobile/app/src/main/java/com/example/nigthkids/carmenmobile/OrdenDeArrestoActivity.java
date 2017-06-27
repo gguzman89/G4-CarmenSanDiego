@@ -100,37 +100,38 @@ public class OrdenDeArrestoActivity extends AppCompatActivity {
             }
         });
 
-        eoEnviar = new EmitirOrdenRequest(villanoSelected, 1);
+        eoEnviar = new EmitirOrdenRequest(villanoSelected+1, 1);
 
-        new CarmenServiceFactory().getServiceFactory().emitirOrdenDeArresto(eoEnviar, new Callback<Response>() {
-            @Override
-            public void success(Response response, Response response2) {
-                Toast.makeText(getBaseContext(), datos.get(villanoSelected), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-
-            }
-        });
 
         btnPedirOrden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvVillano.setText(datos.get(villanoSelected).toString());
-                Toast.makeText(getBaseContext(), "Orden de arresto", Toast.LENGTH_LONG).show();
+                //tvVillano.setText(datos.get(villanoSelected).toString());
+                //Toast.makeText(getBaseContext(), "Orden de arresto", Toast.LENGTH_LONG).show();
+
+            new CarmenServiceFactory().getServiceFactory().emitirOrdenDeArresto(eoEnviar, new Callback<Response>() {
+                @Override
+                public void success(Response response, Response response2) {
+                    tvVillano.setText(datos.get(villanoSelected).toString());
+                    Toast.makeText(getBaseContext(), datos.get(villanoSelected), Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+
+                }
+            });
             }
         });
-
 
         btnVolverPista.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(OrdenDeArrestoActivity.this, PedirPistasActivity.class);
+                intent.putExtra("villanoName", tvVillano.getText().toString());
                 startActivity(intent);
             }
         });
-
 
     }
 
