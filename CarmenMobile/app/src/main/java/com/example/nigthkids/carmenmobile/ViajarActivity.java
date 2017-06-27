@@ -26,6 +26,9 @@ public class ViajarActivity extends AppCompatActivity {
 
         lvPaises = (ListView) findViewById(R.id.lvPaises);
 
+        orden = (Button) findViewById(R.id.btnVolverOrden);
+        pistas = (Button) findViewById(R.id.btnVolverViajar);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, items);
         lvPaises.setAdapter(adapter);
         orden.setOnClickListener(new View.OnClickListener() {
