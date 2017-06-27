@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nigthkids.carmenmobile.model.CarmenServiceFactory;
+import com.example.nigthkids.carmenmobile.model.EmitirOrdenRequest;
 import com.example.nigthkids.carmenmobile.model.Villano;
 
 import java.util.ArrayList;
@@ -29,11 +32,15 @@ public class OrdenDeArrestoActivity extends AppCompatActivity {
 
     String[] valores;
 
-    String[] items = {"Argentina", "Bolivia", "Paraguay", "Chile"};
+    int villanoSelected;
 
     List<String> datos;
 
     List<Villano> datosVillanos;
+
+    boolean isFirstTime = true;
+
+    EmitirOrdenRequest eoEnviar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,7 @@ public class OrdenDeArrestoActivity extends AppCompatActivity {
 
         // creado mediante un lista de String
         //ArrayAdapter<String> villanos = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, items);
+        // String[] items = {"Argentina", "Bolivia", "Paraguay", "Chile"};
 
         new CarmenServiceFactory().getServiceFactory().getVillanos(new Callback<List<Villano>>() {
             @Override
@@ -70,14 +78,49 @@ public class OrdenDeArrestoActivity extends AppCompatActivity {
         });
 
         datos.add("Seleccione Villano"); // hasta el momento es solo un parche :P
-        //datos.add("Villano 2");
-        //datos.add("Villano 3");
-        //datos.add("Villano 4");
 
         ArrayAdapter<String> villanos = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, datos);
 
-        //btnSpinner.setDropDownVerticalOffset(android.R.layout.simple_spinner_item);
         btnSpinner.setAdapter(villanos);
+
+        btnSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (isFirstTime) { isFirstTime = false; }
+                else {
+                    villanoSelected = (Integer) position;
+                    //tvVillano.setText(datos.get(position).toString());
+                    Toast.makeText(getBaseContext(), datos.get(position), Toast.LENGTH_LONG).show(); }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        eoEnviar = new EmitirOrdenRequest(villanoSelected, 1);
+
+        new CarmenServiceFactory().getServiceFactory().emitirOrdenDeArresto(eoEnviar, new Callback<Response>() {
+            @Override
+            public void success(Response response, Response response2) {
+                Toast.makeText(getBaseContext(), datos.get(villanoSelected), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+
+        btnPedirOrden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvVillano.setText(datos.get(villanoSelected).toString());
+                Toast.makeText(getBaseContext(), "Orden de arresto", Toast.LENGTH_LONG).show();
+            }
+        });
 
 
         btnVolverPista.setOnClickListener(new View.OnClickListener() {

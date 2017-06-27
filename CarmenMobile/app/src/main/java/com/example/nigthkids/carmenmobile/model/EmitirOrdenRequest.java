@@ -8,6 +8,11 @@ public class EmitirOrdenRequest {
     private Integer villanoId;
     private Integer casoId;
 
+    public EmitirOrdenRequest(Integer villanoId, Integer casoId) {
+        this.villanoId = villanoId;
+        this.casoId = casoId;
+    }
+
     public Integer getVillanoId() {
         return villanoId;
     }
