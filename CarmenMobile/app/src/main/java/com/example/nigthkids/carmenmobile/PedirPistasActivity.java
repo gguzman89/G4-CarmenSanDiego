@@ -129,7 +129,7 @@ public class PedirPistasActivity extends AppCompatActivity {
             }
         });
 
-        mini_conexiones = (ArrayList<String>) cambiarTextoPista(varCaso.getPais().getMini_conexiones(), mini_conexiones);
+        //mini_conexiones = (ArrayList<String>) cambiarTextoPista(varCaso.getPais().getMini_conexiones(), mini_conexiones);
         paisesVitados = (List<String>) varCaso.getPaisesVisitados();
 
         viajar.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +137,7 @@ public class PedirPistasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(PedirPistasActivity.this, ViajarActivity.class);
                 intent.putExtra("nombrePaisActual", tituloPaisActual);
-                intent.putIntegerArrayListExtra("Paises Conexiones", mini_conexiones);
+                //intent.putIntegerArrayListExtra("Paises Conexiones", mini_conexiones);
 
                 startActivity(intent);
             }

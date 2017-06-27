@@ -32,7 +32,6 @@ public class ViajarActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, items);
         lvPaises.setAdapter(adapter);
 
-
         orden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
