@@ -16,6 +16,7 @@ import com.example.nigthkids.carmenmobile.model.PaisRest;
 import com.example.nigthkids.carmenmobile.model.PistaRest;
 import com.example.nigthkids.carmenmobile.service.CarmenService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -46,7 +47,7 @@ public class PedirPistasActivity extends AppCompatActivity {
     Caso varCaso;
 
     List<String> mini_conexiones;
-    List<String> paisesVitados;
+    ArrayList<String> paisesVisitados = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,14 +131,16 @@ public class PedirPistasActivity extends AppCompatActivity {
         });
 
         //mini_conexiones = (ArrayList<String>) cambiarTextoPista(varCaso.getPais().getMini_conexiones(), mini_conexiones);
-        //paisesVitados = (List<String>) varCaso.getPaisesVisitados();
+        //paisesVisitados = (ArrayList<String>) varCaso.getPaisesVisitados();
 
         viajar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(PedirPistasActivity.this, ViajarActivity.class);
                 intent.putExtra("nombrePaisActual", tituloPaisActual);
-                //intent.putIntegerArrayListExtra("Paises Conexiones", mini_conexiones);
+
+                paisesVisitados.addAll(varCaso.getPaisesVisitados());
+                intent.putExtra("Paises Visitados", paisesVisitados);
 
                 startActivity(intent);
             }

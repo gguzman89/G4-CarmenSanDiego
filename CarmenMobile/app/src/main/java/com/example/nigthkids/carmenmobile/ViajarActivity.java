@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,8 +17,12 @@ public class ViajarActivity extends AppCompatActivity {
 
     String[] items = {"Argentina", "Bolivia", "Paraguay", "Chile"};
 
+    TextView tvPaisesVisitados;
+
     Button orden;
     Button pistas;
+
+    ArrayList<String> paisesVisitados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,8 @@ public class ViajarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_viajar);
 
         lvPaises = (ListView) findViewById(R.id.lvPaises);
+
+        tvPaisesVisitados = (TextView) findViewById(R.id.tvPaisesVisitados);
 
         orden = (Button) findViewById(R.id.btnVolverOrden);
         pistas = (Button) findViewById(R.id.btnVolverViajar);
@@ -34,6 +41,15 @@ public class ViajarActivity extends AppCompatActivity {
         if(bundle != null) {
             String nombrePaisActual = bundle.getString("nombrePaisActual").toString();
             getSupportActionBar().setTitle("Estas en: " + nombrePaisActual);
+
+            paisesVisitados = (ArrayList<String>) bundle.getSerializable("Paises Visitados");
+
+            String paisesVisited = "";
+            for (String nombrePais : paisesVisitados) {
+                paisesVisited = paisesVisited + " -> " + nombrePais;
+            }
+
+            tvPaisesVisitados.setText(paisesVisited);
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, items);
