@@ -45,9 +45,11 @@ public class ViajarActivity extends AppCompatActivity {
             paisesVisitados = (ArrayList<String>) bundle.getSerializable("Paises Visitados");
 
             String paisesVisited = "";
-            for (String nombrePais : paisesVisitados) {
+            for (String nombrePais : items) { //reemplazar con la lista original: paisesVisitados
                 paisesVisited = paisesVisited + " -> " + nombrePais;
             }
+
+            
 
             tvPaisesVisitados.setText(paisesVisited);
         }

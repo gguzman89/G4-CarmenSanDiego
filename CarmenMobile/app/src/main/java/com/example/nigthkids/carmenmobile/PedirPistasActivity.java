@@ -46,7 +46,7 @@ public class PedirPistasActivity extends AppCompatActivity {
 
     Caso varCaso;
 
-    List<String> mini_conexiones;
+    ArrayList<String> mini_conexiones = new ArrayList<>();
     ArrayList<String> paisesVisitados = new ArrayList<>();
 
     @Override
@@ -131,7 +131,6 @@ public class PedirPistasActivity extends AppCompatActivity {
         });
 
         //mini_conexiones = (ArrayList<String>) cambiarTextoPista(varCaso.getPais().getMini_conexiones(), mini_conexiones);
-        //paisesVisitados = (ArrayList<String>) varCaso.getPaisesVisitados();
 
         viajar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,6 +140,9 @@ public class PedirPistasActivity extends AppCompatActivity {
 
                 paisesVisitados.addAll(varCaso.getPaisesVisitados());
                 intent.putExtra("Paises Visitados", paisesVisitados);
+
+                mini_conexiones.addAll(pasarPaisesAString(varCaso.getPais().getMini_conexiones(), new ArrayList<String>()));
+                intent.putExtra("Paises Conexiones", mini_conexiones);
 
                 startActivity(intent);
             }
