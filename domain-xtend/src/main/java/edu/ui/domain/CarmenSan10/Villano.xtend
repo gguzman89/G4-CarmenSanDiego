@@ -173,7 +173,7 @@ class Villano extends Ocupante {
 		var Integer pista2 = rnd.nextInt(pistasRestantes.size)
 		val senia2 = pistasRestantes.get(pista2)
 		
-		senia1.nombre + " " + senia2.nombre
+		senia1.nombre + " y " + senia2.nombre + "."
 	}
 	
 	def tieneLaId(Integer id) 

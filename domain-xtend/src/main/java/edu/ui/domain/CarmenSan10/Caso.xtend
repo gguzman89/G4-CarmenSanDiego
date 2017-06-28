@@ -46,11 +46,6 @@ class Caso
 	}
 	
 	def mostrarPista(Pais p, LugarDeInteres lugar) {
-		
-		/**
-		 * Falta contemplar el caso en el que el pais NO se encuentra en el    => RESUELTO
-		 * planDeEscape (responde el cuidador)
-		 */
 		 
 		if (p.estaDentroDelRecorrido(planDeEscape))
 		{
