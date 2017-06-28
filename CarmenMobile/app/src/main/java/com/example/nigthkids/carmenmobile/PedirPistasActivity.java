@@ -28,10 +28,6 @@ public class PedirPistasActivity extends AppCompatActivity {
 
     String tituloPaisActual;
 
-    LugarDeInteres lugar1;
-    LugarDeInteres lugar2;
-    LugarDeInteres lugar3;
-
     Button pista1;
     Button pista2;
     Button pista3;
@@ -79,8 +75,6 @@ public class PedirPistasActivity extends AppCompatActivity {
                 pista1.setText(caso.getPais().getLugares().get(0).getNombre());
                 pista2.setText(caso.getPais().getLugares().get(1).getNombre());
                 pista3.setText(caso.getPais().getLugares().get(2).getNombre());
-                lugar2 = (LugarDeInteres) caso.getPais().getLugares().get(1);
-                lugar3 = (LugarDeInteres) caso.getPais().getLugares().get(2);
 
                 varCaso = (Caso) caso;
 
@@ -160,10 +154,6 @@ public class PedirPistasActivity extends AppCompatActivity {
                 miniStrings.add(pais.getNombre());
         }
         return miniStrings;
-    }
-
-    private void cambiarTextoPista(PistaRest pistaRest) {
-        pistaByBtn.setText(pistaRest.getPista());
     }
 
     public void obtenerPista(Integer indexPista) {

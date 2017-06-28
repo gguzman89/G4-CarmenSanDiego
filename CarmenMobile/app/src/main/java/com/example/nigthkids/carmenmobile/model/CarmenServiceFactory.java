@@ -14,7 +14,7 @@ public class CarmenServiceFactory {
 
     public CarmenService getServiceFactory() {
 
-        String SERVER_IP = "192.168.0.105"; // revisar antes de funcionar
+        String SERVER_IP = "10.9.1.109"; // revisar antes de funcionar
         String API_URL = "http://" + SERVER_IP + ":9000";
 
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();
