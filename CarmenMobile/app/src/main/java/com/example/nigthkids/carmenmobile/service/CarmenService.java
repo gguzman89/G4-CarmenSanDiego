@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit.Callback;
 import retrofit.client.Response;
+import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.POST;
 import retrofit.http.Path;
@@ -30,6 +31,6 @@ public interface CarmenService {
     public void emitirOrdenDeArresto (@retrofit.http.Body EmitirOrdenRequest ordenDeArresto, Callback<Response> callback);
 
     @POST("/viajar")
-    public void viajar (@retrofit.http.Body ViajeRequest viaje, Callback<Response> callback);
+    public void viajar (@Body ViajeRequest viaje, Callback<Caso> callback);
 
 }
