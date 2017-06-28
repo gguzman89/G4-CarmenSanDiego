@@ -8,6 +8,11 @@ public class ViajeRequest {
     private Integer destinoId;
     private Integer casoId;
 
+    public ViajeRequest(Integer destinoId, Integer casoId) {
+        this.destinoId = destinoId;
+        this.casoId = casoId;
+    }
+
     public Integer getDestinoId() {
         return destinoId;
     }
