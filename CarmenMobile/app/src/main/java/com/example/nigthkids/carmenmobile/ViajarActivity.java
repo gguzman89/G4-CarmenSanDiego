@@ -23,6 +23,7 @@ public class ViajarActivity extends AppCompatActivity {
     Button pistas;
 
     ArrayList<String> paisesVisitados;
+    ArrayList<String> mini_conexiones;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +50,12 @@ public class ViajarActivity extends AppCompatActivity {
                 paisesVisited = paisesVisited + " -> " + nombrePais;
             }
 
-            
+            mini_conexiones = (ArrayList<String>) bundle.getSerializable("Paises Conexiones");
 
             tvPaisesVisitados.setText(paisesVisited);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, mini_conexiones);
         lvPaises.setAdapter(adapter);
 
         orden.setOnClickListener(new View.OnClickListener() {
