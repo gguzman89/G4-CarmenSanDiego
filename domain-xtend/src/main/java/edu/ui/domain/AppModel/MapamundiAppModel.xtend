@@ -9,12 +9,14 @@ import java.io.Serializable
 import java.util.List
 //import org.uqbar.commons.utils.Dependencies
 import org.uqbar.commons.model.ObservableUtils
+import edu.ui.domain.CarmenSan10.Mapamundi
 
 @Accessors
 @Observable
-class MapamundiAppModel implements Serializable{
+class MapamundiAppModel { //implements Serializable
 	
 	Pais itemSeleccionado
+	Mapamundi mapa
 	
 	/**
 	 * Todos los application model deben anotarse con @Observable.
@@ -22,6 +24,10 @@ class MapamundiAppModel implements Serializable{
 	 */
 	
 	new() {}
+	
+	new(Mapamundi mapamundi) {
+		mapa = mapamundi
+	}
 	
 	def RepoMapamundi getPaisesRepo() 
 	{

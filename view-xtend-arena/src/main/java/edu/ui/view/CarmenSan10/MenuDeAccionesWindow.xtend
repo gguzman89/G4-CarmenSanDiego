@@ -6,18 +6,20 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.HorizontalLayout
-import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.CarmenSan10.Caso
 import edu.ui.domain.AppModel.CarmenSandiegoAppModel
+import edu.ui.domain.Dummy.CarmenSan10Dummy
 import edu.ui.domain.CarmenSan10.ACME
+import edu.ui.domain.CarmenSan10.Mapamundi
+import edu.ui.domain.CarmenSan10.Expediente
 
 class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 	/*
 	 * esta es la primer ventana que me aparece cuando inicio el juego,
 	 * la hice extender de detective, ya que son comportamientos basicos de un detective
 	 */
-	 new (WindowOwner parent){
-	 	super (parent, new CarmenSandiegoAppModel(new Mapamundi, new ACME()))
+	 new (WindowOwner parent, CarmenSan10Dummy dummy){
+	 	super (parent, new CarmenSandiegoAppModel(dummy))
 	 }
 		
 		override def createMainTemplate (Panel mainPanel){
@@ -42,32 +44,32 @@ class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 		override protected addActions(Panel actionsPanel) {
 			new Button (actionsPanel)=>[
 				caption = "Resolver Misterio"
-				onClick ([|iniciarJuego]) // con que comportamiento del detective bindeamos este boton??
+				onClick ([|iniciarJuego(modelObject.acme)]) // con que comportamiento del detective bindeamos este boton??
 			]
 			new Button (actionsPanel)=>[
 				caption = "Mapamundi"
-				onClick ([|mapamundi]) // con que comportamiento del detective bindeamos este boton??
+				onClick ([|mapamundi(modelObject.mapamundi)]) // con que comportamiento del detective bindeamos este boton??
 			]
 			new Button (actionsPanel)=>[
 				caption = "Expedientes"
-				onClick ([|expediente]) // con que comportamiento del detective bindeamos este boton??
+				onClick ([|expediente(modelObject.acme.villanos)]) // con que comportamiento del detective bindeamos este boton??
 			]
 			
 		}
 	
-	def iniciarJuego() 
+	def iniciarJuego(ACME acme) 
 	{
-		new InicioDelJuegoWindow(this, new Caso).open
+		new InicioDelJuegoWindow(this, acme).open
 	}
 	
-	def mapamundi() 
+	def mapamundi(Mapamundi mapa) 
 	{
-		new MapamundiWindow(this).open
+		new MapamundiWindow(this, mapa).open
 	}
 	
-	def expediente() 
+	def expediente(Expediente exp) 
 	{
-		new ExpedienteMenuDeAccionesView(this).open
+		new ExpedienteMenuDeAccionesView(this, exp).open
 	}
 	
 		

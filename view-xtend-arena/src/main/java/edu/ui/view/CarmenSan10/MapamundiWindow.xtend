@@ -14,11 +14,12 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.bindings.NotNullObservable
 import edu.ui.domain.CarmenSan10.Caracteristicas
+import edu.ui.domain.CarmenSan10.Mapamundi
 
 class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 	
-	new(WindowOwner parent) {
-		super(parent, new MapamundiAppModel)
+	new(WindowOwner parent, Mapamundi model) {
+		super(parent, new MapamundiAppModel(model))
 	}
 	
 	override protected createFormPanel(Panel mainPanel) {

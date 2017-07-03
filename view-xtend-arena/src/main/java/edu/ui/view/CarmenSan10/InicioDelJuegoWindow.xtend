@@ -1,20 +1,17 @@
 package edu.ui.view.CarmenSan10
 
-import edu.ui.domain.CarmenSan10.Caso
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Button
-import edu.ui.domain.CarmenSan10.Detective
 import edu.ui.domain.CarmenSan10.ACME
 import org.uqbar.arena.layout.VerticalLayout
-import org.uqbar.arena.layout.ColumnLayout
 import edu.ui.domain.AppModel.ResolverMisterioAppModel
 
-class InicioDelJuegoWindow extends SimpleWindow<Caso> 
+class InicioDelJuegoWindow extends SimpleWindow<ACME> 
 {
-	new(WindowOwner parent, Caso model) 
+	new(WindowOwner parent, ACME model) 
 	{
 		super(parent, model)
 		
