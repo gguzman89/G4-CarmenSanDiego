@@ -2,7 +2,6 @@ package edu.ui.domain.CarmenSan10
 
 import java.util.List
 import org.eclipse.xtend.lib.annotations.Accessors
-import java.util.ArrayList
 import edu.ui.domain.Exceptions.YaExisteLaSeniaParticularException
 import edu.ui.domain.Exceptions.YaExisteElHobbieException
 import org.uqbar.commons.utils.TransactionalAndObservable
@@ -226,6 +225,14 @@ class Villano extends Ocupante {
 		println("hobbies = " + nn.hobbies.size)
 		println(nn.dar2PistasSeniasParticulares)
 		
+	}
+	
+	def eliminarHobbie(Caracteristicas caracteristicas) {
+		hobbies.remove(caracteristicas)
+	}
+	
+	def eliminarSenia(Caracteristicas caracteristicas) {
+		seniasParticulares.remove(caracteristicas)
 	}
 	
 }

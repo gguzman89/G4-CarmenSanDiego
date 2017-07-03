@@ -132,8 +132,6 @@ class ResolviendoMisterioWindow extends SimpleWindow<ResolverMisterioAppModel>
 	}
 	
 	
-	override addActions(Panel actionsPanel) 
-	{
-	}
+	override addActions(Panel actionsPanel) {}
 	
 }

@@ -12,6 +12,9 @@ import org.uqbar.arena.windows.SimpleWindow
 import edu.ui.domain.AppModel.ExpedienteAppModel
 import org.uqbar.arena.layout.HorizontalLayout
 import edu.ui.domain.CarmenSan10.Expediente
+import org.uqbar.arena.bindings.NotNullObservable
+import edu.ui.domain.CarmenSan10.Caracteristicas
+import org.uqbar.arena.widgets.Label
 
 class ExpedienteMenuDeAccionesView extends SimpleWindow<ExpedienteAppModel> {
 	
@@ -29,34 +32,101 @@ class ExpedienteMenuDeAccionesView extends SimpleWindow<ExpedienteAppModel> {
 			layout = new HorizontalLayout
 		]
 		
+		val elementedSelected = new NotNullObservable("selectedVillano")
+		
 		val ladoIzq = new Panel(general)
 		
 		var table = new Table<Villano>(ladoIzq, typeof(Villano)) => [
 			height = 200
 			width = 450
-			bindItemsToProperty("todosLosVillanos")
+			bindItemsToProperty("expediente.villanos")
 			bindValueToProperty("selectedVillano")
 		
 		]
 			
-		new Column<Villano>(table) => [
-			title = "Villano"
-			fixedSize = 150
-			bindContentsToProperty("nombre")
-		]
+			new Column<Villano>(table) => [
+				title = "Villanos"
+				fixedSize = 150
+				bindContentsToProperty("nombre")
+			]
 		
-		new Button(ladoIzq) => [
-			caption = "Nuevo"
-		]
+			new Button(ladoIzq) => [
+				caption = "Editar"
+				onClick(|editarVillano)
+				bindEnabled(elementedSelected)
+			]
+			
+			new Button(ladoIzq) => [
+				caption = "Nuevo"
+				onClick(|agregarNuevoVillano())
+			]
 		
-		new Button(ladoIzq) => [
-			caption = "Editar"
-		]
+		val ladoDer = new Panel(general)
+		
+			val horPanel = new Panel(ladoDer) => [
+				layout = new HorizontalLayout
+			]
+			
+			new Label(horPanel) => [
+				text = "Nombre: "
+			]
+			
+			new Label(horPanel) => [
+				value <=> "selectedVillano.nombre"
+			]
+			
+			val horPanel1 = new Panel(ladoDer) => [
+				layout = new HorizontalLayout
+			]
+			
+			new Label(horPanel1) => [
+				text = "Sexo: "
+			]
+			
+			new Label(horPanel1) => [
+				value <=> "selectedVillano.sexo"
+			]
+			
+			new Label(ladoDer).text = "Señas Particulares: "
+			
+			var table1 = new Table<Caracteristicas>(ladoDer, typeof(Caracteristicas)) => [
+				items <=> "selectedVillano.seniasParticulares"
+				value <=> "selectedVillano"
+			]
+			
+				new Column<Caracteristicas>(table1) => [
+					title = "Seña"
+					fixedSize = 200
+					bindContentsToProperty("nombre")
+				]
+				
+			new Label(ladoDer).text = "Hobbies:  "
+			
+			var table2 = new Table<Caracteristicas>(ladoDer, typeof(Caracteristicas)) => [
+				items <=> "selectedVillano.hobbies"
+				value <=> "selectedVillano"
+			]
+			
+				new Column<Caracteristicas>(table2) => [
+					title = "Hobbie"
+					fixedSize = 200
+					bindContentsToProperty("nombre")
+				]
+			
+	}
+	
+	def agregarNuevoVillano() {
+		var nuevoVillano = new Villano
+		modelObject.selectedVillano = nuevoVillano
+		new NuevoVillanoWindow(this, modelObject).open
+	}
+	
+	def editarVillano() {
+		new EditarVillanoWindow(this, modelObject).open
 	}
 	
 	override protected addActions(Panel actionsPanel) {
 		
 	}
-	
 	
 }
