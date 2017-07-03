@@ -9,10 +9,6 @@ class CarmenApplication extends Application{
 	
 	CarmenSan10Dummy dummy = new CarmenSan10Dummy()
 	
-//	new(CarmenBootstrap bootstrap) {
-//		super(bootstrap)
-//	}
-	
 	override Window<?> createMainWindow() {
 		new MenuDeAccionesWindow(this, dummy)
 	}

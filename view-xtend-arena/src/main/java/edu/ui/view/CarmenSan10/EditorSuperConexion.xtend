@@ -10,14 +10,13 @@ import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.layout.HorizontalLayout
 import edu.ui.domain.CarmenSan10.Pais
-import org.uqbar.commons.utils.ApplicationContext
-import edu.ui.domain.Repo.RepoMapamundi
 import org.uqbar.arena.widgets.Selector
 import org.uqbar.arena.bindings.ObservableProperty
+import edu.ui.domain.AppModel.PaisAppModel
 
-class EditorSuperConexion extends TransactionalDialog<Pais>{
+class EditorSuperConexion extends TransactionalDialog<PaisAppModel>{
 	
-	new(WindowOwner owner, Pais model) {
+	new(WindowOwner owner, PaisAppModel model) {
 		super(owner, model)
 		title = defaultTitle()
 	}
@@ -67,13 +66,13 @@ class EditorSuperConexion extends TransactionalDialog<Pais>{
 		]
 	}
 	
-	def RepoMapamundi getPaisesRepo() {
-		ApplicationContext.instance.getSingleton(typeof(Pais))
-	}
-	
-	override executeTask() {
-		paisesRepo.update(modelObject)
-		super.executeTask()
-	}
+//	def RepoMapamundi getPaisesRepo() {
+//		ApplicationContext.instance.getSingleton(typeof(Pais))
+//	}
+//	
+//	override executeTask() {
+//		paisesRepo.update(modelObject)
+//		super.executeTask()
+//	}
 	
 }

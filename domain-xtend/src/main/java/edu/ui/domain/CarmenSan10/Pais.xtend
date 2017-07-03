@@ -233,4 +233,12 @@ class Pais extends Entity implements Cloneable {
 		
 	}
 	
+	def eliminarCaracteristica(Caracteristicas caracteristicas) {
+		caracteristicaPais.remove(caracteristicas)
+	}
+	
+	def agregarCaracteristica(Caracteristicas caracteristicas) {
+		caracteristicaPais.add(caracteristicas)
+	}
+	
 }

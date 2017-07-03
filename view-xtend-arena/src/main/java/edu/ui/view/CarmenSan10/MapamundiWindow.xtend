@@ -11,7 +11,6 @@ import org.uqbar.arena.widgets.tables.Table
 import edu.ui.domain.CarmenSan10.Pais
 import edu.ui.domain.AppModel.MapamundiAppModel
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
-import org.uqbar.arena.windows.Dialog
 import org.uqbar.arena.bindings.NotNullObservable
 import edu.ui.domain.CarmenSan10.Caracteristicas
 import edu.ui.domain.CarmenSan10.Mapamundi
@@ -36,7 +35,7 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 			var table = new Table<Pais>(ladoIzq, typeof(Pais)) => [
 				height = 600
 				width = 200 
-				items <=> "todosLosPaises"
+				items <=> "mapa.paises"
 				value <=> "itemSeleccionado"
 			]
 				
@@ -127,17 +126,12 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 	
 	def agregarNuevoPais() 
 	{
-		this.openDialog(new NuevoPaisWindow(this))
+		new NuevoPaisWindow(this, modelObject).open
 	}
 	
 	def editarPais() 
 	{
-		this.openDialog(new EditarPaisWindows(this, modelObject.itemSeleccionado))
-	}
-	
-	def openDialog(Dialog<?> dialog) {
-		dialog.onAccept[|modelObject.search]
-		dialog.open
+		new EditarPaisWindows(this, modelObject).open
 	}
 	
 	override protected addActions(Panel actionsPanel) {}
