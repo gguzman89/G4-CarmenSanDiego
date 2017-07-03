@@ -10,7 +10,6 @@ import java.util.List
 class Informante extends Ocupante {
 
 	new(){
-		// agregue nombre al informante cuando se crea uno nuevo
 		nombre = "Informante"
 	}	
 
@@ -34,14 +33,14 @@ class Informante extends Ocupante {
 	
 	def responderAlClub(Caso caso)
 	{
-		caso.responsable.dar2PistasSeniasParticulares + " " + informacionAdicional(caso, 70)
+		"La recuerdo..." + caso.responsable.dar2PistasSeniasParticulares + " " + informacionAdicional(caso, 70)
 		// 2 señas particulares									// 70% 1 hobbie
 	}
 	
 	def responderAlBanco(Caso caso, Pais paisActual)
 	{
 		val proximoPais = caso.proximoDestino(paisActual)
-		proximoPais.pistaDeSusCaracteristicas + " " + caso.responsable.pistaDeSeniasParticulares
+		proximoPais.pistaDeSusCaracteristicas + " " + caso.responsable.pistaDeSeniasParticulares + "."
 		// 1 pais destino								// 1 señas particulares
 	}
 	
@@ -67,7 +66,7 @@ class Informante extends Ocupante {
 	
 	def pistaSobreHobbie(Villano villano) 
 	{
-		villano.pistaDeHobbies
+		villano.pistaDeHobbies + "."
 	}
 	
 	override actualizar(List<Pais> ps, Pais p, Villano v) 

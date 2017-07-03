@@ -140,9 +140,10 @@ class CarmenSan10RestAPI {
 
 		val LugarDeInteres parse = LugarDeInteres.valueOf(lugar)
 		
-		val paisActual = carmenSan10.doc.ubicacionActual
+		//val paisActual = carmenSan10.doc.ubicacionActual
 		
-		val mostrarPista = carmenSan10.caso.mostrarPista(paisActual, parse)
+		//val mostrarPista = carmenSan10.caso.mostrarPista(paisActual, parse)
+		val mostrarPista = carmenSan10.doc.pedirPista(carmenSan10.caso, parse)
 		
 		val pista = new PistaRest(mostrarPista)
 		

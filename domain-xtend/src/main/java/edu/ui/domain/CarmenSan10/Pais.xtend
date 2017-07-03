@@ -150,7 +150,7 @@ class Pais extends Entity implements Cloneable {
 		
 		var Integer caracteristica2 = rnd.nextInt(pistasRestantes.size)
 		val pista2 = pistasRestantes.get(caracteristica2)
-		pista1.nombre + " " + pista2.nombre
+		pista1.nombre + " "+ pista2.nombre + "."
 	}
 	
 	def void cambiarEstado(List<Pais> ps, Villano v) // este funciona realmente
@@ -214,8 +214,6 @@ class Pais extends Entity implements Cloneable {
 		
 		var pistas = venezuela.pistas(hard)
 		
-		//belgica.cambiarEstado(hard)
-		//argentina.cambiarEstado(hard)
 		
 		println("----------------------------------------")
 		
