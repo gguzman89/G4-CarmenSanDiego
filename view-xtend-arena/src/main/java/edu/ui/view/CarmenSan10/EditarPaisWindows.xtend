@@ -124,7 +124,8 @@ class EditarPaisWindows extends TransactionalDialog<MapamundiAppModel>{
 	}
 	
 	def editarLugares() {
-		new EditorLugarInteresWindow(this, modelObject.itemSeleccionado).open
+		var model = new PaisAppModel(modelObject.itemSeleccionado)
+		new EditorLugarInteresWindow(this, model).open
 	}
 	
 	def editarCaracteristica() {

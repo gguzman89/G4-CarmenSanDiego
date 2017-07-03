@@ -11,10 +11,11 @@ import org.uqbar.arena.widgets.Button
 
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import org.uqbar.arena.widgets.tables.Column
+import edu.ui.domain.AppModel.PaisAppModel
 
 class EditorLugarInteresWindow extends EditorSuperConexion {
 	
-	new(WindowOwner owner, Pais model) {
+	new(WindowOwner owner, PaisAppModel model) {
 		super(owner, model)
 	}
 	

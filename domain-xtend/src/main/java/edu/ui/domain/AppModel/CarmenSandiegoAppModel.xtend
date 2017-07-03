@@ -4,8 +4,10 @@ import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.CarmenSan10.ACME
 import org.eclipse.xtend.lib.annotations.Accessors
 import edu.ui.domain.Dummy.CarmenSan10Dummy
+import org.uqbar.commons.utils.Observable
 
 @Accessors
+@Observable
 class CarmenSandiegoAppModel 
 {
 	private Mapamundi mapamundi

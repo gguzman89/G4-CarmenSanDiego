@@ -49,8 +49,8 @@ que pueden ser buenas o malas noticias:"
 	
 	def validacionParaContinuar() 
 	{
-		if (modelObject.esElFinDelJuego)
-			abrirResultadoDelJuego()
+//		if (modelObject.esElFinDelJuego)
+//			abrirResultadoDelJuego()
 			
 		this.close()
 	}

@@ -3,7 +3,11 @@ package edu.ui.domain.AppModel
 import edu.ui.domain.CarmenSan10.Villano
 import edu.ui.domain.CarmenSan10.Caracteristicas
 import org.uqbar.commons.model.ObservableUtils
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.uqbar.commons.utils.Observable
 
+@Accessors
+@Observable
 class VillanoAppModel {
 	
 	Villano villano

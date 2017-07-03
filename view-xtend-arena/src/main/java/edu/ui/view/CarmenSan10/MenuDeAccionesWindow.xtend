@@ -70,6 +70,5 @@ class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 	{
 		new ExpedienteMenuDeAccionesView(this, exp).open
 	}
-	
 		
 }

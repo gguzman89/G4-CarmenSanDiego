@@ -58,7 +58,7 @@ class EditarVillanoWindow extends TransactionalDialog<ExpedienteAppModel>{
 				
 				new Button(editItem) => [
 					caption = "Editar Señas Particulares"
-					onClick([| editarSeniasParticulares])
+					onClick([| this.editarSeniasParticulares])
 				]
 			
 			val tableSenias = new Table<Caracteristicas>(generalPanel, typeof(Caracteristicas)) => [
@@ -81,7 +81,7 @@ class EditarVillanoWindow extends TransactionalDialog<ExpedienteAppModel>{
 			
 			new Button(editItem2) => [
 				caption = "Editar Hobbies"
-				onClick([| editarHobbies])
+				onClick([| this.editarHobbies])
 			]
 			
 			var tableHobbies = new Table<Caracteristicas>(generalPanel, typeof(Caracteristicas)) => [

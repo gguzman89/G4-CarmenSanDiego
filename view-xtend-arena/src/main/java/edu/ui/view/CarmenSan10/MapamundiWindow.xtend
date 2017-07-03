@@ -124,15 +124,13 @@ class MapamundiWindow extends SimpleWindow<MapamundiAppModel>{
 					]
 	}
 	
-	def agregarNuevoPais() 
-	{
+	def agregarNuevoPais() {
 		var nuevoPais = new Pais
 		modelObject.itemSeleccionado = nuevoPais
 		new NuevoPaisWindow(this, modelObject).open
 	}
 	
-	def editarPais() 
-	{
+	def editarPais() {
 		new EditarPaisWindows(this, modelObject).open
 	}
 	

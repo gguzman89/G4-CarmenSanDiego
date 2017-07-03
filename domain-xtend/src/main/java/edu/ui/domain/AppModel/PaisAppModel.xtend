@@ -30,17 +30,17 @@ class PaisAppModel implements Serializable{
 		this.pais= pais
 	}
 	
-	def paisesConexionAerea() {
-		pais.paisesConexionAerea
-	}
-	
-	def lugares() {
-		pais.lugares
-	}
-	
-	def nombrePais() {
-		pais.nombrePais
-	}
+//	def paisesConexionAerea() {
+//		pais.paisesConexionAerea
+//	}
+//	
+//	def lugares() {
+//		pais.lugares
+//	}
+//	
+//	def nombrePais() {
+//		pais.nombrePais
+//	}
 	
 	def eliminarCaracteristicaSelecionada() {
 		pais.eliminarCaracteristica(carSeleccionada)

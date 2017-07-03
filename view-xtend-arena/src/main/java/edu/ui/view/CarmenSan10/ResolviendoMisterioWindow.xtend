@@ -71,24 +71,24 @@ class ResolviendoMisterioWindow extends SimpleWindow<ResolverMisterioAppModel>
 		]
 		
 		new Label(generalPanel).text = "Recorrido criminal:"
-		new Label(generalPanel).text = modelObject.recorridoCriminal
+		//new Label(generalPanel).text = modelObject.recorridoCriminal
 		
 	}
 	
 	def abrir3erLugarDeInteres() 
 	{
-		new LugaresWindow(this, modelObject.el3erLugarDeInteres).open
+//		new LugaresWindow(this, modelObject.el3erLugarDeInteres).open
 	}
 	
 	def abrir2erLugarDeInteres() 
 	{
-		new LugaresWindow(this, modelObject.el2erLugarDeInteres).open
+//		new LugaresWindow(this, modelObject.el2erLugarDeInteres).open
 	}
 	
 	protected def void abrir1erLugarDeInteres() 
 	{
 		
-		new LugaresWindow(this, modelObject.el1erLugarDeInteres).open
+//		new LugaresWindow(this, modelObject.el1erLugarDeInteres).open
 	}
 	
 	def verExpedientes() 

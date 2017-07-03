@@ -1,12 +1,12 @@
 package edu.ui.view.CarmenSan10
 
 import org.uqbar.arena.windows.WindowOwner
-import edu.ui.domain.CarmenSan10.Pais
+import edu.ui.domain.AppModel.PaisAppModel
 
 class EditarCaracteristicas extends EditorSuperConexion {
 	
-	new(WindowOwner owner) {
-		super(owner, new Pais)
+	new(WindowOwner owner, PaisAppModel model) {
+		super(owner, model)
 	}
 	
 	override defaultTitle() {
