@@ -171,74 +171,42 @@ class Pais extends Entity implements Cloneable {
 		pistasResultantes
 	}
 	
-	def static void main(String[] args) {
-		
-		val feature01_panama = new Caracteristicas("Mucho viento del norte.")
-		val feature02_panama = new Caracteristicas("Mi bandera es mi patria.")
-		val feature03_panama = new Caracteristicas("Este lugar es poco visitado.")
-		
-		val Pais panama = new Pais("Panama")
-		panama.ocupante = new Informante()
-		panama.caracteristicaPais = #[feature01_panama, feature02_panama, feature03_panama]
-		
-		val lugares02 = #[LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB, LugarDeInteres.EMBAJADA]
-	
-		val venezuela = new Pais("Venezuela")
-		venezuela.lugares = lugares02
-		venezuela.ocupante = new Informante()
-		
-		val belgica = new Pais("Belgica")
-		
-		val argentina = new Pais("Argentina")
-		
-		////////////////////////////////////////////////////////////////////////////
-		
-		val senia01_Julian = new Caracteristicas("Tiene el pelo azul.")
-		val senia02_Julian = new Caracteristicas("Se rasca la oreja de forma extraña.")
-		val senia03_Julian = new Caracteristicas("Canta Bandana en el tren")
-		
-		val hobbie01_Julian = new Caracteristicas("Plantar tomate.")
-		val hobbie02_Julian = new Caracteristicas("Comer chupentines.")
-		val hobbie03_Julian = new Caracteristicas("Juega LoL")
-		
-		val Villano nn = new Villano() => [ 
-			nombre = "Julian"
-			seniasParticulares = #[senia01_Julian, senia02_Julian, senia03_Julian]
-			hobbies = #[hobbie01_Julian, hobbie02_Julian, hobbie03_Julian]
-		]
-		
-		val hard = new Caso() => [
-			planDeEscape = #[venezuela, panama, argentina, belgica]
-			responsable = nn
-		]
-		
-		var pistas = venezuela.pistas(hard)
-		
-		
-		println("----------------------------------------")
-		
-		println(panama.caracteristicaPais.get(0).nombre)
-		println(panama.caracteristicaPais.get(1).nombre)
-		println(panama.caracteristicaPais.get(2).nombre)
-		
-		println("pista --> " + panama.pistaDeSusCaracteristicas)
-		println("2 pistas --> " + panama.dar2PistaDeSusCaracteristicas)
-		
-		println("----------------------------------------")
-		
-		println("cantidad de pistas = " + pistas.size)
-		println(pistas.get(0))
-		println(pistas.get(1))
-		println(pistas.get(2))
-		
-	}
-	
 	def eliminarCaracteristica(Caracteristicas caracteristicas) {
 		caracteristicaPais.remove(caracteristicas)
 	}
 	
 	def agregarCaracteristica(Caracteristicas caracteristicas) {
 		caracteristicaPais.add(caracteristicas)
+	}
+	
+	def lugarDeInteres1 ()
+	{
+		lugares.get(0)
+	}
+	
+	def lugarDeInteres2 ()
+	{
+		lugares.get(1)
+	}
+	
+	def lugarDeInteres3 ()
+	{
+		lugares.get(2)
+	}
+	
+	def nombreDelLugar1() 
+	{
+		lugarDeInteres1.nombre
+	}
+	
+	def nombreDelLugar2()
+	{
+		lugarDeInteres2.nombre
+	}
+	
+	def nombreDelLugar3()
+	{
+		lugarDeInteres3.nombre
 	}
 	
 }

@@ -142,9 +142,10 @@ class Caso
 		planDeEscape.exists[p | p.nombrePais == pais.nombrePais]
 	}
 	
-	def esElFinDelCaso (Pais paisActual) 
+	def esElFinDelCaso (Detective doc) 
 	{
-		paisActual.esElFinalDelRecorrido(planDeEscape)
+		doc.ubicacionActual.esElFinalDelRecorrido(planDeEscape)
+		&& doc.ultimoLugarVisitado == lugarDelVillano
 	}
 	
 	def ultimoPaisDelRecorrido()

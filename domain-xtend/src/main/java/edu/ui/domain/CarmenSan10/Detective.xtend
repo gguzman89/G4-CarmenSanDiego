@@ -194,4 +194,9 @@ class Detective
 		}	
 	}
 	
+	def esInicioDelJuego() 
+	{
+		recorrido.size == 1
+	}
+	
 }

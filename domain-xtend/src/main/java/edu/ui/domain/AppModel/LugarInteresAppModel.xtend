@@ -13,13 +13,22 @@ class LugarInteresAppModel
 	LugarDeInteres lugar
 	Caso caso
 	Detective detective
+	String tituloDelResultado
+	String estadoFinalDelCaso
+	String resumenFinal
+	String estadoBoton
 	
 	new(){}
 	
-	new(LugarDeInteres lugar, Caso caso)
+	new(LugarDeInteres lugar, Caso caso, Detective doc)
 	{
 		this.lugar = lugar
 		this.caso = caso
+		detective = doc
+		tituloDelResultado = ""
+		estadoFinalDelCaso = ""
+		resumenFinal = ""
+		estadoBoton = ""
 	}
 	
 	def nombreDelCaso()
@@ -34,7 +43,7 @@ class LugarInteresAppModel
 	
 	def preguntarAlOcupante()
 	{
-		//lugar.responderAlDetective(detective.ubicacionActual)
+		detective.pedirPista(caso, lugar)
 	}
 
 	def ordenDeArresto()
@@ -44,9 +53,28 @@ class LugarInteresAppModel
 	
 	def esElFinDelJuego() 
 	{
-		// Implementarlo bien
-		//caso.esElFinDelCaso(detective.ubicacionActual) && lugar.seEncuentraElVillano()
+		caso.esElFinDelCaso(detective)
 	}
 	
+	def estaResuelto() 
+	{
+		caso.estaResuelto(detective)
+	}
+	
+	def casoResulto() 
+	{
+		tituloDelResultado = "En hora buena!!!"
+		estadoFinalDelCaso = "Ha detenido a " + caso.responsable.nombre + " y recuperado la Tumba del Faraon"
+		resumenFinal = "Felicitaciones!!!!"
+		estadoBoton = "Disfrutar de nuestra victoria"
+	}
+	
+	def casoImpune() 
+	{
+		tituloDelResultado = "Malas noticias :("
+		estadoFinalDelCaso = "Ha detenido a " +  caso.responsable.nombre + ", pero usted tenia una orden contra" + detective.ordenDeArresto
+		resumenFinal = "Lamentablemente este crimen quedará impune."
+		estadoBoton = "Aceptar el error cometido"
+	}
 	
 }

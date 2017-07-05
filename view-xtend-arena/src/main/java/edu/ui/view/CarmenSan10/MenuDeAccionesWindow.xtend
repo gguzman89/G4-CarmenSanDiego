@@ -11,6 +11,7 @@ import edu.ui.domain.Dummy.CarmenSan10Dummy
 import edu.ui.domain.CarmenSan10.ACME
 import edu.ui.domain.CarmenSan10.Mapamundi
 import edu.ui.domain.CarmenSan10.Expediente
+import edu.ui.domain.AppModel.ResolverMisterioAppModel
 
 class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 	/*
@@ -43,7 +44,7 @@ class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 		override protected addActions(Panel actionsPanel) {
 			new Button (actionsPanel)=>[
 				caption = "Resolver Misterio"
-				onClick ([|iniciarJuego(modelObject.acme)]) // con que comportamiento del detective bindeamos este boton??
+				onClick ([|iniciarJuego(modelObject.acme, modelObject.mapamundi)]) // con que comportamiento del detective bindeamos este boton??
 			]
 			new Button (actionsPanel)=>[
 				caption = "Mapamundi"
@@ -56,9 +57,11 @@ class MenuDeAccionesWindow extends SimpleWindow<CarmenSandiegoAppModel> {
 			
 		}
 	
-	def iniciarJuego(ACME acme) 
+	def iniciarJuego(ACME acme, Mapamundi mapa) 
 	{
-		new InicioDelJuegoWindow(this, acme).open
+		var nuevoJuego = new ResolverMisterioAppModel(acme, mapa)
+		new InicioDelJuegoWindow(this, nuevoJuego).open
+		close
 	}
 	
 	def mapamundi(Mapamundi mapa) 

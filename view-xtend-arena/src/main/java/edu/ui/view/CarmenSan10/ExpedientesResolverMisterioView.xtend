@@ -2,7 +2,6 @@ package edu.ui.view.CarmenSan10
 
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.widgets.Panel
-import edu.ui.domain.CarmenSan10.Expediente
 import org.uqbar.arena.windows.WindowOwner
 import org.uqbar.arena.layout.ColumnLayout
 import org.uqbar.arena.layout.VerticalLayout
@@ -12,11 +11,12 @@ import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.widgets.Label
 import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
 import edu.ui.domain.AppModel.ExpedienteAppModel
+import edu.ui.domain.CarmenSan10.Caracteristicas
 
 class ExpedientesResolverMisterioView extends SimpleWindow<ExpedienteAppModel> {
 	
-	new (WindowOwner parent){
-		super(parent,new ExpedienteAppModel)
+	new (WindowOwner parent, ExpedienteAppModel exp){
+		super(parent, exp)
 	}
 	
 	override protected addActions(Panel actionsPanel) {
@@ -49,7 +49,7 @@ class ExpedientesResolverMisterioView extends SimpleWindow<ExpedienteAppModel> {
 		var table = new Table<Villano>(panelIzquierdo, typeof(Villano)) => [
 			height = 200 //ni idea
 			width = 450  //tampoco
-			bindItemsToProperty("villanos")
+			bindItemsToProperty("expediente.villanos")
 			bindValueToProperty("selectedVillano")
 		]
 			
@@ -68,18 +68,17 @@ class ExpedientesResolverMisterioView extends SimpleWindow<ExpedienteAppModel> {
 			text = "Señas Particulares"
 			//foreground = Color.BLUE // detalle para mas adelante
 		]
-		// luego pongo la tabla
-		var tablaDeArriba = new Table<Villano>(panelDerecho, typeof(Villano)) => [
+		var tablaDeArriba = new Table<Caracteristicas>(panelDerecho, typeof(Caracteristicas)) => [
 			height = 200 //ni idea
 			width = 450  //tampoco
-			bindItemsToProperty("señas")
-			bindValueToProperty("selectedSeña")
+			bindItemsToProperty("selectedVillano.seniasParticulares")
+			bindValueToProperty("selectedVillano")
 		]
 			
-		new Column<Villano>(tablaDeArriba) => [
+		new Column<Caracteristicas>(tablaDeArriba) => [
 			title = "Seña"
 			fixedSize = 150 // ni idea
-			bindContentsToProperty("razgosParticulares")//bindeamos a la seña del villano en cuestion
+			bindContentsToProperty("nombre")//bindeamos a la seña del villano en cuestion
 		]
 		
 		new Label (panelDerecho) => [
@@ -87,17 +86,17 @@ class ExpedientesResolverMisterioView extends SimpleWindow<ExpedienteAppModel> {
 			//foreground = Color.BLUE // detalle para mas adelante
 		]
 		// ahora la otra tabla
-		var tablaDeAbajo = new Table<Villano>(panelDerecho, typeof(Villano)) => [
+		var tablaDeAbajo = new Table<Caracteristicas>(panelDerecho, typeof(Caracteristicas)) => [
 			height = 200 //ni idea
 			width = 450  //tampoco
-			bindItemsToProperty("hobbies")
-			bindValueToProperty("selectedHobbie")
+			bindItemsToProperty("selectedVillano.hobbies")
+			bindValueToProperty("selectedVillano")
 		]
 			
-		new Column<Villano>(tablaDeAbajo) => [
+		new Column<Caracteristicas>(tablaDeAbajo) => [
 			title = "Hobbie"
-			fixedSize = 150 // ni idea
-			bindContentsToProperty("hobbie")//bindeamos al nombre del villano en cuestion
+			fixedSize = 150 
+			bindContentsToProperty("nombre")
 		]
 	}
 	
@@ -107,17 +106,15 @@ class ExpedientesResolverMisterioView extends SimpleWindow<ExpedienteAppModel> {
 		]
 		new Label (detallesPanel) => [
 			text = "Nombre"
-			//foreground = Color.BLUE // detalle para mas adelante
 		]
 		new Label (detallesPanel) => [
-			value <=> "nombre"
+			value <=> "selectedVillano.nombre"
 		]
 		new Label (detallesPanel) => [
 			text = "Sexo"
-			//foreground = Color.BLUE // detalle para mas adelante
 		]
 		new Label (detallesPanel) => [
-			value <=> "sexo"
+			value <=> "selectedVillano.sexo"
 		]
 	}
 	

@@ -8,6 +8,13 @@ import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.SimpleWindow
 import org.uqbar.arena.windows.WindowOwner
+import org.uqbar.arena.layout.ColumnLayout
+import static extension org.uqbar.arena.xtend.ArenaXtendExtensions.*
+import org.uqbar.arena.widgets.List
+import edu.ui.domain.CarmenSan10.Pais
+import org.uqbar.arena.bindings.PropertyAdapter
+import edu.ui.domain.AppModel.ExpedienteAppModel
+import edu.ui.domain.AppModel.LugarInteresAppModel
 
 class ResolviendoMisterioWindow extends SimpleWindow<ResolverMisterioAppModel>
 {
@@ -16,83 +23,124 @@ class ResolviendoMisterioWindow extends SimpleWindow<ResolverMisterioAppModel>
 		super(parent, model)
 	}
 	
-	override createFormPanel(Panel mainPanel) 
-	{
-		title = "Resolviendo:" // + model.tituloDelCaso
-		val generalPanel = new Panel(mainPanel) => [ 
+	override createFormPanel(Panel mainPanel) 	{
+		title = "Resolviendo:" + modelObject.tituloDelCaso
+		
+		val generalPanel = new Panel(mainPanel) => [
+			
+			layout = new VerticalLayout
+				
+			val juego = new Panel(mainPanel) => [
+				
 			layout = new HorizontalLayout
 			
-			val left = new Panel(it) => [
+				val left = new Panel(it) => [
+					
+					val titulo = new Panel(it) => [
+						layout = new ColumnLayout(2)
+						
+						new Label(it) => [
+							text = "Estás en:"
+						]
+						
+						new Label(it) => [
+							value <=> "nombrePaisActual"
+						]	
+					]
+					
+					new Button(it) => [
+						caption = "Orden De Arresto"
+						onClick ([|abrirOrdenDeArresto])
+					]
+					
+					val estadoDeLaOrden = new Panel(it) => [
+						layout = new ColumnLayout(2)
+						
+						new Label(it) => [
+							fontSize = 8
+							text = "estadoDeLaOrdenDeArresto" // no esta funcionando: actualizar el estado
+						]
+						
+						new Label(it) => [
+							value <=> "ordenPara"
+						]
+					]
+					
+					new Button(it) => [
+						caption = "Viajar"
+						onClick ([|abrirViajarAPais])
+						// Al viajar debe deshabilitarse los botones en caso de poder viajar o no.
+					]
 				
-				new Label(it).text = "Estás en:" // + modelObject.nombrePaisActual
-				
-				new Button(it) => [
-					caption = "Orden De Arresto"
-					onClick ([|abrirOrdenDeArresto])
+					new Button(it) => [
+						caption = "Expedientes"
+						onClick ([|verExpedientes])
+					]
 				]
 				
-				new Label(it) => [
-					fontSize = 8
-					// text = modelObject.estadoDeLaOrdenDeArresto()
-					text = "Orden ya emitida: Carmen Sandiego"
-				]
-				
-				new Button(it) => [
-					caption = "Viajar"
-					onClick ([|abrirViajarAPais])
-					// Al viajar debe deshabilitarse los botones en caso de poder viajar o no.
-				]
-			
-				new Button(it) => [
-					caption = "Expedientes"
-					onClick ([|verExpedientes])
+				val right = new Panel(it) => [
+					
+					new Label(it).text = "Lugares:"
+					
+					new Button(it) => [
+						caption = modelObject.nombreDel1erLugarInteres
+						onClick ([|abrir1erLugarDeInteres])
+					]
+					
+					new Button(it) => [
+						caption = modelObject.nombreDel2doLugarInteres
+						onClick ([|abrir2erLugarDeInteres])
+					]
+					
+					new Button(it) => [
+						caption = modelObject.nombreDel3erLugarInteres
+						onClick ([|abrir3erLugarDeInteres])
+					]		
 				]
 			]
 			
-			val right = new Panel(it) => [
+			val estado = new Panel(mainPanel) => [
+				layout = new VerticalLayout
+			
+				new Label(it).text = "Recorrido criminal:"
 				
-				new Label(it).text = "Lugares:"
+				new Label(it) => [
+					value <=> "paisesAcertados"
+				] 
 				
-				new Button(it) => [
-					caption = "Biblioteca" //modelObject.nombreDel1erLugarInteres
-					onClick ([|abrir1erLugarDeInteres])
+				new Label(it).text = "Destinos fallidos:"
+				
+				new List<Pais> (mainPanel) => [
+					bindItemsToProperty("paisesFallidos").adapter = new PropertyAdapter(Pais, "nombrePais")
 				]
 				
-				new Button(it) => [
-					caption = "Club" //modelObject.nombreDel2erLugarInteres
-					onClick ([|abrir2erLugarDeInteres])
-				]
-				
-				]
-				new Button(it) => [
-					caption = "Embajada" //modelObject.nombreDel3erLugarInteres
-					onClick ([|abrir3erLugarDeInteres])
-				]		
+			]
 		]
-		
-		new Label(generalPanel).text = "Recorrido criminal:"
-		//new Label(generalPanel).text = modelObject.recorridoCriminal
 		
 	}
 	
 	def abrir3erLugarDeInteres() 
 	{
-//		new LugaresWindow(this, modelObject.el3erLugarDeInteres).open
+		val model = new LugarInteresAppModel(modelObject.lugar3, modelObject.caso, modelObject.detective)
+		new LugaresWindow(this, model).open
 	}
 	
 	def abrir2erLugarDeInteres() 
 	{
-//		new LugaresWindow(this, modelObject.el2erLugarDeInteres).open
+		val model = new LugarInteresAppModel(modelObject.lugar2, modelObject.caso, modelObject.detective)
+		new LugaresWindow(this, model).open
 	}
 	
 	protected def void abrir1erLugarDeInteres() 
 	{
-		
-//		new LugaresWindow(this, modelObject.el1erLugarDeInteres).open
+		val model = new LugarInteresAppModel(modelObject.lugar1, modelObject.caso, modelObject.detective)
+		new LugaresWindow(this, model).open
 	}
 	
 	def verExpedientes() 
 	{
+		val model = new ExpedienteAppModel(modelObject.expediente)
+		new ExpedientesResolverMisterioView(this, model).open
 		// Abrir el expediente que es solo de visualizacion.
 	}
 	
@@ -106,28 +154,11 @@ class ResolviendoMisterioWindow extends SimpleWindow<ResolverMisterioAppModel>
 		new OrdenArrestoWindow(this, modelObject).open
 	}
 	
-	def void destinosFallidos(Panel panelPrincipal) 
-	{
-		val panelDestinosFallidos = new Panel (panelPrincipal)
-		panelDestinosFallidos.layout = new VerticalLayout
-		new Label(panelDestinosFallidos).text = "Destinos fallidos:"
-		tablaDePaises(panelDestinosFallidos)
-	}
-	
-	def tablaDePaises(Panel panelPrincipal) 
-	{
+	def tablaDePaises(Panel panelPrincipal)	{
 		// Add componente propio de Lista/Tabla
 	}
 	
-	def recorridoCriminal(Panel panelPrincipal) 
-	{
-		val panelRecorrido = new Panel (panelPrincipal)
-		panelRecorrido.layout = new VerticalLayout
-		new Label(panelRecorrido).text = "Argentina" + "<-" + "Peru" + "<-" + "Italia" + "<-" + "Egipto"
-	}
-	
-	def estadoDeLaOrdenDeArresto(Panel panel) 
-	{
+	def estadoDeLaOrdenDeArresto(Panel panel) {
 		new Label(panel).text = "Orden ya emitida: Carmen Sandiego"
 	}
 	

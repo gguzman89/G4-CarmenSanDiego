@@ -51,7 +51,7 @@ class EditorSuperConexion extends TransactionalDialog<PaisAppModel>{
 		new Selector<Pais>(editHor) => [
 			allowNull(false)
 			value <=> "paisesConexionAerea"
-			val propiedadModelos = bindItems(new ObservableProperty(paisesRepo, "paises"))
+			val propiedadModelos = bindItems(new ObservableProperty(modelObject, "paises"))
 			propiedadModelos.adaptWith(typeof(Pais), "nombrePais") // opción A
 		]
 		
