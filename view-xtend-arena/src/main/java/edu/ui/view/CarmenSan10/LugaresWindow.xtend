@@ -40,7 +40,7 @@ class LugaresWindow extends Dialog<LugarInteresAppModel>{
 	
 	def validacionParaContinuar() 
 	{
-		if (modelObject.esElFinDelJuego) {
+		if (!modelObject.esElFinDelJuego) {
 			abrirResultadoDelJuego()
 		}
 		this.close()
@@ -48,12 +48,15 @@ class LugaresWindow extends Dialog<LugarInteresAppModel>{
 	
 	def abrirResultadoDelJuego() {
 		
-		if (modelObject.estaResuelto){
+		if (!modelObject.estaResuelto){
+			
 			modelObject.casoResulto
 			new FinDelJuegoWindow(this, modelObject).open
-		}
+		} else {
+			
 		modelObject.casoImpune
 		new FinDelJuegoWindow(this, modelObject).open
+		}
 	}
 	
 }

@@ -56,8 +56,4 @@ class OrdenArrestoWindow extends SimpleWindow<ResolverMisterioAppModel>{
 		modelObject.generarOrdenDeArrestoPara
 		this.close()
 	}
-	
-	def defaultTitle(String tituloDelCaso) {
-		"Resolviendo: " + tituloDelCaso
-	}
 }
