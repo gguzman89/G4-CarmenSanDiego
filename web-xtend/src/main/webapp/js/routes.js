@@ -28,10 +28,6 @@ carmenApp.config(function ($stateProvider, $urlRouterProvider) {
       controller: "ResolviendoController as docCtrl" // El nombre del controller de "resolviendoCaso.html" se llamaría ResolviendoController
     })
 
-//    ESTE ES UN EJEMPLO DE COMO SE PUEDE DIVIDIR LA PAGINA DE TAL MANERA QUE DOS PARTE MUESTREN UN CONTENIDO DE PARTIAL DIFERENTE...
-//    EN UNA MISMA DIRECCION, COLOCANDOLE ETIQUETAS A LOS DIVS, COMO EN ESTE CASO, CUYAS ETIQUETAS SON "mainPanel" Y "loginPanel". 
-//    AUN NO ESTOY SEGURA DE QUE LO NECESITEMOS PERO LO DEJO COMENTADO COMO EJEMPLO.
-//
 //     .state('logeado',{
 //     url: '/logeado',
 //     views: {
@@ -56,7 +52,7 @@ carmenApp.config(function ($stateProvider, $urlRouterProvider) {
 
      .state('admMapamundi',{
      url: '/paises',
-     templateUrl: "partials/mapamundi.html", // realizar html
+     templateUrl: "partials/pais-paises.html",
      controller: "MapamundiController as mapa"
      }
      )

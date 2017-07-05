@@ -29,7 +29,7 @@ carmenApp.controller('ExpedienteController', function ($timeout, Expediente, Mod
         $timeout(function() {
             while (mensajes.length > 0) mensajes.pop();
         }, 3000);
-    }
+    };
 
     this.borrarVillano = function(villano) {
     	ModificarVillano.remove(villano, function(data) {
@@ -37,5 +37,5 @@ carmenApp.controller('ExpedienteController', function ($timeout, Expediente, Mod
     	} // terminar
 
     		)
-    }
+    };
 });
