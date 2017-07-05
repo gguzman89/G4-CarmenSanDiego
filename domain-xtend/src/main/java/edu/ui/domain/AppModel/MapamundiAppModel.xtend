@@ -38,12 +38,6 @@ class MapamundiAppModel {
 	
 	def void setTodosLosPaises(List<Pais> paises) {}
 	
-//	def List<String> getTodasLasCaracteristicas() {
-//		itemSeleccionado.caracteristicaPais
-//	}
-	
-	//def void setTodasLasCaracteristicas(List<String> feature) {}
-	
 	def getNombreCaracteristicas() {}
 	
 	def List<Pais> getTodasLasConexiones() {
@@ -62,30 +56,22 @@ class MapamundiAppModel {
 		paisesRepo.search(itemSeleccionado.nombrePais)
 	}
 	
-	def String getNombreCaso() {
-		
-	}
+	def String getNombreCaso() {}
 	
-	def String getNombreVillano() {
-	}
+	def String getNombreVillano() {}
 	
-	def String getNombrePais() {
-	}
+	def String getNombrePais() {}
 	
-	def void getViajar() {
-	}
+	def void getViajar() {}
 	
-	def String getNombreLugar() {
-	}
+	def String getNombreLugar() {}
 	
-	def void validacionContinuar() {
-	}
+	def void validacionContinuar() {}
 	
-	def String getObjetoRobado() {
-	}
-	
+	def String getObjetoRobado() {}
 	
 	def eliminarPaisSeleccionado() {
+		
 		getPaisesRepo().delete(itemSeleccionado)
 		this.search()
 		itemSeleccionado = null

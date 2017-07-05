@@ -42,7 +42,6 @@ class Caso
 		lugarDelVillano = lugarDondeSeEncuentraElVillano(unPlanDeEscape.last)
 		lugaresDelPlanEscape = lugaresDelRecorrido(planDeEscape)
 		pistasDelPlanDeEscape = new ArrayList<List<String>>()
-		//pistasDelRecorrido(planDeEscape)
 	}
 	
 	def mostrarPista(Pais p, LugarDeInteres lugar) {
@@ -50,14 +49,12 @@ class Caso
 		if (p.estaDentroDelRecorrido(planDeEscape))
 		{
 			val posLugarPista = planDeEscape.indexOf(p)
-			// posicionEnLosPaises = Me da el index de la posicion de p en el planDeEscape
 			val resLugares = lugaresDelPlanEscape.get(posLugarPista).indexOf(lugar)
-			// posicionEnLosLugares = Me da el index de la posicion de lugar en una lista de lugares
 		
 			pistasDelPlanDeEscape.get(posLugarPista).get(resLugares)	
 		}
 		
-		else	// Si el pais no se encuentra en el plan de escape...
+		else
 		{
 			p.ocupante.responderAlDetective(this, lugar, p)
 		}

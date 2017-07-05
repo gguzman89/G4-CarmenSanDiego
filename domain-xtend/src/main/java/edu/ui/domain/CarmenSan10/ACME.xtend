@@ -30,13 +30,6 @@ class ACME
 		this.caso = caso
 	}
 	
-	/*
-	new(Detective resolvedor) { Preguntaar
-		expedientes = new ArrayList<Villano>()
-		resolvedorDeCasos = resolvedor
-	}
-	 */
-	 
 	/**
 	 * @Propósito Agrega un Villano a la base de datos de ACME solo si no fue cargado anteriormente.
 	 * @param VillanoAAgregar Es el Villano que se intenta agrega a la base de datos de ACME.

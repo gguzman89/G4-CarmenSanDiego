@@ -9,15 +9,11 @@ import org.uqbar.commons.utils.Observable
 
 @Observable
 @Accessors
-// Con el @Data no solo crea los geters y seter.
-// sino tambien un new con todas las variables internas para cargar por parametros.
-
 class Detective 
 {
 	private var List<Pais> recorrido
 	private var String ordenDeArresto
-	List<LugarDeInteres> lugaresVisitados // puede que no lo necesite.
-	// lugaresVisitados es para saber si el ultimo lugar que visite esta el villano (sirve para terminar el juego)
+	List<LugarDeInteres> lugaresVisitados
 	
 	/**
 	 * @Propósito: Crea un Detective.
@@ -67,7 +63,6 @@ class Detective
 	 */
 	private def puedeViajarA (Pais paisAViajar) 
 	{
-		// no mandar el objeto, sino solo el nombre del pais
 		ubicacionActual.tieneConexionAereaCon(paisAViajar)
 	}
 	
@@ -154,12 +149,12 @@ class Detective
 		recorrido.filter[pais | pais.estaFueraDelRecorrido(recorridoDelVillano) ].toList
 	}
 	
-	def ultimoLugarVisitado() // puede que no lo necesite
+	def ultimoLugarVisitado()
 	{
 		lugaresVisitados.last
 	}
 	
-	def pedirPista(Caso caso) // puede que no lo necesite
+	def pedirPista(Caso caso) 
 	{
 		caso.mostrarPista(ubicacionActual, ultimoLugarVisitado)
 	}

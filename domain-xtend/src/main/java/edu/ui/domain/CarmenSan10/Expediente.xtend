@@ -11,8 +11,8 @@ import java.util.ArrayList
 
 @Observable
 @Accessors
-class Expediente 
-{
+class Expediente {
+	
 	private var List<Villano> villanos
 	private var Integer secuencia = 1
 	
@@ -45,8 +45,6 @@ class Expediente
 	def elVillanoYaExiste (String unNombre) 
 	{
 		villanos.exists[v | v.tieneElMismoNombreQue(unNombre)]
-		// Que es lo mismo que escribir...
-		// expedientes.exists[| it.nombre == villano.nombre]
 	}
 	
 	/**

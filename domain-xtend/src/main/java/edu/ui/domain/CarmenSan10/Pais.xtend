@@ -43,7 +43,6 @@ class Pais extends Entity implements Cloneable {
 //		lugares.map[l| l.nombre]
 //		//lugares.get(0).nombre
 //	}
-// Suena extraño porque NO puedo borrar/comentar la linea setNombreLugares y correr la app
 	
 	def void setNombreLugares(List<LugarDeInteres> plugares) {}
 	
@@ -153,9 +152,8 @@ class Pais extends Entity implements Cloneable {
 		pista1.nombre + " "+ pista2.nombre + "."
 	}
 	
-	def void cambiarEstado(List<Pais> ps, Villano v) // este funciona realmente
+	def void cambiarEstado(List<Pais> ps, Villano v) 
 	{
-		// cambie los parametros del mensaje Actualizar
 		ocupante = ocupante.actualizar(ps, this, v)
 	}
 	

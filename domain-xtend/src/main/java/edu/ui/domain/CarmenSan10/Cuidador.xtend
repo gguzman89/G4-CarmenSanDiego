@@ -22,15 +22,13 @@ class Cuidador extends Ocupante {
 	{
 		if (p.esElFinalDelRecorrido(ps))
 		{
-			println("ahora soy el Villano")
-			//p.ocupante = v
+			//println("ahora soy el Villano")
 			return v
 		}
 		
 		if (p.seEncuentraEnRecorridoSinElUltimoPais(ps))
 		{
-			println("ahora soy un Informante")
-			//p.ocupante = new Informante()
+			//println("ahora soy un Informante")
 			new Informante()
 		}
 		

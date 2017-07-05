@@ -18,29 +18,9 @@ class PaisAppModel implements Serializable{
 	Caracteristicas carSeleccionada
 	Pais paisDeConexSeleccionado
 	
-	
-	/**
-	 * String nombrePais
-	 * List<String> caracteristicaPais	
-	 * List<LugarInteres> lugares	
-	 * List<Pais> paisesConexionAerea
-	 */
-	
 	new(Pais pais) {
-		this.pais= pais
+		this.pais = pais
 	}
-	
-//	def paisesConexionAerea() {
-//		pais.paisesConexionAerea
-//	}
-//	
-//	def lugares() {
-//		pais.lugares
-//	}
-//	
-//	def nombrePais() {
-//		pais.nombrePais
-//	}
 	
 	def eliminarCaracteristicaSelecionada() {
 		pais.eliminarCaracteristica(carSeleccionada)

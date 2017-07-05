@@ -69,9 +69,6 @@ class Informante extends Ocupante {
 		villano.pistaDeHobbies + "."
 	}
 	
-	override actualizar(List<Pais> ps, Pais p, Villano v) 
-	{
-
-	}
+	override actualizar(List<Pais> ps, Pais p, Villano v) {	}
 	
 }

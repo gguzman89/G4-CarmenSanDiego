@@ -20,7 +20,6 @@ class Mapamundi {
 	def buscarPais(String nombreDelPaisABuscar) {
 		
 		paises.filter[pais | pais.nombrePais == nombreDelPaisABuscar].toList
-		//paises.findFirst[pais | pais.nombrePais == nombreDelPaisABuscar]
 		
 	}
 	

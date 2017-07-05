@@ -10,7 +10,6 @@ import edu.ui.domain.CarmenSan10.Pais
 import edu.ui.domain.CarmenSan10.LugarDeInteres
 import edu.ui.domain.CarmenSan10.Caso
 import edu.ui.domain.CarmenSan10.Detective
-import java.util.List
 
 @Accessors
 class CarmenSan10Dummy 
@@ -28,7 +27,6 @@ class CarmenSan10Dummy
 		 */	
 		mapamundi = new Mapamundi
 		
-		// diff entre val y var?
 		val venezuela = new Pais("Venezuela", #[LugarDeInteres.EMBAJADA, LugarDeInteres.BIBLIOTECA, LugarDeInteres.CLUB], new ArrayList<Pais>())
 		venezuela.caracteristicaPais = #[new Caracteristicas("Maduro a la cabeza"), new Caracteristicas("Su lider cosmico supremo habla con los pajaritos")]
 		
@@ -66,8 +64,6 @@ class CarmenSan10Dummy
 		val hobbieCS = new Caracteristicas("Juega tenis")
 		hobbiesCS.add(hobbieCS)
 		
-		//val villanoCS = new Villano("Carmen Sandiego", "Femenino", seniasParticularesCS, hobbiesCS)
-		
 		val villanoCS = new Villano => [
 			nombre = "Carmen Sandiego"
 			sexo = "Femenino"
@@ -99,27 +95,8 @@ class CarmenSan10Dummy
 		 val reporteDelCrimen = "A las 9 de la mañana en la ciudad del Cairo la comunidad científica fue conmovida al darse cuenta del faltante de gran valor! El sarcófago del faraón Usermaatra-Meriamón Ramsés-Heqaiunu, mejor conocido como Ramsés III. El criminal fue muy prolijo y la escena del crimen no contaba con pista alguna, su misión como detective es desifrar el responsable de tal crímen y apresarlo."
 		 val objetoRobado = "Tumba del faraón"
 		 
-//		 caso = new Caso() => 
-//		 [
-//		 	id = 1
-//		 	responsable = villanoCS
-//		 	planDeEscape = #[argentina, brazil, venezuela]
-//		 	reporteDelActoCriminal = reporteDelCrimen
-//		 	objetoDelRobo = objetoRobado
-//		 	paisDelRobo = argentina
-//		 	lugarDelVillano = lugarDondeSeEncuentraElVillano(planDeEscape.last)
-//		 	lugaresDelPlanEscape = lugaresDelRecorrido(planDeEscape)
-//		 	pistasDelPlanDeEscape = new ArrayList<List<String>>()
-//		 ]
-//		 caso.pistasDelRecorrido(caso.planDeEscape) 
-		 
-//		 val plan = new ArrayList<Pais>()
-//		 plan.add(argentina)
-//		 plan.add(brazil)
-//		 plan.add(venezuela)
 		 caso = new Caso(villanoCS,	#[argentina, brazil, venezuela], reporteDelCrimen, objetoRobado, argentina)
 		 caso.pistasDelPlanDeEscape = caso.pistasDelRecorrido(#[argentina, brazil, venezuela])
-//		 ver que otra cosa puede ser... o dejar de usar
 		 
 		 /**
 		  * Detective

@@ -13,7 +13,6 @@ import org.apache.commons.lang.StringUtils
 class Villano extends Ocupante {
 	
 	Integer id
-	//String nombre
 	String sexo
 	List<Caracteristicas> seniasParticulares
 	List<Caracteristicas> hobbies
@@ -154,10 +153,7 @@ class Villano extends Ocupante {
 		seniasParticulares.get(numeroPista).nombre
 	}
 	
-	override actualizar(List<Pais> ps, Pais p, Villano v) 
-	{
-		
-	}
+	override actualizar(List<Pais> ps, Pais p, Villano v) {	}
 	
 	def dar2PistasSeniasParticulares() 
 	{
@@ -201,30 +197,6 @@ class Villano extends Ocupante {
 		sexo = nuevoSexo
 		seniasParticulares = nuevasSenias
 		hobbies = nuevosHobbies
-	}
-	
-	def static void main(String[] args) {
-		
-		val senia01_Julian = new Caracteristicas("Tiene el pelo azul.")
-		val senia02_Julian = new Caracteristicas("Se rasca la oreja de forma extraña.")
-		//val senia03_Julian = new Caracteristicas("")
-		
-		val hobbie01_Julian = new Caracteristicas("Plantar tomate.")
-		val hobbie02_Julian = new Caracteristicas("Comer chupentines.")
-		//val hobbie03_Julian = new Caracteristicas("")
-		
-		val Villano nn = new Villano() => [ 
-			nombre = "Julian"
-			seniasParticulares = #[senia01_Julian, senia02_Julian]
-			hobbies = #[hobbie01_Julian, hobbie02_Julian]
-		]
-		
-		//var pistas = nn.dar2PistasSeniasParticulares
-		
-		println("señas particulares = " + nn.seniasParticulares.size)
-		println("hobbies = " + nn.hobbies.size)
-		println(nn.dar2PistasSeniasParticulares)
-		
 	}
 	
 	def eliminarHobbie(Caracteristicas caracteristicas) {
